@@ -156,29 +156,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -279,7 +257,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -287,7 +265,19 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -323,30 +313,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -363,9 +330,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -382,7 +361,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
 
           </li>
-         <li class="nav-item">
+          <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -391,7 +370,9 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               </p>
             </a>
           </li>
-           <li class="nav-item">
+          <li class="">
+            
+            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -401,7 +382,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
 
           </li>
-         
+  
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -682,152 +663,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <div class="card-header">
                 <h3 class="card-title">Your Agenda</h3>
               </div>
-              <style type="text/css">
- .content-table{
-  border-collapse:collapse;
-  margin: 25px 0;
-  font-size: 0.8em;
-  min-width:500px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  box-shadow:  0 0 20px rgba(0,0,0,0.15);
- }
-  .content-table thead tr{
-
-  background-color:#009879;
-  color:#ffffff;
-  text-align: left;
-  font-weight: bold;
-    }
-    .content-table th,
-    .content-table td{
-      padding: 12px 15px;
-    }
-    .content-table tbody tr{
-
-    border-bottom: 1px solid #dddddd;
-    } 
-    .content-table tbody tr:nth-of-type(even){
-
-
-      background-color: #f3f3f3; 
-    }
-    .content-table tbody tr:last-of-type{
-
-      border-bottom: 2px solid #009879;
-    }
-    .content-table tbody tr.active-row{
-
-
-      font-weight: bold;
-      color:#009879; 
-    }
-.body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-.notification {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-  padding: 15px 56px;
-  position: relative;
-  display: inline-block;
-  border-radius: 90px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.notification .badge {
-  position: absolute;
-  top: -1px;
-  right: -5px;
-  padding: 5px 10px;
-  border-radius: 10%;
-  background: red;
-  color: white;
-}
-
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  height: 80%;
-  width: 80%;
-  overflow: auto;
-
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 100%;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-
-       
-
-      
- 
-
-</style>
+        
 <table class="content-table" id="table">
             <thead>
                 <tr>
@@ -896,7 +732,7 @@ if($link === false){
  var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/ishfinal/API/recta.php', function(data)  {
+$.getJSON('ishfinal/API/recta.php', function(data)  {
           console.log(data);
           var items = [];
 
@@ -1044,7 +880,7 @@ p++;
  var data;
   $(document).ready(function() {
         $.ajax({
-          url: 'http://localhost/Admin/ishfinal/API/daynoreta.php',
+          url: 'ishfinal/API/daynoreta.php',
           type: 'GET',
           dataType: 'json',
           data: data,
@@ -1150,7 +986,7 @@ p++;
   var data;
   $(document).ready(function() {
         $.ajax({
-          url: 'http://localhost/ishfinal/API/daynonrecev.php',
+          url: 'ishfinal/API/daynonrecev.php',
           type: 'GET',
           dataType: 'json',
           data: data,
@@ -1282,7 +1118,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/ishfinal/API/daynoreta.php', function(data)  {
+$.getJSON('ishfinal/API/daynoreta.php', function(data)  {
           console.log(data);
 
 
@@ -1386,7 +1222,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/ishfinal/API/recta.php', function(data)  {
+$.getJSON('ishfinal/API/recta.php', function(data)  {
           console.log(data);
 
 
@@ -1637,7 +1473,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
+$.getJSON('ishfinal/API/receve.php', function(data)  {
           console.log(data);
           var items = [];
 
@@ -1831,30 +1667,49 @@ return res;
 <div class="form-popup" id="myForm">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
     <p><b>Update your task progress</b></p>
+<div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
-
+  </div></div>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title" placeholder="Update your task title" name="title" required>
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      <label for="dueda"><b>Due Date</b></label>
     <input type="text" id="dueda"placeholder="Update your task progress" name="start" required>
-
+</div></div>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
-
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
+        </div></div>
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">
-
+          </div></div></div>
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
            <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To"></div></div>
 
-
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Task Priority</option>
@@ -1862,7 +1717,10 @@ return res;
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
                     <option selected="selected">Select Task Status</option>
@@ -1870,11 +1728,15 @@ return res;
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
-
+          </div></div>
+          <div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
-
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -1886,9 +1748,12 @@ return res;
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>    
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
+  </div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
@@ -1896,29 +1761,48 @@ return res;
   <div class="form-popup" id="myModal2">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  class="form-container">
     <p><b>Update your task progress</b></p>
+<div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title1" placeholder="Update your task title" name="title" required>
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      <label for="dueda"><b>Due Date</b></label>
     <input type="text" id="dueda1"placeholder="Update your task progress" name="start" required="">
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
-
-
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">
-
+          </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
  <label for="clino">How To</label>
                   <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
-
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -1926,7 +1810,10 @@ return res;
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Status</option>
@@ -1934,10 +1821,15 @@ return res;
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
-
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">
-
+          </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -1949,45 +1841,29 @@ return res;
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>   
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
-                  <label for="rpt">Save</label>
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                    
+ </div></div></div>
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                    <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
-                  </select> <br>    
- 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                  </select> <br>
+  </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
 </div>
   <?php
-
-// header('Access-Control-Allow-Origin: *');
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-//database
-// define('DB_HOST', '127.0.0.1');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'book');
-
-// //get connection
-// $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// if(!$mysqli){
-//  die("Connection failed: " . $mysqli->error);
-// }
-
-// //query to get data from the table
-// $query = sprintf("SELECT * FROM `book` ");
-
-// //execute query
-// $result = $mysqli->query($query);
-
 
 $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
  
@@ -1998,12 +1874,9 @@ if($link === false){
 
 if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid'])  && isset($_POST['hotodo']) && isset($_POST['comment'])
  ){
-  // && isset($_POST['matter'])
-
-// Escape user inputs for security
+  
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
 $start = mysqli_real_escape_string($link, $_REQUEST['start']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
 
 
 
@@ -2019,17 +1892,11 @@ $comment = mysqli_real_escape_string($link, $_REQUEST['comment']);
  
  $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
 $clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-// $matter = mysqli_real_escape_string($link, $_REQUEST['matter']);
  
 $user = mysqli_real_escape_string($link, $_REQUEST['user']); 
 
 $tid = mysqli_real_escape_string($link, $_REQUEST['tid']); 
-// $user = count($_POST['user']);
-  // echo "<script>$('#MyModal').modal('show')</script>";
 
- 
-// Attempt insert query execution
-// , `matter`
 
 if($rpt == "Never")
 {
@@ -2041,17 +1908,8 @@ SET  `title` =  '$title',`start` =  '$start',`description` = '$descri', `rpt` = 
 
 WHERE `tid` = '$tid'  " ;
 
-// $sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
 
 if(mysqli_query($link, $sql)){
-//    echo "Task updated successfully.";
 
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -2069,17 +1927,6 @@ else
 
 $sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`,`hotodo`,`comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
 
-
- 
-
-
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
 
 
 $sql2 = "DELETE FROM `tasks` WHERE `tid` = '$tid'" ;
@@ -2108,15 +1955,10 @@ else{
 }
 
 
-
-
-
 $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
 if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid']) && isset($_POST['save1'])  && isset($_POST['hotodo']) && isset($_POST['comment'])
 ){
-  // && isset($_POST['matter'])
 
-// Escape user inputs for security
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
 $start = mysqli_real_escape_string($link, $_REQUEST['start']);
 // $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
@@ -2328,7 +2170,6 @@ function closeForm4() {
                       <i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" role="menu">
                       <a href="events.php" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
                       <div class="dropdown-divider"></div>
                       <a href="calendar.php" class="dropdown-item">View calendar</a>
                     </div>
@@ -2342,6 +2183,8 @@ function closeForm4() {
 
             
       </div>
+          <script type="text/javascript" src="convdate.js"></script>
+<script type="text/javascript" src="convnew.js"></script>
             </div>
             
       <!--/. container-fluid -->
@@ -2390,12 +2233,21 @@ function closeForm4() {
 <div class="form-popup" id="myModal64">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
     <p><b>Update Event progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title3" placeholder="Update your task title" name="title" required>
-
+</div></div></div>
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior3" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Event Priority</option>
@@ -2403,7 +2255,9 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-
+        </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -2415,38 +2269,51 @@ function closeForm4() {
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>    
-
-
-     
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
-
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="">
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
-
-
+        </div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
-
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
-
-    <label for="dueda"><b>Color</b></label>
-    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
-
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+   <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
-
-    <label for="dueda"><b>End Time</b></label>
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+     <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
-
-
+  </div></div></div>
+<div class="row">
+   <label for="dueda"><b>Color</b></label>
+    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+  </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
    
@@ -2454,13 +2321,22 @@ function closeForm4() {
 </div>
    <div class="form-popup" id="myModal56">
   <form action="index.php" method="POST" class="form-container">
-    <p><b>Update your task progress</b></p>
-<label for="tid"><b>Task Id</b></label>
+    <p><b>Update Event progress</b></p>
+    <div class="card-body">
+      <div class="r ow">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="tid"><b>Event Id</b></label>
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title4" placeholder="Update your task title" name="title" required>
-
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior4" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Event Priority</option>
@@ -2468,7 +2344,9 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-
+            </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -2479,45 +2357,65 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
-
-
-     
+                  </select> <br>  
+            </div></div></div>  
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
-
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
-
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Enter Client's Name">
-
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino4"placeholder="Update your task progress" name="clino" required>
-
-    <label for="dueda"><b>Color</b></label>
-    <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
-
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+ <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>    
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">   
     <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    <label for="rpt">Save</label>
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+    <label for="dueda"><b>Color</b></label>
+    <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+                            <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+    
+
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
-
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+         
+   </div></div></div>                
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>
@@ -2614,13 +2512,7 @@ mysqli_close($link);
 
 
 else{
-//Find start time for rptun
 
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
 $markg = strval($start);
 $markg =str_split(strval($start), 11);
 $finrpt= $markg[1] ;
@@ -2629,23 +2521,8 @@ $finrpt= $markg[1] ;
 //rewrite start time
  $start=str_replace("-", "", $start);
  $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
  $end=str_replace("-", "", $end);
  $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
 
 
 function addZero589($str){
@@ -2677,33 +2554,10 @@ $start = addZero589($start);
 $end = addZero589($end);
 $finrpt = addZero689($finrpt);
 
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
  $rptun =  str_replace("-", "", $rptun);
  $rptun = $rptun . "T" . $finrpt; 
  $rptun =  str_replace(":", "", $rptun);
-// echo $rptun;
 
-
-
- // echo "thr"."ee";
-// Attempt insert query execution
 $sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
 
 
@@ -2778,11 +2632,7 @@ $d2 = new DateTime($end);
 $interval = $d2->diff($d1);
 
 $popwert = $interval->format(':%I:%S');
-// echo "<br>";
-// echo $popwert;
-// echo "<br>";
 
-//calculate hours in duration
  $poprat = $interval->format('%d');
  $popguy = $interval->format('%H');
 $poprat= (($poprat *24)+$popguy);
@@ -2794,16 +2644,6 @@ else{
   //combine to get duration
   $popfinal =$poprat . $popwert ;
 }
-// echo "Duration";
-
-// echo "<br>";
-// echo $popfinal;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
 
 if($save1 == 'Full-group')
 {
@@ -2839,13 +2679,7 @@ else{
 
     else
   {
-//Find start time for rptun
 
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
 $markg = strval($start);
 $markg =str_split(strval($start), 11);
 $finrpt= $markg[1] ;
@@ -2854,23 +2688,8 @@ $finrpt= $markg[1] ;
 //rewrite start time
  $start=str_replace("-", "", $start);
  $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
  $end=str_replace("-", "", $end);
  $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
 
 
 function addZero($str){
@@ -2902,24 +2721,6 @@ $start = addZero($start);
 $end = addZero($end);
 $finrpt = addZero2($finrpt);
 
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
  $rptun =  str_replace("-", "", $rptun);
  $rptun = $rptun . "T" . $finrpt; 
  $rptun =  str_replace(":", "", $rptun);
@@ -2928,23 +2729,16 @@ $finrpt = addZero2($finrpt);
 $sql = "UPDATE `iane` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
 
 if(mysqli_query($link, $sql)){
-//    echo "Records updated successfully.";
 
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
  
-// Close connection
 mysqli_close($link);
 
-
-
-
-   }
+  }
 
 }
-
-
 
 if($save1 == 'One-time')
 {
@@ -2992,11 +2786,7 @@ if(mysqli_query($link, $sql2)){
 
 
     else{
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
+
 $markg = strval($start);
 $markg =str_split(strval($start), 11);
 $finrpt= $markg[1] ;
@@ -3005,23 +2795,9 @@ $finrpt= $markg[1] ;
 //rewrite start time
  $start=str_replace("-", "", $start);
  $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
 
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
  $end=str_replace("-", "", $end);
  $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
 
 
 function addZero($str){
@@ -3054,28 +2830,9 @@ $end = addZero($end);
 $finrpt = addZero2($finrpt);
 
 
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
  $rptun =  str_replace("-", "", $rptun);
  $rptun = $rptun . "T" . $finrpt; 
  $rptun =  str_replace(":", "", $rptun);
-//echo $rptun;
-
 
 $sql4 = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
 
@@ -3092,19 +2849,6 @@ mysqli_close($link);
          }  
 
 }
-
-
-// }
-// }
-
-
-// else{
-//  echo "not enough";
-
-// }
-
-
-
 
     ?>
             <!-- /.card -->
@@ -3143,7 +2887,7 @@ mysqli_close($link);
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="tr.css">
+    
 
 
 

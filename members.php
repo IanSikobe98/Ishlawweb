@@ -1,4 +1,5 @@
-   <?php
+     <?php
+
 require "sec/vendor/autoload.php";
 use \Firebase\JWT\JWT;
 // Initialize the session
@@ -146,16 +147,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="class.css" type="text/css" />
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -167,20 +173,39 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for visitors.." title="Type in a name">
+      
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff.." title="Type in a name">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="jquery-1.2.6.min.js"></script>
+    
+    <script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script>
+  $(function(){
+    $('exe').tablesorter({
+      widgets        : ['zebra', 'columns'],
+      usNumberFormat : false,
+      sortReset      : true,
+      sortRestart    : true
+    });
+  });
+  </script>
+
+
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
+    $("#exe tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
 });
 
 </script>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="logout.php" class="nav-link">Logout</a>
       </li>
@@ -221,12 +246,13 @@ $(document).ready(function(){
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+<nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
+              <style type="text/css" src="ry.css" ></style>
                 
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -265,7 +291,7 @@ $(document).ready(function(){
             </a>
             
           </li>
-           <li class="nav-item has-treeview client2" id="client4">
+          <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -317,7 +343,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item visitvi1 " id="visitvi">
-                <a href="roster.php" class="nav-link">
+                <a href="tvents.php" class="nav-link">
                   <i class="far fa-user-circle"></i>
                   <p>View Visitors</p>
                 </a>
@@ -395,6 +421,7 @@ $(document).ready(function(){
 
           </li>
 
+                      
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -551,107 +578,77 @@ $(document).ready(function(){
     <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Visitors</h1>
+            <h4>Current Staff Members</h4>
           </div>
-
-
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              
-              <li class="breadcrumb-item active">Visitors</li>
-              <li class="breadcrumb-item"><a href="#">View visitors</a></li>
-
-
-
-
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Staff</li>
             </ol>
           </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    <section class="content">
-      <div class="container-fluid">
-        
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title"></h3>
-                
-                
-                  </div>
-                </div>
-              </div>
-    
+        </Section>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="card-body table-responsive p-0">
-                <table id="myTable" class="table table-striped table-bordered table-hover content-table">
-
-            <thead>
-                <tr>
-            <th>First Name</th>
-	 	    <th>Last Name</th>
-	 	    <th>Mobile</th>
-	 	    <th>Purpose of visit</th>
-        <th>Lawyer</th>
-	 	    <th>Date of visit</th>
-	 	    
-	 	    
-	 	    
-                </tr>
-            </thead>
-           <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-           $ReadSql = "SELECT * FROM visitors ORDER BY Date DESC";
-
-
-                
-
-  
-      $result=mysqli_query($link,$ReadSql);
-      if (mysqli_num_rows($result) < 1) {
-                   echo "Error! No Records";
-                   exit();
-                }
 
 
     
-      while($row=mysqli_fetch_array($result)){
-?>
-        <tr>
-
-        <td><?php echo $row['Fname'];?></td>
-        <td><?php echo $row['Lname'];?></td>
-        <td><?php echo $row['Mobile'];?></td>
-        <td><?php echo $row['Purpose'];?></td>
-        <td><?php echo $row['Appointment'];?></td>
-        <td><?php echo $row['Date'];?></td>
-        
-
-
-        </tr>
-
-  <?php        
-      }
-	  ?>
-
-</table>
+      <table class="table table-striped table-bordered table-hover tablesorter" id="exe">
+    <thead >
+      <tr>
+        <th class="w3-button table-column">First Name</th>
+        <th class="w3-button table-column">Last Name</th>
+        <th >Phone Number <span class="glyphicon glyphicon-chevron-down"></span> </th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Role</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+      <tr class="warning">
+        <td>John Downy</td>
+        <td>0716587214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2022 10:00 a.m</td>
+        <td>Pending</td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
+      </tr>
+      <tr>
+         <td>John Downy</td>
+        <td>0716527214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2021 10:00 a.m</td>
+        <td>Pending</td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
+      </tr>
+      <tr>
+         <td>John Downy</td>
+        <td>0716527214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2021 10:00 a.m</td>
+        <td>Pending</td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    $(document).ready(function() 
+        { 
+            $("#exe").tablesorter({sortList: [[3,1],[2,0]]}); 
+        } 
+    );
+    </script>
 </div>
-              
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-        <!-- /.row -->
-      </div>
-      </section>
-  </div>
+
+</section>
+</div>
+
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       
@@ -670,13 +667,31 @@ $(document).ready(function(){
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $('#exe').tablesorter({
+          sortList:[[0,0,[1,0]]]
+        });
+
+
+    });
+
+
+
+
+  </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
+<script src="sort.js"></script>
+  
 <script type="text/javascript">
   function hidefunc(){
     
@@ -752,8 +767,8 @@ document.getElementById("visit").style.display ="block";
     }
   }
   
-</script>
-	 	
-</body>	
+</script> 
+
+</body> 
 
 </html>

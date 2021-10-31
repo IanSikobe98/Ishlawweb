@@ -1,7 +1,7 @@
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/ishfinal/API/recta.php', function(data)  {
+$.getJSON('ishfinal/API/recta.php', function(data)  {
 	  			console.log(data);
 	  			var items = [];
 

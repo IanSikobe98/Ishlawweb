@@ -154,55 +154,14 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-.notification {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-  padding: 15px 26px;
-  position: relative;
-  display: inline-block;
-  border-radius: 2px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.notification .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background: red;
-  color: white;
-}
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
-
+  
+<link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -317,7 +276,7 @@ $(document).ready(function(){
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -325,7 +284,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -361,30 +332,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -401,9 +349,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -421,14 +381,6 @@ $(document).ready(function(){
 
           </li>
           <li class="nav-item">
-            <a href="messages.php" class="nav-link notification">
-              <i class="nav-icon fas fa-bell"></i>
-              
-               <span> Notifications</span>
-                <span class="badge">3</span>
-              
-            </a>
-            <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -437,11 +389,9 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-
-
-
-
-                       <li class="nav-item">
+          <li class="">
+            
+            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -451,6 +401,7 @@ $(document).ready(function(){
             </a>
 
           </li>
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -646,59 +597,11 @@ $(document).ready(function(){
     
 
 
-
-<style type="text/css">
- .content-table{
- 	border-collapse:collapse;
- 	margin: 25px 0;
- 	font-size: 0.9em;
- 	min-width:1800px;
- 	border-radius: 5px 5px 0 0;
- 	overflow: hidden;
- 	box-shadow:  0 0 20px rgba(0,0,0,0.15);
- }
-  .content-table thead tr{
-
-  background-color:#009879;
-  color:#ffffff;
-  text-align: left;
-  font-weight: bold;
-    }
-    .content-table th,
-    .content-table td{
-    	padding: 12px 15px;
-    }
-    .content-table tbody tr{
-
-    border-bottom: 1px solid #dddddd;
-    }	
-    .content-table tbody tr:nth-of-type(even){
-
-
-    	background-color: #f3f3f3; 
-    }
-    .content-table tbody tr:last-of-type{
-
-    	border-bottom: 2px solid #009879;
-    }
-    .content-table tbody tr.active-row{
-
-
-    	font-weight: bold;
-    	color:#009879; 
-    }
-
-       
-
-      
- 
-
-</style>
 <div class="card-body table-responsive p-0">
-                <table id="myTable" class="content-table">
+                <table id="myTable" class="table table-striped table-bordered table-hover content-table">
 
-            <thead>
-                <tr>
+            <thead >
+                <tr class="">
             <th>Task</th>
             <th>Activity</th>
 	 	    <th>Assigned To</th>
@@ -971,24 +874,21 @@ p++;
     }
 }
   $('#myTable').append(student); 
+$(document).ready(function(){
+  $('table#myTable').DataTable({
 
-// onclick="myFunction()"
+"searching":true,
+"paging":true,
+"order":[[3,"desc"]],
+"ordering":true,
 
-// }
-// const rule = rrule.rrulestr(
-//   "DTSTART:20210104\nFREQ=DAILY;INTERVAL=1;UNTIL=20210303\nEXDATE:20210203"
-//   // "DTSTART;TZID=America/Denver:20181101T190000;\n"
-//   // + "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,TH;INTERVAL=1;COUNT=3"
-// )
-// console.log(rule.all());
 
-      // var str = ""
-      // for (var item of items) {
-      //   str += "<option>" + item + "</option>"
-      // }
-      // document.getElementById("policyid").innerHTML = str;
-        
-      
+
+
+  });
+
+
+  });
 
       });  
         </script>

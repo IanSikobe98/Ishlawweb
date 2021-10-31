@@ -156,31 +156,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
-
+<link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -279,7 +255,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -287,7 +263,19 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -296,8 +284,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   <p>View Clients</p>
                 </a>
               </li>
-              
-            </ul>
+             
+                         </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -323,31 +311,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
-          <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -363,9 +327,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -382,18 +358,28 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+                     <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
+          </li> 
+
+           <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
+          </li>
+
+
             
           </li>
           <li class="nav-header">Quick Links</li>
@@ -667,11 +653,11 @@ else{
   
 
   eventSources: [
-    'http://localhost/Admin/ishfinal/API/nonrecev.php',
-    'http://localhost/Admin/ishfinal/API/recta.php',
-'http://localhost/Admin/ishfinal/API/receve.php',
+    'ishfinal/API/nonrecev.php',
+    'ishfinal/API/recta.php',
+'ishfinal/API/receve.php',
 
-    'http://localhost/Admin/ishfinal/API/nonrecta.php',
+    'ishfinal/API/nonrecta.php',
   ]
   ,
  });
@@ -810,28 +796,59 @@ function closeForm4() {
       <div class="form-popup" id="myForm">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
     <p><b>Update your task progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+            
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
+  </div></div>
+    
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title" placeholder="Update your task title" name="title" required>
-
-     <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda"placeholder="Update your task progress" name="start" required>
-
+  </div></div></div>
+ 
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+  
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
+                <label for="dueda">Due Date</label>
+                 <input type="date" id="dueda" class="form-control" id="start" required="" name="start" placeholder="Update your task progress">
 
+  </div></div></div>
+  
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
 
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" required="" id="clino" name="clino" placeholder="Enter Client's Name">
+                  <input type="text" class="form-control select2"  id="clino" name="clino" placeholder="Enter Client's Name">
+  </div></div></div> 
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">
+        </div></div>
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
@@ -840,6 +857,11 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+        </div></div></div>
+
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
@@ -849,9 +871,17 @@ function closeForm4() {
                     <option value="Completed">Completed</option>
                   </select> <br>
 
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2" required="" id="comment" name="comment" placeholder="Enter Company Remarks">
+              </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
+                  <label for="clino">General Comments</label>
+                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
+</div></div></div>
+
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 
               <label for="rpt">Repeat Frequency</label>
@@ -864,10 +894,14 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>   
+            </div></div>
+        <div class="col-12 col-sm-6">
+                <div class="form-group">  
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
+        </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
@@ -875,29 +909,56 @@ function closeForm4() {
 <div class="form-popup" id="myModal2">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  class="form-container">
     <p><b>Update your task progress</b></p>
+<div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
+  </div></div>
 
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title1" placeholder="Update your task title" name="title" required>
-
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda1"placeholder="Update your task progress" name="start" required="">
+    <input type="date" id="dueda1"placeholder="Update your task progress" name="start" class="form-control" required="">
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
 
+  </div></div></div>
+
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" id="clino1" required="" name="clino" placeholder="Enter Client's Name">
-
+        </div></div></div>
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">
+            </div></div>
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -905,6 +966,8 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+    </div></div></div>
+       
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
@@ -913,10 +976,17 @@ function closeForm4() {
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+          </div></div>
 
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2" required="" id="comment1" name="comment" placeholder="Enter Company Remarks">
+        <div class="col-12 col-sm-6">
+                <div class="form-group">
 
+                  
+                </div></div></div>
+
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
@@ -928,18 +998,22 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>   
+                  </select> <br> 
+            </div></div>  
+           <div class="col-12 col-sm-6">
+                <div class="form-group">
 
-                  <label for="rpt">Save</label>
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                     
+ 
+</div></div></div>
+ <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
-                  </select> <br>    
- 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                  </select> <br>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
@@ -1087,12 +1161,22 @@ else{
 </div>
 <div class="form-popup" id="myModal64">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
-    <p><b>Update your task progress</b></p>
-<label for="tid"><b>Task Id</b></label>
+    <p><b>Update Event Progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="tid"><b>Event Id</b></label>
     <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
-
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title3" placeholder="Update your task title" name="title" required>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior3" name="prio"  required="" class="form-control select2" style="">
@@ -1101,6 +1185,9 @@ else{
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+          </div></div>
+      <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
@@ -1112,39 +1199,63 @@ else{
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>
+          </div></div></div>
 
 
-     
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+ 
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
-
+        </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
-
-    <label for="dueda"><b>Color</b></label>
-    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
-
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
+     
+</div></div>
 
-    <label for="dueda"><b>End Time</b></label>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+
+     <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Color</b></label>
+    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+            </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
    
@@ -1152,12 +1263,23 @@ else{
 </div>
    <div class="form-popup" id="myModal56">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
-    <p><b>Update your task progress</b></p>
-<label for="tid"><b>Task Id</b></label>
+    <p><b>Update Event Progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="tid"><b>Event Id</b></label>
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title4" placeholder="Update your task title" name="title" required>
+  </div></div></div>
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior4" name="prio"  required="" class="form-control select2" style="">
@@ -1166,6 +1288,9 @@ else{
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+                </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
@@ -1177,45 +1302,77 @@ else{
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>   
+          </div></div></div> 
 
-
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
+</div></div></div>
 
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Enter Client's Name">
+          </div></div>
 
+       <div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino4"placeholder="Update your task progress" name="clino" required>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
+   
+</div></div>
 
-    <label for="dueda"><b>Color</b></label>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
+    
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
+ <label for="dueda"><b>Color</b></label>
     <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
 
+</div></div>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
 
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+    
+    </div></div></div>
 
-
-
-    <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
-
-    <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    <label for="rpt">Save</label>
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+                  </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>

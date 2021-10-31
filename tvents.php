@@ -156,31 +156,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
-
+<link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -293,11 +269,11 @@ $(document).ready(function(){
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -305,7 +281,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -341,30 +329,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -381,9 +346,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -400,19 +377,27 @@ $(document).ready(function(){
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+          <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
+          </li>
+          <li class="">
             
+            <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
+          </li>    
           </li>
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
@@ -608,57 +593,11 @@ $(document).ready(function(){
               </div>
     
 
-
-
-<style type="text/css">
- .content-table{
- 	border-collapse:collapse;
- 	margin: 25px 0;
- 	font-size: 0.9em;
- 	min-width:1800px;
- 	border-radius: 5px 5px 0 0;
- 	overflow: hidden;
- 	box-shadow:  0 0 20px rgba(0,0,0,0.15);
- }
-  .content-table thead tr{
-
-  background-color:#009879;
-  color:#ffffff;
-  text-align: left;
-  font-weight: bold;
-    }
-    .content-table th,
-    .content-table td{
-    	padding: 12px 15px;
-    }
-    .content-table tbody tr{
-
-    border-bottom: 1px solid #dddddd;
-    }	
-    .content-table tbody tr:nth-of-type(even){
-
-
-    	background-color: #f3f3f3; 
-    }
-    .content-table tbody tr:last-of-type{
-
-    	border-bottom: 2px solid #009879;
-    }
-    .content-table tbody tr.active-row{
-
-
-    	font-weight: bold;
-    	color:#009879; 
-    }
-
        
 
-      
- 
-
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
 <div class="card-body table-responsive p-0">
-                <table id="myTable" class="content-table">
+                <table id="myTable" class="table table-striped table-bordered table-hover content-table">
 
             <thead>
                 <tr>
@@ -723,7 +662,7 @@ if($link === false){
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
+$.getJSON('ishfinal/API/receve.php', function(data)  {
           console.log(data);
           var items = [];
 
@@ -945,7 +884,7 @@ return d;
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
+$.getJSON('ishfinal/API/nonrecev.php', function(data)  {
           console.log(data);
           var items = [];
 var student = ''; 
