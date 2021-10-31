@@ -21,6 +21,7 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
   <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
   <script src="environment/location.js"></script>
@@ -35,27 +36,7 @@ require "auth.php";
 
 
 <style type="text/css">
-  .visit1{
-    display: none;
-  }
 
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
 
   .modal {
    display: none;  /* Hidden by default */
@@ -71,6 +52,9 @@ require "auth.php";
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 </style>
+
+<link rel="stylesheet" type="text/css" href="index.css">
+
 
 <script type="text/javascript">
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
@@ -175,7 +159,7 @@ require "auth.php";
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -183,7 +167,19 @@ require "auth.php";
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -219,30 +215,7 @@ require "auth.php";
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -259,9 +232,21 @@ require "auth.php";
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -278,7 +263,7 @@ require "auth.php";
             </a>
 
           </li>
-         <li class="nav-item">
+          <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -287,7 +272,9 @@ require "auth.php";
               </p>
             </a>
           </li>
-           <li class="nav-item">
+          <li class="">
+            
+            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -297,7 +284,7 @@ require "auth.php";
             </a>
 
           </li>
-         
+  
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -578,152 +565,7 @@ require "auth.php";
               <div class="card-header">
                 <h3 class="card-title">Your Agenda</h3>
               </div>
-              <style type="text/css">
- .content-table{
-  border-collapse:collapse;
-  margin: 25px 0;
-  font-size: 0.8em;
-  min-width:500px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  box-shadow:  0 0 20px rgba(0,0,0,0.15);
- }
-  .content-table thead tr{
-
-  background-color:#009879;
-  color:#ffffff;
-  text-align: left;
-  font-weight: bold;
-    }
-    .content-table th,
-    .content-table td{
-      padding: 12px 15px;
-    }
-    .content-table tbody tr{
-
-    border-bottom: 1px solid #dddddd;
-    } 
-    .content-table tbody tr:nth-of-type(even){
-
-
-      background-color: #f3f3f3; 
-    }
-    .content-table tbody tr:last-of-type{
-
-      border-bottom: 2px solid #009879;
-    }
-    .content-table tbody tr.active-row{
-
-
-      font-weight: bold;
-      color:#009879; 
-    }
-.body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-.notification {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-  padding: 15px 56px;
-  position: relative;
-  display: inline-block;
-  border-radius: 90px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.notification .badge {
-  position: absolute;
-  top: -1px;
-  right: -5px;
-  padding: 5px 10px;
-  border-radius: 10%;
-  background: red;
-  color: white;
-}
-
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  height: 80%;
-  width: 80%;
-  overflow: auto;
-
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 100%;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-
-       
-
-      
- 
-
-</style>
+        
 <table class="content-table" id="table">
             <thead>
                 <tr>
@@ -742,6 +584,7 @@ require "auth.php";
             </thead>
 
   
+
 
 
 <script type="text/javascript">
@@ -855,6 +698,7 @@ return current;
 
  <label for="clino">How To</label>
                   <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
+
 
 
 <label for="prior"><b>Task Priority</b></label>
@@ -1006,6 +850,8 @@ function closeForm4() {
       <!--/. container-fluid -->
 
 
+
+
     </section>
                 
              <div class="row">
@@ -1046,39 +892,7 @@ function closeForm4() {
             </form>   
 
  
-<div class="form-popup" id="myModal64">
-  <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');" method="POST" class="form-container">
-    <p><b>Update Event progress</b></p>
-<label for="tid"><b>Task Id</b></label>
-    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
 
-    <label for="descri"><b>Activity</b></label>
-    <input type="text" id="title3" placeholder="Update your task title" name="title" required>
-
-    <label for="prior"><b>Event Priority</b></label>
-                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Event Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-
-<label for="rpt">Repeat Frequency</label>
-                  <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
-
-
-     
-<label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
@@ -1100,53 +914,6 @@ function closeForm4() {
     <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
 
-    <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
-
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
-    <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
-   
-  </form>
-</div>
-   <div class="form-popup" id="myModal56">
-  <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
-    <p><b>Update your Event progress</b></p>
-<label for="tid"><b>Task Id</b></label>
-    <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
-
-    <label for="descri"><b>Activity</b></label>
-    <input type="text" id="title4" placeholder="Update your task title" name="title" required>
-
-    <label for="prior"><b>Event Priority</b></label>
-                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Event Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-
-<label for="rpt">Repeat Frequency</label>
-                  <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
-
-
-     
-<label for="descri"><b>User</b></label>
-    <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
-
-    <label for="clino">location</label>
-                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
 
 
     <label for="clino">Event Progress</label>
@@ -1158,33 +925,6 @@ function closeForm4() {
     <label for="dueda"><b>Color</b></label>
     <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
 
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
-
-    <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    <label for="rpt">Save</label>
-                  <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="One-time">One-time</option>
-                    <option value="Full-group">Full-group</option>
-                  </select> <br>
-
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
-    <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
-  </form>
-</div>
-            <!-- /.card -->
-            
-            <!-- TABLE: LATEST ORDERS -->
-             <?php
 
 
 
@@ -1225,7 +965,7 @@ function closeForm4() {
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="tr.css">
+    
 
 
 

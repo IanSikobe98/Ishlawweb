@@ -22,31 +22,12 @@ require "auth.php";
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
   <script src="environment/location.js" type="text/javascript"></script>
 
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
 
-  .visitv1{
-    display: none;
-  }
 
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+  <link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

@@ -32,187 +32,14 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+
   <script src="environment/location.js"></script>
   <script src="globalfuncs.js"></script>
-  <style>
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button5 {border-radius: 50%;}
+ 
 
 
 
-.modal {
-   display: none;  /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid #888;
-  width: 22%;
-}
-
-.modal21 {
-   display: block; 
-   visibility: hidden; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content21 {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-
-
-
-
-/* The Close Button */
-.close,.close2 {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close,.close2:hover,
-.close,.close2:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-.new{
-  float: right;
-
-}
-
-.cal1{
-  /*float:left;*/
-  height:76%;
-  width:76%;
-  background-color: white;
-   /*display: grid; */
-}
-
-.calover{
-  /*float:left;*/
-  /*height:60%;*/
-/*  width:60%;
-      display: grid;  */
-    /*grid-template-columns: 1fr 1fr 1fr;  */
-    /*grid-template-rows: 50px 50px;  */
-
-}
-
-.appst{
-
-  color: white;
-/*text-align: center;*/
-
-  text-decoration: none;
-}
-
-body {font-family: Arial, Helvetica, sans-serif;}
-
-
-
-/* The Close Button */
-/*.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}*/
-
-.ian{
-  /*display: none;*/
-    font-family: Raleway-Bold;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #fff;
-  text-transform: uppercase;
-
-  width: 100%;
-  height: 62px;
-  border-radius: 3px;
-  background: linear-gradient(315deg, #f2c17d 0%, #b82e1f 74%);
-
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-.visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 
@@ -309,11 +136,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -321,7 +148,19 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -330,7 +169,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   <p>View Clients</p>
                 </a>
               </li>
-                         </ul>
+              
+            </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -356,30 +196,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -396,9 +213,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -424,11 +253,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </p>
             </a>
           </li>
-
-
-
-
-                       <li class="nav-item">
+          <li class="">
+            
+            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -438,6 +265,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
 
           </li>
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">

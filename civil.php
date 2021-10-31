@@ -22,31 +22,9 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+
   <script src="environment/location.js" type="text/javascript"></script>
-
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -159,11 +137,12 @@ $(document).ready(function(){
             </a>
             
           </li>
+           </li>
           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -171,7 +150,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -180,8 +171,8 @@ $(document).ready(function(){
                   <p>View Clients</p>
                 </a>
               </li>
-              
-            </ul>
+             
+                         </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -207,31 +198,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
-          <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -247,9 +214,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -266,20 +245,28 @@ $(document).ready(function(){
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+                     <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
-            
+          </li> 
+
+           <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
           </li>
+
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">

@@ -1,6 +1,140 @@
- <?php
-require "auth.php";
- ?>    
+           <?php
+require "sec/vendor/autoload.php";
+use \Firebase\JWT\JWT;
+// Initialize the session
+$jwt = new \Firebase\JWT\JWT;
+$jwt::$leeway = 5;
+ 
+// Check if the user is logged in, if not then redirect him to login page
+// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
+
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+
+if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
+  header('location: login.php');
+   exit;
+
+
+echo ($_COOKIE["jwt"]);
+
+}
+
+else
+{
+
+
+// if(verify($_COOKIE["resp"])==true)
+
+// {
+  $secret_key = "-----BEGIN PUBLIC KEY-----
+
+MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
+Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
+GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
+F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
+b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
+D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
+AgMBAAE=
+-----END PUBLIC KEY-----";
+
+$jwt = null;
+$jwt = htmlspecialchars($_COOKIE["resp"]);
+
+if($jwt){
+
+    try {
+
+        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
+
+        // Access is granted. Add code of the operation here 
+
+        // echo json_encode(array(
+        //     "message" => "Access granted:",
+        //     "data" => $decoded 
+        // ));
+
+      
+     // echo $pop["Team"];
+     // echo $decoded->Team->name;
+     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
+     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
+
+
+
+     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
+   
+
+     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['fna'] = $decoded->firstName;
+     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['sna'] = $decoded->secondName;
+    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['role'] = $decoded->Team->name;
+
+
+
+
+
+      foreach($arr2 as $item) {
+if ($item['name']== 'addvisitors') {
+       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['addvis'] = 'addvisitors';
+}
+if ($item['name']== 'addclients') {
+       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['addcli'] = 'addclients';
+}
+
+if ($item['name']== 'viewclients') {
+       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['viewcli'] = 'viewclients';
+}
+
+if ($item['name']== 'viewvisitors') {
+       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['viewvis'] = 'viewvisitors';
+}
+
+if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
+       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['vis'] = 'visitors';
+}
+if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
+       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['cli'] = 'clients';
+}
+
+
+}
+    }catch (Exception $e){
+
+    http_response_code(401);
+
+    echo json_encode(array(
+        "message" => "Access denied by man.",
+        "error" => $e->getMessage()
+    ));
+}
+
+}
+// }
+
+// else{
+//   header('location: login.php');
+//    exit;
+
+
+// echo ($_COOKIE["jwt"]);
+
+// }
+
+}
+
+
+
+?>
   
 <!DOCTYPE html>
 <html lang="en">  
@@ -22,10 +156,8 @@ require "auth.php";
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <script src="environment/location.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
-
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -39,20 +171,6 @@ require "auth.php";
       <li class="nav-item d-none d-sm-inline-block">
         <a href="adv.php" class="nav-link">Add new File</a>
       </li>
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for files..." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#ftable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-</script>
-
       <li class="nav-item d-none d-sm-inline-block">
         <a href="logout.php" class="nav-link">Logout</a>
       </li>
@@ -137,11 +255,11 @@ $(document).ready(function(){
             </a>
             
           </li>
-         <li class="nav-item has-treeview client2" id="client4">
+          <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Users
+                Clients
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -149,19 +267,7 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>Add New Staff</p>
-                </a>
-              </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
-                <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
-                  <p>Add New Client</p>
-                </a>
-              </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Staff</p>
+                  <p>New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -197,7 +303,30 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-            
+           <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-user-circle"></i>
+              <p>
+                Profile
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Company Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-user-circle"></i>
+                  <p>Personal Profile</p>
+                </a>
+              </li>
+                  </ul>
+          </li>
+          
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -214,21 +343,9 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="events.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
-                  <p>Create New Event</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tvents.php" class="nav-link">
-                  <i class="far fa-edit"></i>
-                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -245,28 +362,20 @@ $(document).ready(function(){
             </a>
 
           </li>
-          <li class="nav-item">
-            <a href="messages.php" class="nav-link">
-              <i class="nav-icon far fa-bell"></i>
+
+
+
+
+                      <li class="">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
               <p>
-                Inbox
-                <span class="badge badge-info right">2</span>
+                Tables
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-          </li>
-          <li class="">
             
-            <li class="nav-item">
-            <a href="appointments.php" class="nav-link">
-              <i class="nav-icon fas fa-calendar-check"></i>
-              <p>
-                Appointments
-                <span class="badge badge-info right"></span>
-              </p>
-            </a>
-
           </li>
-
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -447,7 +556,7 @@ $(document).ready(function(){
           <!-- /.row -->
           <div class="row">
             <div class="col-md-12">
-              <table id="ftable" class="table table-hover text-nowrap">
+              <table id="table" class="table table-hover text-nowrap">
                 <thead>
                   <tr>
                                         <th>Client</th>
@@ -461,15 +570,124 @@ $(document).ready(function(){
                     <th>File</th>
                   </tr>
                 </thead>
-      
-      <script src = "services/filing/conveyancing.js"></script>
+                <tbody>
+
+                </tbody>
+     
+       <script type="text/javascript">        
+
+
+ // $(document).ready(function() {
+ //        $.ajax({
+ //          url: 'http://localhost/ishfinal/API/nonrecta.php',
+ //          type: 'GET',
+ //          dataType: 'json',
+ //          success: function() { alert('hello!'); },
+ //          error: function() { alert('boo!'); },
+ //          beforeSend: setHeader
+ //        });
+ //      });
+
+ //      function setHeader(xhr) {
+ //      //   xhr.setRequestHeader('securityCode', 'Foo');
+ //      //   xhr.setRequestHeader('passkey', 'Bar');
+ //      }
+$( document ).ready(function() {
+
+$.ajax
+  ({
+    type: "GET",
+
+  
+
+    url: "http://18.118.17.69:4000/files/api/v1/documents",
+    dataType: 'json',
+    async: false,
+
+
+
+
+    success: function (data){
+    // alert('Thanks for your comment!');
+    console.log(data);
+    console.log("DONE");
+
+      var items = [];
+var file = ''; 
+var descip = '';
+ var arr =[]
+          for(var i in data) {
+            if(data[i].FolderId == "7")
+            {
+
+// data[i].description.split(',').forEach(function(value) {
+//   arr.push(value.split(': ')[0])})
+
+                            file += '<tr>'; 
+                            
+                            file += '<td>' +  
+                                data[i].name + '</td>';
+
+                            file += '<td>CS' +  
+                                data[i].description.split(', ').find(row => row.startsWith('{case:')).split(':')[1];
+
+                                file += '<td>' + 
+                                 data[i].description.split(', ').find(row => row.startsWith('parties:')).split(':')[1];
+                                + '</td>';
+                                
+                                file += '<td>' + 
+                                 data[i].description.split(', ').find(row => row.startsWith('filer:')).split(':')[1];
+                                + '</td>';
+
+
+
+                                file += '<td>' + 
+                                 data[i].description.split(', ').find(row => row.startsWith('status:')).split(':')[1];
+                                + '</td>';
+
+
+                                file += '<td>' +  
+                                data[i].createdAt.split('T')[0] + '</td>'; 
+
+                                file += '<td>' + 
+                                 data[i].description.split(', ').find(row => row.startsWith('location:')).split(':')[1];
+                                + '</td>'; 
+
+                                file += '<td>' + 
+                                 data[i].description.split(', ').find(row => row.startsWith('prior:')).split(':')[1].slice(0, -1);
+                                + '</td>';
+
+                                file += '<td>' +  '<a href="http://18.118.17.69:4000/files/api/v1/documents/'+data[i].id+'/document">' +
+                                 '<i class="fas fa-download"></i>'+ '</a>'+ '</td>';  
+
+                            //     file += '<td>' +  
+                            //     cars[1][j] + '</td>'; 
+  
+                            // student += '<td>' +  
+                            //    dates[j][k].toLocaleDateString() + '</td>'; 
+
+                            // student += '<td>' +  
+                            //     '<button id= "btn'+p+'" onclick="myFunction(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+
+                            file += '</tr>'; 
+
+}
+}
+  $('#ftable').append(file); 
+
+       }
+});
+
+});
+
+</script>
 
                 
-</table>
+
 
 
                 
-        
+              </table>
               <!-- <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Upload File</h3>

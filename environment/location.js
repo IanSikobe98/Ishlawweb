@@ -5,10 +5,12 @@ var Tasks =
     nonrecurring : 'http://localhost/Ishlawwebv2/ishfinal/API/daynoreta.php',
     calnonrecurring: 'http://localhost/Ishlawwebv2/ishfinal/API/nonrecta.php'
 
+
 };
 
 var Events =
 {
+
     recurring : 'http://localhost/ishfinal/API/receve.php',
     nonrecurring : 'http://localhost/ishfinal/API/daynonrecev.php',
     calnonrecurring: 'http://localhost/Ishlawwebv2/ishfinal/API/nonrecev.php'
@@ -38,4 +40,5 @@ var Usermngmt ={
 
 	createclient : 'services/usermgmt/postservice/createclient.php',
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' 
+
 };

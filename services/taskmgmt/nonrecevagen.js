@@ -76,7 +76,11 @@ var end = getnonrec(data[i].end);
                             student += '</tr>'; 
 p++;
 }
+
 // console.log(data[i].id)
+
+
+
   $('#events').append(student); 
 
          }
