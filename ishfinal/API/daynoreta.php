@@ -7,7 +7,7 @@ header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET,POST");
 header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 //database
 define('DB_HOST', '127.0.0.1');
 define('DB_USERNAME', 'root');
@@ -30,22 +30,22 @@ AgMBAAE=
 $jwt = null;
 
 
-$data = json_decode(file_get_contents("php://input"));
+// $data = json_decode(file_get_contents("php://input"));
 
-$authHeader = $_SERVER['HTTP_AUTHORIZATION'];
-$arr = explode(" ", $authHeader);
-$jwt = $arr[1];
-if($jwt){
+// $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+// $arr = explode(" ", $authHeader);
+// $jwt = $arr[1];
+// if($jwt){
 
-    try {
+//     try {
 
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
+//         $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
 
 
-     $pop = json_encode($decoded);   
-     // echo $pop["Team"];
-     // echo $pop;
-     // echo $decoded->firstName;
+//      $pop = json_encode($decoded);   
+//      // echo $pop["Team"];
+//      // echo $pop;
+//      // echo $decoded->firstName;
 
 
 $tod = strftime('%F');
@@ -59,8 +59,8 @@ if(!$mysqli){
 }
 
 //query to get data from the table
-$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' AND `start` < '$tod' AND `status` <> 'Completed'AND `User`='$decoded->firstName'");
-
+$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' AND `start` <= '$tod' AND `status` <> 'Completed'AND `User`='allan'");
+// -- AND `User`='$decoded->firstName'
 //execute query
 $result = $mysqli->query($query);
 
@@ -96,17 +96,17 @@ print json_encode($data);
 
 
 
-    }catch (Exception $e){
+//     }catch (Exception $e){
 
-    http_response_code(401);
+//     http_response_code(401);
 
-    echo json_encode(array(
-        "message" => "Access denied.",
-        "error" => $e->getMessage()
-    ));
-}
+//     echo json_encode(array(
+//         "message" => "Access denied.",
+//         "error" => $e->getMessage()
+//     ));
+// }
 
-}
+// }
 
 
  
