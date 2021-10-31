@@ -1,7 +1,7 @@
-  function fetchitcal(id){
+ function fetchit(id){
 // var fired_button = $("button").val();
 
-var fired_button = id ;
+var fired_button = document.getElementById(id).value ;
 
 // alert(fired_button);
 console.log(fired_button);
@@ -9,7 +9,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Ishlawwebv2/ishfinal/API/nonrecta.php', function(data)  {
+$.getJSON(Tasks.nonrecurring, function(data)  {
           console.log(data);
 
 
@@ -41,8 +41,7 @@ $.getJSON('http://localhost/Ishlawwebv2/ishfinal/API/nonrecta.php', function(dat
             user.push(data[i].User);
             clino.push(data[i].clino);
             hotodo.push(data[i].hotodo);
-comment.push(data[i].comment);
-
+           comment.push(data[i].comment);
 
 
                   }
@@ -61,17 +60,17 @@ var modal = document.getElementById("myForm");
   modal.style.display ="block";
 
 
-            items.push(data[i].tid);
-            title.push(data[i].title);
-            dueda.push(data[i].start);
-            descri.push(data[i].description);
-            prog.push(data[i].status);
-            prior.push(data[i].Priority);
-            rpt.push(data[i].rpt);
-            rptun.push(data[i].rpun);
-            user.push(data[i].User);
-            clino.push(data[i].clino);
-
+//             items.push(data[i].tid);
+//             title.push(data[i].title);
+//             dueda.push(data[i].start);
+//             descri.push(data[i].description);
+//             prog.push(data[i].status);
+//             prior.push(data[i].Priority);
+//             rpt.push(data[i].rpt);
+//             rptun.push(data[i].rpun);
+//             user.push(data[i].User);
+//             clino.push(data[i].clino)
+ console.log(clino[0]);
 
   document.getElementById("items").value= items[0] ;
   document.getElementById("title").value= title[0] ;
@@ -80,11 +79,12 @@ var modal = document.getElementById("myForm");
   document.getElementById("prog").value= prog[0] ;
   document.getElementById("prior").value= prior[0] ;
   document.getElementById("rpt").value= rpt[0] ;
-document.getElementById("hotodo").value= hotodo[0] ;
-  document.getElementById("comment").value= comment[0] ;
+
   document.getElementById("rptun").value= rptun[0] ;
   document.getElementById("user").value= user[0] ;
-  document.getElementById("clino").value= clino[0] ;
+  document.getElementById("cli").value= clino[0] ;
+  document.getElementById("hotodo").value= hotodo[0] ;
+  document.getElementById("comment").value= comment[0] ;  
    });
 
 
@@ -101,26 +101,19 @@ document.getElementById("hotodo").value= hotodo[0] ;
 
 //   modal.style.display ="block";
 
-
-
-
-
-//   document.getElementById("popti").value= fired_button ;
 }
-
-
- function fetchitcalre(id,stda){
+ function fetchitre(id){
 // var fired_button = $("button").val();
 
-var fired_button = id;
+var fired_button = document.getElementById(id).value ;
 
 // alert(fired_button);
 console.log(fired_button);
   
 var script = document.createElement('script');
-// script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
+script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/recta.php', function(data)  {
+$.getJSON(Tasks.recurring, function(data)  {
           console.log(data);
 
 
@@ -135,40 +128,36 @@ $.getJSON('http://localhost/Admin/ishfinal/API/recta.php', function(data)  {
          var user =[];
           var  clino =[];
           var hotodo= [];
-  var comment =[];
+var comment =[];
 
 
 
+    // var todayTime = new Date();
+
+    // var month = todayTime .getMonth() + 1;
+
+    // var day = todayTime .getDate();
+
+    // var year = todayTime .getFullYear();
+
+    //  var current= year + "-0" + month + "-0" + day;
+
+    //  console.log(current);
 
 
-console.log(stda);
+var d = new Date();
+var m = d.getMonth()+1;
+var da =d.getDate();
 
 
 
+var m1=('0' + m).slice(-2);
+var da1=('0' + da).slice(-2);
+console.log(m1);
+console.log(da);
 
-
-
-
-var str = stda;
-var resut = stda.replace("/", "");
-var resut = resut.replace("/", "");
-
-
-
-
-
-var str1 = resut.slice(0,2);
-var str2 =  resut.slice(2,4);
-var str3 =  resut.slice(4,8);
-var str4 = "-";
-
-var res = str3.concat(str4);
-var res = res.concat(str2);
-var res = res.concat(str4);
-var res = res.concat(str1);
-console.log( "final");
-console.log(res);
-
+// document.getElementById("demo").innerHTML=((9)+"-"+(d.getMonth())+"-"+(d.getFullYear()));
+var current=((d.getFullYear())+"-"+(m1)+"-"+(da1));
 
 
           for(var i in data) {
@@ -183,7 +172,7 @@ console.log(res);
             rptun.push(data[i].rpun);
             user.push(data[i].User);
             clino.push(data[i].clino);
-            hotodo.push(data[i].hotodo);
+hotodo.push(data[i].hotodo);
 comment.push(data[i].comment);
 
 
@@ -203,7 +192,16 @@ var modal = document.getElementById("myModal2");
   modal.style.display ="block";
 
 
-
+            // items.push(data[i].tno);
+            // title.push(data[i].title);
+            // dueda.push(data[i].start);
+            // descri.push(data[i].description);
+            // prog.push(data[i].status);
+            // prior.push(data[i].Priority);
+            // rpt.push(data[i].rpt);
+            // rptun.push(data[i].rpun);
+            // user.push(data[i].User);
+            // clino.push(data[i].clino);
 
 
   document.getElementById("items1").value= items[0] ;
@@ -211,10 +209,9 @@ var modal = document.getElementById("myModal2");
   
 
 
-document.getElementById("hotodo1").value= hotodo[0] ;
-  document.getElementById("comment1").value= comment[0] ;
-
-  document.getElementById("dueda1").value= res;
+  // dueda[0]=convdate(dueda[0]);
+  console.log(current);
+  document.getElementById("dueda1").value= current;
   document.getElementById("descri1").value= descri[0] ;
   document.getElementById("prog1").value= prog[0] ;
   document.getElementById("prior1").value= prior[0] ;
@@ -223,9 +220,10 @@ document.getElementById("hotodo1").value= hotodo[0] ;
   
 
   rptun[0]=convdate(rptun[0]);
-  console.log(rptun[0]);
   document.getElementById("rptun1").value= rptun[0] ;
-
+document.getElementById("hotodo1").value= hotodo[0] ;
+  document.getElementById("comment1").value= comment[0] ;
+   
 
   document.getElementById("user1").value= user[0] ;
   document.getElementById("clino1").value= clino[0] ;
@@ -252,18 +250,18 @@ document.getElementById("hotodo1").value= hotodo[0] ;
 //   document.getElementById("popti").value= fired_button ;
 }
 
-function fetchitcal2(id){
-// var fired_button = $("button").val();
+function fetchit2(id){
 
-var fired_button = id ;
 
-// alert(fired_button);
-console.log(fired_button);
+var fired_button2 = document.getElementById(id).value ;
+
+
+console.log(fired_button2);
   
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
+$.getJSON(Events.nonrecurring, function(data)  {
           console.log(data);
 
 
@@ -283,11 +281,12 @@ $.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
           var dur3 = [];
           
 
-
+console.log(fired_button2);
+console.log(document.getElementById(id).value );
 
 
           for(var i in data) {
-            if(data[i].id==fired_button){
+            if(data[i].id==fired_button2){
             title3.push(data[i].title);
             start3.push(data[i].start);
             col3.push(data[i].color);
@@ -302,7 +301,7 @@ $.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
             clino3.push(data[i].clino);
             dur3.push(data[i].duration);
 
-            
+        console.log(col3);    
             
             
 
@@ -312,7 +311,7 @@ $.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
                   }
                 }
 
-// console.log();
+
 var modal = document.getElementById("myModal64");
   
 
@@ -344,44 +343,28 @@ console.log(res2);
   document.getElementById("loc3").value= loc3[0] ;
   document.getElementById("descri3").value= descri3[0] ;
   document.getElementById("clino3").value= clino3[0] ;
-  // document.getElementById("dur3").value= dur3[0] ;
+ 
   
    });
 
 
 
 
-//   var modal = document.getElementById("myModal");
-  
-
-
-
-
-
-
-
-//   modal.style.display ="block";
-
-
-
-
-
-//   document.getElementById("popti").value= fired_button ;
 }
 
 
-function fetchitcalre2(id,stda23){
-// var fired_button = $("button").val();
+function fetchitre2(id){
 
-var fired_button = id ;
 
-// alert(fired_button);
+var fired_button = document.getElementById(id).value ;
+
+
 console.log(fired_button);
   
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
+$.getJSON(Events.recurring, function(data)  {
           console.log(data);
           var items = [];
 
@@ -406,7 +389,7 @@ var col = [];
 var rpt=[];
 var rptun =[];
 
-// var status =[];
+
 
 
 
@@ -437,26 +420,16 @@ var car = cars[0];
 var p=0;
 
 var darpt;
-// var d = new Date(cars[9][j]);
-
-// var daco;
-
-// var current = new Date();
-// current = current.toLocaleDateString()
-// console.log(current);
+console.log(fired_button);
 
 for(var j = 0; j < car.length; j++) {
     var cube = car[j];
     for(var k = 0; k < cube.length; k++) {
 
-// daco =convdate2(cars[8][j],dates[j][k]);
 
-      if(daco =convdate32(cars[8][j],dates[j][k],stda23) ==  true && fired_button == cars[1][j]){
-       // console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
-       // console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
 
-       // console.log(" ");
-       // console.log(" ");
+      if(daco =convdate2(cars[8][j],dates[j][k]) ==  true &&  fired_button == cars[1][j]){
+
        var modal = document.getElementById("myModal56");
          modal.style.display ="block";
 
@@ -474,7 +447,7 @@ daco6 =stendcon(daco6);
 console.log(daco5);
 console.log(daco6);
 
-// var cars =[dates,id,titles,prior,user,loc,descri,clino,dur,end];
+
   document.getElementById("title4").value= cars[2][j] ;
   document.getElementById("start4").value=daco5;
   document.getElementById("col4").value= cars[10][j];
@@ -487,48 +460,6 @@ console.log(daco6);
   document.getElementById("loc4").value= cars[5][j] ;
   document.getElementById("descri4").value= cars[6][j] ;
   document.getElementById("clino4").value= cars[7][j] ;
-  // document.getElementById("dur3").value= cars[2][j] ;
-
-
-                            // student += '<tr>'; 
-                            // student += '<td>RDE' +  p + 
-                            //     cars[1][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[2][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[3][j] + '</td>';
-
-                            //     student += '<td>' +  
-                            //     cars[4][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[5][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[6][j] + '</td>';  
-
-
-                            //     student += '<td>' +  
-                            //     cars[7][j] + '</td>'; 
-
-                          
-
-                            //     student += '<td>' +  
-                            //     daco5.toLocaleString() + '</td>';
-
-                            //     student += '<td>' +  
-                            //     daco6.toLocaleString() + '</td>';
-    
-                            
-
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="fetchitcalre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
-
-                            // student += '</tr>'; 
-
-
                           }
 else{
   console.log("no dates");
@@ -538,108 +469,84 @@ p++;
     }
 }
           
-//           var title3 =[];
-//           var start3 = [];
-//           var col3 =[];
-//           var items3 = [];
-//           var end3 = [];
-//           var prior3 = [];
-//           var rpt3 =[];
-//           var rptun3 =[];
-//           var user3 =[];
-//           var loc3 =[];
-//           var descri3 =[];
-//           var clino3 =[];
-//           var dur3 = [];
-          
-
-
-
-
-//           for(var i in data) {
-//             if(data[i].id==fired_button){
-//             title3.push(data[i].title);
-//             start3.push(data[i].start);
-//             col3.push(data[i].color);
-//             items3.push(data[i].id);
-//             end3.push(data[i].end);
-//             prior3.push(data[i].priority);
-//             rpt3.push(data[i].rpt);
-//             rptun3.push(data[i].rptun);
-//             user3.push(data[i].user);
-//             loc3.push(data[i].location);
-//             descri3.push(data[i].description);
-//             clino3.push(data[i].clino);
-//             dur3.push(data[i].duration);
-
-            
-            
-            
-
-            
-            
-
-//                   }
-//                 }
-
-// // console.log();
-// var modal = document.getElementById("myModal56");
-  
-
-
-
-
-
-
-
-//   modal.style.display ="block";
-
-// console.log(start3[0]);
-// var res = start3[0].replace(" ", "T");
-// console.log(res);
-// console.log(end3[0]);
-// var res2 = end3[0].replace(" ", "T");
-// console.log(res2);
-
-
-//   document.getElementById("title3").value= title3[0] ;
-//   document.getElementById("start3").value= res ;
-//   document.getElementById("col3").value= col3[0] ;
-//   document.getElementById("items3").value= items3[0] ;
-//   document.getElementById("end3").value= res2 ;
-//   document.getElementById("prior3").value= prior3[0] ;
-//   document.getElementById("rpt3").value= rpt3[0] ;
-//   document.getElementById("rptun3").value= rptun3[0] ;
-//   document.getElementById("user3").value= user3[0] ;
-//   document.getElementById("loc3").value= loc3[0] ;
-//   document.getElementById("descri3").value= descri3[0] ;
-//   document.getElementById("clino3").value= clino3[0] ;
-  // document.getElementById("dur3").value= dur3[0] ;
-  
+     
    });
 
 
 
 
-//   var modal = document.getElementById("myModal");
-  
 
+}
 
+function rptcon(str){
+var str =str;
 
+var str2 = str.slice(0, 8)
 
+console.log(str2);
+var str3 = str.slice(0, 4)
+var str4 = str.slice(4, 6)
+var str5 = str.slice(6, 8)
 
-
-
-//   modal.style.display ="block";
-
-
-
-
-
-//   document.getElementById("popti").value= fired_button ;
+console.log(str3);
+console.log(str4);
+console.log(str5);
+var str6 = (str3+"-"+str4+"-"+str5)
+console.log(str6);
+return str6;
 }
 
 
+function stendcon(str){
+  var str =str;
+
+var str2 = str.slice(0, 8)
+
+console.log(str2);
+var str3 = str.slice(0, 2)
+var str4 = str.slice(3, 5)
+var str5 = str.slice(6, 10)
+var str7 = str.slice(12, 21)
+
+console.log(str3);
+console.log(str4);
+console.log(str5);
+console.log(str7);
+var str6 = (str5+"-"+str4+"-"+str3+"T"+str7)
+console.log(str6);
+
+return str6;
+}
+
+function convdate(str) {
+// const str = '20210201';
 
 
+
+console.log(str.slice(0,4));
+// expected output: "the lazy dog."
+
+console.log(str.slice(4, 6));
+// expected output: "quick brown fox"
+
+console.log(str.slice(6,8));
+
+// expected output: "dog."
+//var res = str1.concat(str2);
+
+var str1 = str.slice(0,4);
+var str2 =  str.slice(4,6);
+var str3 =  str.slice(6,8);
+var str4 = "-";
+
+var res = str1.concat(str4);
+var res = res.concat(str2);
+var res = res.concat(str4);
+var res = res.concat(str3);
+console.log( "final");
+console.log(res);
+
+
+return res;
+}
 

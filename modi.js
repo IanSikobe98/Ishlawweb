@@ -44,6 +44,7 @@ span2.onclick = function() {
  	var modal2 = document.getElementById("myModal2");
 	// modal2.style.display ="block";
   modal2.style.visibility = "visible";
+  console.log("closed");
 }
 
 //  function notetask2(){
@@ -57,6 +58,7 @@ window.onclick = function(event) {
     if (event.target == modal2) {
   	// var modal = document.getElementById("myModal");
     modal2.style.visibility = "hidden";
+    console.log("closed");
     // document.getElementById("myModal2").style.display = "none";
   }
 

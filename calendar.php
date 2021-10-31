@@ -1,141 +1,6 @@
-       <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-  
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -156,7 +21,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+<script src="environment/location.js"></script>
 <style type="text/css">
   .visit1{
     display: none;
@@ -179,6 +44,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
       .viewedit1{
     display: none;
   }
+
+
+   .modal {
+   display: none;  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 60px; /* Full width */
+  height: 60px; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 </style>
 
 </head>
@@ -570,7 +450,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="tr.css">
-
+<script type="text/javascript" src="globalfuncs.js"></script>
 
 
 
@@ -667,11 +547,10 @@ else{
   
 
   eventSources: [
-    'http://localhost/Admin/ishfinal/API/nonrecev.php',
-    'http://localhost/Admin/ishfinal/API/recta.php',
-'http://localhost/Admin/ishfinal/API/receve.php',
-
-    'http://localhost/Admin/ishfinal/API/nonrecta.php',
+    Tasks.recurring,
+    Events.recurring,
+    Tasks.calnonrecurring,
+    Events.calnonrecurring,
   ]
   ,
  });
@@ -683,88 +562,12 @@ else{
 
     <script type="text/javascript" src="convdate.js"></script>
 <script type="text/javascript" src="convnew.js"></script>
-<script type="text/javascript">
-  function rptcon(str){
-// const str = '20210219T200011.';
-var str =str;
 
-var str2 = str.slice(0, 8)
+<script type="text/javascript" src="services/taskmgmt/fetchcal.js"></script>
 
-console.log(str2);
-// expected output: "quick brown fox"
-var str3 = str.slice(0, 4)
-var str4 = str.slice(4, 6)
-var str5 = str.slice(6, 8)
-
-console.log(str3);
-console.log(str4);
-console.log(str5);
-var str6 = (str3+"-"+str4+"-"+str5)
-console.log(str6);
-return str6;
-}
-
-function stendcon(str){
-  var str =str;
-
-var str2 = str.slice(0, 8)
-
-console.log(str2);
-// expected output: "quick brown fox"
-var str3 = str.slice(0, 2)
-var str4 = str.slice(3, 5)
-var str5 = str.slice(6, 10)
-var str7 = str.slice(12, 21)
-
-console.log(str3);
-console.log(str4);
-console.log(str5);
-console.log(str7);
-var str6 = (str5+"-"+str4+"-"+str3+"T"+str7)
-console.log(str6);
-
-return str6;
-}
+<script type="text/javascript" src="services/taskmgmt/calutils.js"></script>
 
 
-</script>
-<script type="text/javascript" src="fetchcal.js"></script>
-<script type="text/javascript">
-  
-  function convdate(str) {
-// const str = '20210201';
-
-
-
-console.log(str.slice(0,4));
-// expected output: "the lazy dog."
-
-console.log(str.slice(4, 6));
-// expected output: "quick brown fox"
-
-console.log(str.slice(6,8));
-
-// expected output: "dog."
-//var res = str1.concat(str2);
-
-var str1 = str.slice(0,4);
-var str2 =  str.slice(4,6);
-var str3 =  str.slice(6,8);
-var str4 = "-";
-
-var res = str1.concat(str4);
-var res = res.concat(str2);
-var res = res.concat(str4);
-var res = res.concat(str3);
-console.log( "final");
-console.log(res);
-
-
-return res;
-}
-
-
-</script>    
     <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -808,7 +611,7 @@ function closeForm4() {
       <div id='calendar'></div>
 
       <div class="form-popup" id="myForm">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
+  <form onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');" id ="ianform2"method="POST" class="form-container" >
     <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
@@ -873,7 +676,7 @@ function closeForm4() {
   </form>
 </div>
 <div class="form-popup" id="myModal2">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  class="form-container">
+  <form id ="ianform" onsubmit="return sendreload(FormSubmit.agendapost,'ianform');"  method="POST"  class="form-container">
     <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
@@ -943,150 +746,27 @@ function closeForm4() {
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
-    <?php
-
-// header('Access-Control-Allow-Origin: *');
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-//database
-// define('DB_HOST', '127.0.0.1');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'book');
-
-// //get connection
-// $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// if(!$mysqli){
-//  die("Connection failed: " . $mysqli->error);
-// }
-
-// //query to get data from the table
-// $query = sprintf("SELECT * FROM `book` ");
-
-// //execute query
-// $result = $mysqli->query($query);
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid']) ){
-  // && isset($_POST['matter'])
-
-// Escape user inputs for security
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$stu = mysqli_real_escape_string($link, $_REQUEST['stat']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-// $matter = mysqli_real_escape_string($link, $_REQUEST['matter']);
- 
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-
-$tid = mysqli_real_escape_string($link, $_REQUEST['tid']); 
-// $user = count($_POST['user']);
-  // echo "<script>$('#MyModal').modal('show')</script>";
-
- 
-// Attempt insert query execution
-// , `matter`
-
-if($rpt == "Never")
-{
-
-$sql = "  UPDATE `tasks`  
-SET  `title` =  '$title',`start` =  '$start',`description` = '$descri', `rpt` =  '$rpt', `rpun` = '$rptun' ,`User` = '$user' ,`Priority` = '$prio', `clino` = '$clino',`status` =  '$stu'
-
-
-
-WHERE `tid` = '$tid'  " ;
-
-// $sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-if(mysqli_query($link, $sql)){
-//    echo "Task updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-}
-
-else
-{
- $start=str_replace("-", "", $start);
- $rptun =str_replace("-", "", $rptun);
-
-$sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-
-$sql2 = "DELETE FROM `tasks` WHERE `tid` = '$tid'" ;
-
-if(mysqli_query($link, $sql)){
- //   echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-   // echo "Records added successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- mysqli_close($link);
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-
-}
-}
-
-
-
-
-
-
-
-?>
+  
 </div>
+
+
+
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span id="close" class="close">&times;</span>
+    
+    <h6 id = "status" style="color:green;"></h6>
+      <h6 id = "status3" style="color:green;"></h6>
+      
+  </div>
+  
+</div>
+
+
 <div class="form-popup" id="myModal64">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
+  <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');"  method="POST" class="form-container">
     <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
@@ -1151,7 +831,7 @@ else{
   </form>
 </div>
    <div class="form-popup" id="myModal56">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
+  <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
     <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
@@ -1219,588 +899,7 @@ else{
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>
-               <?php
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid'])){
-
-
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-$end = mysqli_real_escape_string($link, $_REQUEST['end']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$color = mysqli_real_escape_string($link, $_REQUEST['color']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
-
-
-
-
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-
-$d1 = new DateTime($start);
-$d2 = new DateTime($end);
-$interval = $d2->diff($d1);
-
-$popwert = $interval->format(':%I:%S');
-// echo "<br>";
-// echo $popwert;
-// echo "<br>";
-
-//calculate hours in duration
- $poprat = $interval->format('%d');
- $popguy = $interval->format('%H');
-$poprat= (($poprat *24)+$popguy);
-if ($poprat<10){
-  //combine to get duration
-$popfinal ="0".$poprat . $popwert ;
-}
-else{
-  //combine to get durationmy
-  $popfinal =$poprat . $popwert ;
-}
-
-// echo $popfinal;
-// echo "<br>";  
-
-// echo "<br>";
-
-
-if($rpt == "Never")
-{
-
-$sql = "UPDATE `events` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
-
-if(mysqli_query($link, $sql)){
-//    echo "Event updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-}
-
-
-
-
-
-
-else{
-//Find start time for rptun
-
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero589($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero689($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero589($start);
-$end = addZero589($end);
-$finrpt = addZero689($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-// echo $rptun;
-
-
-
- // echo "thr"."ee";
-// Attempt insert query execution
-$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
-
-
-$sql2 = "DELETE FROM `events` WHERE `id` = '$eid'" ;
-
-if(mysqli_query($link, $sql)){
-    //echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-   // echo "Records added successfully.";
-
-} else{
- //   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- mysqli_close($link);
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-}
-
-
-
-
-}
-
-
- 
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid']) && isset($_POST['save1'])){
-
-
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-$end = mysqli_real_escape_string($link, $_REQUEST['end']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$color = mysqli_real_escape_string($link, $_REQUEST['color']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
-
-
-
-
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-$save1 = mysqli_real_escape_string($link, $_REQUEST['save1']);
-
-
-$d1 = new DateTime($start);
-$d2 = new DateTime($end);
-$interval = $d2->diff($d1);
-
-$popwert = $interval->format(':%I:%S');
-// echo "<br>";
-// echo $popwert;
-// echo "<br>";
-
-//calculate hours in duration
- $poprat = $interval->format('%d');
- $popguy = $interval->format('%H');
-$poprat= (($poprat *24)+$popguy);
-if ($poprat<10){
-  //combine to get duration
-$popfinal ="0".$poprat . $popwert ;
-}
-else{
-  //combine to get duration
-  $popfinal =$poprat . $popwert ;
-}
-// echo "Duration";
-
-// echo "<br>";
-// echo $popfinal;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-if($save1 == 'Full-group')
-{
-
-  if($rpt == "Never"){
-$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
-
-$sql2 = "DELETE FROM `iane` WHERE `id` = '$eid'" ;
-
-if(mysqli_query($link, $sql)){
-//    echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-  //  echo "Records deleted successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
- mysqli_close($link);
-
-
-  }
-
-
-    else
-  {
-//Find start time for rptun
-
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero2($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero($start);
-$end = addZero($end);
-$finrpt = addZero2($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-//echo $rptun;
-
-$sql = "UPDATE `iane` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
-
-if(mysqli_query($link, $sql)){
-//    echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-
-
-
-   }
-
-}
-
-
-
-if($save1 == 'One-time')
-{
-
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
-function addZero5($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-$start = addZero5($start);
-
-$sql = "INSERT INTO `exludent`(`id`, `date`) VALUES ('$eid','$start') ";
-
-if(mysqli_query($link, $sql)){
- //   echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-   if($rpt == "Never"){
- 
-$sql2 = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
-
-
-if(mysqli_query($link, $sql2)){
-  //  echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-         }
-
-
-    else{
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero2($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero($start);
-$end = addZero($end);
-$finrpt = addZero2($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-//echo $rptun;
-
-
-$sql4 = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
-
-if(mysqli_query($link, $sql4)){
-  //  echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-}
-
-mysqli_close($link);
-
-         }  
-
-}
-
-
-// }
-// }
-
-
-// else{
-//  echo "not enough";
-
-// }
-
-
-
-
-    ?>
+               
 </div>
 
 
@@ -1840,6 +939,8 @@ mysqli_close($link);
 <script src="plugins/moment/moment.min.js"></script>
 <script type="text/javascript">
   function hidefunc(){
+
+    formreload();
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
@@ -1914,6 +1015,6 @@ document.getElementById("visit").style.display ="block";
   }
   
 </script>
-
+<script type="text/javascript" src="modi.js"></script>
 </body>
 </html>

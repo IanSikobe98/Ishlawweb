@@ -1,140 +1,6 @@
  <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (3000), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html>
 
@@ -166,6 +32,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <script src="environment/location.js"></script>
+  <script src="globalfuncs.js"></script>
   <style type="text/css">
   .visit1{
     display: none;
@@ -624,7 +492,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                       <label>Category</label>
                       <select class="form-control select2" id="cat" style="width: 100%;">
                         <option selected="selected" >Select Filing category</option>
-                        <option value="7">Litigation</option>
+                        <option value="1">Litigation</option>
                         <option value="8">Conveyancing</option>
                         <option value="9">Criminal Law</option>
                         <option value="10">Foreign Law</option>
@@ -750,54 +618,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </div>
             </form>
 
-            <script type="text/javascript">
-              const form = document.getElementById('exe');
-              form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var selectedFile = document.getElementById('myFile').files[0];
-
-                var filedBy = document.getElementById('by').value;
-                var clientName = document.getElementById('client').value;
-                var caseNumber = document.getElementById('case').value;
-                var status = document.getElementById('stat').value;
-                var parties = document.getElementById('parties').value;
-                var prio = document.getElementById('priority').value;
-                var loc = document.getElementById('location').value;
-                var fileName = selectedFile.name;
-                var description = "";
-                var version = "";
-                var folderId = document.getElementById('cat').value;;
-                var data = new FormData;
-                var data2 = new FormData;
-                data.append("document", selectedFile);
-                data.append("name", clientName);
-                data.append("description", `{case: ${caseNumber}, parties: ${parties}, filer: ${filedBy}, status: ${status}, location: ${loc}, prior: ${prio}}`);
-                data.append("version", 1);
-                data.append("FolderId", folderId);
-
-for (var pair of data.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
-
-for (var pair of data2.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
-                
-
-
-
-
-                // make API call to submit file
-                fetch('https://ifs.ambience.co.ke/files/api/v1', {
-                  method: 'POST',
-                  body: data
-                }).then(function (response) {
-                  if(response.status === 200){
-                    alert("File upload successful");
-                  }
-                })
-              })
-            </script>
+            <script src="services/filing/postfiles.js" type="text/javascript"> </script>
 
 
 <!-- 
