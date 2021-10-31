@@ -1,145 +1,6 @@
-      <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-if(!isset($_COOKIE["addcli"]) || ($_COOKIE["addcli"])!="addclients"){
-  header('location: index.php');
-   exit;
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,6 +31,9 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script src ="globalfuncs.js" type="text/javascript"></script>
+  <script src ="environment/location.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
@@ -589,7 +453,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               </div> -->
             </div>
             <!-- /.card-header -->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="exe">
+
+            <form method="POST" onsubmit="return sendreload(UserMngmt.createclient,'exe');" id="exe">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -677,112 +542,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
 
               
                 </div>
-<?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-
-$emailAddress = '';
-$password = '';
-$firstName = '';
-$secondName = '';
-$phoneNumber = '';
-$TeamId = '';
-
-
-// $databaseService = new DatabaseService();
-// $conn = $databaseService->getConnection();
-
-
-
-// $data = json_decode(file_get_contents("php://input"));
-
-$emailAddress = $_POST["email"];
-$password = $_POST["password"];
-$TeamId = $_POST["team"];
-$secondName = $_POST["second"];
-$firstName = $_POST["fname"];
-$phoneNumber = $_POST["phone"];
-
-
-$url = "https://ishlaw_auth.ambience.co.ke/api/auth/v1/local/signUp
-";
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$headers = array(
-   "Accept: application/json",
-   "Content-Type: application/json",
-);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-
-$data = <<<DATA
-{
-
-    "firstName":"$firstName",
-    "secondName":"$secondName",
-    "emailAddress":"$emailAddress",
-    "phoneNumber":"$phoneNumber",
-    "TeamId":"$TeamId",
-    "password":"$password"
-
-}
-DATA;
-if( isset($data)){
-    // echo "Records added successfully.";
-     
-
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-//for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-$resp = curl_exec($curl);
-
-curl_close($curl);
-
-$resp = json_decode($resp);
-// echo $resp->message;
-
-if (empty($resp->message)) {
-  echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration Completed successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
-
-
-</script>";
-}
-else
-{
-  echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-}
-}
-}
-?>
               </div>
              <script type="text/javascript" src="modi.js"></script>
 
@@ -909,7 +669,7 @@ else
         </script>
 <script type="text/javascript">
   function hidefunc(){
-    
+    formreload ();
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -983,6 +743,7 @@ document.getElementById("visit").style.display ="block";
   }
   
 </script>
+<script type="text/javascript" src="modi.js"></script>
 </body>
 
 </html>

@@ -1,141 +1,6 @@
-          <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -166,6 +31,13 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+  <script src="environment/location.js"></script>
+  <script src="globalfuncs.js"></script>
+ 
+
+
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -600,7 +472,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
           }
           </script>
           <!-- /.card-header -->
-          <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+          <form onsubmit="return sendreloadnext(FormSubmit.createtask,'taskssubmit',FormSubmit.createtasksubmit);" id ="taskssubmit" method="POST">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
@@ -758,187 +630,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </div>
 
 
-          <?php
 
-// header('Access-Control-Allow-Origin: *');
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-//database
-// define('DB_HOST', '127.0.0.1');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'book');
-
-// //get connection
-// $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// if(!$mysqli){
-//  die("Connection failed: " . $mysqli->error);
-// }
-
-// //query to get data from the table
-// $query = sprintf("SELECT * FROM `book` ");
-
-// //execute query
-// $result = $mysqli->query($query);
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['hotodo']) && isset($_POST['comment']) 
-  // && isset($_POST['matter'])
-){
-// Escape user inputs for security
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-$hotodo = mysqli_real_escape_string($link, $_REQUEST['hotodo']);
-$comment = mysqli_real_escape_string($link, $_REQUEST['comment']);
-
-
-
-$stu = mysqli_real_escape_string($link, $_REQUEST['stat']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-// $matter = mysqli_real_escape_string($link, $_REQUEST['matter']);
- 
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-// $user = count($_POST['user']);
-  // echo "<script>$('#MyModal').modal('show')</script>";
-
- 
-// Attempt insert query execution
-// , `matter`
-
-
-if($rpt == "Never")
-{
-$sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-if(mysqli_query($link, $sql)){
-    echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Task Added successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
-
-
-</script>";
-
-} else{
-  echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry...';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-}
- 
-
-
-
-
-// Close connection
-mysqli_close($link);
-
-}
-
-else
-{
- $start=str_replace("-", "", $start);
- $rptun =str_replace("-", "", $rptun);
-
-$sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-// $sql2 ="DELETE FROM `tasks WHERE ;"
-if(mysqli_query($link, $sql)){
-    echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Task Added successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
-
-
-</script>";
-
-} else{
-   echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry...';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-}
- 
-
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-?>
 <script type="text/javascript" src="modi.js"></script>
 
               </form>
@@ -1061,6 +753,7 @@ if(mysqli_query($link, $sql)){
 </script>
 <script type="text/javascript">
   function hidefunc(){
+    formreload();
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

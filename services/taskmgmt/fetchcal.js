@@ -1,5 +1,5 @@
   function fetchitcal(id){
-// var fired_button = $("button").val();
+
 
 var fired_button = id ;
 
@@ -9,10 +9,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-
-
-$.getJSON('ishfinal/API/nonrecta.php', function(data)  {
-
+$.getJSON(Tasks.calnonrecurring, function(data)  {
           console.log(data);
 
 
@@ -123,7 +120,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 // script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/recta.php', function(data)  {
+$.getJSON(Tasks.recurring, function(data)  {
           console.log(data);
 
 
@@ -266,7 +263,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
+$.getJSON(Events.calnonrecurring, function(data)  {
           console.log(data);
 
 
@@ -384,7 +381,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
+$.getJSON(Events.recurring, function(data)  {
           console.log(data);
           var items = [];
 
@@ -490,47 +487,6 @@ console.log(daco6);
   document.getElementById("loc4").value= cars[5][j] ;
   document.getElementById("descri4").value= cars[6][j] ;
   document.getElementById("clino4").value= cars[7][j] ;
-  // document.getElementById("dur3").value= cars[2][j] ;
-
-
-                            // student += '<tr>'; 
-                            // student += '<td>RDE' +  p + 
-                            //     cars[1][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[2][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[3][j] + '</td>';
-
-                            //     student += '<td>' +  
-                            //     cars[4][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[5][j] + '</td>'; 
-
-                            //     student += '<td>' +  
-                            //     cars[6][j] + '</td>';  
-
-
-                            //     student += '<td>' +  
-                            //     cars[7][j] + '</td>'; 
-
-                          
-
-                            //     student += '<td>' +  
-                            //     daco5.toLocaleString() + '</td>';
-
-                            //     student += '<td>' +  
-                            //     daco6.toLocaleString() + '</td>';
-    
-                            
-
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="fetchitcalre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
-
-                            // student += '</tr>'; 
-
 
                           }
 else{
@@ -540,106 +496,9 @@ else{
 p++;
     }
 }
-          
-//           var title3 =[];
-//           var start3 = [];
-//           var col3 =[];
-//           var items3 = [];
-//           var end3 = [];
-//           var prior3 = [];
-//           var rpt3 =[];
-//           var rptun3 =[];
-//           var user3 =[];
-//           var loc3 =[];
-//           var descri3 =[];
-//           var clino3 =[];
-//           var dur3 = [];
-          
 
-
-
-
-//           for(var i in data) {
-//             if(data[i].id==fired_button){
-//             title3.push(data[i].title);
-//             start3.push(data[i].start);
-//             col3.push(data[i].color);
-//             items3.push(data[i].id);
-//             end3.push(data[i].end);
-//             prior3.push(data[i].priority);
-//             rpt3.push(data[i].rpt);
-//             rptun3.push(data[i].rptun);
-//             user3.push(data[i].user);
-//             loc3.push(data[i].location);
-//             descri3.push(data[i].description);
-//             clino3.push(data[i].clino);
-//             dur3.push(data[i].duration);
-
-            
-            
-            
-
-            
-            
-
-//                   }
-//                 }
-
-// // console.log();
-// var modal = document.getElementById("myModal56");
-  
-
-
-
-
-
-
-
-//   modal.style.display ="block";
-
-// console.log(start3[0]);
-// var res = start3[0].replace(" ", "T");
-// console.log(res);
-// console.log(end3[0]);
-// var res2 = end3[0].replace(" ", "T");
-// console.log(res2);
-
-
-//   document.getElementById("title3").value= title3[0] ;
-//   document.getElementById("start3").value= res ;
-//   document.getElementById("col3").value= col3[0] ;
-//   document.getElementById("items3").value= items3[0] ;
-//   document.getElementById("end3").value= res2 ;
-//   document.getElementById("prior3").value= prior3[0] ;
-//   document.getElementById("rpt3").value= rpt3[0] ;
-//   document.getElementById("rptun3").value= rptun3[0] ;
-//   document.getElementById("user3").value= user3[0] ;
-//   document.getElementById("loc3").value= loc3[0] ;
-//   document.getElementById("descri3").value= descri3[0] ;
-//   document.getElementById("clino3").value= clino3[0] ;
-  // document.getElementById("dur3").value= dur3[0] ;
-  
    });
 
-
-
-
-//   var modal = document.getElementById("myModal");
-  
-
-
-
-
-
-
-
-//   modal.style.display ="block";
-
-
-
-
-
-//   document.getElementById("popti").value= fired_button ;
 }
 
 
