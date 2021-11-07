@@ -1,5 +1,138 @@
      <?php
 
+require "sec/vendor/autoload.php";
+use \Firebase\JWT\JWT;
+// Initialize the session
+$jwt = new \Firebase\JWT\JWT;
+$jwt::$leeway = 5;
+ 
+// Check if the user is logged in, if not then redirect him to login page
+// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
+
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+
+if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
+  header('location: login.php');
+   exit;
+
+
+echo ($_COOKIE["jwt"]);
+
+}
+
+else
+{
+
+
+// if(verify($_COOKIE["resp"])==true)
+
+// {
+  $secret_key = "-----BEGIN PUBLIC KEY-----
+
+MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
+Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
+GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
+F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
+b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
+D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
+AgMBAAE=
+-----END PUBLIC KEY-----";
+
+$jwt = null;
+$jwt = htmlspecialchars($_COOKIE["resp"]);
+
+if($jwt){
+
+    try {
+
+        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
+
+        // Access is granted. Add code of the operation here 
+
+        // echo json_encode(array(
+        //     "message" => "Access granted:",
+        //     "data" => $decoded 
+        // ));
+
+      
+     // echo $pop["Team"];
+     // echo $decoded->Team->name;
+     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
+     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
+
+
+
+     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
+   
+
+     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['fna'] = $decoded->firstName;
+     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['sna'] = $decoded->secondName;
+    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['role'] = $decoded->Team->name;
+
+
+
+
+
+      foreach($arr2 as $item) {
+if ($item['name']== 'addvisitors') {
+       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['addvis'] = 'addvisitors';
+}
+if ($item['name']== 'addclients') {
+       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['addcli'] = 'addclients';
+}
+
+if ($item['name']== 'viewclients') {
+       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['viewcli'] = 'viewclients';
+}
+
+if ($item['name']== 'viewvisitors') {
+       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['viewvis'] = 'viewvisitors';
+}
+
+if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
+       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['vis'] = 'visitors';
+}
+if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
+       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
+     $_COOKIE['cli'] = 'clients';
+}
+
+
+}
+    }catch (Exception $e){
+
+    http_response_code(401);
+
+    echo json_encode(array(
+        "message" => "Access denied by man.",
+        "error" => $e->getMessage()
+    ));
+}
+
+}
+// }
+
+// else{
+//   header('location: login.php');
+//    exit;
+
+
+// echo ($_COOKIE["jwt"]);
+
+// }
+
+}
+
 
 
 ?>
@@ -14,11 +147,12 @@
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="class.css" type="text/css" />
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
@@ -27,55 +161,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-  .notification {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-  padding: 15px 46px;
-  position: relative;
-  display: inline-block;
-  border-radius: 40px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.notification .badge {
-  position: absolute;
-  top: -0px;
-  right: -0px;
-  padding: 5px 10px;
-  border-radius: 10%;
-  background: red;
-  color: white;
-}
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="styling.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -89,6 +179,14 @@
       
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for messages.." title="Type in a name">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="jquery-1.2.6.min.js"></script>
+    
+    <script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+ 
+
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -190,7 +288,7 @@ $(document).ready(function(){
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -198,7 +296,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -234,30 +344,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -274,9 +361,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -485,27 +584,39 @@ $(document).ready(function(){
             </ol>
           </div>
         </Section>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      <table class="table table-striped table-bordered table-hover" id="exe">
+
+
+    
+      <table class="table table-striped table-bordered table-hover tablesorter" id="exe">
     <thead >
       <tr>
-        <th >Client Name</th>
-        <th>Phone Number</th>
+        <th class="w3-button table-column">Client Name</th>
+        <th onclick="sortTable(0)">Phone Number <span class="glyphicon glyphicon-chevron-down"></span> </th>
         <th>Email</th>
-        <th>Appointment   Request</th>
+        <th onclick="sortTable(2)">Appointment   Request</th>
         <th>Date</th>
-        <th>Status</th>
+        <th onclick="sortTable(1)">Status</th>
         <th>Action</th>
-
     </thead>
     <tbody>
       <tr class="warning">
-        <td>John Downy</td>
+        <td>John Ken</td>
+        <td>0716587214</td>
+        <td>john@example.com</td>
+        <td> an appointment to settle my case tomorrow</td>
+        <td>12.01-2022 10:00 a.m</td>
+        <td>Pending</td>
+        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
+      </tr>
+      <tr>
+         <td>John Adams</td>
         <td>0716527214</td>
         <td>john@example.com</td>
         <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-        <td>Pending</td>
+        <td>12.01-2021 10:02 a.m</td>
+        <td>Approved</td>
         <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
       </tr>
       <tr>
@@ -513,21 +624,87 @@ $(document).ready(function(){
         <td>0716527214</td>
         <td>john@example.com</td>
         <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
+        <td>13.01-2021 11:00 a.m</td>
         <td>Pending</td>
         <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
       </tr>
     </tbody>
   </table>
+  <script>
+$(document).ready(function(){
+  $('table#exe').DataTable({
+
+"searching":true,
+"paging":true,
+"order":[[4,"desc"]],
+"ordering":true,
+
+
+
+
+  });
+
+
+  });
+
+
+
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("exe");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
 </div>
 
 </section>
@@ -551,12 +728,30 @@ $(document).ready(function(){
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $('#exe').tablesorter({
+          sortList:[[0,0,[1,0]]]
+        });
+
+
+    });
+
+
+
+
+  </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="sort.js"></script>
   
 <script type="text/javascript">
   function hidefunc(){
@@ -633,7 +828,8 @@ document.getElementById("visit").style.display ="block";
     }
   }
   
-</script>   
+</script> 
+
 </body> 
 
 </html>

@@ -1,11 +1,10 @@
-<style type="text/css">
  .content-table{
   border-collapse:collapse;
   margin: 25px 0;
-  font-size: 0.9em;
-  min-width:600px;
+  font-size: 0.8em;
+  min-width:500px;
   border-radius: 5px 5px 0 0;
-  overflow: hidden;
+  overflow: auto;
   box-shadow:  0 0 20px rgba(0,0,0,0.15);
  }
   .content-table thead tr{
@@ -17,6 +16,7 @@
     }
     .content-table th,
     .content-table td{
+      overflow: auto;
       padding: 12px 15px;
     }
     .content-table tbody tr{
@@ -53,6 +53,29 @@
   bottom: 23px;
   right: 28px;
   width: 280px;
+}
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 15px 56px;
+  position: relative;
+  display: inline-block;
+  border-radius: 90px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -1px;
+  right: -5px;
+  padding: 5px 10px;
+  border-radius: 10%;
+  background: red;
+  color: white;
 }
 
 /* The popup form - hidden by default */
@@ -115,9 +138,27 @@
   opacity: 1;
 }
 
+  .visit1{
+    display: none;
+  }
+
+  .visitv1{
+    display: none;
+  }
+
+  .visitadd1{
+    display: none;
+  }
+    .client2{
+    display: none;
+  }
+    .cliadd1{
+    display: none;
+  }
+
+      .viewedit1{
+    display: none;
+  }
        
 
       
- 
-
-</style>

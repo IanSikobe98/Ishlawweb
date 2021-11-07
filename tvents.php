@@ -1,141 +1,6 @@
-     <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-  
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -157,29 +22,30 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+      <script src ="globalfuncs.js" type="text/javascript"></script>
+  <script src ="environment/location.js" type="text/javascript"></script>
+
+<script    src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
+<script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
 <style type="text/css">
-  .visit1{
-    display: none;
-  }
 
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
+    .modal {
+   display: none;  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 </style>
+
+
+<link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -293,11 +159,11 @@ $(document).ready(function(){
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -305,7 +171,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -341,30 +219,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -381,9 +236,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -400,19 +267,27 @@ $(document).ready(function(){
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+          <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
+          </li>
+          <li class="">
             
+            <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
+          </li>    
           </li>
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
@@ -608,57 +483,11 @@ $(document).ready(function(){
               </div>
     
 
-
-
-<style type="text/css">
- .content-table{
- 	border-collapse:collapse;
- 	margin: 25px 0;
- 	font-size: 0.9em;
- 	min-width:1800px;
- 	border-radius: 5px 5px 0 0;
- 	overflow: hidden;
- 	box-shadow:  0 0 20px rgba(0,0,0,0.15);
- }
-  .content-table thead tr{
-
-  background-color:#009879;
-  color:#ffffff;
-  text-align: left;
-  font-weight: bold;
-    }
-    .content-table th,
-    .content-table td{
-    	padding: 12px 15px;
-    }
-    .content-table tbody tr{
-
-    border-bottom: 1px solid #dddddd;
-    }	
-    .content-table tbody tr:nth-of-type(even){
-
-
-    	background-color: #f3f3f3; 
-    }
-    .content-table tbody tr:last-of-type{
-
-    	border-bottom: 2px solid #009879;
-    }
-    .content-table tbody tr.active-row{
-
-
-    	font-weight: bold;
-    	color:#009879; 
-    }
-
        
 
-      
- 
-
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
 <div class="card-body table-responsive p-0">
-                <table id="myTable" class="content-table">
+                <table id="myTable" class="table table-striped table-bordered table-hover content-table">
 
             <thead>
                 <tr>
@@ -719,330 +548,18 @@ if($link === false){
 	   		</tr>
 */
 	  ?>
-<script type="text/javascript">
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
-          console.log(data);
-          var items = [];
 
-          for(var i in data) {
-            items.push(data[i].rrule);
-                  }
-console.log(items);
+<script src= "services/taskmgmt/fetchtableev.js"type="text/javascript">
 
-var dates=[];
 
-
-var titles=[];
-var id = [];
-var prior =[];
-var user = [];
-var loc=[];
-var descri = [];
-var clino = [];
-var dur = [];
-var end =[];
-
-// var status =[];
-
-
-
-
-
-for (var i in items){
-const rule = rrule.rrulestr(items[i])
-
-dates.push(rule.all());
-// dates.push(data[i].title)
-titles.push(data[i].title);
-id.push(data[i].id);
-prior.push(data[i].priority);
-user.push(data[i].user);
-loc.push(data[i].location);
-descri.push(data[i].description);
-clino.push(data[i].clino);
-dur.push(data[i].duration);
-end.push(data[i].end);
-}
-var cars =[dates,id,titles,prior,user,loc,descri,clino,dur,end];
-console.log(cars);
-console.log(dates);
-console.log(cars[0][1][0]);
-console.log(cars[1][1]);
-console.log("hi");
-
-// for(var i = 0; i < cars.length; i++) {
-var car = cars[0];
-var student = ''; 
-var p=0;
-
-var d = new Date(cars[9][j]);
-
-var daco;
-for(var j = 0; j < car.length; j++) {
-    var cube = car[j];
-    for(var k = 0; k < cube.length; k++) {
-       console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
-       console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
-
-       console.log(" ");
-       console.log(" ");
-       daco =convdate99(cars[8][j],dates[j][k]);
-
-       daco2 =convdate101(dates[j][k]);
-
-
-                            student += '<tr>'; 
-                            student += '<td>RDE' +  p+ 
-                                cars[1][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[2][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[3][j] + '</td>';
-
-                                student += '<td>' +  
-                                cars[4][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[5][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[6][j] + '</td>';  
-
-
-                                student += '<td>' +  
-                                cars[7][j] + '</td>'; 
-
-                                // student += '<td>' +  
-                                // cars[9][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                daco2.toLocaleString() + '</td>';  
-  
-                            student += '<td>' +  
-                               daco.toLocaleString() + '</td>'; 
-
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="fetchitre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
-
-                            student += '</tr>'; 
-
-p++;
-    }
-}
-  $('#myTable').append(student); 
-
-// onclick="myFunction()"
-
-// }
-// const rule = rrule.rrulestr(
-//   "DTSTART:20210104\nFREQ=DAILY;INTERVAL=1;UNTIL=20210303\nEXDATE:20210203"
-//   // "DTSTART;TZID=America/Denver:20181101T190000;\n"
-//   // + "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,TH;INTERVAL=1;COUNT=3"
-// )
-// console.log(rule.all());
-
-      // var str = ""
-      // for (var item of items) {
-      //   str += "<option>" + item + "</option>"
-      // }
-      // document.getElementById("policyid").innerHTML = str;
-        
-      
-
-      });
-
-
-function convdate99(str,str2) {
-// const str = '20210201';
-
-  str2 =str2.toLocaleString();
-
-  var d = new Date(str2);
-  
-  console.log(d);
-  
-
-   var start12 = new Date(str2);
-    console.log(start12);
-
-  // d.setHours(d.getHours() + 24,d.getMinutes()+ 12,d.getSeconds() + 10);
-
-
-console.log(str.slice(0,2));
-// expected output: "the lazy dog."
-
-console.log(str.slice(3, 5));
-// expected output: "quick brown fox"
-
-console.log(str.slice(6,8));
-
-// expected output: "dog."
-//var res = str1.concat(str2);
-
-
-
-
-
-var str1 = str.slice(0,2);
-var str2 =  str.slice(3,5);
-var str3 =  str.slice(6,8);
-// var str4 = "-";
-
-var str12 = parseInt(str1);
-var str22 = parseInt(str2);
-var str32 = parseInt(str3);
-
-d.setHours(d.getHours()  - 3);
-
-d.setHours(d.getHours() + str12 ,d.getMinutes()+ str22 ,d.getSeconds() + str32);
-console.log( "final");
-console.log(d);
-
-
-// var res = str1.concat(str4);
-// var res = res.concat(str2);
-// var res = res.concat(str4);
-// var res = res.concat(str3);
-
-
-
-return d;
-}
-
-
-
-
-
-
-function convdate101(str2) {
-// const str = '20210201';
-
-
-
-  str2 =str2.toLocaleString();
-
-  var d = new Date(str2);
-
-  console.log(d);
-  
-d.setHours(d.getHours() - 3 );
-console.log( "final");
-console.log(d);
-
-
-  
-return d;
-}
 </script>
-	   		<script type="text/javascript" >
+
+<!-- 	   		<script type="text/javascript" >
+
+
         
-      
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
-          console.log(data);
-          var items = [];
-var student = ''; 
-var daco;
-var daco2
-          for(var i in data) {
-            // items.push(data[i].rrule);
-//  daco = data[i].start;
-// daco = daco.split('-').join('/');
-// daco = formatDate (daco);      
-// daco = new Date(data[i].start);
-// daco = daco.toLocaleString();       
-
-// daco2 = new Date(data[i].start);
-// daco2 = daco.toLocaleString();  
-
-daco =getDate(data[i].start);
-daco2 =getDate(data[i].end);
-
-                            student += '<tr>'; 
-                            
-                            student += '<td>NRDE' + 
-                                data[i].id + '</td>';
-
-                                student += '<td>' +  
-                                data[i].title + '</td>'; 
-
-                                 student += '<td>' +  
-                                data[i].priority + '</td>';
-
-                                student += '<td>' +  
-                                data[i].user + '</td>'; 
-
-                                student += '<td>' +  
-                                data[i].location + '</td>';
-
-                                student += '<td>' +  
-                                data[i].description + '</td>'; 
-
-                                
-
-                                student += '<td>' +  
-                                data[i].clino + '</td>';
-
-
-                                student += '<td>' +  
-                                daco + '</td>';
-
-                                student += '<td>' +  
-                                daco2 + '</td>';
-
-                               
-
-                                 
-
-                            //     student += '<td>' +  
-                            //     cars[1][j] + '</td>'; 
-  
-                            // student += '<td>' +  
-                            //    dates[j][k].toLocaleDateString() + '</td>'; 
-
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="myFunction(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
-
-                            student += '</tr>'; 
-
-}
-  $('#myTable').append(student); 
-
-// onclick="myFunction()"
-
-// }
-// const rule = rrule.rrulestr(
-//   "DTSTART:20210104\nFREQ=DAILY;INTERVAL=1;UNTIL=20210303\nEXDATE:20210203"
-//   // "DTSTART;TZID=America/Denver:20181101T190000;\n"
-//   // + "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,TH;INTERVAL=1;COUNT=3"
-// )
-// console.log(rule.all());
-
-      // var str = ""
-      // for (var item of items) {
-      //   str += "<option>" + item + "</option>"
-      // }
-      // document.getElementById("policyid").innerHTML = str;
-        
-      
-
-      });
-
-function getDate (input) {
-var daco3 = new Date(input);
-daco3 = daco3.toLocaleString();  
-  
-  return daco3;
-}
-      
-        </script>
+ 
+        </script> -->
 </table>
 </div>
               

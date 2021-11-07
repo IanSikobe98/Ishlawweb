@@ -1,140 +1,6 @@
  <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (3000), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (3000), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html>
 
@@ -166,29 +32,13 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <style type="text/css">
-  .visit1{
-    display: none;
-  }
 
-  .visitv1{
-    display: none;
-  }
+  <script src="environment/location.js"></script>
+  <script src="globalfuncs.js"></script>
 
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
+  
+<link rel="stylesheet" type="text/css" href="styling.css">
 
-      .viewedit1{
-    display: none;
-  }
-</style>
 
 </head>
 
@@ -285,11 +135,11 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+                   <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -297,7 +147,19 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -306,7 +168,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   <p>View Clients</p>
                 </a>
               </li>
-             
+              
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -333,30 +195,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -373,9 +212,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -414,14 +265,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
           </li>
 
 
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
+                    
             
           </li>
           <li class="nav-header">Quick Links</li>
@@ -605,7 +449,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
             <div class="card-header">
-              <h3 class="card-title">Create New Category</h3>
+              <h3 class="card-title">Add New File</h3>
 
               <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -621,42 +465,15 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Category</label>
-                      <select class="form-control select2" id="cat" style="width: 100%;">
-                        <option selected="selected" >Select Filing category</option>
-                        <option value="7">Litigation</option>
-                        <option value="8">Conveyancing</option>
-                        <option value="9">Criminal Law</option>
-                        <option value="10">Foreign Law</option>
-                       <option value="11">Finance Law</option>
-                        <option value="12">Civil Law</option>
-                        <option value="13">Other Files</option>
+                      <label>Case Number</label>
+                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
 
-                      </select>
                     </div>
                     <!-- /.form-group -->
-                    <div class="form-group">
-                      <label>Parties</label>
-                      <input type="text" name="parties" class="form-control" required="" id="parties" placeholder="Please Enter parties">
-
-                    </div>
-                    <div class="form-group">
-                      <label>Physical Location</label>
-                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
-
-                    </div>
-                    <div class="form-group">
-                      <label>Status</label>
-                      <input type="text" required="" class="form-control" id="stat" name="stat" placeholder="Enter Case Status">
-
-                    </div>
-                    <div class="form-group">
-                        <label>Select File:</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" required="" name="myFile" id="myFile">
-                            <!-- <label class="custom-file-label" for="exampleInputFilxe">Choose file</label> -->
-                          </div>
+              <div class="form-group">
+                        <label>Filed By:</label>
+                        <div class="select2-purple">
+                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name">
                         </div>
                       </div>
                     <!-- /.form-group -->
@@ -667,32 +484,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                     
                     <!-- /.form-group -->
                     <div class="form-group">
-                      <label>Case Number</label>
-                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
+                       <label>Physical Location</label>
+                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
 
                     </div>
                     <!-- /.form-group -->
-                    <div class="form-group">
-                      <label>Client</label>
-                      <input type="Text" class="form-control"  name="client" required="" id="client" placeholder="Please Enter client Name">
-
-                    </div>
-                    <div class="form-group">
-                        <label>Filed By:</label>
-                        <div class="select2-purple">
-                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name">
+                  <div class="form-group">
+                        <label>Select File:</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" required="" name="myFile" id="myFile">
+                            <!-- <label class="custom-file-label" for="exampleInputFilxe">Choose file</label> -->
+                          </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                    <label>Priority</label>
-                    <select id="priority" name="prio" required="" class="form-control select2" style="width: 100%;">
-                      <option selected="selected">Select Priority</option>
-                      <option value="Urgent">Urgent</option>
-                      <option value="incoming">Incoming</option>
-                      <option value="others">Others</option>
 
-                    </select>
-                  </div>
                   </div>
                   <!-- /.col -->
                 </div>
@@ -750,54 +556,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </div>
             </form>
 
-            <script type="text/javascript">
-              const form = document.getElementById('exe');
-              form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var selectedFile = document.getElementById('myFile').files[0];
-
-                var filedBy = document.getElementById('by').value;
-                var clientName = document.getElementById('client').value;
-                var caseNumber = document.getElementById('case').value;
-                var status = document.getElementById('stat').value;
-                var parties = document.getElementById('parties').value;
-                var prio = document.getElementById('priority').value;
-                var loc = document.getElementById('location').value;
-                var fileName = selectedFile.name;
-                var description = "";
-                var version = "";
-                var folderId = document.getElementById('cat').value;;
-                var data = new FormData;
-                var data2 = new FormData;
-                data.append("document", selectedFile);
-                data.append("name", clientName);
-                data.append("description", `{case: ${caseNumber}, parties: ${parties}, filer: ${filedBy}, status: ${status}, location: ${loc}, prior: ${prio}}`);
-                data.append("version", 1);
-                data.append("FolderId", folderId);
-
-for (var pair of data.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
-
-for (var pair of data2.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
-                
-
-
-
-
-                // make API call to submit file
-                fetch('https://ifs.ambience.co.ke/files/api/v1', {
-                  method: 'POST',
-                  body: data
-                }).then(function (response) {
-                  if(response.status === 200){
-                    alert("File upload successful");
-                  }
-                })
-              })
-            </script>
+            <script src="services/filing/postfiles.js" type="text/javascript"> </script>
 
 
 <!-- 

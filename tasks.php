@@ -1,141 +1,6 @@
-          <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -166,185 +31,15 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <style>
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.button5 {border-radius: 50%;}
+
+  <script src="environment/location.js"></script>
+  <script src="globalfuncs.js"></script>
+ 
 
 
 
-.modal {
-   display: none;  /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 10px;
-  border: 1px solid #888;
-  width: 22%;
-}
-
-.modal21 {
-   display: block; 
-   visibility: hidden; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content21 {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-
-
-
-
-/* The Close Button */
-.close,.close2 {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close,.close2:hover,
-.close,.close2:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-.new{
-  float: right;
-
-}
-
-.cal1{
-  /*float:left;*/
-  height:76%;
-  width:76%;
-  background-color: white;
-   /*display: grid; */
-}
-
-.calover{
-  /*float:left;*/
-  /*height:60%;*/
-/*  width:60%;
-      display: grid;  */
-    /*grid-template-columns: 1fr 1fr 1fr;  */
-    /*grid-template-rows: 50px 50px;  */
-
-}
-
-.appst{
-
-  color: white;
-/*text-align: center;*/
-
-  text-decoration: none;
-}
-
-body {font-family: Arial, Helvetica, sans-serif;}
-
-
-
-/* The Close Button */
-/*.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}*/
-
-.ian{
-  /*display: none;*/
-    font-family: Raleway-Bold;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #fff;
-  text-transform: uppercase;
-
-  width: 100%;
-  height: 62px;
-  border-radius: 3px;
-  background: linear-gradient(315deg, #f2c17d 0%, #b82e1f 74%);
-
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-.visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 
@@ -441,11 +136,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -453,7 +148,19 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -462,7 +169,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   <p>View Clients</p>
                 </a>
               </li>
-                         </ul>
+              
+            </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -488,30 +196,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+            
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -528,9 +213,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -556,11 +253,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </p>
             </a>
           </li>
-
-
-
-
-                       <li class="nav-item">
+          <li class="">
+            
+            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -570,6 +265,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
 
           </li>
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -776,7 +472,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           }
           </script>
           <!-- /.card-header -->
-          <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+          <form onsubmit="return sendreloadnext(FormSubmit.createtask,'taskssubmit',FormSubmit.createtasksubmit);" id ="taskssubmit" method="POST">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
@@ -934,187 +630,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 </div>
 
 
-          <?php
 
-// header('Access-Control-Allow-Origin: *');
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-//database
-// define('DB_HOST', '127.0.0.1');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'book');
-
-// //get connection
-// $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// if(!$mysqli){
-//  die("Connection failed: " . $mysqli->error);
-// }
-
-// //query to get data from the table
-// $query = sprintf("SELECT * FROM `book` ");
-
-// //execute query
-// $result = $mysqli->query($query);
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['hotodo']) && isset($_POST['comment']) 
-  // && isset($_POST['matter'])
-){
-// Escape user inputs for security
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-$hotodo = mysqli_real_escape_string($link, $_REQUEST['hotodo']);
-$comment = mysqli_real_escape_string($link, $_REQUEST['comment']);
-
-
-
-$stu = mysqli_real_escape_string($link, $_REQUEST['stat']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-// $matter = mysqli_real_escape_string($link, $_REQUEST['matter']);
- 
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-// $user = count($_POST['user']);
-  // echo "<script>$('#MyModal').modal('show')</script>";
-
- 
-// Attempt insert query execution
-// , `matter`
-
-
-if($rpt == "Never")
-{
-$sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-if(mysqli_query($link, $sql)){
-    echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Task Added successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
-
-
-</script>";
-
-} else{
-  echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry...';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-}
- 
-
-
-
-
-// Close connection
-mysqli_close($link);
-
-}
-
-else
-{
- $start=str_replace("-", "", $start);
- $rptun =str_replace("-", "", $rptun);
-
-$sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-// $sql2 ="DELETE FROM `tasks WHERE ;"
-if(mysqli_query($link, $sql)){
-    echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Task Added successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
-
-
-</script>";
-
-} else{
-   echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry...';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-}
- 
-
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-?>
 <script type="text/javascript" src="modi.js"></script>
 
               </form>
@@ -1237,6 +753,7 @@ if(mysqli_query($link, $sql)){
 </script>
 <script type="text/javascript">
   function hidefunc(){
+    formreload();
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

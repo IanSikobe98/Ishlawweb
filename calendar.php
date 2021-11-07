@@ -1,141 +1,6 @@
-       <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-?>
-  
+ <?php
+require "auth.php";
+ ?> 
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -157,29 +22,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-<style type="text/css">
-  .visit1{
-    display: none;
-  }
-
-  .visitv1{
-    display: none;
-  }
-
-  .visitadd1{
-    display: none;
-  }
-    .client2{
-    display: none;
-  }
-    .cliadd1{
-    display: none;
-  }
-
-      .viewedit1{
-    display: none;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="styling.css">
+<script src="environment/location.js"></script>
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -279,7 +123,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -287,7 +131,19 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -296,8 +152,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   <p>View Clients</p>
                 </a>
               </li>
-              
-            </ul>
+             
+                         </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -323,31 +179,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
-          <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -363,9 +195,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -382,18 +226,28 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+                     <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
+          </li> 
+
+           <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
+          </li>
+
+
             
           </li>
           <li class="nav-header">Quick Links</li>
@@ -569,8 +423,8 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="tr.css">
-
+    
+<script type="text/javascript" src="globalfuncs.js"></script>
 
 
 
@@ -667,11 +521,11 @@ else{
   
 
   eventSources: [
-    'http://localhost/Admin/ishfinal/API/nonrecev.php',
-    'http://localhost/Admin/ishfinal/API/recta.php',
-'http://localhost/Admin/ishfinal/API/receve.php',
 
-    'http://localhost/Admin/ishfinal/API/nonrecta.php',
+    Tasks.recurring,
+    Events.recurring,
+    Tasks.calnonrecurring,
+    Events.calnonrecurring,
   ]
   ,
  });
@@ -683,91 +537,24 @@ else{
 
     <script type="text/javascript" src="convdate.js"></script>
 <script type="text/javascript" src="convnew.js"></script>
-<script type="text/javascript">
-  function rptcon(str){
-// const str = '20210219T200011.';
-var str =str;
 
-var str2 = str.slice(0, 8)
+<script type="text/javascript" src="services/taskmgmt/fetchcal.js"></script>
 
-console.log(str2);
-// expected output: "quick brown fox"
-var str3 = str.slice(0, 4)
-var str4 = str.slice(4, 6)
-var str5 = str.slice(6, 8)
-
-console.log(str3);
-console.log(str4);
-console.log(str5);
-var str6 = (str3+"-"+str4+"-"+str5)
-console.log(str6);
-return str6;
-}
-
-function stendcon(str){
-  var str =str;
-
-var str2 = str.slice(0, 8)
-
-console.log(str2);
-// expected output: "quick brown fox"
-var str3 = str.slice(0, 2)
-var str4 = str.slice(3, 5)
-var str5 = str.slice(6, 10)
-var str7 = str.slice(12, 21)
-
-console.log(str3);
-console.log(str4);
-console.log(str5);
-console.log(str7);
-var str6 = (str5+"-"+str4+"-"+str3+"T"+str7)
-console.log(str6);
-
-return str6;
-}
+<script type="text/javascript" src="services/taskmgmt/calutils.js"></script>
 
 
-</script>
-<script type="text/javascript" src="fetchcal.js"></script>
-<script type="text/javascript">
-  
-  function convdate(str) {
-// const str = '20210201';
-
-
-
-console.log(str.slice(0,4));
-// expected output: "the lazy dog."
-
-console.log(str.slice(4, 6));
-// expected output: "quick brown fox"
-
-console.log(str.slice(6,8));
-
-// expected output: "dog."
-//var res = str1.concat(str2);
-
-var str1 = str.slice(0,4);
-var str2 =  str.slice(4,6);
-var str3 =  str.slice(6,8);
-var str4 = "-";
-
-var res = str1.concat(str4);
-var res = res.concat(str2);
-var res = res.concat(str4);
-var res = res.concat(str3);
-console.log( "final");
-console.log(res);
-
-
-return res;
-}
-
-
-</script>    
     <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
+}
+function openForm2() {
+  document.getElementById("myModal2").style.display = "block";
+}
+function openForm3() {
+  document.getElementById("myModal64").style.display = "block";
+}
+function openForm4() {
+  document.getElementById("myModal56").style.display = "block";
 }
 
 function closeForm() {
@@ -808,30 +595,61 @@ function closeForm4() {
       <div id='calendar'></div>
 
       <div class="form-popup" id="myForm">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
+  <form onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');" id ="ianform2"method="POST" class="form-container" >
     <p><b>Update your task progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+            
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
+  </div></div>
+    
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title" placeholder="Update your task title" name="title" required>
-
-     <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda"placeholder="Update your task progress" name="start" required>
-
+  </div></div></div>
+ 
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+  
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
+                <label for="dueda">Due Date</label>
+                 <input type="date" id="dueda" class="form-control" id="start" required="" name="start" placeholder="Update your task progress">
 
+  </div></div></div>
+  
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
 
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" required="" id="clino" name="clino" placeholder="Enter Client's Name">
+                  <input type="text" class="form-control select2"  id="clino" name="clino" placeholder="Enter Client's Name">
+  </div></div></div> 
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">
+        </div></div>
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
@@ -840,6 +658,11 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+        </div></div></div>
+
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
@@ -849,9 +672,17 @@ function closeForm4() {
                     <option value="Completed">Completed</option>
                   </select> <br>
 
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2" required="" id="comment" name="comment" placeholder="Enter Company Remarks">
+              </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
+                  <label for="clino">General Comments</label>
+                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
+</div></div>
+
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 
               <label for="rpt">Repeat Frequency</label>
@@ -864,40 +695,71 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>   
+            </div></div>
+        <div class="col-12 col-sm-6">
+                <div class="form-group">  
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
+        </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 <div class="form-popup" id="myModal2">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  class="form-container">
+  <form id ="ianform" onsubmit="return sendreload(FormSubmit.agendapost,'ianform');"  method="POST"  class="form-container">
     <p><b>Update your task progress</b></p>
+<div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
+  </div></div>
 
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title1" placeholder="Update your task title" name="title" required>
-
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda1"placeholder="Update your task progress" name="start" required="">
+    <input type="date" id="dueda1"placeholder="Update your task progress" name="start" class="form-control" required="">
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
 
+  </div></div></div>
+
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
-
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" id="clino1" required="" name="clino" placeholder="Enter Client's Name">
-
+        </div></div></div>
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">
+            </div></div>
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -905,6 +767,11 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+    </div></div></div>
+       
+<div class="row">
+          <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
@@ -913,10 +780,11 @@ function closeForm4() {
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+          </div></div></div>
 
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2" required="" id="comment1" name="comment" placeholder="Enter Company Remarks">
-
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
@@ -928,171 +796,67 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>   
+                  </select> <br> 
+            </div></div>  
+           <div class="col-12 col-sm-6">
+                <div class="form-group">
 
-                  <label for="rpt">Save</label>
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                     
+ 
+</div></div></div>
+ <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
-                  </select> <br>    
- 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                  </select> <br>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
-    <?php
-
-// header('Access-Control-Allow-Origin: *');
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-//database
-// define('DB_HOST', '127.0.0.1');
-// define('DB_USERNAME', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'book');
-
-// //get connection
-// $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// if(!$mysqli){
-//  die("Connection failed: " . $mysqli->error);
-// }
-
-// //query to get data from the table
-// $query = sprintf("SELECT * FROM `book` ");
-
-// //execute query
-// $result = $mysqli->query($query);
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid']) ){
-  // && isset($_POST['matter'])
-
-// Escape user inputs for security
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$stu = mysqli_real_escape_string($link, $_REQUEST['stat']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-// $matter = mysqli_real_escape_string($link, $_REQUEST['matter']);
- 
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-
-$tid = mysqli_real_escape_string($link, $_REQUEST['tid']); 
-// $user = count($_POST['user']);
-  // echo "<script>$('#MyModal').modal('show')</script>";
-
- 
-// Attempt insert query execution
-// , `matter`
-
-if($rpt == "Never")
-{
-
-$sql = "  UPDATE `tasks`  
-SET  `title` =  '$title',`start` =  '$start',`description` = '$descri', `rpt` =  '$rpt', `rpun` = '$rptun' ,`User` = '$user' ,`Priority` = '$prio', `clino` = '$clino',`status` =  '$stu'
-
-
-
-WHERE `tid` = '$tid'  " ;
-
-// $sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-if(mysqli_query($link, $sql)){
-//    echo "Task updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-}
-
-else
-{
- $start=str_replace("-", "", $start);
- $rptun =str_replace("-", "", $rptun);
-
-$sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu') ";
-
-// for($i=0;$i<$user; $i++){
-// , '".$_POST['user'][$i]."'
-// $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
-
-// }
-// $psql = rtrim($sql,',');
-
-
-$sql2 = "DELETE FROM `tasks` WHERE `tid` = '$tid'" ;
-
-if(mysqli_query($link, $sql)){
- //   echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-   // echo "Records added successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- mysqli_close($link);
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-
-}
-}
-
-
-
-
-
-
-
-?>
+  
 </div>
-<div class="form-popup" id="myModal64">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
-    <p><b>Update your task progress</b></p>
-<label for="tid"><b>Task Id</b></label>
-    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
 
+
+
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span id="close" class="close">&times;</span>
+    
+    <h6 id = "status" style="color:green;"></h6>
+      <h6 id = "status3" style="color:green;"></h6>
+      
+  </div>
+  
+</div>
+
+
+<div class="form-popup" id="myModal64">
+
+  <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');"  method="POST" class="form-container">
+   
+
+  
+    <p><b>Update Event Progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="tid"><b>Event Id</b></label>
+
+    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title3" placeholder="Update your task title" name="title" required>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior3" name="prio"  required="" class="form-control select2" style="">
@@ -1101,6 +865,9 @@ else{
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+          </div></div>
+      <div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
@@ -1112,52 +879,92 @@ else{
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>
+          </div></div></div>
 
 
-     
+    <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+ 
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" readonly="" required="" >
+  </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
-
+        </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
+          </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
-
-    <label for="dueda"><b>Color</b></label>
-    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
-
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
+     
+</div></div>
 
-    <label for="dueda"><b>End Time</b></label>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+
+     <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
-
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Color</b></label>
+    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+            </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
    
   </form>
 </div>
    <div class="form-popup" id="myModal56">
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-container">
-    <p><b>Update your task progress</b></p>
-<label for="tid"><b>Task Id</b></label>
+
+  <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
+
+
+ 
+    <p><b>Update Event Progress</b></p>
+    <div class="card-body">
+      <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="tid"><b>Event Id</b></label>
+
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title4" placeholder="Update your task title" name="title" required>
+  </div></div></div>
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior4" name="prio"  required="" class="form-control select2" style="">
@@ -1166,6 +973,9 @@ else{
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+                </div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
@@ -1177,630 +987,81 @@ else{
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>   
+          </div></div></div> 
 
-
+ <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
      
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
+  </div></div>
+  <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
+</div></div></div>
 
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Enter Client's Name">
+          </div></div>
 
+       <div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino4"placeholder="Update your task progress" name="clino" required>
+  </div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
+   
+</div></div>
 
-    <label for="dueda"><b>Color</b></label>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
+    
+</div></div></div>
+<div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+
+ <label for="dueda"><b>Color</b></label>
     <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
 
+</div></div>
+ <div class="col-12 col-sm-6">
+                <div class="form-group">
 
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+    
+    </div></div></div>
 
-
-
-    <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
-
-    <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    <label for="rpt">Save</label>
+  <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+                  </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>
-               <?php
-
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid'])){
-
-
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-$end = mysqli_real_escape_string($link, $_REQUEST['end']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$color = mysqli_real_escape_string($link, $_REQUEST['color']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
-
-
-
-
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-
-$d1 = new DateTime($start);
-$d2 = new DateTime($end);
-$interval = $d2->diff($d1);
-
-$popwert = $interval->format(':%I:%S');
-// echo "<br>";
-// echo $popwert;
-// echo "<br>";
-
-//calculate hours in duration
- $poprat = $interval->format('%d');
- $popguy = $interval->format('%H');
-$poprat= (($poprat *24)+$popguy);
-if ($poprat<10){
-  //combine to get duration
-$popfinal ="0".$poprat . $popwert ;
-}
-else{
-  //combine to get durationmy
-  $popfinal =$poprat . $popwert ;
-}
-
-// echo $popfinal;
-// echo "<br>";  
-
-// echo "<br>";
-
-
-if($rpt == "Never")
-{
-
-$sql = "UPDATE `events` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
-
-if(mysqli_query($link, $sql)){
-//    echo "Event updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-}
-
-
-
-
-
-
-else{
-//Find start time for rptun
-
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero589($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero689($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero589($start);
-$end = addZero589($end);
-$finrpt = addZero689($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-// echo $rptun;
-
-
-
- // echo "thr"."ee";
-// Attempt insert query execution
-$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
-
-
-$sql2 = "DELETE FROM `events` WHERE `id` = '$eid'" ;
-
-if(mysqli_query($link, $sql)){
-    //echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-   // echo "Records added successfully.";
-
-} else{
- //   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- mysqli_close($link);
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-}
-
-
-
-
-}
-
-
- 
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid']) && isset($_POST['save1'])){
-
-
-$title = mysqli_real_escape_string($link, $_REQUEST['title']);
-$start = mysqli_real_escape_string($link, $_REQUEST['start']);
-$end = mysqli_real_escape_string($link, $_REQUEST['end']);
-// $last_name = mysqli_real_escape_string($link, $_REQUEST['surn_name']);
-
-
-
-
-$color = mysqli_real_escape_string($link, $_REQUEST['color']);
-
-$descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
-$rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
- 
- $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
-
-
-
-
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-$save1 = mysqli_real_escape_string($link, $_REQUEST['save1']);
-
-
-$d1 = new DateTime($start);
-$d2 = new DateTime($end);
-$interval = $d2->diff($d1);
-
-$popwert = $interval->format(':%I:%S');
-// echo "<br>";
-// echo $popwert;
-// echo "<br>";
-
-//calculate hours in duration
- $poprat = $interval->format('%d');
- $popguy = $interval->format('%H');
-$poprat= (($poprat *24)+$popguy);
-if ($poprat<10){
-  //combine to get duration
-$popfinal ="0".$poprat . $popwert ;
-}
-else{
-  //combine to get duration
-  $popfinal =$poprat . $popwert ;
-}
-// echo "Duration";
-
-// echo "<br>";
-// echo $popfinal;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-if($save1 == 'Full-group')
-{
-
-  if($rpt == "Never"){
-$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
-
-$sql2 = "DELETE FROM `iane` WHERE `id` = '$eid'" ;
-
-if(mysqli_query($link, $sql)){
-//    echo "Records added successfully.";
-
-
-    if(mysqli_query($link, $sql2)){
-  //  echo "Records deleted successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-}
-
-else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
- mysqli_close($link);
-
-
-  }
-
-
-    else
-  {
-//Find start time for rptun
-
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero2($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero($start);
-$end = addZero($end);
-$finrpt = addZero2($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-//echo $rptun;
-
-$sql = "UPDATE `iane` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
-
-if(mysqli_query($link, $sql)){
-//    echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-
-
-
-
-   }
-
-}
-
-
-
-if($save1 == 'One-time')
-{
-
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
-function addZero5($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-$start = addZero5($start);
-
-$sql = "INSERT INTO `exludent`(`id`, `date`) VALUES ('$eid','$start') ";
-
-if(mysqli_query($link, $sql)){
- //   echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-
-   if($rpt == "Never"){
- 
-$sql2 = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
-
-
-if(mysqli_query($link, $sql2)){
-  //  echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
-         }
-
-
-    else{
-  // echo $start;
-  //   echo "<br>";
-  //   echo "<br>";
-  // echo $end;
-  // echo "<br";
-$markg = strval($start);
-$markg =str_split(strval($start), 11);
-$finrpt= $markg[1] ;
-
-
-//rewrite start time
- $start=str_replace("-", "", $start);
- $start=str_replace(":", "", $start);
- // $start = $start . "00" ;
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//rewrite end time
- $end=str_replace("-", "", $end);
- $end=str_replace(":", "", $end);
- // $end = $end . "00" ;
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-
-
-
-function addZero($str){
-if(strlen($str)<15){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-
-
-}
-
-
-function addZero2($str){
-if(strlen($str)<8){
-  $str2 = $str . "00";
-return $str2;
-}
-
-else{
-  return $str;
-}
-}
-
-$start = addZero($start);
-$end = addZero($end);
-$finrpt = addZero2($finrpt);
-
-
-//  echo $start;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $end;
-// echo "<br>";
-
-// echo "<br>";
-
-//  echo $finrpt;
-// echo "<br>";
-
-// echo "<br>";
-
-
-//rewrite rptun
- $rptun =  str_replace("-", "", $rptun);
- $rptun = $rptun . "T" . $finrpt; 
- $rptun =  str_replace(":", "", $rptun);
-//echo $rptun;
-
-
-$sql4 = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
-
-if(mysqli_query($link, $sql4)){
-  //  echo "Records updated successfully.";
-
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-}
-
-mysqli_close($link);
-
-         }  
-
-}
-
-
-// }
-// }
-
-
-// else{
-//  echo "not enough";
-
-// }
-
-
-
-
-    ?>
+               
 </div>
 
 
@@ -1840,6 +1101,8 @@ mysqli_close($link);
 <script src="plugins/moment/moment.min.js"></script>
 <script type="text/javascript">
   function hidefunc(){
+
+    formreload();
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
@@ -1914,6 +1177,6 @@ document.getElementById("visit").style.display ="block";
   }
   
 </script>
-
+<script type="text/javascript" src="modi.js"></script>
 </body>
 </html>
