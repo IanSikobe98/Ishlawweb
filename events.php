@@ -649,7 +649,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="start">Start Date</label>
-                 <input type="date" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
+                 <input type="datetime-local" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
                                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -727,7 +727,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                  <label for="start">End Date</label>
-                 <input type="date" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
+                 <input type="datetime-local" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
 
 
                 

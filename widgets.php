@@ -441,7 +441,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="files3.php" class="small-box-footer">
+              <a href="litigation.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -457,7 +457,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="Conveyancing.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -474,7 +474,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="law.php" class="small-box-footer">
+              <a href="categories.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -490,7 +490,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="foreign.php" class="small-box-footer">
+              <a href="files.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -514,7 +514,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="finance.php" class="small-box-footer">
+              <a href="case1.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -532,7 +532,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="civil.php" class="small-box-footer">
+              <a href="core.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -549,7 +549,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="others.php" class="small-box-footer">
+              <a href="misc.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

@@ -21,7 +21,7 @@ if(!$mysqli){
 }
 
 //query to get data from the table
-$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never'");
+$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' ORDER BY `start` DESC");
 
 //execute query
 $result = $mysqli->query($query);

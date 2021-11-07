@@ -1,7 +1,6 @@
  <?php
-require "auth.php";
- ?>    
-  
+//require "auth.php";
+ ?>   
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -23,11 +22,9 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+
   <script src="environment/location.js" type="text/javascript"></script>
-
-
-
-  <link rel="stylesheet" type="text/css" href="styling.css">
+<link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -40,7 +37,7 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="adv.php" class="nav-link">Add new File</a>
+        <a href="filing.php" class="nav-link">Add new Case</a>
       </li>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for files..." title="Type in a name">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -140,11 +137,12 @@ $(document).ready(function(){
             </a>
             
           </li>
+           </li>
           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -152,7 +150,19 @@ $(document).ready(function(){
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item cliadd1" id = "cliadd">   
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
+                </a>
+              </li>
+              <li class="nav-item viewedit1"  id="viewedit">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
@@ -161,8 +171,8 @@ $(document).ready(function(){
                   <p>View Clients</p>
                 </a>
               </li>
-              
-            </ul>
+             
+                         </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -188,31 +198,7 @@ $(document).ready(function(){
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
-          <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -228,9 +214,21 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -247,20 +245,28 @@ $(document).ready(function(){
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+                     <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
-            
+          </li> 
+
+           <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
           </li>
+
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -422,7 +428,7 @@ $(document).ready(function(){
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Client File Documents</h1>
+              <h1>Client Cases</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -450,117 +456,24 @@ $(document).ready(function(){
                     <th>Filed By</th>
                     <th>Status</th>
                     <th>Filing date</th>
-                    <th>Physical location</th>
+                    
                     <th>Priority</th>
-                    <th>File</th>
+                    
                   </tr>
                 </thead>
-      <!--  <script type="text/javascript">        
+                <tbody>
+                  <td><a href="files3.php">Clino</a></td>
+                  <td>12345</td>
+                  <td>Clino vs Lsk</td>
+                  <td>George</td>
+                  <td>Court</td>
+                  <td>01-01-2021</td>
+                  <td>Shelve</td>                  
+                  
 
+                </tbody>
 
- // $(document).ready(function() {
- //        $.ajax({
- //          url: 'http://localhost/ishfinal/API/nonrecta.php',
- //          type: 'GET',
- //          dataType: 'json',
- //          success: function() { alert('hello!'); },
- //          error: function() { alert('boo!'); },
- //          beforeSend: setHeader
- //        });
- //      });
-
- //      function setHeader(xhr) {
- //      //   xhr.setRequestHeader('securityCode', 'Foo');
- //      //   xhr.setRequestHeader('passkey', 'Bar');
- //      }
-$( document ).ready(function() {
-
-$.ajax
-  ({
-    type: "GET",
-
-  
-
-    url: "https://ifs.ambience.co.ke/files/api/v1/documents",
-    dataType: 'json',
-    async: false,
-
-
-
-
-    success: function (data){
-    // alert('Thanks for your comment!');
-    console.log(data);
-    console.log("DONE");
-
-      var items = [];
-var file = ''; 
-var descip = '';
- var arr =[]
-          for(var i in data) {
-            if(data[i].FolderId == "1")
-            {
-// data[i].description.split(',').forEach(function(value) {
-//   arr.push(value.split(': ')[0])})
-
-                            file += '<tr>'; 
-                            
-                            file += '<td>' +  
-                                data[i].name + '</td>';
-
-                            // file += '<td>CS' +  
-                            //     data[i].description.split(', ').find(row => row.startsWith('{case:')).split(':')[1];
-
-                            //     file += '<td>' + 
-                            //      data[i].description.split(', ').find(row => row.startsWith('parties:')).split(':')[1];
-                            //     + '</td>';
-                                
-                            //     file += '<td>' + 
-                            //      data[i].description.split(', ').find(row => row.startsWith('filer:')).split(':')[1];
-                            //     + '</td>';
-
-
-
-                            //     file += '<td>' + 
-                            //      data[i].description.split(', ').find(row => row.startsWith('status:')).split(':')[1];
-                            //     + '</td>';
-
-
-                                file += '<td>' +  
-                                data[i].createdAt.split('T')[0] + '</td>'; 
-
-                                // file += '<td>' + 
-                                //  data[i].description.split(', ').find(row => row.startsWith('location:')).split(':')[1];
-                                // + '</td>'; 
-
-                                // file += '<td>' + 
-                                //  data[i].description.split(', ').find(row => row.startsWith('prior:')).split(':')[1].slice(0, -1);
-                                // + '</td>';
-
-                                file += '<td>' +  '<a href="https://ifs.ambience.co.ke/files/api/v1/documents/'+data[i].id+'/document">' +
-                                '<i class="fas fa-download"></i>'+ '</a>'+ '</td>';  
-
-                            //     file += '<td>' +  
-                            //     cars[1][j] + '</td>'; 
-  
-                            // student += '<td>' +  
-                            //    dates[j][k].toLocaleDateString() + '</td>'; 
-
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="myFunction(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
-
-                            file += '</tr>'; 
-
-}
-}
-  $('#ftable').append(file); 
-
-       }
-});
-
-});
-
-</script> -->
+<script src="services/filing/civil.js"></script>
 
                 
 </table>
@@ -870,7 +783,6 @@ var descip = '';
 
 
   </script>
-  <script src="services/filing/litigation.js"></script>
 
 <script type="text/javascript">
   function hidefunc(){

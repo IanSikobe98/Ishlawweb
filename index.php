@@ -21,7 +21,6 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
   <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
   <script src="environment/location.js"></script>
@@ -32,12 +31,10 @@ require "auth.php";
   <script src="services/taskmgmt/recevagen.js"></script>
   <script src="services/taskmgmt/formfiller.js"></script>
   <script src="globalfuncs.js"></script>
-  
+  <link rel="stylesheet" type="text/css" href="index.css">
 
 
 <style type="text/css">
-
-
   .modal {
    display: none;  /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -52,9 +49,6 @@ require "auth.php";
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 </style>
-
-<link rel="stylesheet" type="text/css" href="index.css">
-
 
 <script type="text/javascript">
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
@@ -214,9 +208,7 @@ require "auth.php";
               </li>
                   </ul>
           </li>
-
-            
-          <li class="nav-item has-treeview">
+<li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -263,7 +255,7 @@ require "auth.php";
             </a>
 
           </li>
-          <li class="nav-item">
+         <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -272,9 +264,7 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
-            
-            <li class="nav-item">
+           <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -284,13 +274,13 @@ require "auth.php";
             </a>
 
           </li>
-  
+         
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                New Matter
+                New Case
               </p>
             </a>
           </li>
@@ -476,7 +466,7 @@ require "auth.php";
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Latest Matters</h5>
+                <h5 class="card-title">Latest Cases</h5>
                 <div class="table-responsive">
                   <table class="table m-0">
                     <thead>
@@ -542,8 +532,8 @@ require "auth.php";
                 </div>
 
                 <div class="card-footer clearfix">
-                <a href="adv.php" class="btn btn-sm btn-info float-left"> New Matter</a>
-                <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Matters</a>
+                <a href="adv.php" class="btn btn-sm btn-info float-left"> New Case</a>
+                <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Cases</a>
               </div>
               <!-- /.card-header -->
               
@@ -565,8 +555,8 @@ require "auth.php";
               <div class="card-header">
                 <h3 class="card-title">Your Agenda</h3>
               </div>
-        
-<table class="content-table" id="table">
+              
+<table class="table table-striped table-bordered table-hover content-table" id="table">
             <thead>
                 <tr>
         <th>Task</th>
@@ -584,7 +574,6 @@ require "auth.php";
             </thead>
 
   
-
 
 
 <script type="text/javascript">
@@ -700,7 +689,6 @@ return current;
                   <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
 
 
-
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -758,17 +746,6 @@ return current;
   </div>
   
 </div>
-  <?php
-
-
-
-
-
-
-
-
-
-?>
 
 </div>
 
@@ -796,7 +773,7 @@ function closeForm4() {
 </html>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="kazi.php"> View My Schedule</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a> 
               </div>
             </div>
                 
@@ -831,7 +808,6 @@ function closeForm4() {
                       <i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" role="menu">
                       <a href="events.php" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
                       <div class="dropdown-divider"></div>
                       <a href="calendar.php" class="dropdown-item">View calendar</a>
                     </div>
@@ -848,8 +824,6 @@ function closeForm4() {
             </div>
             
       <!--/. container-fluid -->
-
-
 
 
     </section>
@@ -886,13 +860,45 @@ function closeForm4() {
 </table>
 
      <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="tvents.php"> View My Schedule</a> 
+                <i class="fas fa-plus"></i><a href="tvents.php"> View Office Events</a> 
               </div>
             </div>
             </form>   
 
  
+<div class="form-popup" id="myModal64">
+  <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');" method="POST" class="form-container">
+    <p><b>Update Event progress</b></p>
+<label for="tid"><b>Event Id</b></label>
+    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
 
+    <label for="descri"><b>Activity</b></label>
+    <input type="text" id="title3" placeholder="Update your task title" name="title" required>
+
+    <label for="prior"><b>Event Priority</b></label>
+                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">
+                    <option selected="selected">Select Event Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select> <br>
+
+<label for="rpt">Repeat Frequency</label>
+                  <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select> <br>    
+
+
+     
+<label for="descri"><b>User</b></label>
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
@@ -914,6 +920,53 @@ function closeForm4() {
     <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
 
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
+
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+    <button type="submit" name="submit" class="btn">Save</button>
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+   
+  </form>
+</div>
+   <div class="form-popup" id="myModal56">
+  <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
+    <p><b>Update your Event progress</b></p>
+<label for="tid"><b>Event Id</b></label>
+    <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
+
+    <label for="descri"><b>Activity</b></label>
+    <input type="text" id="title4" placeholder="Update your task title" name="title" required>
+
+    <label for="prior"><b>Event Priority</b></label>
+                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">
+                    <option selected="selected">Select Event Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select> <br>
+
+<label for="rpt">Repeat Frequency</label>
+                  <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select> <br>    
+
+
+     
+<label for="descri"><b>User</b></label>
+    <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
+
+    <label for="clino">location</label>
+                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
 
 
     <label for="clino">Event Progress</label>
@@ -928,8 +981,29 @@ function closeForm4() {
 
 
 
-    ?>
+
+    <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
+
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
+    <label for="rpt">Save</label>
+                  <select id="save" name="save1"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="One-time">One-time</option>
+                    <option value="Full-group">Full-group</option>
+                  </select> <br>
+
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+    <button type="submit" name="submit" class="btn">Save</button>
+    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+  </form>
+</div>
             <!-- /.card -->
+            
+            <!-- TABLE: LATEST ORDERS -->            <!-- /.card -->
       
           <div class="col-md-4">
             <!-- Info Boxes Style 2 -->

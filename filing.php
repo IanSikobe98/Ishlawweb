@@ -449,7 +449,7 @@ require "auth.php";
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
             <div class="card-header">
-              <h3 class="card-title">Add New File</h3>
+              <h3 class="card-title">Create New Category</h3>
 
               <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -465,17 +465,39 @@ require "auth.php";
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Case Number</label>
-                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
+                      <label>Category</label>
+                      <select class="form-control select2" id="cat" style="width: 100%;">
+                        <option selected="selected" >Select Filing category</option>
+                        <option value="1">Litigation</option>
+                        <option value="8">Conveyancing</option>
+                        <option value="9">Criminal Law</option>
+                        <option value="10">Foreign Law</option>
+                       <option value="11">Finance Law</option>
+                        <option value="12">Civil Law</option>
+                        <option value="13">Other Files</option>
 
+                      </select>
                     </div>
                     <!-- /.form-group -->
-              <div class="form-group">
-                        <label>Filed By:</label>
-                        <div class="select2-purple">
-                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name">
-                        </div>
-                      </div>
+                    <div class="form-group">
+                      <label>Parties</label>
+                      <input type="text" name="parties" class="form-control" required="" id="parties" placeholder="Please Enter parties">
+
+                    </div>
+                    <div class="form-group">
+                <label>Priority</label>
+                    <select id="priority" name="prio" required="" class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Select Priority</option>
+                      <option value="Urgent">Urgent</option>
+                      <option value="incoming">Incoming</option>
+                      <option value="others">Others</option>
+
+                    </select>
+                    </div>
+                    <div class="form-group">
+                      
+                    </div>
+                    
                     <!-- /.form-group -->
                   </div>
 
@@ -484,21 +506,25 @@ require "auth.php";
                     
                     <!-- /.form-group -->
                     <div class="form-group">
-                       <label>Physical Location</label>
-                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
+                      <label>Case Number</label>
+                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
 
                     </div>
                     <!-- /.form-group -->
-                  <div class="form-group">
-                        <label>Select File:</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" required="" name="myFile" id="myFile">
-                            <!-- <label class="custom-file-label" for="exampleInputFilxe">Choose file</label> -->
-                          </div>
+                    <div class="form-group">
+                      <label>Client</label>
+                      <input type="Text" class="form-control"  name="client" required="" id="client" placeholder="Please Enter client Name">
+
+                    </div>
+                    <div class="form-group">
+             <label>Status</label>
+                      <input type="text" required="" class="form-control" id="stat" name="stat" placeholder="Enter Case Status">
+
                         </div>
                       </div>
+                      <div class="form-group">
 
+                  </div>
                   </div>
                   <!-- /.col -->
                 </div>

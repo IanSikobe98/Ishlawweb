@@ -509,46 +509,7 @@ $(document).ready(function(){
                 </tr>
             </thead>
            <?php
-/*
-            $link = mysqli_connect("127.0.0.1", "root", "", "ishlaw");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}  
-               //search
-               //if (isset($_POST['username']) || isset($_POST['email'])) {
-           
-              $ReadSql = "SELECT tid,title,start,status,description,User,Priority,clino FROM tasks";
 
-
-                
-
-	
-      $result=mysqli_query($link,$ReadSql);
-      if (mysqli_num_rows($result) < 1) {
-                   echo "Error! No Records";
-                   exit();
-                }
-
-
- 	  
-	   	while($row=mysqli_fetch_array($result)){
-?>
-	   		<tr class="active">
-	   		<td><?php echo $row['tid'];?></td>
-	   		<td><?php echo $row['title'];?></td>
-	   		<td><?php echo $row['User'];?></td>
-	   		<td><?php echo $row['clino'];?></td>
-            <td><?php echo $row['start'];?></td>
-            <td><?php echo $row['Priority'];?></td>
-            <td><?php echo $row['description'];?></td>
-            <td><?php echo $row['status'];?></td>
-	   		
-
-
-	   		</tr>
-*/
 	  ?>
 <script src="services/taskmgmt/fetchtable.js" type="text/javascript">
 
@@ -559,23 +520,7 @@ if($link === false){
         </script> -->
 
 
-  $('#myTable').append(student); 
-$(document).ready(function(){
-  $('table#myTable').DataTable({
-
-"searching":true,
-"paging":true,
-"order":[[3,"desc"]],
-"ordering":true,
-
-
-
-
-  });
-
-
-  });
-
+  
       
         </script>
 

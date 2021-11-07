@@ -23,6 +23,7 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="styling.css">
+<script src="environment/location.js"></script>
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -422,7 +423,7 @@ require "auth.php";
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="tr.css">
+    
 <script type="text/javascript" src="globalfuncs.js"></script>
 
 
@@ -546,6 +547,15 @@ else{
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
+function openForm2() {
+  document.getElementById("myModal2").style.display = "block";
+}
+function openForm3() {
+  document.getElementById("myModal64").style.display = "block";
+}
+function openForm4() {
+  document.getElementById("myModal56").style.display = "block";
+}
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
@@ -668,7 +678,7 @@ function closeForm4() {
 
                   <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
-</div></div></div>
+</div></div>
 
  <div class="row">
               <div class="col-12 col-sm-6">
@@ -759,6 +769,9 @@ function closeForm4() {
                   </select> <br>
     </div></div></div>
        
+<div class="row">
+          <div class="col-12 col-sm-6">
+                <div class="form-group">
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
@@ -767,13 +780,7 @@ function closeForm4() {
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
-          </div></div>
-
-        <div class="col-12 col-sm-6">
-                <div class="form-group">
-
-                  
-                </div></div></div>
+          </div></div></div>
 
  <div class="row">
               <div class="col-12 col-sm-6">
@@ -881,7 +888,7 @@ function closeForm4() {
                 <div class="form-group">
  
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" readonly="" required="" >
   </div></div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
