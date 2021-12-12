@@ -146,24 +146,25 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
+             
              
                          </ul>
           </li>
@@ -425,12 +426,12 @@ require "auth.php";
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Clients Form</h1>
+              <h1>Staff Form</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active">Clients Form</li>
-                <li class="breadcrumb-item"><a href="">View Clients</a></li>
+                <li class="breadcrumb-item active">Staff Form</li>
+                <li class="breadcrumb-item"><a href="staff.php">View staff</a></li>
               </ol>
             </div>
           </div>
@@ -443,7 +444,7 @@ require "auth.php";
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
             <div class="card-header">
-              <h3 class="card-title">Register New Client</h3>
+              <h3 class="card-title">Register New Staff</h3>
 
               <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -460,7 +461,7 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                        <label> First Name</label>
-                      <input type="text" name="fname" class="form-control" id="parties" placeholder="Please enter the first name of the client" required="">
+                      <input type="text" name="fname" class="form-control" id="parties" placeholder="Please enter the first name " required="">
 
                     </div>
                     <!-- /.form-group -->
@@ -476,7 +477,7 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Last Name</label>
-                      <input type="text" class="form-control" name="second" id="file" placeholder="please enter the last name of the client" required="">
+                      <input type="text" class="form-control" name="second" id="file" placeholder="please enter the last name " required="">
                     </div>
                     <!-- /.form-group -->
                     <div class="form-group">
@@ -494,9 +495,14 @@ require "auth.php";
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
-                      <label>Team Id</label>
-                      <input type="number" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" required="">
-
+                      <label>Team Role</label>
+                      <select class="form-control select2" id="team" style="width: 100%;">
+                        <option selected="selected" >Select Team Role</option>
+                        <option value="1">Lawyer</option>
+                        <option value="8">Admin</option>
+                        <option value="9">Receptionist</option>
+                        <option value="10">Clerk</option>
+                      </select>
                     </div>
                     <!-- /.form-group -->
                   </div>

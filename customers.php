@@ -1,38 +1,36 @@
-<?php
-
+     <?php
 require "auth.php";
 ?>
+  
 <!DOCTYPE html>
-<html>
+<html lang="en">  
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ISHLAW</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <title>ISHLAW</title>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="class.css" type="text/css" />
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head><body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+</head>
+<body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -42,6 +40,38 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff.." title="Type in a name">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="jquery-1.2.6.min.js"></script>
+    
+    <script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script>
+  $(function(){
+    $('exe').tablesorter({
+      widgets        : ['zebra', 'columns'],
+      usNumberFormat : false,
+      sortReset      : true,
+      sortRestart    : true
+    });
+  });
+  </script>
+
+
+      <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#exe tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+</script>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="logout.php" class="nav-link">Logout</a>
       </li>
@@ -135,7 +165,7 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-                    <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
@@ -160,7 +190,7 @@ require "auth.php";
                   <p>View Clients</p>
                 </a>
               </li>
-                   
+                 
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -179,7 +209,7 @@ require "auth.php";
                 </a>
               </li>
               <li class="nav-item visitvi1 " id="visitvi">
-                <a href="roster.php" class="nav-link">
+                <a href="tvents.php" class="nav-link">
                   <i class="far fa-user-circle"></i>
                   <p>View Visitors</p>
                 </a>
@@ -413,150 +443,83 @@ require "auth.php";
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          
-          
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Compose</h1>
+            <h4>Current Clients</h4>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Compose</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Staff</li>
             </ol>
           </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <a href="messages.php" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Folders</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body p-0">
-                <ul class="nav nav-pills flex-column">
-                  <li class="nav-item active">
-                    <a href="messages.php" class="nav-link">
-                      <i class="fas fa-inbox"></i> Inbox
-                      <span class="badge bg-primary float-right">12</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-envelope"></i> Sent
-                    </a>
-                  </li>
-                  
-                </ul>
-              </div>
-              <!-- /.card-body -->
-            </div>
-             <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        <div class="col-md-9">
-          <div class="card card-primary card-outline">
-            <table id="exe" class="table table-hover table-striped">
-              <tbody>
-            <div class="card-header">
-              <h3 class="card-title">Read Message</h3>
-
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-              <div class="mailbox-read-info">
-                <tr>
-                  </div>
-                       <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-           $ReadSql = "SELECT * FROM messages";
+        </Section>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-                
 
-  
-      $result=mysqli_query($link,$ReadSql);
-      while($row=mysqli_fetch_array($result)){
-?>
-                <div class="form-group">
-                <input type="text" name="to" required="" class="form-control" <?php echo $row['Category'];?> placeholder="From:<?php echo $row['party'];?>"></h6>
-                </div>
-              </tr>
-              <!-- /.mailbox-read-info -->
-              
-                <!-- /.btn-group -->
-                
-              </div>
-              <!-- /.mailbox-controls -->
-              <div class="mailbox-read-message">
-                <?php echo $row['compose'];?>
-              </div>
-              <?php     
-
-      }
-    ?>
-              <!-- /.mailbox-read-message -->
-            </div>
-            <!-- /.card-body -->
-           
-               
-            <!-- /.card-footer -->
-            <div class="card-footer">
-              <div class="float-right">
-                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i><a href="compose.php"> Reply</a></button>
-                
-              </div>
-              <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-              
-            </div>
-            <!-- /.card-footer -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
+    
+      <table class="table table-striped table-bordered table-hover tablesorter" id="exe">
+    <thead >
+      <tr>
+        <th class="w3-button table-column">First Name</th>
+        <th class="w3-button table-column">Last Name</th>
+        <th >Phone Number <span class="glyphicon glyphicon-chevron-down"></span> </th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        
+    </thead>
+    <tbody>
+      <tr class="warning">
+        <td>John Downy</td>
+        <td>0716587214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2022 10:00 a.m</td>
+        
+      </tr>
+      <tr>
+         <td>John Downy</td>
+        <td>0716527214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2021 10:00 a.m</td>
+        
+      </tr>
+      <tr>
+         <td>John Downy</td>
+        <td>0716527214</td>
+        <td>john@example.com</td>
+        <td>I need an appointment to settle my case tomorrow</td>
+        <td>12.01-2021 10:00 a.m</td>
+       
+       
+      </tr>
     </tbody>
   </table>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+  <script>
+    $(document).ready(function() 
+        { 
+            $("#exe").tablesorter({sortList: [[3,1],[2,0]]}); 
+        } 
+    );
+    </script>
+</div>
+
+</section>
+</div>
+
   <footer class="main-footer">
-    <div class="">
-       Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+    <div class="float-right d-none d-sm-block">
+      
+    </div>
+     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 
   </footer>
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -567,10 +530,31 @@ require "auth.php";
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $('#exe').tablesorter({
+          sortList:[[0,0,[1,0]]]
+        });
+
+
+    });
+
+
+
+
+  </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="sort.js"></script>
+  
 <script type="text/javascript">
   function hidefunc(){
     
@@ -646,8 +630,8 @@ document.getElementById("visit").style.display ="block";
     }
   }
   
-</script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-</body>
+</script> 
+
+</body> 
+
 </html>

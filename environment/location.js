@@ -1,9 +1,9 @@
 
 var Tasks =
 {
-    recurring : 'http://localhost/ishfinal/API/recta.php',
-    nonrecurring : 'http://localhost/Ishlawwebv2/ishfinal/API/daynoreta.php',
-    calnonrecurring: 'http://localhost/Ishlawwebv2/ishfinal/API/nonrecta.php'
+    recurring : '/ishfinal/API/recta.php',
+    nonrecurring : '/ishfinal/API/daynoreta.php',
+    calnonrecurring: '/ishfinal/API/nonrecta.php'
 
 
 };
@@ -11,9 +11,9 @@ var Tasks =
 var Events =
 {
 
-    recurring : 'http://localhost/ishfinal/API/receve.php',
-    nonrecurring : 'http://localhost/ishfinal/API/daynonrecev.php',
-    calnonrecurring: 'http://localhost/Ishlawwebv2/ishfinal/API/nonrecev.php'
+    recurring : '/ishfinal/API/receve.php',
+    nonrecurring : '/ishfinal/API/daynonrecev.php',
+    calnonrecurring: '/ishfinal/API/nonrecev.php'
 
 };
 

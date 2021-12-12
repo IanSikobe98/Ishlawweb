@@ -1,9 +1,9 @@
-<?php
-
+ <?php
 require "auth.php";
-?>
+ ?> 
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,24 +15,34 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head><body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <script src="environment/location.js"></script>
+  <script src="globalfuncs.js"></script>
+
+  
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+
+</head>
+
+<body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -41,7 +51,6 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
       <li class="nav-item d-none d-sm-inline-block">
         <a href="logout.php" class="nav-link">Logout</a>
       </li>
@@ -82,13 +91,12 @@ require "auth.php";
       </div>
 
       <!-- Sidebar Menu -->
-<nav class="mt-2">
+           <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
-              <style type="text/css" src="ry.css" ></style>
                 
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -127,7 +135,7 @@ require "auth.php";
             </a>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+                   <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -160,7 +168,7 @@ require "auth.php";
                   <p>View Clients</p>
                 </a>
               </li>
-                   
+                    
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -235,7 +243,7 @@ require "auth.php";
             </a>
 
           </li>
-          <li class="nav-item">
+           <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -243,10 +251,9 @@ require "auth.php";
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
-          </li>
-          <li class="">
-            
-            <li class="nav-item">
+          </li> 
+
+           <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -257,7 +264,10 @@ require "auth.php";
 
           </li>
 
-                      
+
+                    
+            
+          </li>
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -414,163 +424,325 @@ require "auth.php";
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          
-          
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Compose</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Compose</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <a href="messages.php" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Folders</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body p-0">
-                <ul class="nav nav-pills flex-column">
-                  <li class="nav-item active">
-                    <a href="messages.php" class="nav-link">
-                      <i class="fas fa-inbox"></i> Inbox
-                      <span class="badge bg-primary float-right">12</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-envelope"></i> Sent
-                    </a>
-                  </li>
-                  
-                </ul>
-              </div>
-              <!-- /.card-body -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Filing Form</h1>
             </div>
-             <!-- /.card -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Filing Form</li>
+              </ol>
+            </div>
           </div>
-          <!-- /.col -->
-        <div class="col-md-9">
-          <div class="card card-primary card-outline">
-            <table id="exe" class="table table-hover table-striped">
-              <tbody>
-            <div class="card-header">
-              <h3 class="card-title">Read Message</h3>
+        </div><!-- /.container-fluid -->
+      </section>
 
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
-              </div>
+      <!-- Main content -->
+       <section class="content">
+        <div class="container-fluid">
+          <!-- SELECT2 EXAMPLE -->
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Create New Category</h3>
+
+              <!-- <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                    class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                    class="fas fa-times"></i></button>
+              </div> -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body p-0">
-              <div class="mailbox-read-info">
-                <tr>
+          
+            <form id="exe">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <select class="form-control select2" id="cat" style="width: 100%;">
+                        <option selected="selected" >Select Filing category</option>
+                        <option value="1">Litigation</option>
+                        <option value="8">Conveyancing</option>
+                        <option value="9">Criminal Law</option>
+                        <option value="10">Foreign Law</option>
+                       <option value="11">Finance Law</option>
+                        <option value="12">Civil Law</option>
+                        <option value="13">Other Files</option>
+
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Parties</label>
+                      <input type="text" name="parties" class="form-control" required="" id="parties" placeholder="Please Enter parties">
+
+                    </div>
+                    <div class="form-group">
+                <label>Priority</label>
+                    <select id="priority" name="prio" required="" class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Select Priority</option>
+                      <option value="Urgent">Urgent</option>
+                      <option value="incoming">Incoming</option>
+                      <option value="others">Others</option>
+
+                    </select>
+                    </div>
+                    <div class="form-group">
+                      
+                    </div>
+                    
+                    <!-- /.form-group -->
                   </div>
-                       <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-           $ReadSql = "SELECT * FROM messages";
 
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                    
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Case Number</label>
+                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
 
-                
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Client</label>
+                      <input type="Text" class="form-control"  name="client" required="" id="client" placeholder="Please Enter client Name">
 
-  
-      $result=mysqli_query($link,$ReadSql);
-      while($row=mysqli_fetch_array($result)){
-?>
-                <div class="form-group">
-                <input type="text" name="to" required="" class="form-control" <?php echo $row['Category'];?> placeholder="From:<?php echo $row['party'];?>"></h6>
+                    </div>
+                    <div class="form-group">
+             <label>Status</label>
+                      <input type="text" required="" class="form-control" id="stat" name="stat" placeholder="Enter Case Status">
+
+                        </div>
+                      </div>
+                      <div class="form-group">
+
+                  </div>
+                  </div>
+                  <!-- /.col -->
                 </div>
-              </tr>
-              <!-- /.mailbox-read-info -->
-              
-                <!-- /.btn-group -->
-                
-              </div>
-              <!-- /.mailbox-controls -->
-              <div class="mailbox-read-message">
-                <?php echo $row['compose'];?>
-              </div>
-              <?php     
+                <!-- /.row -->
 
-      }
-    ?>
-              <!-- /.mailbox-read-message -->
-            </div>
-            <!-- /.card-body -->
-           
-               
-            <!-- /.card-footer -->
-            <div class="card-footer">
-              <div class="float-right">
-                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i><a href="compose.php"> Reply</a></button>
-                
-              </div>
-              <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-              
-            </div>
-            <!-- /.card-footer -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
+ 
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-6">
+                      
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  
+                  <!-- /.col -->
+                </div>
+
+                <!-- /.form-group -->
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    
+                    <!-- /.form-group -->
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-6">
+                      
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12 col-sm-6">
+                      
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+            <script src="services/filing/postfiles.js" type="text/javascript"> </script>
+
+
+<!-- 
+            <script type="text/javascript">
+              const form = document.getElementById('exe');
+              form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var selectedFile = document.getElementById('myFile').files[0];
+                var filedBy = document.getElementById('by').value;
+                var clientName = document.getElementById('client').value;
+                var caseNumber = document.getElementById('case').value;
+                var status = document.getElementById('stat').value;
+                var priority = document.getElementById('priority').value;
+                var physicalLocation = document.getElementById('location').value;
+                var parties = document.getElementById('parties').value;
+                var fileName = selectedFile.name;
+                var description = "";
+                var version = "";
+                var folderId = 2;
+                var data = new FormData;
+                data.append("document", selectedFile);
+                data.append("name", filedBy);
+                data.append("description", `client: ${clientName}, case: ${caseNumber}, status: ${status}, parties: ${parties}`);
+                data.append("version", 1);
+                data.append("PhysicalLocation", physicalLocation);
+                data.append("Priority", priority);
+                data.append("FolderId", folderId);
+                console.log(data)
+                // make API call to submit file
+                fetch('http://18.118.17.69:4000/files/api/v1/file_categories', {
+                  method: 'POST',
+                  body: data
+                }).then(function (response) {
+                  if (response.status === 200) {
+                    alert("File upload successful");
+                  }
+                  else
+                  {
+                    window.alert("failure");
+                  }
+                })
+              })
+            </script>
+ -->          </div>
+        </form>
       </div>
-    </tbody>
-  </table>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="">
-       Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+          <!-- /.content-wrapper -->
+          <footer class="main-footer">
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 
+    <div class="float-right d-none d-sm-block">
+      
   </footer>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    
+          <!-- Control Sidebar -->
+          <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+          </aside>
+          <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+        <!-- jQuery -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Select2 -->
+        <script src="plugins/select2/js/select2.full.min.js"></script>
+        <!-- Bootstrap4 Duallistbox -->
+        <script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+        <!-- InputMask -->
+        <script src="plugins/moment/moment.min.js"></script>
+        <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+        <!-- date-range-picker -->
+        <script src="plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap color picker -->
+        <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Bootstrap Switch -->
+        <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        <!-- Page script -->
+        <script>
+          $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+              theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date range picker
+            $('#reservationdate').datetimepicker({
+              format: 'L'
+            });
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+              timePicker: true,
+              timePickerIncrement: 30,
+              locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+              }
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+              {
+                ranges: {
+                  'Today': [moment(), moment()],
+                  'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                  'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                  'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                  'This Month': [moment().startOf('month'), moment().endOf('month')],
+                  'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+              },
+              function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+              }
+            )
+
+            //Timepicker
+            $('#timepicker').datetimepicker({
+              format: 'LT'
+            })
+
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox()
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
+
+            $('.my-colorpicker2').on('colorpickerChange', function (event) {
+              $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+            });
+
+            $("input[data-bootstrap-switch]").each(function () {
+              $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            });
+
+          })
+        </script>
+
 <script type="text/javascript">
   function hidefunc(){
     
@@ -647,7 +819,6 @@ document.getElementById("visit").style.display ="block";
   }
   
 </script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 </body>
+
 </html>

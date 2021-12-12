@@ -316,32 +316,32 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+             
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -649,7 +649,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="start">Start Date</label>
-                 <input type="date" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
+                 <input type="datetime-local" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
                                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -727,7 +727,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                  <label for="start">End Date</label>
-                 <input type="date" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
+                 <input type="datetime-local" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
 
 
                 

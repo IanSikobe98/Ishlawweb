@@ -212,7 +212,7 @@ var modal = document.getElementById("myModal2");
 
 
 document.getElementById("hotodo1").value= hotodo[0] ;
-  document.getElementById("comment1").value= comment[0] ;
+ // document.getElementById("comment1").value= comment[0] ;
 
   document.getElementById("dueda1").value= res;
   document.getElementById("descri1").value= descri[0] ;

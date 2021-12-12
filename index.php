@@ -11,6 +11,26 @@ require "auth.php";
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+ 
+   <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -20,7 +40,6 @@ require "auth.php";
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
 
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
   <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
@@ -32,12 +51,10 @@ require "auth.php";
   <script src="services/taskmgmt/recevagen.js"></script>
   <script src="services/taskmgmt/formfiller.js"></script>
   <script src="globalfuncs.js"></script>
-  
+  <link rel="stylesheet" type="text/css" href="index.css">
 
 
 <style type="text/css">
-
-
   .modal {
    display: none;  /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -52,9 +69,6 @@ require "auth.php";
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 </style>
-
-<link rel="stylesheet" type="text/css" href="index.css">
-
 
 <script type="text/javascript">
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
@@ -170,7 +184,7 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "newcli">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
@@ -182,7 +196,7 @@ require "auth.php";
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
+              <li class="nav-item "  id="cliview">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
@@ -214,9 +228,7 @@ require "auth.php";
               </li>
                   </ul>
           </li>
-
-            
-          <li class="nav-item has-treeview">
+<li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -263,7 +275,7 @@ require "auth.php";
             </a>
 
           </li>
-          <li class="nav-item">
+         <li class="nav-item">
             <a href="messages.php" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
@@ -272,9 +284,7 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
-            
-            <li class="nav-item">
+           <li class="nav-item">
             <a href="appointments.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-check"></i>
               <p>
@@ -284,13 +294,13 @@ require "auth.php";
             </a>
 
           </li>
-  
+         
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                New Matter
+                New Case
               </p>
             </a>
           </li>
@@ -476,9 +486,9 @@ require "auth.php";
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Latest Matters</h5>
+                <h5 class="card-title">Latest Cases</h5>
                 <div class="table-responsive">
-                  <table class="table m-0">
+                  <table class="table m-0" id="exe">
                     <thead>
                     <tr>
                       <th>Reference</th>
@@ -542,8 +552,8 @@ require "auth.php";
                 </div>
 
                 <div class="card-footer clearfix">
-                <a href="adv.php" class="btn btn-sm btn-info float-left"> New Matter</a>
-                <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Matters</a>
+                <a href="adv.php" class="btn btn-sm btn-info float-left"> New Case</a>
+                <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Cases</a>
               </div>
               <!-- /.card-header -->
               
@@ -557,55 +567,261 @@ require "auth.php";
         <!-- /.row -->
 
         <!-- Main row -->
-        <div class="row">
+        
+                
+             <div class="row">
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX panelE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Your Agenda</h3>
+                <h3 class="card-title">Upcoming Events</h3>
               </div>
-        
-<table class="content-table" id="table">
+
+<table class="content-table" id="events">
             <thead>
                 <tr>
-        <th>Task</th>
+        
         <th>Activity</th>
-        <th>Due Date</th>
         <th>Priority</th>
-        <th>How To</th>
+        <th>User</th>
+        <th>Location</th>
         <th>Progress</th>
-        <th>Status</th>
-        <th>Comments</th>
+        <th>Client</th>
+        <th>Start Time</th>
+        <th>End Time</th>
         <th>Action</th>
 
         
                 </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+             <tr>
+                 <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
 
-  
+
+             <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+<tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>22-02.2022 10.00 AM</td>
+                <td>haha</td>
+              </tr>
 
 
 
-<script type="text/javascript">
-
-function getnonrec (input) {
-
-var current = new Date(input);
-current = current.toLocaleString()
-console.log(current);
-return current;
-}
 
 
-</script>
-<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
-
-
+            </tbody>
+           
 
 
 </table>
-</form>   
+             <div class="card-footer clearfix">
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a> 
+              </div>
+
+  
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->
   <form  id ="ianform2" method="POST" class="form-container" onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');">
@@ -700,7 +916,6 @@ return current;
                   <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
 
 
-
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -758,17 +973,6 @@ return current;
   </div>
   
 </div>
-  <?php
-
-
-
-
-
-
-
-
-
-?>
 
 </div>
 
@@ -795,9 +999,7 @@ function closeForm4() {
 
 </html>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="kazi.php"> View My Schedule</a> 
-              </div>
+              
             </div>
                 
             
@@ -831,7 +1033,6 @@ function closeForm4() {
                       <i class="fas fa-bars"></i></button>
                     <div class="dropdown-menu" role="menu">
                       <a href="events.php" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
                       <div class="dropdown-divider"></div>
                       <a href="calendar.php" class="dropdown-item">View calendar</a>
                     </div>
@@ -850,49 +1051,106 @@ function closeForm4() {
       <!--/. container-fluid -->
 
 
-
-
     </section>
-                
-             <div class="row">
+               <div class="">
           <!-- Left col -->
-          <div class="col-md-8">
+          <div class="">
             <!-- MAP & BOX panelE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Upcoming Events</h3>
+                <h3 class="card-title">Your Agenda</h3>
               </div>
-
-<table class="content-table" id="events">
+              
+<table class="table table-striped table-bordered table-hover content-table" id="table">
             <thead>
                 <tr>
-        <th>ID</th>
+        <th>Task</th>
         <th>Activity</th>
+        <th>Due Date</th>
         <th>Priority</th>
-        <th>User</th>
-        <th>Location</th>
+        <th>How To</th>
         <th>Progress</th>
-        <th>Client</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Status</th>
+        <th>Comments</th>
         <th>Action</th>
 
         
                 </tr>
             </thead>
-           
+
+<tbody>
+
+<script type="text/javascript">
+
+function getnonrec (input) {
+
+var current = new Date(input);
+current = current.toLocaleString()
+console.log(current);
+return current;
+}
+</script>
+</tbody>
+<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
+
 
 
 </table>
+<script type="text/javascript">
+ 
+$(document).ready( function () {
+    $('#table').DataTable();
 
+   
+} );
+ </script>
+ <script type="text/javascript">
+$(document).ready( function () {
+    $('#events').DataTable();
+       
+} );
+ </script>
+</form> 
      <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="tvents.php"> View My Schedule</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Events</a> 
               </div>
             </div>
             </form>   
 
  
+<div class="form-popup" id="myModal64">
+  <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');" method="POST" class="form-container">
+    <p><b>Update Event progress</b></p>
+<label for="tid"><b>Event Id</b></label>
+    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
 
+    <label for="descri"><b>Activity</b></label>
+    <input type="text" id="title3" placeholder="Update your task title" name="title" required>
+
+    <label for="prior"><b>Event Priority</b></label>
+                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">
+                    <option selected="selected">Select Event Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select> <br>
+
+<label for="rpt">Repeat Frequency</label>
+                  <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select> <br>    
+
+
+     
+<label for="descri"><b>User</b></label>
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
@@ -914,6 +1172,53 @@ function closeForm4() {
     <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
 
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
+
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+    <button type="submit" name="submit" class="btn">Save</button>
+    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+   
+  </form>
+</div>
+   <div class="form-popup" id="myModal56">
+  <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
+    <p><b>Update your Event progress</b></p>
+<label for="tid"><b>Event Id</b></label>
+    <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
+
+    <label for="descri"><b>Activity</b></label>
+    <input type="text" id="title4" placeholder="Update your task title" name="title" required>
+
+    <label for="prior"><b>Event Priority</b></label>
+                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">
+                    <option selected="selected">Select Event Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select> <br>
+
+<label for="rpt">Repeat Frequency</label>
+                  <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select> <br>    
+
+
+     
+<label for="descri"><b>User</b></label>
+    <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
+
+    <label for="clino">location</label>
+                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
 
 
     <label for="clino">Event Progress</label>
@@ -928,8 +1233,29 @@ function closeForm4() {
 
 
 
-    ?>
+
+    <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
+
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
+    <label for="rpt">Save</label>
+                  <select id="save" name="save1"  class="form-control select2" style="" required="">
+                    <option selected="selected">Select Task Frequency</option>
+                    <option value="One-time">One-time</option>
+                    <option value="Full-group">Full-group</option>
+                  </select> <br>
+
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+    <button type="submit" name="submit" class="btn">Save</button>
+    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+  </form>
+</div>
             <!-- /.card -->
+            
+            <!-- TABLE: LATEST ORDERS -->            <!-- /.card -->
       
           <div class="col-md-4">
             <!-- Info Boxes Style 2 -->
@@ -961,7 +1287,13 @@ function closeForm4() {
 <!-- the rrule-to-fullcalendar connector. must go AFTER the rrule lib -->
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.2.0/main.global.min.js'></script>
  <!-- <script type="text/javascript" src="http://localhost/ishfinal/Calender/modi.js"></script> -->
+      
 
+
+
+
+
+      
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -1043,7 +1375,19 @@ eventDidMount: function(info) {
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
 <script type="text/javascript">
 
   //Window on load function
@@ -1052,12 +1396,13 @@ var reloading = sessionStorage.getItem("submitsuccess");
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
-             document.getElementById('myModal').style.display = 'block';
+             swal({
+  title: 'Great!',
+  text: 'Task Updated successfully!',
+  icon: 'success',
+  button: 'Close',
+});      
 
-            document.getElementById('status').innerHTML = 'Tasks successfully saved';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
             }
 
     

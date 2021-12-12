@@ -23,6 +23,7 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="styling.css">
+<script src="environment/location.js"></script>
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -133,20 +134,20 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
@@ -422,7 +423,7 @@ require "auth.php";
 
  <!-- Boootstrap and css links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="tr.css">
+    
 <script type="text/javascript" src="globalfuncs.js"></script>
 
 
@@ -546,7 +547,9 @@ else{
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
-
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
@@ -587,59 +590,28 @@ function closeForm4() {
       <div class="form-popup" id="myForm">
   <form onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');" id ="ianform2"method="POST" class="form-container" >
     <p><b>Update your task progress</b></p>
-    <div class="card-body">
-      <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-            
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
-  </div></div>
-    
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title" placeholder="Update your task title" name="title" required>
-  </div></div></div>
- 
-    <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-  
+<div>
+     <label for="dueda"><b>Due Date</b></label>
+    <input type="Date" id="dueda"placeholder="Update your task progress" name="start" required>
+</div><br>
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
-  </div></div>
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
-                <label for="dueda">Due Date</label>
-                 <input type="date" id="dueda" class="form-control" id="start" required="" name="start" placeholder="Update your task progress">
 
-  </div></div></div>
-  
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
 
-</div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2"  id="clino" name="clino" placeholder="Enter Client's Name">
-  </div></div></div> 
-  <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
 <label for="clino">How To</label>
                   <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">
-        </div></div>
 
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
@@ -648,11 +620,6 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-        </div></div></div>
-
- <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
@@ -662,17 +629,9 @@ function closeForm4() {
                     <option value="Completed">Completed</option>
                   </select> <br>
 
-              </div></div>
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
-
                   <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
-</div></div></div>
 
- <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
 
               <label for="rpt">Repeat Frequency</label>
@@ -685,71 +644,40 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>   
-            </div></div>
-        <div class="col-12 col-sm-6">
-                <div class="form-group">  
+                  </select> <br>    
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
-        </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 <div class="form-popup" id="myModal2">
   <form id ="ianform" onsubmit="return sendreload(FormSubmit.agendapost,'ianform');"  method="POST"  class="form-container">
-    <p><b>Update your task progress</b></p>
-<div class="card-body">
-      <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-
+   <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
-  </div></div>
 
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title1" placeholder="Update your task title" name="title" required>
-  </div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+<div>
      <label for="dueda"><b>Due Date</b></label>
-    <input type="date" id="dueda1"placeholder="Update your task progress" name="start" class="form-control" required="">
-  </div></div>
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
+    <input type="Date" id="dueda1"placeholder="Update your task progress" name="start" required=""><br><br>
+  </div>
 
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
 
-  </div></div></div>
-
-  <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
-</div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
+
 
     <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" id="clino1" required="" name="clino" placeholder="Enter Client's Name">
-        </div></div></div>
-    <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+                  <input type="text" class="form-control select2" id="clino1"  name="clino" placeholder="Enter Client's Name">
+
 <label for="clino">How To</label>
                   <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">
-            </div></div>
 
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -757,8 +685,6 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-    </div></div></div>
-       
 
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
@@ -767,17 +693,10 @@ function closeForm4() {
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
-          </div></div>
 
-        <div class="col-12 col-sm-6">
-                <div class="form-group">
+                  <label for="clino">General Comments</label>
+                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">
 
-                  
-                </div></div></div>
-
- <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
@@ -789,22 +708,18 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br> 
-            </div></div>  
-           <div class="col-12 col-sm-6">
-                <div class="form-group">
+                  </select> <br>   
 
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
-                     
- 
-</div></div></div>
- <label for="rpt">Save</label>
+                  <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
-                  </select> <br>
+                  </select> <br>    
+ 
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
   </form>
@@ -833,23 +748,12 @@ function closeForm4() {
    
 
   
-    <p><b>Update Event Progress</b></p>
-    <div class="card-body">
-      <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+    <p><b>Update your Event progress</b></p>
 <label for="tid"><b>Event Id</b></label>
-
     <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
-  </div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
+
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title3" placeholder="Update your task title" name="title" required>
-  </div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior3" name="prio"  required="" class="form-control select2" style="">
@@ -858,9 +762,6 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-          </div></div>
-      <div class="col-12 col-sm-6">
-                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
@@ -872,63 +773,39 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>
-          </div></div></div>
+                  </select> <br>    
 
 
-    <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
- 
+     
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
-  </div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
-        </div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
-          </div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
-  </div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
-     
-</div></div>
 
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-
-     <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
-</div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="dueda"><b>Color</b></label>
+    <label for="dueda"><b>Color</b></label>
     <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
-</div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+
+
+
+
+
+    <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
+
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
+
 
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
-            </div></div></div>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
    
@@ -938,26 +815,12 @@ function closeForm4() {
 
   <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
 
-
- 
-    <p><b>Update Event Progress</b></p>
-    <div class="card-body">
-      <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+   <p><b>Update Event progress</b></p>
 <label for="tid"><b>Event Id</b></label>
-
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
-  </div></div>
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title4" placeholder="Update your task title" name="title" required>
-  </div></div></div>
-  <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="prior"><b>Event Priority</b></label>
                   <select id="prior4" name="prio"  required="" class="form-control select2" style="">
@@ -966,9 +829,6 @@ function closeForm4() {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-                </div></div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
 
 <label for="rpt">Repeat Frequency</label>
                   <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
@@ -980,81 +840,43 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>   
-          </div></div></div> 
-
- <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
+                  </select> <br>    
      
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
-  </div></div>
-  <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
-</div></div></div>
 
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
 
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Enter Client's Name">
-          </div></div>
 
-       <div class="col-12 col-sm-6">
-                <div class="form-group">
                   <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino4"placeholder="Update your task progress" name="clino" required>
-  </div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
-   
-</div></div>
 
- <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    
-</div></div></div>
-<div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-
- <label for="dueda"><b>Color</b></label>
+    <label for="dueda"><b>Color</b></label>
     <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
 
-</div></div>
- <div class="col-12 col-sm-6">
-                <div class="form-group">
+    <label for="dueda"><b>Start Time</b></label>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
 
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
-    
-    </div></div></div>
-
-  <div class="row">
-              <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="rpt">Save</label>
+    <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
+    <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
 
-                  </div></div></div>
+
+                   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>
-               
+                
 </div>
 
 

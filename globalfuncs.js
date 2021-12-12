@@ -1,4 +1,5 @@
 //Submit form function
+
 function sendreload(urlpost,postid) {
 
     $.ajax
@@ -84,13 +85,16 @@ function formreload (){
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
-             document.getElementById('myModal').style.display = 'block';
+            swal({
+  title: 'Great!',
+  text: 'Task Updated successfully!',
+  icon: 'success',
+  button: 'Close',
+});                   
 
-            document.getElementById('status').innerHTML = 'Tasks successfully saved';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
             }
+    else{
+    }
 }
  
 
