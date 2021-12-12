@@ -441,7 +441,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="litigation.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(1);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -457,7 +457,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(3);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -474,7 +474,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="categories.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(4);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -490,7 +490,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="files.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(5);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -514,7 +514,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="case1.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(6);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -532,7 +532,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="core.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(7);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -549,7 +549,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="misc.php" class="small-box-footer">
+              <a href="cases.php" class="small-box-footer" onclick="return setfiles(8);">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -679,6 +679,15 @@ document.getElementById("visit").style.display ="block";
   }
 
 
+  function setfiles(id){
+
+      sessionStorage.removeItem("categoryid");
+      sessionStorage.setItem("categoryid", id);
+      console.log(id);
+      // sessionStorage.setItem("casename",name);
+      // console.log(name);
+
+  }
   
 </script>
 

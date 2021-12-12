@@ -10,7 +10,7 @@ require "auth.php";
 
   <title>ISHLAW</title>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -23,9 +23,25 @@ require "auth.php";
 
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
   <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
-  <script src="environment/location.js"></script>
-  <script src="services/taskmgmt/rectaagen.js"></script>
+<!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.9/css/autoFill.dataTables.min.css">-->
+<!--    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
+<!--    <script src="https://cdn.datatables.net/autofill/2.3.9/js/dataTables.autoFill.min.js" type="text/javascript"></script>-->
+
+
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+
+    <script src="environment/location.js"></script>
+
   <script src="services/taskmgmt/nonrectaagen.js"></script>
+    <script src="services/taskmgmt/rectaagen.js"></script>
   <script src="services/taskmgmt/nonrecevagen.js"></script>
   <script src="services/taskmgmt/nonrecevagen.js"></script>
   <script src="services/taskmgmt/recevagen.js"></script>
@@ -164,13 +180,13 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
+              <li class="nav-item "  id="">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
@@ -594,6 +610,13 @@ return current;
 
 
 </table>
+
+<!--                <script type="text/javascript">-->
+<!--                    $(document).ready( function () {-->
+<!--                        $('#table').DataTable();-->
+<!---->
+<!--                    } );-->
+<!--                </script>-->
 </form>   
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->

@@ -50,6 +50,7 @@ $data = <<<DATA
 
 }
 DATA;
+echo $data;
 if( isset($data)){
     // echo "Records added successfully.";
      
@@ -64,10 +65,10 @@ $resp = curl_exec($curl);
 
 curl_close($curl);
 
-$resp = json_decode($resp);
-// echo $resp->message;
-
-if (empty($resp->message)) {
+//$resp = json_decode($resp);
+// echo $resp;
+    $arr = json_decode($resp, true);
+if (empty($arr["message"])) {
   echo "<script type='text/javascript'>
          
      
@@ -85,23 +86,24 @@ if (empty($resp->message)) {
 }
 else
 {
-  echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
+    header($_SERVER["SERVER_PROTOCOL"] . ' 400 '.$arr["message"], true, 500);
+//    echo "<script type='text/javascript'>
+//
+//
+//     document.getElementById('myModal').style.display = 'block';
+//
+//            document.getElementById('status').innerHTML = 'Registration error please retry. .';
+//            document.getElementById('status3').innerHTML = '.<br><br>';
+//
+//      document.getElementById('status').style.color= 'red';
 
       
 
 
-</script>";
+//</script>";
 }
 }
-header('location: ../../../index.php');
+//header('location: ../../../index.php');
 }
 
 

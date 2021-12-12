@@ -450,14 +450,16 @@ $(document).ready(function(){
               <table id="ftable" class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                                        <th>Client</th>
+<!--                                        <th>Client</th>-->
                     <th>Case Number</th>
-                    <th>Parties</th>
+                      <th> File Name</th>
+<!--                    <th>Parties</th>-->
                     <th>Filed By</th>
-                    <th>Status</th>
-                    <th>Filing date</th>
+                      <th>Filed On</th>
+<!--                    <th>Status</th>-->
+<!--                    <th>Filing date</th>-->
                     <th>Physical location</th>
-                    <th>Priority</th>
+<!--                    <th>Priority</th>-->
                     <th>File</th>
                   </tr>
                 </thead>

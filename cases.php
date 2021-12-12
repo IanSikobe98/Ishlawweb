@@ -450,30 +450,19 @@ $(document).ready(function(){
               <table id="ftable" class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                                        <th>Client</th>
                     <th>Case Number</th>
+                    <th>Client</th>
                     <th>Parties</th>
-                    <th>Filed By</th>
                     <th>Status</th>
-                    <th>Filing date</th>
+                    <!-- <th>Filing date</th> -->
                     
                     <th>Priority</th>
                     
                   </tr>
                 </thead>
-                <tbody>
-                  <td><a href="Conveyancing.php">Clino</a></td>
-                  <td>12345</td>
-                  <td>Clino vs Lsk</td>
-                  <td>George</td>
-                  <td>Court</td>
-                  <td>01-01-2021</td>
-                  <td>Shelve</td>                  
-                  
 
-                </tbody>
 
-<script src="services/filing/civil.js"></script>
+<script src="services/cases/conveyancing.js"></script>
 
                 
 </table>

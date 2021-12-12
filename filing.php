@@ -34,7 +34,9 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <script src="environment/location.js"></script>
+    <script src="environment/globalparams.js"></script>
   <script src="globalfuncs.js"></script>
+<!--    <script src="services/cases/postservice/postcases.php"></script>-->
 
   
 <link rel="stylesheet" type="text/css" href="styling.css">
@@ -459,22 +461,22 @@ require "auth.php";
               </div> -->
             </div>
             <!-- /.card-header -->
-          
-            <form id="exe">
+
+            <form id = "caseform" onsubmit="return sendreloadnomodal(Cases.post,'caseform');">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Category</label>
-                      <select class="form-control select2" id="cat" style="width: 100%;">
+                      <select name="category"  class="form-control select2" id="cat" style="width: 100%;">
                         <option selected="selected" >Select Filing category</option>
                         <option value="1">Litigation</option>
-                        <option value="8">Conveyancing</option>
-                        <option value="9">Criminal Law</option>
-                        <option value="10">Foreign Law</option>
-                       <option value="11">Finance Law</option>
-                        <option value="12">Civil Law</option>
-                        <option value="13">Other Files</option>
+                        <option value="3">Conveyancing</option>
+                        <option value="4">Criminal Law</option>
+                        <option value="5">Foreign Law</option>
+                       <option value="6">Finance Law</option>
+                        <option value="7">Civil Law</option>
+                        <option value="8">Other Files</option>
 
                       </select>
                     </div>
@@ -488,14 +490,18 @@ require "auth.php";
                 <label>Priority</label>
                     <select id="priority" name="prio" required="" class="form-control select2" style="width: 100%;">
                       <option selected="selected">Select Priority</option>
-                      <option value="Urgent">Urgent</option>
-                      <option value="incoming">Incoming</option>
-                      <option value="others">Others</option>
+                      <option value="1">Urgent</option>
+                      <option value="2">Incoming</option>
+                      <option value="3">Others</option>
 
                     </select>
                     </div>
                     <div class="form-group">
-                      
+
+                            <label>Physical Location</label>
+                            <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
+
+
                     </div>
                     
                     <!-- /.form-group -->
@@ -521,9 +527,14 @@ require "auth.php";
                       <input type="text" required="" class="form-control" id="stat" name="stat" placeholder="Enter Case Status">
 
                         </div>
-                      </div>
-                      <div class="form-group">
 
+                      </div>
+
+
+
+
+                      <div class="form-group">
+                          </div>
                   </div>
                   </div>
                   <!-- /.col -->
@@ -581,8 +592,16 @@ require "auth.php";
                   <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+              <div id="myModal" class="modal">
 
-            <script src="services/filing/postfiles.js" type="text/javascript"> </script>
+                  <div class="modal-content">
+                      <span id="close" class="close">&times;</span>
+
+                      <h6 id = "status" style="color:green;"></h6>
+                      <h6 id = "status3" style="color:green;"></h6>
+
+                  </div>
+<!--            <script src="services/filing/postcases.js" type="text/javascript"> </script>-->
 
 
 <!-- 

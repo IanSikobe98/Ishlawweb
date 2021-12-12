@@ -1,6 +1,6 @@
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
+// var script = document.createElement('script');
+// script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
+// document.getElementsByTagName('head')[0].appendChild(script);
 $.getJSON(Tasks.recurring, function(data)  {
           console.log(data);
           var items = [];
@@ -115,15 +115,19 @@ if(current ==  dates[j][k].toLocaleDateString() ){
                           }
 else{
   console.log("no dates");
+
 }
 
 
 p++;
     }
 }
-  $('#table').append(student); 
+  $('#table').append(student);
 
-        
+
+
+    $('#table').DataTable();
+    // $('#table').DataTable
       
 
       });

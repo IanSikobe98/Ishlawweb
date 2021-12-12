@@ -454,7 +454,7 @@ require "auth.php";
             </div>
             <!-- /.card-header -->
 
-            <form method="POST" onsubmit="return sendreload(UserMngmt.createclient,'exe');" id="exe">
+            <form method="POST" onsubmit="return sendreload(Usermngmt.createclient,'exe');" id="exe">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">

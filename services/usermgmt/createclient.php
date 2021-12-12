@@ -65,7 +65,9 @@ $resp = curl_exec($curl);
 curl_close($curl);
 
 $resp = json_decode($resp);
-// echo $resp->message;
+ echo $resp;
+
+    echo "BERTYQWEE";
 
 if (empty($resp->message)) {
 	

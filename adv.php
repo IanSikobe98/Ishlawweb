@@ -36,6 +36,7 @@ require "auth.php";
   <script src="environment/location.js"></script>
   <script src="globalfuncs.js"></script>
 
+
   
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -466,14 +467,16 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Case Number</label>
-                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
+                      <select id="case" name ="case" class="form-control"  required="">
+                      </select>
+                      <!-- <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number"> -->
 
                     </div>
                     <!-- /.form-group -->
               <div class="form-group">
                         <label>Filed By:</label>
                         <div class="select2-purple">
-                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name">
+                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name" value="<?php echo $_COOKIE["fna"]; ?>"  readonly>
                         </div>
                       </div>
                     <!-- /.form-group -->
@@ -483,11 +486,11 @@ require "auth.php";
                   <div class="col-md-6">
                     
                     <!-- /.form-group -->
-                    <div class="form-group">
-                       <label>Physical Location</label>
-                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
-
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                       <label>Physical Location</label>-->
+<!--                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">-->
+<!---->
+<!--                    </div>-->
                     <!-- /.form-group -->
                   <div class="form-group">
                         <label>Select File:</label>
@@ -643,6 +646,8 @@ require "auth.php";
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- Page script -->
+          <script type="text/javascript" src="services/filing/casenoopt.js"></script>
+
         <script>
           $(function () {
             //Initialize Select2 Elements

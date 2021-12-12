@@ -17,6 +17,8 @@
     
     
     if($stmt -> execute()){
+        echo "successful";
+        echo "successful";
 //       echo "<script type='text/javascript'>
          
      
@@ -33,6 +35,8 @@
 // </script>";
   }
   else{
+      echo "unsuccessful";
+      echo "unsuccessful";
 //     echo "<script type='text/javascript'>
          
      

@@ -34,6 +34,7 @@ var Filing =
 fetch : 'https://ifs.ambience.co.ke/files/api/v1/documents',
 fetchdoc : 'https://ifs.ambience.co.ke/files/api/v1/documents/',
 postfile : 'https://ifs.ambience.co.ke/files/api/v1/documents',
+fetchspec :'http://localhost/ishlawwebv10/Conveyancing.php'
 };
 
 var Usermngmt ={
@@ -42,3 +43,11 @@ var Usermngmt ={
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' 
 
 };
+
+var Cases =
+{
+fetch : 'https://ifs.ambience.co.ke/files/api/v1/folders',
+post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php'
+};
+
+
