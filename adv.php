@@ -36,7 +36,6 @@ require "auth.php";
   <script src="environment/location.js"></script>
   <script src="globalfuncs.js"></script>
 
-
   
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -151,20 +150,20 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
@@ -484,7 +483,7 @@ require "auth.php";
 
                   <!-- /.col -->
                   <div class="col-md-6">
-                    
+
                     <!-- /.form-group -->
 <!--                    <div class="form-group">-->
 <!--                       <label>Physical Location</label>-->

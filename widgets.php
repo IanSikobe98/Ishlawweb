@@ -128,32 +128,32 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+        <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -441,7 +441,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(1);">
+              <a href="litigation.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -457,7 +457,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(3);">
+              <a href="cases.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -474,7 +474,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(4);">
+              <a href="categories.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -490,7 +490,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(5);">
+              <a href="files.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -514,7 +514,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(6);">
+              <a href="finance.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -532,7 +532,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(7);">
+              <a href="core.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -549,7 +549,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer" onclick="return setfiles(8);">
+              <a href="misc.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -688,7 +688,7 @@ document.getElementById("visit").style.display ="block";
       // console.log(name);
 
   }
-  
+
 </script>
 
 <script type="text/javascript" src="modi.js"></script>

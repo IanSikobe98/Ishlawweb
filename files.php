@@ -1,8 +1,8 @@
  <?php
-//require "auth.php";
- ?>   
+require "auth.php";
+ ?>
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,12 +59,12 @@ $(document).ready(function(){
     </ul>
 
     <!-- SEARCH FORM -->
-    
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
-     
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -99,7 +99,7 @@ $(document).ready(function(){
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
-                
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -122,7 +122,7 @@ $(document).ready(function(){
               <i class="far fa-file-word"></i>
               <p>
                 Files
-                
+
               </p>
             </a>
           </li>
@@ -132,10 +132,10 @@ $(document).ready(function(){
               <p>
                 Accounts
                 <i class="fas fa-angle-left right"></i>
-                
+
               </p>
             </a>
-            
+
           </li>
            </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -146,32 +146,33 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item cliadd1" id = "cliadd">   
+                       <ul class="nav nav-treeview">
+              <li class="nav-item cliadd1" id = "cliadd">
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-             
+
+
                          </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -234,7 +235,7 @@ $(document).ready(function(){
                   </ul>
           </li>
           <li class="">
-            
+
             <li class="nav-item">
             <a href="calendar.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
@@ -253,7 +254,7 @@ $(document).ready(function(){
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
-          </li> 
+          </li>
 
            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
@@ -281,8 +282,8 @@ $(document).ready(function(){
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
-                
-          
+
+
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -338,7 +339,7 @@ $(document).ready(function(){
           </li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
-            
+
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -415,7 +416,7 @@ $(document).ready(function(){
               </li>
             </ul>
           </li>
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -456,9 +457,9 @@ $(document).ready(function(){
                     <th>Filed By</th>
                     <th>Status</th>
                     <th>Filing date</th>
-                    
+
                     <th>Priority</th>
-                    
+
                   </tr>
                 </thead>
                 <tbody>
@@ -468,19 +469,19 @@ $(document).ready(function(){
                   <td>George</td>
                   <td>Court</td>
                   <td>01-01-2021</td>
-                  <td>Shelve</td>                  
-                  
+                  <td>Shelve</td>
+
 
                 </tbody>
 
 <script src="services/filing/civil.js"></script>
 
-                
+
 </table>
 
 
-                
-        
+
+
               <!-- <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">Upload File</h3>
@@ -565,7 +566,7 @@ $(document).ready(function(){
     <footer class="main-footer">
       Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
     <div class="float-right d-none d-sm-block">
-      
+
   </footer>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -786,7 +787,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
   function hidefunc(){
-    
+
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -858,7 +859,7 @@ document.getElementById("visit").style.display ="block";
 
     }
   }
-  
+
 </script>
 </body>
 

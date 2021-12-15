@@ -13,7 +13,6 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 
 }
 
-
 ?>
 
 <!doctype html>
@@ -127,6 +126,8 @@ setcookie('resp', $resp->token,time() + (30000), 'http://localhost/admin/','',''
                            
          header("location: index.php");
 }
+
+
 ?>
 	          </form>
 	          

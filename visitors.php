@@ -11,6 +11,23 @@ require "auth.php";
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -145,20 +162,20 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
@@ -557,14 +574,12 @@ require "auth.php";
       echo "<script type='text/javascript'>
          
      
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration Completed successfully. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
-
-      
+swal({
+  title: 'Great!',
+  text: 'Registration completed successfully!',
+  icon: 'success',
+  button: 'Close',
+});      
 
 
 </script>";
@@ -573,12 +588,13 @@ require "auth.php";
     echo "<script type='text/javascript'>
          
      
-     document.getElementById('myModal').style.display = 'block';
-
-            document.getElementById('status').innerHTML = 'Registration error please retry. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
+          
+swal({
+  title: 'Oops',
+  text: 'Registration error please try again!',
+  icon: 'error',
+  button: 'Close',
+});      
 
       
 
@@ -618,6 +634,10 @@ require "auth.php";
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->
         <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -628,6 +648,16 @@ require "auth.php";
         <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
         <!-- date-range-picker -->
         <script src="plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+</script>
+
         <!-- bootstrap color picker -->
         <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
         <!-- Tempusdominus Bootstrap 4 -->

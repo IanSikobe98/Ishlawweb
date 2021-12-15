@@ -10,7 +10,27 @@ require "auth.php";
 
   <title>ISHLAW</title>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+   <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -180,7 +200,7 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item " id = "">
+              <li class="nav-item " id = "newcli">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
@@ -192,7 +212,7 @@ require "auth.php";
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
+              <li class="nav-item "  id="cliview">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
@@ -290,7 +310,7 @@ require "auth.php";
             </a>
 
           </li>
-         
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -484,7 +504,7 @@ require "auth.php";
               <div class="card-header">
                 <h5 class="card-title">Latest Cases</h5>
                 <div class="table-responsive">
-                  <table class="table m-0">
+                  <table class="table m-0" id="exe">
                     <thead>
                     <tr>
                       <th>Reference</th>
@@ -563,33 +583,58 @@ require "auth.php";
         <!-- /.row -->
 
         <!-- Main row -->
-        <div class="row">
+
+
+             <div class="row">
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX panelE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Your Agenda</h3>
+                <h3 class="card-title">Upcoming Events</h3>
               </div>
-              
-<table class="table table-striped table-bordered table-hover content-table" id="table">
+
+<table class="content-table" id="events">
             <thead>
                 <tr>
-        <th>Task</th>
+
         <th>Activity</th>
-        <th>Due Date</th>
         <th>Priority</th>
-        <th>How To</th>
+        <th>User</th>
+        <th>Location</th>
         <th>Progress</th>
-        <th>Status</th>
-        <th>Comments</th>
+        <th>Client</th>
+        <th>Start Time</th>
+        <th>End Time</th>
         <th>Action</th>
 
         
                 </tr>
             </thead>
 
-  
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
+
+              <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+              </tr>
 
 
 <script type="text/javascript">
@@ -602,22 +647,97 @@ console.log(current);
 return current;
 }
 
-
 </script>
-<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
 
+
+
+             <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+               <tr>
+                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>Jon mark</td>
+                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
+                                <td>haha</td>
+                <td>21-01.2021 10.00 AM</td>
+                                <td>21-01.2021 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+
+             <tr>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>haha</td>
+                <td>haha</td>
+                                <td>22-02.2022 10.00 AM</td>
+                <td>haha</td>
+              </tr>
+
+
+
+
+
+            </tbody>
 
 
 
 </table>
+             <div class="card-footer clearfix">
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a>
+              </div>
 
-<!--                <script type="text/javascript">-->
-<!--                    $(document).ready( function () {-->
-<!--                        $('#table').DataTable();-->
-<!---->
-<!--                    } );-->
-<!--                </script>-->
-</form>   
+
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->
   <form  id ="ianform2" method="POST" class="form-container" onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');">
@@ -796,7 +916,7 @@ function closeForm4() {
 </html>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a>
               </div>
             </div>
                 
@@ -850,40 +970,67 @@ function closeForm4() {
 
 
     </section>
-                
-             <div class="row">
+               <div class="">
           <!-- Left col -->
-          <div class="col-md-8">
+          <div class="">
             <!-- MAP & BOX panelE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Upcoming Events</h3>
+                <h3 class="card-title">Your Agenda</h3>
               </div>
 
-<table class="content-table" id="events">
+<table class="table table-striped table-bordered table-hover content-table" id="table">
             <thead>
                 <tr>
-        <th>ID</th>
+        <th>Task</th>
         <th>Activity</th>
+        <th>Due Date</th>
         <th>Priority</th>
-        <th>User</th>
-        <th>Location</th>
+        <th>How To</th>
         <th>Progress</th>
-        <th>Client</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Status</th>
+        <th>Comments</th>
         <th>Action</th>
 
         
                 </tr>
             </thead>
-           
+
+<tbody>
+
+<script type="text/javascript">
+
+function getnonrec (input) {
+
+var current = new Date(input);
+current = current.toLocaleString()
+console.log(current);
+return current;
+}
+</script>
+</tbody>
+<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
+
 
 
 </table>
+<script type="text/javascript">
 
+$(document).ready( function () {
+    $('#table').DataTable();
+
+
+} );
+ </script>
+ <script type="text/javascript">
+$(document).ready( function () {
+    $('#events').DataTable();
+
+} );
+ </script>
+</form>
      <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="tvents.php"> View Office Events</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Events</a>
               </div>
             </div>
             </form>   
@@ -916,10 +1063,10 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>
 
 
-     
+
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
 
@@ -951,7 +1098,7 @@ function closeForm4() {
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
     <button type="submit" name="submit" class="btn">Save</button>
     <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
-   
+
   </form>
 </div>
    <div class="form-popup" id="myModal56">
@@ -981,10 +1128,10 @@ function closeForm4() {
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>
 
 
-     
+
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
 
@@ -1025,9 +1172,9 @@ function closeForm4() {
   </form>
 </div>
             <!-- /.card -->
-            
+
             <!-- TABLE: LATEST ORDERS -->            <!-- /.card -->
-      
+
           <div class="col-md-4">
             <!-- Info Boxes Style 2 -->
             
@@ -1058,6 +1205,12 @@ function closeForm4() {
 <!-- the rrule-to-fullcalendar connector. must go AFTER the rrule lib -->
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.2.0/main.global.min.js'></script>
  <!-- <script type="text/javascript" src="http://localhost/ishfinal/Calender/modi.js"></script> -->
+
+
+
+
+
+
 
 
  <!-- Boootstrap and css links -->
@@ -1140,7 +1293,19 @@ eventDidMount: function(info) {
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
 <script type="text/javascript">
 
   //Window on load function
@@ -1149,12 +1314,13 @@ var reloading = sessionStorage.getItem("submitsuccess");
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
-             document.getElementById('myModal').style.display = 'block';
+             swal({
+  title: 'Great!',
+  text: 'Task Updated successfully!',
+  icon: 'success',
+  button: 'Close',
+});
 
-            document.getElementById('status').innerHTML = 'Tasks successfully saved';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
             }
 
     

@@ -11,6 +11,11 @@ require "auth.php";
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -164,32 +169,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                    
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -549,6 +554,11 @@ $(document).ready(function(){
 	  ?>
 
 </table>
+  <script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+ </script>
 </div>
               
               <!-- /.card-body -->
@@ -582,6 +592,11 @@ $(document).ready(function(){
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

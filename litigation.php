@@ -1,6 +1,6 @@
  <?php
-//require "auth.php";
- ?>   
+require "auth.php";
+ ?>
 <!DOCTYPE html>
 <html lang="en">  
 <head>
@@ -21,6 +21,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 
 
   <script src="environment/location.js" type="text/javascript"></script>
@@ -146,32 +154,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-             
+
                          </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -231,6 +239,12 @@ $(document).ready(function(){
                   <p>View Current Events</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
+                </a>
+              </li>
                   </ul>
           </li>
           <li class="">
@@ -253,7 +267,7 @@ $(document).ready(function(){
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
-          </li> 
+          </li>
 
            <li class="nav-item">
             <a href="appointments.php" class="nav-link">
@@ -456,9 +470,9 @@ $(document).ready(function(){
                     <th>Filed By</th>
                     <th>Status</th>
                     <th>Filing date</th>
-                    
+
                     <th>Priority</th>
-                    
+
                   </tr>
                 </thead>
                 <tbody>
@@ -468,91 +482,22 @@ $(document).ready(function(){
                   <td>George</td>
                   <td>Court</td>
                   <td>01-01-2021</td>
-                  <td>Shelve</td>                  
-                  
+                  <td>Shelve</td>
+
 
                 </tbody>
 
 <script src="services/filing/civil.js"></script>
 
-                
+
 </table>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ftable').DataTable();
 
+} );
+</script>
 
-                
-        
-              <!-- <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">Upload File</h3>
-              </div>
-              <div class="card-body">
-                <div id="actions" class="row">
-                  <div class="col-lg-6">
-                    <div class="btn-group w-100">
-                      <span class="btn btn-success col fileinput-button">
-                        <i class="fas fa-plus"></i>
-                        <span>Add files</span>
-                      </span>
-                      <button type="submit" class="btn btn-primary col start">
-                        <i class="fas fa-upload"></i>
-                        <span>Start upload</span>
-                      </button>
-                      <button type="reset" class="btn btn-warning col cancel">
-                        <i class="fas fa-times-circle"></i>
-                        <span>Cancel upload</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 d-flex align-items-center">
-                    <div class="fileupload-process w-100">
-                      <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="table table-striped files" id="previews">
-                  <div id="template" class="row mt-2">
-                    <div class="col-auto">
-                        <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                    </div>
-                    <div class="col d-flex align-items-center">
-                        <p class="mb-0">
-                          <span class="lead" data-dz-name></span>
-                          (<span data-dz-size></span>)
-                        </p>
-                        <strong class="error text-danger" data-dz-errormessage></strong>
-                    </div>
-                    <div class="col-4 d-flex align-items-center">
-                        <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                        </div>
-                    </div>
-                    <div class="col-auto d-flex align-items-center">
-                      <div class="btn-group">
-                        <button class="btn btn-primary start">
-                          <i class="fas fa-upload"></i>
-                          <span>Start</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-warning cancel">
-                          <i class="fas fa-times-circle"></i>
-                          <span>Cancel</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-danger delete">
-                          <i class="fas fa-trash"></i>
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </.card-body
-              <div class="card-footer">
-                Visit <a href="https://www.dropzonejs.com">dropzone.js documentation</a> for more examples and information about the plugin.
-              </div>
-            </div> -->
-              <!-- /.card -->
             </div>
           </div>
           <!-- /.row -->
@@ -588,6 +533,9 @@ $(document).ready(function(){
   <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
   <!-- date-range-picker -->
   <script src="plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <!-- bootstrap color picker -->
   <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
   <!-- Tempusdominus Bootstrap 4 -->
@@ -675,104 +623,7 @@ $(document).ready(function(){
       });
 
     })
-    // BS-Stepper Init
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-    // });
 
-    // window.onload = function () {
-    //   fetch('http://18.118.17.69:4000/files/api/v1/file_categories').then(response => response.json()).then(data => {
-    //     console.log(data);
-    //     var table = document.getElementById("table");
-    //     for (var i = 0; i < data.length; i++) {
-    //       // create a new row
-    //       var row = table.insertRow(table.length);
-    //       // create cells
-    //       var fileDetails = data[i].description.split(", ");
-    //       if (fileDetails.length === 4) {
-    //         var a = document.createElement('a');
-    //         var link = document.createTextNode("Download");
-    //         a.appendChild(link);
-    //         a.title = "Download";
-    //         a.href = `http://18.118.17.69:4000/files/api/v1/documents/${data[i].id}/document`;
-    //         var cell0 = row.insertCell(0);
-    //         cell0.appendChild(a);
-    //         var cell1 = row.insertCell(0);
-    //         cell1.innerHTML = data[i].updatedAt.split("T")[0];
-    //         var cell2 = row.insertCell(0);
-    //         var cell3 = row.insertCell(0);
-    //         cell3.innerHTML = data[i].name;
-    //         var cell4 = row.insertCell(0);
-    //         var cell5 = row.insertCell(0);
-    //         var cell6 = row.insertCell(0);
-    //         cell2.innerHTML = fileDetails[2].split(": ")[1];
-    //         cell4.innerHTML = fileDetails[3].split(": ")[1];
-    //         cell5.innerHTML = fileDetails[1].split(": ")[1];
-    //         cell6.innerHTML = fileDetails[0].split(": ")[1];
-    //         var cell7 = row.insertCell(0);
-    //         cell7.innerHTML = data[i].path.split("/")[1];
-    //       }
-
-    //     }
-    //   })
-    // }
-
-    // button.addEventListener("click", function () {
-    //   alert("did something");
-    // });
-    // function getDocuments() {
-    //   fetch('https://ishlaw.scalum.co.ke/files/api/v1/documents').then(function (response) {
-    //     if (response.status === 200) {
-    //       alert("File found successful");
-    //     }
-    //   })
-    // }
-
-    // // DropzoneJS Demo Code Start
-    // Dropzone.autoDiscover = false;
-
-    // // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    // var previewNode = document.querySelector("#template");
-    // previewNode.id = "";
-    // var previewTemplate = previewNode.parentNode.innerHTML;
-    // previewNode.parentNode.removeChild(previewNode);
-
-    // var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-    //   url: "https://ishlaw.scalum.co.ke/files/api/v1/file_categories", // Set the url
-    //   thumbnailWidth: 80,
-    //   thumbnailHeight: 80,
-    //   parallelUploads: 20,
-    //   previewTemplate: previewTemplate,
-    //   autoQueue: false, // Make sure the files aren't queued until manually added
-    //   previewsContainer: "#previews", // Define the container to display the previews
-    //   clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-    // });
-
-    // myDropzone.on("addedfile", function(file) {
-    //   // Hookup the start button
-    //   file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
-    // });
-
-    // // Update the total progress bar
-    // myDropzone.on("totaluploadprogress", function(progress) {
-    //   document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
-    // });
-
-    // myDropzone.on("sending", function(file) {
-    //   // Show the total progress bar when upload starts
-    //   document.querySelector("#total-progress").style.opacity = "1";
-    //   // And disable the start button
-    //   file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
-    // });
-
-    // // Hide the total progress bar when nothing's uploading anymore
-    // myDropzone.on("queuecomplete", function(progress) {
-    //   document.querySelector("#total-progress").style.opacity = "0";
-    // });
-
-    // Setup the buttons for all transfers
-    // The "add files" button doesn't need to be setup because the config
-    // `clickable` has already been specified.
    document.querySelector("#actions .start").onclick = function () {
       myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
     };

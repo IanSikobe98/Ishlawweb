@@ -12,6 +12,8 @@ require "auth.php";
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- daterange picker -->
@@ -32,6 +34,7 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script src="environment/location.js"></script>
   <script src="globalfuncs.js"></script>
@@ -144,32 +147,32 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                   
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -559,8 +562,7 @@ require "auth.php";
                 
                 <div class="form-group">
                   <label for="stat">Task Status</label>
-                  <select multiple id="stat" name="stat"  class="form-control select2" style="">
-                    
+                  <select  id="stat" name="stat"  class="form-control select2" style="">
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
@@ -632,6 +634,7 @@ require "auth.php";
 
 
 <script type="text/javascript" src="modi.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
               </form>
 
@@ -656,6 +659,8 @@ require "auth.php";
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->

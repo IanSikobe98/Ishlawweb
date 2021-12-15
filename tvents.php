@@ -14,6 +14,11 @@ require "auth.php";
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
@@ -167,32 +172,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                    
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -506,61 +511,18 @@ $(document).ready(function(){
 	 	    
                 </tr>
             </thead>
-           <?php
-/*
-            $link = mysqli_connect("127.0.0.1", "root", "", "ishlaw");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}  
-               //search
-               //if (isset($_POST['username']) || isset($_POST['email'])) {
-           
-              $ReadSql = "SELECT tid,title,start,status,description,User,Priority,clino FROM tasks";
-
-
-                
-
-	
-      $result=mysqli_query($link,$ReadSql);
-      if (mysqli_num_rows($result) < 1) {
-                   echo "Error! No Records";
-                   exit();
-                }
-
-
- 	  
-	   	while($row=mysqli_fetch_array($result)){
-?>
-	   		<tr class="active">
-	   		<td><?php echo $row['tid'];?></td>
-	   		<td><?php echo $row['title'];?></td>
-	   		<td><?php echo $row['User'];?></td>
-	   		<td><?php echo $row['clino'];?></td>
-            <td><?php echo $row['start'];?></td>
-            <td><?php echo $row['Priority'];?></td>
-            <td><?php echo $row['description'];?></td>
-            <td><?php echo $row['status'];?></td>
-	   		
-
-
-	   		</tr>
-*/
-	  ?>
 
 <script src= "services/taskmgmt/fetchtableev.js"type="text/javascript">
 
 
 </script>
 
-<!-- 	   		<script type="text/javascript" >
-
-
-        
- 
-        </script> -->
 </table>
+  <script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+ </script>
 </div>
               
               <!-- /.card-body -->
@@ -590,6 +552,12 @@ if($link === false){
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
   function hidefunc(){
