@@ -18,6 +18,7 @@ require "auth.php";
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -25,14 +26,26 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="environment/location.js"></script>
+    <script src="globalfuncs.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
 </head><body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<style>
+    .mul-select{
+        width: 100%;
+    }
+</style>
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -43,7 +56,7 @@ require "auth.php";
       </li>
       
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -458,7 +471,7 @@ require "auth.php";
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="messagessent.php" class="nav-link">
                       <i class="far fa-envelope"></i> Sent
                     </a>
                   </li>
@@ -478,10 +491,14 @@ require "auth.php";
                 <h3 class="card-title">Compose New Message</h3>
               </div>
               <!-- /.card-header -->
-              <form action="compose.php" method="POST" id="exe">
+              <form  method="POST" id="msgsubmit" onsubmit="return sendreloadAuth(Messages.compose,'msgsubmit');">
               <div class="card-body">
                 <div class="form-group">
-                  <input type="text" name="to" required="" class="form-control" placeholder="To:">
+                    <select class="mul-select"  name="receiver_id[]"multiple="true">
+                        <option value="28325a2e-a21d-4759-9686-c7680d77cd48">anne</option>
+                        <option value="2fcc08d9-eb51-4090-bef6-5ab9d2773267">lutomiah</option>
+                        <option value="3af8b85f-0fc8-4a68-a3aa-2599511558a9">allan</option>
+                    </select>
                 </div>
                 <div class="form-group">
                   <input type="text" name="Category" class="form-control" placeholder="Category:">
@@ -506,42 +523,44 @@ require "auth.php";
                 </div>
                 <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
               </div>
-                <?php
-                $conn =new PDO("mysql:host=localhost;dbname=ishfinal","root","");
-  if(isset($_POST['submit'])){
-    $party =$_POST['to'];
-    $Category =$_POST['Category'];
-    $subject =$_POST['subject'];
-    $compose =$_POST['compose'];
-    
-    $stmt = $conn->prepare("insert into messages values('',?,?,?,?)");
-    $stmt ->bindParam(1,$party);
-    $stmt ->bindParam(2,$Category);
-    $stmt ->bindParam(3,$subject);
-    $stmt ->bindParam(4,$compose);
-        
-    if($stmt -> execute()){
-      echo "success";
-  }
-  else{
-    echo "<script type='text/javascript'>
-         
-     
-     document.getElementById('myModal').style.display = 'block';
 
-            document.getElementById('status').innerHTML = 'Registration error please retry. .';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'red';
-
-      
-
-
-</script>";
-  }
-}
-?>
             </form>
+
+                <?php
+//                $conn =new PDO("mysql:host=localhost;dbname=ishfinal","root","");
+//                if(isset($_POST['submit'])){
+//                    $party =$_POST['to'];
+//                    $Category =$_POST['Category'];
+//                    $subject =$_POST['subject'];
+//                    $compose =$_POST['compose'];
+//
+//                    $stmt = $conn->prepare("insert into messages values('',?,?,?,?)");
+//                    $stmt ->bindParam(1,$party);
+//                    $stmt ->bindParam(2,$Category);
+//                    $stmt ->bindParam(3,$subject);
+//                    $stmt ->bindParam(4,$compose);
+//
+//                    if($stmt -> execute()){
+//                        echo "success";
+//                    }
+//                    else{
+//                        echo "<script type='text/javascript'>
+//         console.log('Unsuccessful');
+//
+////     document.getElementById('myModal').style.display = 'block';
+////
+////            document.getElementById('status').innerHTML = 'Registration error please retry. .';
+////            document.getElementById('status3').innerHTML = '.<br><br>';
+////
+////      document.getElementById('status').style.color= 'red';
+//
+//
+//
+//
+//</script>";
+//                    }
+//                }
+                ?>
               <!-- /.card-footer -->
             </div>
             <!-- /.card -->
@@ -569,7 +588,7 @@ require "auth.php";
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -588,6 +607,10 @@ require "auth.php";
   
 <script type="text/javascript">
   function hidefunc(){
+
+      var tokenuse = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('token',tokenuse);
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
@@ -661,6 +684,16 @@ document.getElementById("visit").style.display ="block";
     }
   }
   
+</script>
+
+<script>
+    $(document).ready(function(){
+        $(".mul-select").select2({
+            placeholder: "Add Participants", //placeholder
+            tags: true,
+            tokenSeparators: ['/',',',';'," "]
+        });
+    })
 </script>
 </body>
 </html>

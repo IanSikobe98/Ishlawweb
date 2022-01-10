@@ -40,7 +40,8 @@ fetchspec :'http://localhost/ishlawwebv10/Conveyancing.php'
 var Usermngmt ={
 
 	createclient : 'services/usermgmt/postservice/createclient.php',
-	createvisitors : 'services/usermgmt/postservice/createvisitors.php' 
+	createvisitors : 'services/usermgmt/postservice/createvisitors.php' ,
+    fetchstaffoptions : 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/team/getAll'
 
 };
 
@@ -49,5 +50,22 @@ var Cases =
 fetch : 'https://ifs.ambience.co.ke/files/api/v1/folders',
 post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php'
 };
+
+
+var Appointments =
+    {
+        fetch : 'services/appointments/appointmentsdata.php',
+        approve : 'services/appointments/postservice/approvals.php'
+    };
+
+
+var Messages =
+    {
+        fetchsent : 'services/Messaging/SentMessagesListing.php',
+        fetchinbox : 'services/Messaging/InboxMessagesListing.php',
+        fetchcount : 'services/Messaging/displaycount.php',
+        compose: 'services/Messaging/ComposeNewMsg.php'
+    };
+
 
 

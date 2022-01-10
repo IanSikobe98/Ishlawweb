@@ -19,6 +19,7 @@ require "auth.php";
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="globalfuncs.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -37,7 +38,7 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -441,7 +442,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="litigation.php" class="small-box-footer">
+              <a onclick="opencase(1)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -457,7 +458,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer">
+              <a onclick="opencase(3)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -474,7 +475,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="categories.php" class="small-box-footer">
+              <a onclick="opencase(4)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -490,7 +491,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="files.php" class="small-box-footer">
+              <a onclick="opencase(5)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -514,7 +515,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="finance.php" class="small-box-footer">
+              <a onclick="opencase(6)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -532,7 +533,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="core.php" class="small-box-footer">
+              <a onclick="opencase(7)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -549,7 +550,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="misc.php" class="small-box-footer">
+              <a onclick="opencase(8)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

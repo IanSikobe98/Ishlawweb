@@ -25,13 +25,16 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="environment/location.js"></script>
+    <script src="globalfuncs.js"></script>
 </head><body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
   <!-- Navbar -->
@@ -43,7 +46,7 @@ require "auth.php";
       </li>
       
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -495,16 +498,17 @@ require "auth.php";
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-info">
-                <tr>
+                  <tr></tr>
                   </div>
                        <?php
+                       /*
           $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
            $ReadSql = "SELECT * FROM messages";
 
 
-                
 
-  
+
+
       $result=mysqli_query($link,$ReadSql);
       while($row=mysqli_fetch_array($result)){
 ?>
@@ -513,18 +517,24 @@ require "auth.php";
                 </div>
               </tr>
               <!-- /.mailbox-read-info -->
-              
+
                 <!-- /.btn-group -->
-                
+
               </div>
               <!-- /.mailbox-controls -->
               <div class="mailbox-read-message">
                 <?php echo $row['compose'];?>
               </div>
-              <?php     
+              <?php
 
       }
-    ?>
+    */?>
+                <div>
+                   <table id="mailtable">
+                       <tbody>
+                       <script src="services/Messaging/displayMail.js"></script>
+                   </table>
+                </div>
               <!-- /.mailbox-read-message -->
             </div>
             <!-- /.card-body -->
@@ -566,13 +576,17 @@ require "auth.php";
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <script type="text/javascript">
   function hidefunc(){
+
+      var tokenuse = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('token',tokenuse);
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

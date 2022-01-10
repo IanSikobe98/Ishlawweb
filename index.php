@@ -17,7 +17,7 @@ require "auth.php";
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
@@ -88,6 +88,8 @@ require "auth.php";
 
 <script type="text/javascript">
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
+  sessionStorage.setItem('token',jwtpo);
+  sessionStorage.setItem('tokenuse',jwtpo);
 </script>
 
 </head>
@@ -101,7 +103,7 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -517,56 +519,56 @@ require "auth.php";
                     </thead>
                     <tbody>
                     <tr>
-                      <td><a >9842</a></td>
-                      <td>KRA vs OTS</td>
-                      <td>23456</td>
-                      <td>23-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">PENDING</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >1848</a></td>
-                      <td>CAK vs LSK </td>
-                     
-                      <td>1848</span></td>
-                      <td>01-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">Awaiting ruling</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>7429</td>
-                      <td>LSK vs Raj Limited</td>
-                      <td>7429</span></td>
-                      <td>22-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">PENDING</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >429</a></td>
-                      <td>Safaricom vs Mtel Services</td>
-                      <td>923</span></td>
-                      <td>06-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">COMPLETED</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >1848</a></td>
-                      <td>JSC vs KMA</td>
-                      <td>848</span></td>
-                      <td>05-12-2020</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">COMPLETED</div>
-                      </td>
-                    </tr>
-                    
-                    </tbody>
+<!--                      <td><a >9842</a></td>-->
+<!--                      <td>KRA vs OTS</td>-->
+<!--                      <td>23456</td>-->
+<!--                      <td>23-01-2021</td>-->
+<!--                      <td>-->
+<!--                        <div class="sparkbar" data-color="#00a65a" data-height="20">PENDING</div>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                      <td><a >1848</a></td>-->
+<!--                      <td>CAK vs LSK </td>-->
+<!--                     -->
+<!--                      <td>1848</span></td>-->
+<!--                      <td>01-01-2021</td>-->
+<!--                      <td>-->
+<!--                        <div class="sparkbar" data-color="#f39c12" data-height="20">Awaiting ruling</div>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                      <td>7429</td>-->
+<!--                      <td>LSK vs Raj Limited</td>-->
+<!--                      <td>7429</span></td>-->
+<!--                      <td>22-01-2021</td>-->
+<!--                      <td>-->
+<!--                        <div class="sparkbar" data-color="#f56954" data-height="20">PENDING</div>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                      <td><a >429</a></td>-->
+<!--                      <td>Safaricom vs Mtel Services</td>-->
+<!--                      <td>923</span></td>-->
+<!--                      <td>06-01-2021</td>-->
+<!--                      <td>-->
+<!--                        <div class="sparkbar" data-color="#00c0ef" data-height="20">COMPLETED</div>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                      <td><a >1848</a></td>-->
+<!--                      <td>JSC vs KMA</td>-->
+<!--                      <td>848</span></td>-->
+<!--                      <td>05-12-2020</td>-->
+<!--                      <td>-->
+<!--                        <div class="sparkbar" data-color="#f39c12" data-height="20">COMPLETED</div>-->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    -->
+<!--                    </tbody>-->
                   </table>
                 </div>
-
+<script src="services/cases/IndexCases.js"></script>
                 <div class="card-footer clearfix">
                 <a href="adv.php" class="btn btn-sm btn-info float-left"> New Case</a>
                 <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Cases</a>
@@ -612,29 +614,29 @@ require "auth.php";
                 </tr>
             </thead>
 
-              <tr>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-              </tr>
-
-              <tr>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-              </tr>
+<!--              <tr>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!--              <tr>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
 
 
 <script type="text/javascript">
@@ -651,86 +653,86 @@ return current;
 
 
 
-             <tr>
-                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>Jon mark</td>
-                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
-                                <td>haha</td>
-                <td>21-01.2021 10.00 AM</td>
-                                <td>21-01.2021 10.00 AM</td>
-                <td>haha</td>
-              </tr>
+<!--             <tr>-->
+<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>Jon mark</td>-->
+<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>21-01.2021 10.00 AM</td>-->
+<!--                                <td>21-01.2021 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!--               <tr>-->
+<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>Jon mark</td>-->
+<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>21-01.2021 10.00 AM</td>-->
+<!--                                <td>21-01.2021 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!--               <tr>-->
+<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>Jon mark</td>-->
+<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>21-01.2021 10.00 AM</td>-->
+<!--                                <td>21-01.2021 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!--               <tr>-->
+<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>Jon mark</td>-->
+<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>21-01.2021 10.00 AM</td>-->
+<!--                                <td>21-01.2021 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!--               <tr>-->
+<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>Jon mark</td>-->
+<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>21-01.2021 10.00 AM</td>-->
+<!--                                <td>21-01.2021 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!---->
+<!--             <tr>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>haha</td>-->
+<!--                <td>haha</td>-->
+<!--                                <td>22-02.2022 10.00 AM</td>-->
+<!--                <td>haha</td>-->
+<!--              </tr>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--            </tbody>-->
 
-               <tr>
-                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>Jon mark</td>
-                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
-                                <td>haha</td>
-                <td>21-01.2021 10.00 AM</td>
-                                <td>21-01.2021 10.00 AM</td>
-                <td>haha</td>
-              </tr>
-
-               <tr>
-                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>Jon mark</td>
-                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
-                                <td>haha</td>
-                <td>21-01.2021 10.00 AM</td>
-                                <td>21-01.2021 10.00 AM</td>
-                <td>haha</td>
-              </tr>
-
-               <tr>
-                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>Jon mark</td>
-                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
-                                <td>haha</td>
-                <td>21-01.2021 10.00 AM</td>
-                                <td>21-01.2021 10.00 AM</td>
-                <td>haha</td>
-              </tr>
-
-               <tr>
-                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>Jon mark</td>
-                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>
-                                <td>haha</td>
-                <td>21-01.2021 10.00 AM</td>
-                                <td>21-01.2021 10.00 AM</td>
-                <td>haha</td>
-              </tr>
-
-
-             <tr>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>haha</td>
-                <td>haha</td>
-                                <td>22-02.2022 10.00 AM</td>
-                <td>haha</td>
-              </tr>
-
-
-
-
-
-            </tbody>
-
-
+<tbody>
 
 </table>
              <div class="card-footer clearfix">
@@ -970,7 +972,7 @@ function closeForm4() {
 
 
     </section>
-               <div class="">
+
           <!-- Left col -->
           <div class="">
             <!-- MAP & BOX panelE -->
@@ -1271,7 +1273,7 @@ eventDidMount: function(info) {
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -1293,7 +1295,7 @@ eventDidMount: function(info) {
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
@@ -1323,7 +1325,7 @@ var reloading = sessionStorage.getItem("submitsuccess");
 
             }
 
-    
+
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 

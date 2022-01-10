@@ -62,7 +62,7 @@ $(document).ready(function(){
 </script>
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -464,30 +464,32 @@ $(document).ready(function(){
               <table id="ftable" class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                                        <th>Client</th>
+<!--                                        <th>Client</th>-->
                     <th>Case Number</th>
+                      <th>Client Id</th>
                     <th>Parties</th>
-                    <th>Filed By</th>
+<!--                    <th>Filed By</th>-->
                     <th>Status</th>
-                    <th>Filing date</th>
+<!--                    <th>Filing date</th>-->
 
                     <th>Priority</th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <td><a href="files3.php">Clino</a></td>
-                  <td>12345</td>
-                  <td>Clino vs Lsk</td>
-                  <td>George</td>
-                  <td>Court</td>
-                  <td>01-01-2021</td>
-                  <td>Shelve</td>
+<!--                  <td><a href="files3.php">Clino</a></td>-->
+<!--                  <td>12345</td>-->
+<!--                  <td>Clino vs Lsk</td>-->
+<!--                  <td>George</td>-->
+<!--                  <td>Court</td>-->
+<!--                  <td>01-01-2021</td>-->
+<!--                  <td>Shelve</td>-->
+<!---->
+<!---->
+<!--                </tbody>-->
 
-
-                </tbody>
-
-<script src="services/filing/civil.js"></script>
+<!--<script src="services/filing/civil.js"></script>-->
+<script src="services/cases/conveyancing.js"></script>
 
 
 </table>

@@ -28,10 +28,19 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styling.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+<!--<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>-->
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -43,10 +52,10 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for messages.." title="Type in a name">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for appointments.." title="Type in a name">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="jquery-1.2.6.min.js"></script>
-    
+        <script src="environment/location.js" type="text/javascript"></script>
     <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
@@ -66,7 +75,7 @@ $(document).ready(function(){
 </script>
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -467,51 +476,56 @@ $(document).ready(function(){
         <th>Action</th>
     </thead>
     <tbody>
-      <tr class="warning">
-        <td>John Ken</td>
-        <td>0716587214</td>
-        <td>john@example.com</td>
-        <td> an appointment to settle my case tomorrow</td>
-        <td>12.01-2022 10:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-      <tr>
-         <td>John Adams</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:02 a.m</td>
-        <td>Approved</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>13.01-2021 11:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-    </tbody>
+<!--      <tr class="warning">-->
+<!--        <td>John Ken</td>-->
+<!--        <td>0716587214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td> an appointment to settle my case tomorrow</td>-->
+<!--        <td>12.01-2022 10:00 a.m</td>-->
+<!--        <td>Pending</td>-->
+<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--         <td>John Adams</td>-->
+<!--        <td>0716527214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td>I need an appointment to settle my case tomorrow</td>-->
+<!--        <td>12.01-2021 10:02 a.m</td>-->
+<!--        <td>Approved</td>-->
+<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--         <td>John Downyre</td>-->
+<!--        <td>0716527214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td>I need an appointment to settle my case tomorrow</td>-->
+<!--        <td>13.01-2021 11:00 a.m</td>-->
+<!--        <td>Pending</td>-->
+<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<script src="services/appointments/appointments.js"></script>
   </table>
+
   <script>
-$(document).ready(function(){
-  $('table#exe').DataTable({
+// $(document).ready(function(){
+//   $('table#exe').DataTable({
+//
+// "searching":true,
+// "paging":true,
+// "order":[[4,"desc"]],
+// "ordering":true,
+//
+//
+//
+//
+//   });
+$(document).ready( function () {
+    $('#exe').DataTable();
 
-"searching":true,
-"paging":true,
-"order":[[4,"desc"]],
-"ordering":true,
+} );
 
-
-
-
-  });
-
-
-  });
+  // });
 
 
 
@@ -594,6 +608,9 @@ function sortTable(n) {
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>

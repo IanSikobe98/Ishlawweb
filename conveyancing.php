@@ -19,7 +19,7 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="environment/location.js" type="text/javascript"></script>
@@ -40,7 +40,7 @@ require "auth.php";
         <a href="adv.php" class="nav-link">Add new File</a>
       </li>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for files..." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -54,7 +54,7 @@ $(document).ready(function(){
 </script>
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -567,7 +567,7 @@ $(document).ready(function(){
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+<!--  <script src="plugins/jquery/jquery.min.js"></script>-->
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Select2 -->

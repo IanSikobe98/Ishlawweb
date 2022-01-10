@@ -10,6 +10,7 @@ require "auth.php";
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -34,7 +35,8 @@ require "auth.php";
 
   <script src ="globalfuncs.js" type="text/javascript"></script>
   <script src ="environment/location.js" type="text/javascript"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="services/usermgmt/teamOptions.js"></script>
 <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 
@@ -48,7 +50,7 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -455,7 +457,7 @@ require "auth.php";
             </div>
             <!-- /.card-header -->
 
-            <form method="POST" onsubmit="return sendreload(Usermngmt.createclient,'exe');" id="exe">
+            <form method="POST" onsubmit="return submitreload(Usermngmt.createclient,'exe','creation of a new staff member');" id="exe">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -496,26 +498,21 @@ require "auth.php";
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
                       <label>Team Role</label>
-                      <select class="form-control select2" id="team" style="width: 100%;">
-                        <option selected="selected" >Select Team Role</option>
-                        <option value="1">Lawyer</option>
-                        <option value="8">Admin</option>
-                        <option value="9">Receptionist</option>
-                        <option value="10">Clerk</option>
+                      <select class="form-control select2" id="team" name ="team" style="width: 100%;">
                       </select>
                     </div>
                     <!-- /.form-group -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Password</label>
-                      <div class="select2-purple">
-                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">
-                      </div>
-                    </div>
+<!--                  <div class="col-12 col-sm-6">-->
+<!--                    <div class="form-group">-->
+<!--                      <label>Password</label>-->
+<!--                      <div class="select2-purple">-->
+<!--                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">-->
+<!--                      </div>-->
+<!--                    </div>-->
                     <!-- /.form-group -->
-                  </div>
+<!--                  </div>-->
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -576,7 +573,7 @@ require "auth.php";
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+<!--        <script src="plugins/jquery/jquery.min.js"></script>-->
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->

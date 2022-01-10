@@ -1,6 +1,6 @@
       <?php
 require "auth.php";
-
+include "environment/globalparams2.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ require "auth.php";
   <title>ISHLAW</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -34,6 +34,10 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src ="globalfuncs.js" type="text/javascript"></script>
+    <script src ="environment/location.js" type="text/javascript"></script>
+    <script src ="environment/globalparams.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -46,7 +50,7 @@ require "auth.php";
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -451,7 +455,7 @@ require "auth.php";
               </div> -->
             </div>
             <!-- /.card-header -->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="exe">
+            <form method="POST" id="exe" onsubmit="return submitreload(Usermngmt.createclient,'exe','creation of a new client');">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -491,22 +495,22 @@ require "auth.php";
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
-                      <label>Team Id</label>
-                      <input type="number" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" required="">
+<!--                      <label>Team Id</label>-->
+                      <input type="hidden" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" value=<?php if(isset($teams)){echo $teams;}?> readonly>
 
                     </div>
                     <!-- /.form-group -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Password</label>
-                      <div class="select2-purple">
-                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">
-                      </div>
-                    </div>
+<!--                  <div class="col-12 col-sm-6">-->
+<!--                    <div class="form-group">-->
+<!--                      <label>Password</label>-->
+<!--                      <div class="select2-purple">-->
+<!--                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">-->
+<!--                      </div>-->
+<!--                    </div>-->
                     <!-- /.form-group -->
-                  </div>
+<!--                  </div>-->
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -672,7 +676,7 @@ else
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->

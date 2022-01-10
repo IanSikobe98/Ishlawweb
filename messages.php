@@ -3,7 +3,8 @@ require "auth.php";
 ?>
   
 <!DOCTYPE html>
-<html lang="en">  
+        <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +20,11 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="globalfuncs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -36,9 +38,14 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for messages.." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<!--        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -50,9 +57,9 @@ $(document).ready(function(){
 });
 
 </script>
-
+<script src="environment/location.js"></script>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -249,7 +256,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -459,11 +466,11 @@ $(document).ready(function(){
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right">12</span>
+                    <span class="badge bg-primary float-right" id ="inboxno"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="compose.php" class="nav-link">
+                  <a href="messagessent.php" class="nav-link">
                     <i class="far fa-envelope"></i> Sent
                   </a>
                 </li>
@@ -504,45 +511,36 @@ $(document).ready(function(){
                 <!-- /.btn-group -->
                 
                 <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
+<!--                  1-50/200-->
+<!--                  <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>-->
+<!--                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.float-right -->
               </div>
               <div class="table-responsive mailbox-messages">
-                <table id="exe" class="table table-hover table-striped">
+                <table id="exe" class="table table-hover ">
+                    <thead>
+<th>Category</th>
+<th>Subject</th>
+
+                    </thead>
                   <tbody>
-                    <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-           $ReadSql = "SELECT * FROM messages";
+                  <script src="services/Messaging/displayinbox.js"></script>
 
 
-                
 
-  
-      $result=mysqli_query($link,$ReadSql);
-      while($row=mysqli_fetch_array($result)){
-?>
-                  <tr>
-                                           
 
-                    
-                    
-                    <td class="mailbox-name"><a href="mail.php"><?php echo $row['party'];?></a></td>
-                    <td class="mailbox-subject"><b><?php echo $row['Category'];?></td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date"><?php echo $row['subject'];?></td>
-                  </tr>              
-                  <?php     
 
-      }
-    ?>
-                  </tbody>
                 </table>
+<script>
+                  $(document).ready( function () {
+                  $('#exe').DataTable();
+
+                  } );
+</script>
                 <!-- /.table -->
               </div>
               <!-- /.mail-box-messages -->
@@ -561,11 +559,11 @@ $(document).ready(function(){
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                 <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
+<!--                  1-50/200-->
+<!--                  <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>-->
+<!--                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.float-right -->
@@ -586,7 +584,10 @@ $(document).ready(function(){
      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 
   </footer>
-
+<!--    <script src="plugins/jquery/jquery.min.js"></script>-->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -596,7 +597,7 @@ $(document).ready(function(){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -606,7 +607,6 @@ $(document).ready(function(){
 	
 <script type="text/javascript">
   function hidefunc(){
-    
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -624,6 +624,14 @@ $(document).ready(function(){
 
       var vis = '<?php if(isset($_COOKIE["vis"])){
      echo $_COOKIE["vis"];} ?>'
+
+      var tokenuse = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokenuse',tokenuse);
+
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
 
 
 
@@ -677,6 +685,8 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+
+      getMessageCount();
   }
   
 </script> 	
