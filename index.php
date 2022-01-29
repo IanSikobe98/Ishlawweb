@@ -82,8 +82,9 @@ require "auth.php";
   height: 60px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+  background-color: rgba(0,0,0,0.4);
+  } /* Black w/ opacity */\
+ 
 </style>
 
 <script type="text/javascript">
@@ -176,15 +177,29 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -209,13 +224,13 @@ require "auth.php";
                 </a>
               </li>
               <li class="nav-item "  id="">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
               <li class="nav-item "  id="cliview">
-                <a href="" class="nav-link">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
@@ -584,22 +599,20 @@ require "auth.php";
         </div>
         <!-- /.row -->
 
-        <!-- Main row -->
-
-
+        <!-- Main row -->      
              <div class="row">
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX panelE -->
-            <div class="card">
+            <div style="overflow-x:auto;"class="card">
               <div class="card-header">
                 <h3 class="card-title">Upcoming Events</h3>
               </div>
 
-<table class="content-table" id="events">
+<table class="content-table" style="min-width: 900px" id="events" >
             <thead>
                 <tr>
-
+        
         <th>Activity</th>
         <th>Priority</th>
         <th>User</th>
@@ -614,30 +627,17 @@ require "auth.php";
                 </tr>
             </thead>
 
-<!--              <tr>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!--              <tr>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
+            </tr>
+            </thead>
+            <tbody>
 
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#events').DataTable();
+
+} );
+ </script>
 
 <script type="text/javascript">
 
@@ -651,94 +651,9 @@ return current;
 
 </script>
 
-
-
-<!--             <tr>-->
-<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>Jon mark</td>-->
-<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>21-01.2021 10.00 AM</td>-->
-<!--                                <td>21-01.2021 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!--               <tr>-->
-<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>Jon mark</td>-->
-<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>21-01.2021 10.00 AM</td>-->
-<!--                                <td>21-01.2021 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!--               <tr>-->
-<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>Jon mark</td>-->
-<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>21-01.2021 10.00 AM</td>-->
-<!--                                <td>21-01.2021 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!--               <tr>-->
-<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>Jon mark</td>-->
-<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>21-01.2021 10.00 AM</td>-->
-<!--                                <td>21-01.2021 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!--               <tr>-->
-<!--                <td>haha MEETING MY client on duties todays llmlamldmldmlmd almdldmldmalda madmd</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>Jon mark</td>-->
-<!--                <td>haha sdfnlkdaasldnnnl aldnnnnnnnnnnnnnnnnnnn lJEEEEEEEEEEEEEEEEEEEEE LFJJJJJJJJJJJJJJJJJJ LAJDDDDDDDDDDDDDDD AJLJFFFFFFFFFF </td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>21-01.2021 10.00 AM</td>-->
-<!--                                <td>21-01.2021 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!---->
-<!--             <tr>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>haha</td>-->
-<!--                <td>haha</td>-->
-<!--                                <td>22-02.2022 10.00 AM</td>-->
-<!--                <td>haha</td>-->
-<!--              </tr>-->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!--            </tbody>-->
-
 <tbody>
 
 </table>
-             <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a>
-              </div>
-
 
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->
@@ -976,7 +891,7 @@ function closeForm4() {
           <!-- Left col -->
           <div class="">
             <!-- MAP & BOX panelE -->
-            <div class="card">
+            <div style="overflow-x:auto;" class="card">
               <div class="card-header">
                 <h3 class="card-title">Your Agenda</h3>
               </div>
@@ -1024,12 +939,7 @@ $(document).ready( function () {
 
 } );
  </script>
- <script type="text/javascript">
-$(document).ready( function () {
-    $('#events').DataTable();
-
-} );
- </script>
+ 
 </form>
      <div class="card-footer clearfix">
                 <i class="fas fa-plus"></i><a href="calendar.php"> View Office Events</a>

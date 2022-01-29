@@ -41,7 +41,8 @@ var Usermngmt ={
 
 	createclient : 'services/usermgmt/postservice/createclient.php',
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' ,
-    fetchstaffoptions : 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/team/getAll'
+    fetchstaffoptions : 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/team/getAll',
+    fetchusers: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getAll',
 
 };
 

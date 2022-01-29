@@ -23,10 +23,22 @@ require "auth.php";
 
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+
+
+    <script src="environment/location.js"></script>
+    <script src="globalfuncs.js"></script>
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="services/usermgmt/clientsListing.js"></script>
 <link rel="stylesheet" type="text/css" href="styling.css">
 
 </head>
@@ -41,25 +53,25 @@ require "auth.php";
       </li>
       
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff.." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="jquery-1.2.6.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--      <script src="jquery-1.2.6.min.js"></script>-->
     
     <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
   <script src="jquery.tablesorter.widgets.js"></script>
-  <script>
-  $(function(){
-    $('exe').tablesorter({
-      widgets        : ['zebra', 'columns'],
-      usNumberFormat : false,
-      sortReset      : true,
-      sortRestart    : true
-    });
-  });
-  </script>
-
-
+<!--  <script>-->
+<!--  $(function(){-->
+<!--    $('exe').tablesorter({-->
+<!--      widgets        : ['zebra', 'columns'],-->
+<!--      usNumberFormat : false,-->
+<!--      sortReset      : true,-->
+<!--      sortRestart    : true-->
+<!--    });-->
+<!--  });-->
+<!--  </script>-->
+<!---->
+<!---->
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -473,38 +485,19 @@ $(document).ready(function(){
         
     </thead>
     <tbody>
-      <tr class="warning">
-        <td>John Downy</td>
-        <td>0716587214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2022 10:00 a.m</td>
-        
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-        
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-       
-       
-      </tr>
+
     </tbody>
   </table>
   <script>
-    $(document).ready(function() 
-        { 
-            $("#exe").tablesorter({sortList: [[3,1],[2,0]]}); 
-        } 
+    // $(document).ready(function()
+    //     {
+    //         $("#exe").tablesorter({sortList: [[3,1],[2,0]]});
+    //     }
+    // );
+
+    $(document).ready( function () {
+        $('#exe').DataTable();
+        }
     );
     </script>
 </div>
@@ -529,7 +522,7 @@ $(document).ready(function(){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
