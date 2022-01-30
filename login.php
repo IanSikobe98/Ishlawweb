@@ -20,6 +20,8 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
   <head>
   	<title>Ishlaw</title>
     <meta charset="utf-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -29,7 +31,7 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+	<body onload="setcounter()" class="img js-fullheight" style="background-image: url(images/bg.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -63,38 +65,51 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 
 	            </div>
 	            <?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-$username = '';
-$password = '';
+//    echo "
+//    <script>
+//    $(document).ready(function () {
+//
+//    swal({
+//        title: 'Checking...',
+//        text: 'Please wait',
+//        icon: 'images/ajaxloader.gif',
+//        iconHtml: 1500,
+//        showConfirmButton: false,
+//        allowOutsideClick: false
+//
+//    });
+//    });
+//    </script>
+//    ";
+    $username = '';
+    $password = '';
 
 // $databaseService = new DatabaseService();
 // $conn = $databaseService->getConnection();
 
 
-
 // $data = json_decode(file_get_contents("php://input"));
 
-$username = $_POST["user"];
-$password = $_POST["password"];
+    $username = $_POST["user"];
+    $password = $_POST["password"];
 
 
+    $url = "https://ishlaw_auth.ambience.co.ke/api/auth/v1/local/sign_in";
 
-$url = "https://ishlaw_auth.ambience.co.ke/api/auth/v1/local/sign_in";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $headers = array(
+        "Accept: application/json",
+        "Content-Type: application/json",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
-$headers = array(
-   "Accept: application/json",
-   "Content-Type: application/json",
-);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-
-$data = <<<DATA
+    $data = <<<DATA
 {
   "username": "$username",
   "password": "$password"
@@ -102,30 +117,69 @@ $data = <<<DATA
 }
 DATA;
 
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 //for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-$resp = curl_exec($curl);
-curl_close($curl);
+    $resp = curl_exec($curl);
+    $arr = json_decode($resp, true);
 //var_dump($resp);
-$resp = json_decode($resp);
+    $resp = json_decode($resp);
 
-setcookie('resp', $resp->token,time() + (30000), 'http://localhost/admin/','','','true');
+    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
+//    echo $httpcode;
+
+    if ($httpcode == 200) {
+        setcookie('resp', $resp->token, time() + (30000), 'http://localhost/admin/', '', '', 'true');
         // setcookie('jwt', "",time() -3600, 'http://localhost/jawert/php-jwt-example/api/');
-         $_COOKIE['resp'] = $resp->token;
-         // echo $resp->token;
+        $_COOKIE['resp'] = $resp->token;
+        // echo $resp->token;
 
-                                     session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $resp->token;
-                           
+        session_start();
+
+        // Store data in session variables
+        $_SESSION["loggedin"] = true;
+        $_SESSION["id"] = $resp->token;
+
          header("location: index.php");
+    }
+    else if ($httpcode == 401) {
+        if(isset($arr["message"]) &&$arr["message"] =="Incorrect password"){
+            echo "<script>
+            swal({
+                title: 'Error !',
+                text: 'Incorrect Password',
+                icon: 'error',
+                button: 'Close',
+            });
+</script>
+";
+        }
+
+        else if(isset($arr["message"]) && $arr["message"] =="User does not exist"){
+            echo "<script>
+            swal({
+                title: 'Error !',
+                text: 'User does not exist',
+                icon: 'error',
+                button: 'Close',
+            });
+</script>
+";
+
+        }
+
+
+
+//        header('location: https://www.google.com/intl/en-GB/gmail/about/');
+
+
+    }
 }
+
 
 
 ?>
@@ -137,10 +191,15 @@ setcookie('resp', $resp->token,time() + (30000), 'http://localhost/admin/','',''
 		</div>
 	</section>
 
-	<script src="js/jquery.min.js"></script>
+<!--	<script src="js/jquery.min.js"></script>-->
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
+    <script>
+        function setcounter() {
+            sessionStorage.setItem("counter", 0);
+        }
+    </script>
 
 	</body>
 </html>

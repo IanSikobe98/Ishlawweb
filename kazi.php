@@ -28,6 +28,11 @@ require "auth.php";
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -511,12 +516,12 @@ $(document).ready(function(){
 	 	    <th>Task Status</th>
                 </tr>
             </thead>
-<!--            <tbody>-->
+            <tbody>
 
-<script src="services/taskmgmt/fetchtable.js" type="text/javascript">
+<script src="services/taskmgmt/fetchtable.js" type="text/javascript"></script>
 
-</script>
-</tbody>
+
+<!--</tbody>-->
        
 </table>
 </div>
@@ -526,7 +531,7 @@ $(document).ready( function () {
 
 } );
  </script>
-        </script> -->
+
 
 
 
@@ -536,15 +541,15 @@ $(document).ready( function () {
 </table>
 </div>
 
-            <div id="myModal" class="modal">
-
-  <div class="modal-content">
-    <span id="close" class="close">&times;</span>
-    
-    <h6 id = "status" style="color:green;"></h6>
-      <h6 id = "status3" style="color:green;"></h6>
-      
-  </div>
+<!--            <div id="myModal" class="modal">-->
+<!---->
+<!--  <div class="modal-content">-->
+<!--    <span id="close" class="close">&times;</span>-->
+<!--    -->
+<!--    <h6 id = "status" style="color:green;"></h6>-->
+<!--      <h6 id = "status3" style="color:green;"></h6>-->
+<!--      -->
+<!--  </div>-->
   
 </div>  
               <!-- /.card-body -->

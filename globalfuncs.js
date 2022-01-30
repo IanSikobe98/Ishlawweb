@@ -14,11 +14,19 @@ function sendreload(urlpost,postid) {
             console.log("successful");
 
             sessionStorage.setItem("submitsuccess", "true");
-            // document.location.reload();
-            alert("login sucessful")
+            document.location.reload();
+            // alert("login sucessful")
         },
         error: function (x, e) {
-            alert("login unsucessful")
+
+            // alert("Error in updating task")
+            swal({
+                title: 'Error!',
+                text: 'Error in updating Activity!',
+                icon: 'error',
+                button: 'Close',
+            });
+            // alert("login unsucessful")
             // for error handling
             if (x.status == 0) {
                 console.log('You are offline!! -  Please Check Your Network.');
@@ -130,13 +138,13 @@ function sendreloadnext(urlpost,postid,pagenext) {
 
 
 //reload page function
-function formreload (){
+function  formreload(){
 
     var reloading = sessionStorage.getItem("submitsuccess");
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
-        document.getElementById('myModal').style.display = 'block';
+
             swal({
   title: 'Great!',
   text: 'Task Updated successfully!',
@@ -144,10 +152,33 @@ function formreload (){
   button: 'Close',
 });
 
-        document.getElementById('status').innerHTML = 'Tasks successfully saved';
-        document.getElementById('status3').innerHTML = '.<br><br>';
+        // document.getElementById('myModal').style.display = 'block';
+        // document.getElementById('status').innerHTML = 'Tasks successfully saved';
+        // document.getElementById('status3').innerHTML = '.<br><br>';
+        //
+        // document.getElementById('status').style.color= 'green';
+    }
+}
 
-        document.getElementById('status').style.color= 'green';
+function  formreloadcustom(name){
+
+    var reloading = sessionStorage.getItem("submitsuccess");
+
+    if (reloading) {
+        sessionStorage.removeItem("submitsuccess");
+
+        swal({
+            title: 'Great!',
+            text: name +' updated successfully!',
+            icon: 'success',
+            button: 'Close',
+        });
+
+        // document.getElementById('myModal').style.display = 'block';
+        // document.getElementById('status').innerHTML = 'Tasks successfully saved';
+        // document.getElementById('status3').innerHTML = '.<br><br>';
+        //
+        // document.getElementById('status').style.color= 'green';
     }
 }
 
@@ -271,6 +302,29 @@ function logout(){
 
 }
 
+function loginsuccess(){
+
+    var reloading = sessionStorage.getItem("loginsuccess");
+
+    if (reloading) {
+        sessionStorage.removeItem("loginsuccess");
+
+        swal({
+            title: 'Great!',
+            text: 'Login Successful!',
+            icon: 'success',
+            button: 'Close'
+
+        });
+
+        // document.getElementById('myModal').style.display = 'block';
+        // document.getElementById('status').innerHTML = 'Tasks successfully saved';
+        // document.getElementById('status3').innerHTML = '.<br><br>';
+        //
+        // document.getElementById('status').style.color= 'green';
+    }
+}
+
 
 
 function submitreload(urlpost,postid,request) {
@@ -333,3 +387,79 @@ function submitreload(urlpost,postid,request) {
     });
     return false;
 }
+
+function resetpassword(urlpost,postid){
+var token ='hhhhh';
+console.log(token);
+        $.ajax
+        ({
+            type: 'POST',
+            url: urlpost,
+            data:$('#'+postid).serialize(),
+            success: function () {
+                swal({
+                    title: 'Sucesss!',
+                    text: 'Success in resetting password!',
+                    icon: 'success',
+                    button: 'Close',
+                    timer: 1000
+                });
+
+                // document.getElementById('myForm').style.display = 'none';
+                console.log("successful");
+
+                // sessionStorage.setItem("submitsuccess", "true");
+                // document.location.reload();
+                // alert("login sucessful")
+            },
+            error: function (x, e) {
+
+                // alert("Error in updating task")
+
+                // alert("login unsucessful")
+                // for error handling
+                if (x.status == 0) {
+                    console.log('You are offline!! -  Please Check Your Network.');
+                    swal({
+                        title: 'Error!',
+                        text: 'We are unable to process your request!',
+                        icon: 'error',
+                        button: 'Close',
+                    });
+                } else if (x.status == 401) {
+                    console.log('Requested URL not found.');
+                    swal({
+                        title: 'Error!',
+                        text: 'Unauthorized Action!',
+                        icon: 'error',
+                        button: 'Close',
+                    });
+                } else if (x.status == 500) {
+                    console.log('Internal Server Error.');
+                    swal({
+                        title: 'Error!',
+                        text: 'We are unable to process your request!',
+                        icon: 'error',
+                        button: 'Close',
+                    });
+                }
+                else if (x.status == 400) {
+                    console.log('Validation Error.');
+                    swal({
+                        title: 'Error!',
+                        text: 'Current Password input is wrong!',
+                        icon: 'error',
+                        button: 'Close',
+                    });
+                }
+                else if (e == 'parsererror') {
+                    console.log('Error. - Parsing JSON Request failed.');
+                } else if (e == 'timeout') {
+                    console.log('Request Time out.');
+                } else {
+                    console.log('Unknown Error. - ' + x.responseText);
+                }
+            }
+        });
+        return false;
+    }

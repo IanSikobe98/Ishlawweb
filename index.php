@@ -49,20 +49,20 @@ require "auth.php";
 <!--    <script src="https://cdn.datatables.net/autofill/2.3.9/js/dataTables.autoFill.min.js" type="text/javascript"></script>-->
 
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 
     <script src="environment/location.js"></script>
-
-  <script src="services/taskmgmt/nonrectaagen.js"></script>
+    <script src="services/taskmgmt/nonrectaagen.js"></script>
     <script src="services/taskmgmt/rectaagen.js"></script>
-  <script src="services/taskmgmt/nonrecevagen.js"></script>
+
   <script src="services/taskmgmt/nonrecevagen.js"></script>
   <script src="services/taskmgmt/recevagen.js"></script>
   <script src="services/taskmgmt/formfiller.js"></script>
@@ -612,7 +612,7 @@ require "auth.php";
 <table class="content-table" style="min-width: 900px" id="events" >
             <thead>
                 <tr>
-        
+        <th>ID</th>
         <th>Activity</th>
         <th>Priority</th>
         <th>User</th>
@@ -627,8 +627,7 @@ require "auth.php";
                 </tr>
             </thead>
 
-            </tr>
-            </thead>
+
             <tbody>
 
 
@@ -782,7 +781,7 @@ return current;
 
                   <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    <option selected="selected">Select Save Option</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>    
@@ -915,6 +914,7 @@ function closeForm4() {
 
 <tbody>
 
+</table>
 <script type="text/javascript">
 
 function getnonrec (input) {
@@ -925,12 +925,12 @@ console.log(current);
 return current;
 }
 </script>
-</tbody>
+<!--</tbody>-->
 <!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
 
 
 
-</table>
+
 <script type="text/javascript">
 
 $(document).ready( function () {
@@ -1071,7 +1071,7 @@ $(document).ready( function () {
     <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
     <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    <option selected="selected">Select Save Option</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
@@ -1218,17 +1218,43 @@ eventDidMount: function(info) {
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/demo.js"></script>
 <script type="text/javascript">
 
   //Window on load function
   function hidefunc(){
-var reloading = sessionStorage.getItem("submitsuccess");
+
+      var reloading1 ='<?php if(isset($_COOKIE["loginsuccess"])){
+          echo $_COOKIE["loginsuccess"];} ?>'
+      document.cookie = "loginsuccess; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      //var deletereload = '<?php //setcookie("loginsuccess", "", time() - 3600);?>//'
+     var counter = sessionStorage.getItem("counter")
+      if (reloading1 && counter == 0) {
+          counter++
+          sessionStorage.setItem("counter",counter);
+
+          swal({
+              title: 'Great!',
+              text: 'Login Successful!',
+              icon: 'success',
+              button: 'Close'
+
+          });
+
+          // document.getElementById('myModal').style.display = 'block';
+          // document.getElementById('status').innerHTML = 'Tasks successfully saved';
+          // document.getElementById('status3').innerHTML = '.<br><br>';
+          //
+          // document.getElementById('status').style.color= 'green';
+      }
+
+      var reloading = sessionStorage.getItem("submitsuccess");
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
              swal({
   title: 'Great!',
-  text: 'Task Updated successfully!',
+  text: 'Activity updated successfully!',
   icon: 'success',
   button: 'Close',
 });

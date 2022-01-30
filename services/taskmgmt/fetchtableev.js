@@ -1,118 +1,135 @@
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON(Events.recurring, function(data)  {
-          console.log(data);
-          var items = [];
-
-          for(var i in data) {
-            items.push(data[i].rrule);
-                  }
-console.log(items);
-
-var dates=[];
+// var script = document.createElement('script');
+// script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
+// document.getElementsByTagName('head')[0].appendChild(script);
+// $.getJSON(Events.recurring,
 
 
-var titles=[];
-var id = [];
-var prior =[];
-var user = [];
-var loc=[];
-var descri = [];
-var clino = [];
-var dur = [];
-var end =[];
+$(document).ready(function () {
+
+
+
+    $.ajax
+    ({
+        type: "GET",
+
+
+        url: Events.recurring,
+        dataType: 'json',
+        async: false,
+        // beforeSend: function (xhr) {
+        //     xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+        // },
+
+
+        success: function (data) {
+            console.log(data);
+            var items = [];
+
+            for (var i in data) {
+                items.push(data[i].rrule);
+            }
+            console.log(items);
+
+            var dates = [];
+
+
+            var titles = [];
+            var id = [];
+            var prior = [];
+            var user = [];
+            var loc = [];
+            var descri = [];
+            var clino = [];
+            var dur = [];
+            var end = [];
 
 // var status =[];
 
 
+            for (var i in items) {
+                const rule = rrule.rrulestr(items[i])
 
-
-
-for (var i in items){
-const rule = rrule.rrulestr(items[i])
-
-dates.push(rule.all());
+                dates.push(rule.all());
 // dates.push(data[i].title)
-titles.push(data[i].title);
-id.push(data[i].id);
-prior.push(data[i].priority);
-user.push(data[i].user);
-loc.push(data[i].location);
-descri.push(data[i].description);
-clino.push(data[i].clino);
-dur.push(data[i].duration);
-end.push(data[i].end);
-}
-var cars =[dates,id,titles,prior,user,loc,descri,clino,dur,end];
-console.log(cars);
-console.log(dates);
-console.log(cars[0][1][0]);
-console.log(cars[1][1]);
-console.log("hi");
+                titles.push(data[i].title);
+                id.push(data[i].id);
+                prior.push(data[i].priority);
+                user.push(data[i].user);
+                loc.push(data[i].location);
+                descri.push(data[i].description);
+                clino.push(data[i].clino);
+                dur.push(data[i].duration);
+                end.push(data[i].end);
+            }
+            var cars = [dates, id, titles, prior, user, loc, descri, clino, dur, end];
+            console.log(cars);
+            console.log(dates);
+            console.log(cars[0][1][0]);
+            console.log(cars[1][1]);
+            console.log("hi");
 
 // for(var i = 0; i < cars.length; i++) {
-var car = cars[0];
-var student = ''; 
-var p=0;
+            var car = cars[0];
+            var student = '';
+            var p = 0;
 
-var d = new Date(cars[9][j]);
+            var d = new Date(cars[9][j]);
 
-var daco;
-for(var j = 0; j < car.length; j++) {
-    var cube = car[j];
-    for(var k = 0; k < cube.length; k++) {
-       console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
-       console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
+            var daco;
+            for (var j = 0; j < car.length; j++) {
+                var cube = car[j];
+                for (var k = 0; k < cube.length; k++) {
+                    console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
+                    console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
 
-       console.log(" ");
-       console.log(" ");
-       daco =convdate99(cars[8][j],dates[j][k]);
+                    console.log(" ");
+                    console.log(" ");
+                    daco = convdate99(cars[8][j], dates[j][k]);
 
-       daco2 =convdate101(dates[j][k]);
-
-
-                            student += '<tr>'; 
-                            student += '<td>RDE' +  p+ 
-                                cars[1][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[2][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[3][j] + '</td>';
-
-                                student += '<td>' +  
-                                cars[4][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[5][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[6][j] + '</td>';  
+                    daco2 = convdate101(dates[j][k]);
 
 
-                                student += '<td>' +  
-                                cars[7][j] + '</td>'; 
+                    student += '<tr>';
+                    student += '<td>RDE' + p +
+                        cars[1][j] + '</td>';
 
-                                // student += '<td>' +  
-                                // cars[9][j] + '</td>'; 
+                    student += '<td>' +
+                        cars[2][j] + '</td>';
 
-                                student += '<td>' +  
-                                daco2.toLocaleString() + '</td>';  
-  
-                            student += '<td>' +  
-                               daco.toLocaleString() + '</td>'; 
+                    student += '<td>' +
+                        cars[3][j] + '</td>';
 
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="fetchitre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+                    student += '<td>' +
+                        cars[4][j] + '</td>';
 
-                            student += '</tr>'; 
+                    student += '<td>' +
+                        cars[5][j] + '</td>';
 
-p++;
-    }
-}
-  $('#myTable').append(student); 
+                    student += '<td>' +
+                        cars[6][j] + '</td>';
+
+
+                    student += '<td>' +
+                        cars[7][j] + '</td>';
+
+                    // student += '<td>' +
+                    // cars[9][j] + '</td>';
+
+                    student += '<td>' +
+                        daco2.toLocaleString() + '</td>';
+
+                    student += '<td>' +
+                        daco.toLocaleString() + '</td>';
+
+                    // student += '<td>' +
+                    //     '<button id= "btn'+p+'" onclick="fetchitre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+
+                    student += '</tr>';
+
+                    p++;
+                }
+            }
+            $('#myTable').append(student);
 
 // onclick="myFunction()"
 
@@ -124,13 +141,14 @@ p++;
 // )
 // console.log(rule.all());
 
-      // var str = ""
-      // for (var item of items) {
-      //   str += "<option>" + item + "</option>"
-      // }
-      // document.getElementById("policyid").innerHTML = str;
-        
-      
+            // var str = ""
+            // for (var item of items) {
+            //   str += "<option>" + item + "</option>"
+            // }
+            // document.getElementById("policyid").innerHTML = str;
+
+        }
+    });
 
       });
 
@@ -221,17 +239,41 @@ return d;
 
 
      
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON(Events.calnonrecurring , function(data)  {
-          console.log(data);
-          var items = [];
-var student = ''; 
-var daco;
-var daco2
-          for(var i in data) {
-            // items.push(data[i].rrule);
+// var script = document.createElement('script');
+// script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
+// document.getElementsByTagName('head')[0].appendChild(script);
+// $.getJSON(Events.calnonrecurring ,
+
+
+
+    $(document).ready(function () {
+
+
+
+        $.ajax
+        ({
+            type: "GET",
+
+
+            url: Events.calnonrecurring,
+            dataType: 'json',
+            async: false,
+            // beforeSend: function (xhr) {
+            //     xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+            // },
+
+
+            // $.getJSON(Tasks.calnonrecurring,
+            success:
+
+                function (data) {
+                    console.log(data);
+                    var items = [];
+                    var student = '';
+                    var daco;
+                    var daco2
+                    for (var i in data) {
+                        // items.push(data[i].rrule);
 //  daco = data[i].start;
 // daco = daco.split('-').join('/');
 // daco = formatDate (daco);      
@@ -241,58 +283,54 @@ var daco2
 // daco2 = new Date(data[i].start);
 // daco2 = daco.toLocaleString();  
 
-daco =getDate(data[i].start);
-daco2 =getDate(data[i].end);
+                        daco = getDate(data[i].start);
+                        daco2 = getDate(data[i].end);
 
-                            student += '<tr>'; 
-                            
-                            student += '<td>NRDE' + 
-                                data[i].id + '</td>';
+                        student += '<tr>';
 
-                                student += '<td>' +  
-                                data[i].title + '</td>'; 
+                        student += '<td>NRDE' +
+                            data[i].id + '</td>';
 
-                                 student += '<td>' +  
-                                data[i].priority + '</td>';
+                        student += '<td>' +
+                            data[i].title + '</td>';
 
-                                student += '<td>' +  
-                                data[i].user + '</td>'; 
+                        student += '<td>' +
+                            data[i].priority + '</td>';
 
-                                student += '<td>' +  
-                                data[i].location + '</td>';
+                        student += '<td>' +
+                            data[i].user + '</td>';
 
-                                student += '<td>' +  
-                                data[i].description + '</td>'; 
+                        student += '<td>' +
+                            data[i].location + '</td>';
 
-                                
-
-                                student += '<td>' +  
-                                data[i].clino + '</td>';
+                        student += '<td>' +
+                            data[i].description + '</td>';
 
 
-                                student += '<td>' +  
-                                daco + '</td>';
+                        student += '<td>' +
+                            data[i].clino + '</td>';
 
-                                student += '<td>' +  
-                                daco2 + '</td>';
 
-                               
+                        student += '<td>' +
+                            daco + '</td>';
 
-                                 
+                        student += '<td>' +
+                            daco2 + '</td>';
 
-                            //     student += '<td>' +  
-                            //     cars[1][j] + '</td>'; 
-  
-                            // student += '<td>' +  
-                            //    dates[j][k].toLocaleDateString() + '</td>'; 
 
-                            // student += '<td>' +  
-                            //     '<button id= "btn'+p+'" onclick="myFunction(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+                        //     student += '<td>' +
+                        //     cars[1][j] + '</td>';
 
-                            student += '</tr>'; 
+                        // student += '<td>' +
+                        //    dates[j][k].toLocaleDateString() + '</td>';
 
-}
-  $('#myTable').append(student); 
+                        // student += '<td>' +
+                        //     '<button id= "btn'+p+'" onclick="myFunction(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+
+                        student += '</tr>';
+
+                    }
+                    $('#myTable').append(student);
 
 // onclick="myFunction()"
 
@@ -304,13 +342,14 @@ daco2 =getDate(data[i].end);
 // )
 // console.log(rule.all());
 
-      // var str = ""
-      // for (var item of items) {
-      //   str += "<option>" + item + "</option>"
-      // }
-      // document.getElementById("policyid").innerHTML = str;
-        
-      
+                    // var str = ""
+                    // for (var item of items) {
+                    //   str += "<option>" + item + "</option>"
+                    // }
+                    // document.getElementById("policyid").innerHTML = str;
+
+                }
+        });
 
       });
 

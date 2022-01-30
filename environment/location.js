@@ -2,7 +2,7 @@
 var Tasks =
 {
     recurring : '/ishfinal/API/recta.php',
-    nonrecurring : '/ishfinal/API/daynoreta.php',
+    nonrecurring : 'services/taskmgmt/API/daynoreta.php',
     calnonrecurring: '/ishfinal/API/nonrecta.php'
 
 
@@ -12,7 +12,7 @@ var Events =
 {
 
     recurring : '/ishfinal/API/receve.php',
-    nonrecurring : '/ishfinal/API/daynonrecev.php',
+    nonrecurring : 'services/taskmgmt/API/daynonrecev.php',
     calnonrecurring: '/ishfinal/API/nonrecev.php'
 
 };
@@ -25,6 +25,7 @@ agendapostev : 'services/taskmgmt/postservice/updateevents.php',
 agendasubmit  :  'http://localhost/Ishlawwebv2/index.php',
 createtask : 'services/taskmgmt/postservice/createtasks.php',
 createtasksubmit: 'kazi.php',
+createeventsubmit: 'tvents.php',
 createevent : 'services/taskmgmt/postservice/createevents.php',
 };
 
@@ -43,6 +44,9 @@ var Usermngmt ={
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' ,
     fetchstaffoptions : 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/team/getAll',
     fetchusers: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getAll',
+    authenticate:  'services/usermgmt/postservice/authenticate.php',
+    resetpassword: 'services/usermgmt/postservice/resetpassword.php',
+    fetchuser: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getOne',
 
 };
 

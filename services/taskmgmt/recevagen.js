@@ -1,138 +1,177 @@
-var script = document.createElement('script');
-script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
-document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON(Events.recurring, function(data)  {
-          console.log(data);
-          var items = [];
-
-          for(var i in data) {
-            items.push(data[i].rrule);
-                  }
-console.log(items);
-
-var dates=[];
+// var script = document.createElement('script');
+// script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
+// document.getElementsByTagName('head')[0].appendChild(script);
+// $.getJSON(Events.recurring,
 
 
-var titles=[];
-var id = [];
-var prior =[];
-var user = [];
-var loc=[];
-var descri = [];
-var clino = [];
-var dur = [];
-var end =[];
+
+
+
+
+
+var data;
+// $(document).ready(function() {
+$(document).ready(function () {
+
+
+
+
+
+
+    $.ajax
+    ({
+        type: "GET",
+
+
+        url: Events.recurring,
+        dataType: 'json',
+        async: false,
+        beforeSend: function (xhr) {
+            var jwt = jwtpo;
+            console.log(jwtpo);
+
+
+
+            xhr.setRequestHeader ("Authorization", "Bearer "+ jwt);
+        },
+
+
+
+        // $.getJSON(Tasks.calnonrecurring,
+        success:function(data) {
+            console.log(data);
+            var items = [];
+
+            for (var i in data) {
+                items.push(data[i].rrule);
+            }
+            console.log(items);
+
+            var dates = [];
+
+
+            var titles = [];
+            var id = [];
+            var prior = [];
+            var user = [];
+            var loc = [];
+            var descri = [];
+            var clino = [];
+            var dur = [];
+            var end = [];
 
 // var status =[];
 
 
+            for (var i in items) {
+                const rule = rrule.rrulestr(items[i])
 
-
-
-for (var i in items){
-const rule = rrule.rrulestr(items[i])
-
-dates.push(rule.all());
+                dates.push(rule.all());
 // dates.push(data[i].title)
-titles.push(data[i].title);
-id.push(data[i].id);
-prior.push(data[i].priority);
-user.push(data[i].user);
-loc.push(data[i].location);
-descri.push(data[i].description);
-clino.push(data[i].clino);
-dur.push(data[i].duration);
-end.push(data[i].end);
-}
-var cars =[dates,id,titles,prior,user,loc,descri,clino,dur,end];
-console.log(cars);
-console.log(dates);
-console.log(cars[0][1][0]);
-console.log(cars[1][1]);
-console.log("hi");
+                titles.push(data[i].title);
+                id.push(data[i].id);
+                prior.push(data[i].priority);
+                user.push(data[i].user);
+                loc.push(data[i].location);
+                descri.push(data[i].description);
+                clino.push(data[i].clino);
+                dur.push(data[i].duration);
+                end.push(data[i].end);
+            }
+            var cars = [dates, id, titles, prior, user, loc, descri, clino, dur, end];
+            console.log(cars);
+            console.log(dates);
+            console.log(cars[0][1][0]);
+            console.log(cars[1][1]);
+            console.log("hi");
 
 // for(var i = 0; i < cars.length; i++) {
-var car = cars[0];
-var student = ''; 
-var p=0;
+            var car = cars[0];
+            var student = '';
+            var p = 0;
 
-var d = new Date(cars[9][j]);
+            var d = new Date(cars[9][j]);
 
-var daco;
+            var daco;
 
-var current = new Date();
-current = current.toLocaleDateString()
-console.log(current);
+            var current = new Date();
+            current = current.toLocaleDateString()
+            console.log(current);
 
-for(var j = 0; j < car.length; j++) {
-    var cube = car[j];
-    for(var k = 0; k < cube.length; k++) {
+            for (var j = 0; j < car.length; j++) {
+                var cube = car[j];
+                for (var k = 0; k < cube.length; k++) {
 
 // daco =convdate2(cars[8][j],dates[j][k]);
 
-      if(daco =convdate2(cars[8][j],dates[j][k]) ==  true ){
-       // console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
-       // console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
+                    if (daco = convdate2(cars[8][j], dates[j][k]) == true) {
+                        // console.log("cube[" + j + "][" + k + "] = " + dates[j][k].toLocaleDateString());
+                        // console.log("cube[" + j + "][" + k + "] = " + cars[1][j]);
 
-       // console.log(" ");
-       // console.log(" ");
-       daco5 =condate3(dates[j][k]);
-       daco6 =condate4(cars[8][j],dates[j][k]);
-
-
-
-                            student += '<tr>'; 
-                            student += '<td>RDE' +  p + 
-                                cars[1][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[2][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[3][j] + '</td>';
-
-                                student += '<td>' +  
-                                cars[4][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[5][j] + '</td>'; 
-
-                                student += '<td>' +  
-                                cars[6][j] + '</td>';  
+                        // console.log(" ");
+                        // console.log(" ");
+                        daco5 = condate3(dates[j][k]);
+                        daco6 = condate4(cars[8][j], dates[j][k]);
 
 
-                                student += '<td>' +  
-                                cars[7][j] + '</td>'; 
+                        student += '<tr>';
+                        student += '<td>RDE' + p +
+                            cars[1][j] + '</td>';
 
-                          
+                        student += '<td>' +
+                            cars[2][j] + '</td>';
 
-                                student += '<td>' +  
-                                daco5.toLocaleString() + '</td>';
+                        student += '<td>' +
+                            cars[3][j] + '</td>';
 
-                                student += '<td>' +  
-                                daco6.toLocaleString() + '</td>';
-    
-                            
+                        student += '<td>' +
+                            cars[4][j] + '</td>';
 
-                            student += '<td>' +  
-                                '<button id= "btn1345 '+p+'" onclick="fetchitre2(this.id)"  name='+ cars[1][j]+' value= '+ cars[1][j]+'>'+'edit'+'</button>' + '</td>';
+                        student += '<td>' +
+                            cars[5][j] + '</td>';
 
-                            student += '</tr>'; 
+                        student += '<td>' +
+                            cars[6][j] + '</td>';
 
 
-                          }
-else{
-  console.log("no dates");
-}
+                        student += '<td>' +
+                            cars[7][j] + '</td>';
 
-p++;
-    }
-}
-  $('#events').append(student); 
-              
+
+                        student += '<td>' +
+                            daco5.toLocaleString() + '</td>';
+
+                        student += '<td>' +
+                            daco6.toLocaleString() + '</td>';
+
+
+                        student += '<td>' +
+                            '<button id= "btn1345 ' + p + '" onclick="fetchitre2(this.id)"  name=' + cars[1][j] + ' value= ' + cars[1][j] + '>' + 'edit' + '</button>' + '</td>';
+
+                        student += '</tr>';
+
+
+                    } else {
+                        console.log("no dates");
+                    }
+
+                    p++;
+                }
+            }
+            $('#events').append(student);
+
+
+            // swal({
+            //     title: 'Sucesss!',
+            //     text: 'Success in composing Messsages!',
+            //     icon: 'success',
+            //     button: 'Close',
+            //     timer: 1000
+            // });
+        }
       });
 
-
+});
 function convdate2(str,str2) {
 
 

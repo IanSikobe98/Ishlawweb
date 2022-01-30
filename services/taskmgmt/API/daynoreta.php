@@ -1,5 +1,5 @@
 <?php
-require "../../sec/vendor/autoload.php";
+require "../../../sec/vendor/autoload.php";
 use \Firebase\JWT\JWT;
 //setting header to json
 
@@ -30,59 +30,69 @@ AgMBAAE=
 $jwt = null;
 
 
-// $data = json_decode(file_get_contents("php://input"));
+ $data = json_decode(file_get_contents("php://input"));
 
-// $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
-// $arr = explode(" ", $authHeader);
-// $jwt = $arr[1];
-// if($jwt){
+ $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+ $arr = explode(" ", $authHeader);
+ $jwt = $arr[1];
+ if($jwt) {
 
-//     try {
+     try {
 
-//         $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-
-//      $pop = json_encode($decoded);   
-//      // echo $pop["Team"];
-//      // echo $pop;
-//      // echo $decoded->firstName;
+         $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
 
 
-$tod = strftime('%F');
+         $pop = json_encode($decoded);
+         // echo $pop["Team"];
+         // echo $pop;
+         // echo $decoded->firstName;
+
+
+         $tod = strftime('%F');
 
 
 //get connection
-$mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+         $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-if(!$mysqli){
-	die("Connection failed: " . $mysqli->error);
-}
+         if (!$mysqli) {
+             die("Connection failed: " . $mysqli->error);
+         }
 
 //query to get data from the table
-$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' AND `start` <= '$tod' AND `status` <> 'Completed'AND `User`='allan'");
+         $query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' AND `start` <= '$tod' AND `status` <> 'Completed'AND `User`='$decoded->firstName'");
 // -- AND `User`='$decoded->firstName'
 //execute query
-$result = $mysqli->query($query);
+         $result = $mysqli->query($query);
 
 //loop through the returned data
-$data = array();
-foreach ($result as $row) {
-	$data[] = $row;
-}
+         $data = array();
+         foreach ($result as $row) {
+             $data[] = $row;
+         }
 
 
 //free memory associated with result
-$result->close();
+         $result->close();
 
 
 //close connection
-$mysqli->close();
+         $mysqli->close();
 
 //now print the data
- 
+
 // $myarray =array(json_encode($data));
 // print myarray;
 
+
+     } catch (Exception $e) {
+
+         http_response_code(401);
+
+         echo json_encode(array(
+             "message" => "Access denied.",
+             "error" => $e->getMessage()
+         ));
+     }
 
 
 // }
@@ -90,8 +100,8 @@ $mysqli->close();
 // }
 // print json_encode($data);
 //print (",");
-print json_encode($data);
-
+     print json_encode($data);
+ }
 
 
 

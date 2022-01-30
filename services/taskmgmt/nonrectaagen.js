@@ -2,23 +2,31 @@
 // script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 // document.getElementsByTagName('head')[0].appendChild(script);
 var data;
-  $(document).ready(function() {
-        $.ajax({
-          url: Tasks.nonrecurring,
-          type: 'GET',
-          dataType: 'json',
-          data: data,
-          error: function() { console.log('boo! not working'); },
-
-             beforeSend: function (xhr) {
-    var jwt = jwtpo;
-    console.log(jwtpo);
+$(document).ready(function () {
 
 
-     
-    xhr.setRequestHeader ("Authorization", "Bearer "+ jwt);
-  },
-          success: (data) => {
+
+    $.ajax
+    ({
+        type: "GET",
+
+
+        url: Tasks.nonrecurring,
+        dataType: 'json',
+        async: false,
+        beforeSend: function (xhr) {
+            var jwt = jwtpo;
+            console.log(jwtpo);
+
+
+
+            xhr.setRequestHeader ("Authorization", "Bearer "+ jwt);
+        },
+
+
+
+        // $.getJSON(Tasks.calnonrecurring,
+        success:function(data) {
               console.log(data);
               var items = [];
               var student = '';
@@ -60,7 +68,7 @@ var data;
                   student += '</tr>';
                   p++;
               }
-              // $('#table').append(student);
+              $('#table').append(student);
               // $('#table').DataTable();
 
               // function() {

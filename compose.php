@@ -37,6 +37,8 @@ require "auth.php";
     <script src="globalfuncs.js"></script>
 
 
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
@@ -494,7 +496,7 @@ require "auth.php";
               <form  method="POST" id="msgsubmit" onsubmit="return sendreloadAuth(Messages.compose,'msgsubmit');">
               <div class="card-body">
                 <div class="form-group">
-                    <select class="mul-select"  name="receiver_id[]"multiple="true">
+                    <select class="mul-select" id="recipients" name="receiver_id[]"multiple="true">
                         <option value="28325a2e-a21d-4759-9686-c7680d77cd48">anne</option>
                         <option value="2fcc08d9-eb51-4090-bef6-5ab9d2773267">lutomiah</option>
                         <option value="3af8b85f-0fc8-4a68-a3aa-2599511558a9">allan</option>
@@ -695,5 +697,6 @@ document.getElementById("visit").style.display ="block";
         });
     })
 </script>
+<script src="services/Messaging/fetchrecipients.js"></script>
 </body>
 </html>

@@ -51,6 +51,7 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
  
 <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src="environment/location.js"></script>
 
 </head>
 
@@ -460,14 +461,14 @@ require "auth.php";
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                
-
-                <h3 class="profile-username text-center">Name: Nina Mcintire</h3>
-
-                <p class="text-muted text-center">Role: Software Engineer</p>
 
 
-                
+                  <h3 class="profile-username text-center" >Name: <b id="usern1">User</b></h3>
+
+                  <p class="text-muted text-center" >Role: <b  id="role2">Software Engineer</b></p>
+
+
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -480,23 +481,22 @@ require "auth.php";
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Phone Number</strong>
+                <strong ><i class="fas fa-book mr-1"></i> Phone Number</strong>
 
-                <p class="text-muted">
-                  07857488383
+                <p class="text-muted" id="phoneno">
                 </p>
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Email</strong>
+                <strong ><i class="fas fa-map-marker-alt mr-1"></i> Email</strong>
 
-                <p class="text-muted">mail@gmail.com</p>
+                <p class="text-muted" id="email"></p>
 
                 <hr>
 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Registration Date</strong>
 
-                <p class="text-muted">
+                <p class="text-muted" id="creationdate">
                   03-04-2021
                 </p>
 
@@ -536,25 +536,29 @@ require "auth.php";
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label"> First Name</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          <input type="text" class="form-control" id="inputName"  value='<?php if(isset($_COOKIE["fna"])){
+                              echo $_COOKIE["fna"];} ?>' placeholder=" First Name">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Name">
+                          <input type="text" class="form-control" id="inputEmail" placeholder="Name" value ='<?php if(isset($_COOKIE["fna"])){
+                              echo $_COOKIE["sna"];} ?>'>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Email">
+                          <input type="email" class="form-control" id="inputName2" placeholder="Email"  value='<?php if(isset($_COOKIE["emailAddress"])){
+                                echo $_COOKIE["emailAddress"];} ?>'>
                         </div>
                       </div>
                                             <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Phone Number</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="Phone Number">
+                          <input type="number" class="form-control" id="inputSkills" placeholder="Phone Number" value='<?php if(isset($_COOKIE["phoneNumber"])){
+                              echo $_COOKIE["phoneNumber"];} ?>'>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -746,10 +750,23 @@ require "auth.php";
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
+      var email = '<?php if(isset($_COOKIE["emailAddress"])){
+       echo $_COOKIE["emailAddress"];} ?>'
+
+      var phoneno = '<?php if(isset($_COOKIE["phoneNumber"])){
+          echo $_COOKIE["phoneNumber"];} ?>'
+
 console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
+document.getElementById("usern1").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
+document.getElementById("role2").innerHTML = role;
+document.getElementById("phoneno").innerHTML =phoneno;
+document.getElementById("email").innerHTML = email;
+// document.getElementById("fname").innerHTML = fna;
+// document.getElementById("sname").innerHTML = sna;
+
     console.log(perm);
 
     if(perm =="addvisitors")
@@ -789,6 +806,28 @@ document.getElementById("visit").style.display ="block";
     }
   }
   
+</script>
+<script>
+    var userid= "<?php if(isset($_COOKIE["id"])){echo $_COOKIE["id"]; }?>";
+    $( document ).ready(function() {
+
+        $.ajax
+        ({
+            type: "POST",
+
+            data: {"id":userid},
+            url: Usermngmt.fetchuser,
+            dataType: 'json',
+            async: false,
+
+
+            success: function (data) {
+                console.log(data.createdAt.split("T")[0]);
+                document.getElementById("creationdate").innerHTML = data.createdAt.split("T")[0];
+            }
+        });
+
+    });
 </script>
 </body>
 

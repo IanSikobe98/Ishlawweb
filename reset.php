@@ -10,7 +10,8 @@ require "auth.php";
   <title>ISHLAW</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
  
    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -24,7 +25,8 @@ require "auth.php";
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+<script src="globalfuncs.js"></script>
+<script src="environment/location.js"></script>
 
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -467,19 +469,19 @@ require "auth.php";
               </div> -->
             </div>
             <!-- /.card-header -->
-            <form action="visitors.php" method="POST" id="exe">
+            <form onsubmit="return resetpassword(Usermngmt.resetpassword,'exe');" method="POST" id="exe">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                        <label> Old Password</label>
-                      <input type="text" name="visitor" class="form-control" required="" id="parties" placeholder="Please input your old password">
+                      <input type="text" name="password" class="form-control" required="" id="parties" placeholder="Please input your old password">
 
                     </div>
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>New Password</label>
-                      <input type="text" class="form-control" name="mobile" required="" id="bile" placeholder="Enter the new password">
+                      <input type="text" class="form-control" name="newpassword" required="" id="bile" placeholder="Enter the new password">
 
                     </div>
                     <!-- /.form-group -->
@@ -487,7 +489,12 @@ require "auth.php";
 
                   <!-- /.col -->
                   <div class="col-md-6">
-                    
+                      <div class="form-group">
+<!--                          <label>New Password</label>-->
+<!--                          $_COOKIE["resp"]-->
+                          <input type="hidden" class="form-control" name="token" value="<?php if(isset($_COOKIE["resp"])){echo $_COOKIE["resp"]; }?>" readonly>
+
+                      </div>
   
                   </div>
                   <!-- /.col -->
@@ -614,7 +621,7 @@ swal({
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+
         <!-- Bootstrap 4 -->
         <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

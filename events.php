@@ -627,7 +627,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </div>
           </div>
           <!-- /.card-header -->
-          <form  onsubmit="return sendreload(FormSubmit.createevent,'eventssubmit');" id ="eventssubmit" method="POST">
+          <form  onsubmit="return sendreloadnext(FormSubmit.createevent,'eventssubmit',FormSubmit.createeventsubmit);" id ="eventssubmit" method="POST">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">

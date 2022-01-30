@@ -1,12 +1,12 @@
-<?php 
+<?php
 $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
- 
+
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid'])  && isset($_POST['hotodo']) && isset($_POST['comment'])
+if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['tid'])  && isset($_POST['hotodo']) && isset($_POST['comment']) && empty($_POST['save1'])
  ){
 
 // Escape user inputs for security
@@ -16,16 +16,16 @@ $stu = mysqli_real_escape_string($link, $_REQUEST['stat']);
 $descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
 $prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
 $rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
-$hotodo = mysqli_real_escape_string($link, $_REQUEST['hotodo']); 
-$comment = mysqli_real_escape_string($link, $_REQUEST['comment']); 
+$hotodo = mysqli_real_escape_string($link, $_REQUEST['hotodo']);
+$comment = mysqli_real_escape_string($link, $_REQUEST['comment']);
 $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
 $clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$user = mysqli_real_escape_string($link, $_REQUEST['user']); 
-$tid = mysqli_real_escape_string($link, $_REQUEST['tid']); 
+$user = mysqli_real_escape_string($link, $_REQUEST['user']);
+$tid = mysqli_real_escape_string($link, $_REQUEST['tid']);
 // $user = count($_POST['user']);
   // echo "<script>$('#MyModal').modal('show')</script>";
 
- 
+
 // Attempt insert query execution
 // , `matter`
 
@@ -50,11 +50,11 @@ WHERE `tid` = '$tid'  " ;
 
 if(mysqli_query($link, $sql)){
 //    echo "Task updated successfully.";
-	
+
 
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-    
+
 }
 
 // Close connection
@@ -70,7 +70,7 @@ else
 $sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`,`hotodo`,`comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
 
 
- 
+
 
 
 
@@ -211,7 +211,7 @@ SET  `title` =  '$title',`start` =  '$start',`description` = '$descri', `rpt` = 
 
 WHERE `tid` = '$tid'  " ;
 
-
+echo  $sql;
 
 if(mysqli_query($link, $sql)){
     // echo "Records updated successfully.";
@@ -230,7 +230,7 @@ mysqli_close($link);
 
 
 
-if($save1 == 'One-time')
+else if($save1 == 'One-time')
 {
  $start=str_replace("-", "", $start);
 $sql = "INSERT INTO `exclude`(`id`, `date`) VALUES ('$tid','$start') ";

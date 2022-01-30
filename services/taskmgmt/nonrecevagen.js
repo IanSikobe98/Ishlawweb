@@ -1,21 +1,38 @@
-  var data;
-  $(document).ready(function() {
-        $.ajax({
-          url: Events.nonrecurring,
-          type: 'GET',
-          dataType: 'json',
-          data: data,
-          error: function() { console.log('boo! not working'); },
-          // beforeSend: setHeader,
+var data;
+$(document).ready(function () {
 
-             beforeSend: function (xhr) {
-    var jwt = jwtpo;
-    // console.log("Authorization", "Bearer  " + jwt"");
+    // $(document).ajaxStart(function(){
+    //     swal({
+    //         title: "Checking...",
+    //         text: "Please wait",
+    //         icon: "images/ajaxloader.gif",
+    //         iconHtml: 1500,
+    //         showConfirmButton: false,
+    //         allowOutsideClick: false
+    //     });
+    // });
 
-     
-    xhr.setRequestHeader ("Authorization", "Bearer "+ jwt);
-  },
-          success: (data) =>    {
+    $.ajax
+    ({
+        type: "GET",
+
+
+        url: Events.nonrecurring,
+        dataType: 'json',
+        async: false,
+        beforeSend: function (xhr) {
+            var jwt = jwtpo;
+            console.log(jwtpo);
+
+
+
+            xhr.setRequestHeader ("Authorization", "Bearer "+ jwt);
+        },
+
+
+
+        // $.getJSON(Tasks.calnonrecurring,
+        success:function(data)   {
           console.log(data);
           var items = [];
 var student = ''; 
@@ -81,8 +98,14 @@ p++;
 
 
 
-  $('#events').append(student); 
-
+  $('#events').append(student);
+            // swal({
+            //     title: 'Sucesss!',
+            //     text: 'Success in composing Messsages!',
+            //     icon: 'success',
+            //     button: 'Close',
+            //     timer: 1000
+            // });
          }
 
         });
