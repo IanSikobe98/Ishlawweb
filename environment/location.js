@@ -1,9 +1,9 @@
 
 var Tasks =
 {
-    recurring : '/ishfinal/API/recta.php',
+    recurring : 'services/taskmgmt/API/recta.php',
     nonrecurring : 'services/taskmgmt/API/daynoreta.php',
-    calnonrecurring: '/ishfinal/API/nonrecta.php'
+    calnonrecurring: 'services/taskmgmt/API/nonrecta.php'
 
 
 };
@@ -11,9 +11,9 @@ var Tasks =
 var Events =
 {
 
-    recurring : '/ishfinal/API/receve.php',
+    recurring : 'services/taskmgmt/API/receve.php',
     nonrecurring : 'services/taskmgmt/API/daynonrecev.php',
-    calnonrecurring: '/ishfinal/API/nonrecev.php'
+    calnonrecurring: 'services/taskmgmt/API/nonrecev.php'
 
 };
 

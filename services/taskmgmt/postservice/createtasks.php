@@ -1,5 +1,5 @@
           <?php
-
+require "../../../DBConnect.php";
 // header('Access-Control-Allow-Origin: *');
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
@@ -23,7 +23,8 @@ server with default setting (user 'root' with no password) */
 // $result = $mysqli->query($query);
 
 
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+//$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+$link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
  
 // Check connection

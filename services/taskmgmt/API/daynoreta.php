@@ -1,5 +1,6 @@
 <?php
 require "../../../sec/vendor/autoload.php";
+require "../../../DBConnect.php";
 use \Firebase\JWT\JWT;
 //setting header to json
 
@@ -9,10 +10,10 @@ header("Access-Control-Allow-Methods: GET,POST");
 header("Access-Control-Max-Age: 3600");
 // header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 //database
-define('DB_HOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'ishfinal');
+//define('DB_HOST', '127.0.0.1');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', '');
+//define('DB_NAME', 'ishfinal');
 
 
   $secret_key = "-----BEGIN PUBLIC KEY-----

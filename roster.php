@@ -1,5 +1,6 @@
  <?php
 require "auth.php";
+require "DBConnect.php";
  ?> 
 <!DOCTYPE html>
 <html lang="en">  
@@ -519,7 +520,8 @@ $(document).ready(function(){
                 </tr>
             </thead>
            <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+//          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+           $link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
            $ReadSql = "SELECT * FROM visitors ORDER BY Date DESC";
 
 

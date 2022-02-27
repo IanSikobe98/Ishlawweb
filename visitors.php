@@ -1,6 +1,7 @@
 
  <?php
 require "auth.php";
+ require "DBConnect.php";
  ?> 
 <!DOCTYPE html>
 <html>
@@ -553,7 +554,8 @@ require "auth.php";
 
 
                 <?php
-                $conn =new PDO("mysql:host=localhost;dbname=ishfinal","root","");
+//                $link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+                $conn =new PDO(sprintf("mysql:host=%s;dbname=%s",DB_HOST,DB_NAME),DB_USERNAME,DB_PASSWORD);
   if(isset($_POST['submit'])){
     $Fname =$_POST['visitor'];
     $Lname =$_POST['lname'];

@@ -1,5 +1,6 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+require "../../../DBConnect.php";
+$link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Check connection
 if($link === false){
