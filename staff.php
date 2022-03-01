@@ -82,9 +82,7 @@ $(document).ready(function(){
 
 </script>
 
-      <li class="nav-item d-none d-sm-inline-block">
-        <a onclick="return logout()" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -92,7 +90,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -219,7 +219,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item visitvi1 " id="visitvi">
-                <a href="tvents.php" class="nav-link">
+                <a href="roster.php" class="nav-link">
                   <i class="far fa-user-circle"></i>
                   <p>View Visitors</p>
                 </a>
