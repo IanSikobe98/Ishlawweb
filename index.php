@@ -12,6 +12,7 @@ require "auth.php";
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -103,17 +104,21 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a onclick="return logout()" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
     
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+  
+</div>
       <!-- Messages Dropdown Menu -->
-     
+      <li class="nav-item d-none d-sm-inline-block">
+     <a onclick="return logout()" class="nav-link"><i class="fa fa-sign-out"></i></a>
+   </li>
      
     </ul>
   </nav>
@@ -534,53 +539,7 @@ require "auth.php";
                     </thead>
                     <tbody>
                     <tr>
-<!--                      <td><a >9842</a></td>-->
-<!--                      <td>KRA vs OTS</td>-->
-<!--                      <td>23456</td>-->
-<!--                      <td>23-01-2021</td>-->
-<!--                      <td>-->
-<!--                        <div class="sparkbar" data-color="#00a65a" data-height="20">PENDING</div>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td><a >1848</a></td>-->
-<!--                      <td>CAK vs LSK </td>-->
-<!--                     -->
-<!--                      <td>1848</span></td>-->
-<!--                      <td>01-01-2021</td>-->
-<!--                      <td>-->
-<!--                        <div class="sparkbar" data-color="#f39c12" data-height="20">Awaiting ruling</div>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td>7429</td>-->
-<!--                      <td>LSK vs Raj Limited</td>-->
-<!--                      <td>7429</span></td>-->
-<!--                      <td>22-01-2021</td>-->
-<!--                      <td>-->
-<!--                        <div class="sparkbar" data-color="#f56954" data-height="20">PENDING</div>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td><a >429</a></td>-->
-<!--                      <td>Safaricom vs Mtel Services</td>-->
-<!--                      <td>923</span></td>-->
-<!--                      <td>06-01-2021</td>-->
-<!--                      <td>-->
-<!--                        <div class="sparkbar" data-color="#00c0ef" data-height="20">COMPLETED</div>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td><a >1848</a></td>-->
-<!--                      <td>JSC vs KMA</td>-->
-<!--                      <td>848</span></td>-->
-<!--                      <td>05-12-2020</td>-->
-<!--                      <td>-->
-<!--                        <div class="sparkbar" data-color="#f39c12" data-height="20">COMPLETED</div>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    -->
-<!--                    </tbody>-->
+
                   </table>
                 </div>
 <script src="services/cases/IndexCases.js"></script>
@@ -608,8 +567,32 @@ require "auth.php";
               <div class="card-header">
                 <h3 class="card-title">Upcoming Events</h3>
               </div>
+<style type="text/css">
+ #events {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<table class="content-table" style="min-width: 900px" id="events" >
+#events td, #events th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+#events tr:nth-child(even){background-color: #f2f2f2;}
+
+#events tr:hover {background-color: #ddd;}
+
+#events th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+ }
+</style>
+<table  id="events" >
             <thead>
                 <tr>
         <th>ID</th>
@@ -622,7 +605,6 @@ require "auth.php";
         <th>Start Time</th>
         <th>End Time</th>
         <th>Action</th>
-
         
                 </tr>
             </thead>
@@ -894,8 +876,32 @@ function closeForm4() {
               <div class="card-header">
                 <h3 class="card-title">Your Agenda</h3>
               </div>
+<style type="text/css">
+ #table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<table class="table table-striped table-bordered table-hover content-table" id="table">
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+ }
+</style>
+<table  id="table">
             <thead>
                 <tr>
         <th>Task</th>

@@ -74,9 +74,7 @@ $(document).ready(function(){
 
 </script>
 
-      <li class="nav-item d-none d-sm-inline-block">
-        <a onclick="return logout()" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -84,7 +82,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -476,34 +476,6 @@ $(document).ready(function(){
         <th>Action</th>
     </thead>
     <tbody>
-<!--      <tr class="warning">-->
-<!--        <td>John Ken</td>-->
-<!--        <td>0716587214</td>-->
-<!--        <td>john@example.com</td>-->
-<!--        <td> an appointment to settle my case tomorrow</td>-->
-<!--        <td>12.01-2022 10:00 a.m</td>-->
-<!--        <td>Pending</td>-->
-<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--         <td>John Adams</td>-->
-<!--        <td>0716527214</td>-->
-<!--        <td>john@example.com</td>-->
-<!--        <td>I need an appointment to settle my case tomorrow</td>-->
-<!--        <td>12.01-2021 10:02 a.m</td>-->
-<!--        <td>Approved</td>-->
-<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--         <td>John Downyre</td>-->
-<!--        <td>0716527214</td>-->
-<!--        <td>john@example.com</td>-->
-<!--        <td>I need an appointment to settle my case tomorrow</td>-->
-<!--        <td>13.01-2021 11:00 a.m</td>-->
-<!--        <td>Pending</td>-->
-<!--        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>-->
-<!--      </tr>-->
-<!--    </tbody>-->
 <script src="services/appointments/appointments.js"></script>
   </table>
 
