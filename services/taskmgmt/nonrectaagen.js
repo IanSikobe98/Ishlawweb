@@ -35,8 +35,8 @@ $(document).ready(function () {
 
                   student += '<tr>';
 
-                  student += '<td>NRD' +
-                      data[i].tid + '</td>';
+                  // student += '<td>NRD' +
+                  //     data[i].tid + '</td>';
 
                   student += '<td>' +
                       data[i].title + '</td>';

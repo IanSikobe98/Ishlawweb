@@ -115,8 +115,8 @@ $(document).ready(function () {
 
 
                         student += '<tr>';
-                        student += '<td>RDE' + p +
-                            cars[1][j] + '</td>';
+                        // student += '<td>RDE' + p +
+                        //     cars[1][j] + '</td>';
 
                         student += '<td>' +
                             cars[2][j] + '</td>';
@@ -124,8 +124,8 @@ $(document).ready(function () {
                         student += '<td>' +
                             cars[3][j] + '</td>';
 
-                        student += '<td>' +
-                            cars[4][j] + '</td>';
+                        // student += '<td>' +
+                        //     cars[4][j] + '</td>';
 
                         student += '<td>' +
                             cars[5][j] + '</td>';

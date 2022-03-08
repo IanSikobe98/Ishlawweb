@@ -65,7 +65,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -531,8 +531,25 @@ require "auth.php";
     */?>
                 <div>
                    <table id="mailtable">
-                       <tbody>
-                       <script src="services/Messaging/displayMail.js"></script>
+                       <thead>
+                      <tr> <th> <div class="form-group">
+                  <input type="text" name="Category" class="form-control" placeholder="From:">
+                </div>
+              </th></tr>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="subject" placeholder="To:">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="subject" placeholder="Category:">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="subject" placeholder="Subject:">
+                </div>
+              </thead>
+                  <tbody>
+                  <script src="services/Messaging/displayMail.js"></script>
+                </div>
+                       
                    </table>
                 </div>
               <!-- /.mailbox-read-message -->

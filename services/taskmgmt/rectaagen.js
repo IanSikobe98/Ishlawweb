@@ -90,8 +90,8 @@ var data;
                         console.log(" ");
                         console.log(" ");
                         student += '<tr>';
-                        student += '<td>RD' + p +
-                            cars[2][j] + '</td>';
+                        // student += '<td>RD' + p +
+                        //     cars[2][j] + '</td>';
 
                         student += '<td>' +
                             cars[1][j] + '</td>';
