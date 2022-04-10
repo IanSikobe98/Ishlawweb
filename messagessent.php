@@ -81,7 +81,7 @@ require "auth.php";
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index.php" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">ISHLAW</span>
         </a>
@@ -135,17 +135,31 @@ require "auth.php";
                             </p>
                         </a>
                     </li>
-                    <li class="">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Accounts
-                                <i class="fas fa-angle-left right"></i>
-
-                            </p>
-                        </a>
-
-                    </li>
+                    <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                My Account
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
+            
+          </li>
                     <li class="nav-item has-treeview client2" id="client4">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
@@ -287,7 +301,7 @@ require "auth.php";
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link">
+                        <a href="tasks.php" class="nav-link">
                             <i class="nav-icon far fa-envelope"></i>
                             <p>
                                 New Task
@@ -295,7 +309,7 @@ require "auth.php";
 
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <!-- <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
@@ -422,7 +436,7 @@ require "auth.php";
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Starter Page</p>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
@@ -479,11 +493,11 @@ require "auth.php";
                                 </li>
 
 
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-trash-alt"></i> Trash
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <!-- /.card-body -->
@@ -552,16 +566,16 @@ require "auth.php";
                         <div class="card-footer p-0">
                             <div class="mailbox-controls">
                                 <!-- Check all button -->
-                                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
                                 </button>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
                                     <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                                     <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                </div>
+                                </div> -->
                                 <!-- /.btn-group -->
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-<!--                                <div class="float-right">-->
+                                <!-- <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                           -->    <div class="float-right">
 <!--                                    1-50/200-->
 <!--                                    <div class="btn-group">-->
 <!--                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>-->

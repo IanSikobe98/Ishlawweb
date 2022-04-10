@@ -116,10 +116,7 @@ require "auth.php";
   
 </div>
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item d-none d-sm-inline-block">
-     <a onclick="return logout()" class="nav-link"><i class="fa fa-sign-out"></i></a>
-   </li>
-     
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -128,7 +125,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -343,14 +340,14 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
                 
           
               </p>
-            </a>
+          <!--   </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
@@ -478,7 +475,7 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -538,9 +535,16 @@ require "auth.php";
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                        <script type="text/javascript">
+$(document).ready( function () {
+    $('#exe').DataTable();
+
+} );
+ </script>
+                    </tbody>
 
                   </table>
+                
                 </div>
 <script src="services/cases/IndexCases.js"></script>
                 <div class="card-footer clearfix">
@@ -595,10 +599,9 @@ require "auth.php";
 <table  id="events" >
             <thead>
                 <tr>
-        <th>ID</th>
+        
         <th>Activity</th>
         <th>Priority</th>
-        <th>User</th>
         <th>Location</th>
         <th>Progress</th>
         <th>Client</th>
@@ -904,8 +907,8 @@ function closeForm4() {
 <table  id="table">
             <thead>
                 <tr>
+        
         <th>Task</th>
-        <th>Activity</th>
         <th>Due Date</th>
         <th>Priority</th>
         <th>How To</th>

@@ -22,48 +22,40 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
     <meta charset="utf-8">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" type="text/css" href="twitter.css">	
 	
-	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body onload="setcounter()" class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+    <style>
+body {
+  background-image: url('images/bg.jpg');
+  background-repeat: no-repeat;
+   background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+	
 	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">User Login </h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
-		      	<h3 class="mb-4 text-center">Sign in to continue</h3>
-		      	<form action="login.php" method="POST" class="signin-form">
-		      		<div class="form-group">
-		      			<input type="text" class="form-control"  name="user" placeholder="Enter email address" required>
+        <div class="wrapper">
+    <div class="logo"> <img src="justice.png" alt=""> </div>
+    <div class="text-center mt-4 name"> ISHLAW </div>
+    <form action="login.php" method="POST" class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center "> <span class="far fa-user"></span> 
+        <input type="text" name="user" class="form-control" id="userName" placeholder="Username"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password-field" placeholder="Password"> </div>
+         <button type="submit" name="btn" class="btn mt-3">Login</button>
+    </form>
+    <!-- <div class="text-center fs-6"> <a href="#">Forget password?</a>  </div> -->
+</div>
 
-		      		</div>
-	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
-	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-	            </div>
-	            <div class="form-group">
-	            	<button type="submit" name="btn" class="form-control btn btn-primary submit px-3">Sign In</button>
-	            </div>
-	            <div class="form-group d-md-flex">
-	            	<div class="w-50">
-		            	<label class="checkbox-wrap checkbox-primary">Remember Me
-									  <input type="checkbox" checked>
-									  <span class="checkmark"></span>
-									</label>
-								</div>
-
-	            </div>
 	            <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 

@@ -56,8 +56,8 @@ var end = getnonrec(data[i].end);
 
                             student += '<tr>'; 
                             
-                            student += '<td>NRDE' +  
-                                data[i].id + '</td>';
+                            // student += '<td>NRDE' +  
+                            //     data[i].id + '</td>';
 
                                 student += '<td>' +  
                                 data[i].title + '</td>';
@@ -65,8 +65,8 @@ var end = getnonrec(data[i].end);
                                 student += '<td>' +  
                                 data[i].priority + '</td>';
 
-                                student += '<td>' +  
-                                data[i].user + '</td>';
+                                // student += '<td>' +  
+                                // data[i].user + '</td>';
 
                                 student += '<td>' +  
                                 data[i].location + '</td>';

@@ -244,7 +244,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -297,15 +297,29 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -448,7 +462,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -456,7 +470,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -583,7 +597,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -625,6 +639,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
               <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
             </div>
+            <script type="text/javascript">
+            function changestatus()
+            {
+
+            var status = document.getElementById("rpt");
+            if(status.value == "Never")
+            {
+              document.getElementById("others").style.visibility="hidden";
+            }
+            else
+            {
+              document.getElementById("others").style.visibility="visible";
+            }
+
+
+          }
+          </script>
           </div>
           <!-- /.card-header -->
           <form  onsubmit="return sendreloadnext(FormSubmit.createevent,'eventssubmit',FormSubmit.createeventsubmit);" id ="eventssubmit" method="POST">
@@ -667,7 +698,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt" name="rpt"  class="form-control select2" style="" required="">
+                  <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="" >
                     <option selected="selected">Select Task Frequency</option>
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
@@ -682,12 +713,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </div>
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="descri">Event Description</label>
-                  <div class="select2-purple">
-                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter event Progress or Notes" >
-                  </div>
+                <div class="form-group" id="others">
+                  <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
+                
+                
                 </div>
+
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -712,12 +744,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
                
               <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
-                
-                
+                  <label for="descri">Event Description</label>
+                  <div class="select2-purple">
+                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter event Progress or Notes" >
+                  </div>
                 </div>
-                <!-- /.form-group -->
+                                <!-- /.form-group -->
               </div>
               <!-- /.col -->
 
