@@ -42,7 +42,6 @@ body {
   background-size: cover;
 }
 </style>
-	
 	<section class="ftco-section">
         <div class="wrapper">
     <div class="logo"> <img src="justice.png" alt=""> </div>

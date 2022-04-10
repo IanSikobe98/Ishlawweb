@@ -7,11 +7,6 @@
      font-family: 'Poppins', sans-serif
  }
 
- body {
-  background-image: url('img_girl.jpg');
-
- }
-
  .wrapper {
      max-width: 350px;
      min-height: 500px;

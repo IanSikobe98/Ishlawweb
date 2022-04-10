@@ -532,19 +532,23 @@ require "auth.php";
                 <div>
                    <table id="mailtable">
                        <thead>
-                      <tr> <th> <div class="form-group">
-                  <input type="text" name="Category" class="form-control" placeholder="From:">
+<!--                      <tr> <th> -->
+                              <div class="form-group">
+                  <input type="text" name="Category" id= "From"  class="form-control" placeholder="From: " readonly>
                 </div>
-              </th></tr>
+<!--              </th></tr>-->
                 <div class="form-group">
-                  <input class="form-control" type="text" name="subject" placeholder="To:">
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" name="subject" placeholder="Category:">
+                  <input class="form-control" id= "To"  type="text" name="subject" placeholder="To:" readonly>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="text" name="subject" placeholder="Subject:">
+                  <input class="form-control" type="text" id= "Category"  name="category" placeholder="Category:"readonly>
                 </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="subject" id= "Subject" placeholder="Subject:" readonly>
+                </div>
+                      <div class="form-group">
+                          <textarea class="form-control" type="text" name="subject" id= "Compose" placeholder="Compose:" readonly style="height: 200px">  </textarea>
+                      </div>
               </thead>
                   <tbody>
                   <script src="services/Messaging/displayMail.js"></script>
