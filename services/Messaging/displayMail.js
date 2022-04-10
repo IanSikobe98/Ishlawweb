@@ -168,40 +168,48 @@ $(document).ready(function () {
                         receiver_name = getReceivers(data[i].receiver_id);
                     }
                     console.log(name);
-                    console.log("pandemic");
+
+
+
+                    document.getElementById("From").value = "From: "+sender_name;
+                    document.getElementById("To").value = "To: "+receiver_name ;
+                    document.getElementById("Category").value = "Category: "+ data[i].Category;
+                    document.getElementById("Subject").value = "Subject: "+data[i].subject;
+                    document.getElementById("Compose").value = data[i].compose;
+
+
+                    // file += '<tr class="warning">';
+                    //
+                    // file += '<td class="mailbox-name">' + 'FROM:' + sender_name + '</td>';
+                    //
+                    // file += '</tr>'
+                    //
+                    // file += '<tr class="warning">';
+                    //
+                    // file += '<td class="mailbox-name">' + 'TO:' + receiver_name + '</td>';
+                    //
+                    //
+                    // file += '</tr>'
+                    //
+                    // file += '<tr class="warning">';
+                    //
+                    // file += '<td class="mailbox-subject"><b>'+ 'CATEGORY:' +
+                    //     data[i].Category + '</b></td>';
+                    //
+                    // file += '</tr>'
+
+                    // file += '<tr class="warning">';
+                    //
+                    //
+                    // file += '<td class="mailbox-date">' + 'SUBJECT:'+
+                    //     data[i].subject + '</td>';
+                    //
+                    // file += '</tr>'
 
                     file += '<tr class="warning">';
 
-                    file += '<td class="mailbox-name">' + 'FROM:' + sender_name + '</td>';
-
-                    file += '</tr>'
-
-                    file += '<tr class="warning">';
-
-                    file += '<td class="mailbox-name">' + 'TO:' + receiver_name + '</td>';
-
-
-                    file += '</tr>'
-
-                    file += '<tr class="warning">';
-
-                    file += '<td class="mailbox-subject"><b>'+ 'CATEGORY:' +
-                        data[i].Category + '</b></td>';
-
-                    file += '</tr>'
-
-                    file += '<tr class="warning">';
-
-
-                    file += '<td class="mailbox-date">' + 'SUBJECT:'+
-                        data[i].subject + '</td>';
-
-                    file += '</tr>'
-
-                    file += '<tr class="warning">';
-
-                    file += '<td class="mailbox-date">' +
-                        data[i].compose + '</td>';
+                    // file += '<td class="mailbox-date  align-items-center">' +
+                    //     data[i].compose + '</td>';
 
                     //
                     // file += '<td>' +
