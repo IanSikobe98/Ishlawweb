@@ -264,7 +264,7 @@ function sendreloadAuth(urlpost,postid) {
 
         },
         error: function (x, e) {
-            alert("login unsucessful")
+            // alert("login unsucessful")
             swal({
                 title: 'Error!',
                 text: 'Error in composing Messsages!',

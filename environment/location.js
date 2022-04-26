@@ -60,7 +60,8 @@ post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php'
 var Appointments =
     {
         fetch : 'services/appointments/appointmentsdata.php',
-        approve : 'services/appointments/postservice/approvals.php'
+        approve : 'services/appointments/postservice/approvals.php',
+        submit : 'services/appointments/postservice/postappointments.php'
     };
 
 
