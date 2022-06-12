@@ -153,7 +153,7 @@ require "auth.php";
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
               <style type="text/css" src="ry.css" ></style>
-                
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -176,7 +176,7 @@ require "auth.php";
               <i class="far fa-file-word"></i>
               <p>
                 Files
-                
+
               </p>
             </a>
           </li>
@@ -186,11 +186,11 @@ require "auth.php";
               <p>
                 My Account
                 <i class="fas fa-angle-left right"></i>
-                
+
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">   
+              <li class="nav-item">
                 <a href="profile.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>My profile</p>
@@ -203,7 +203,7 @@ require "auth.php";
                 </a>
               </li>
             </ul>
-            
+
           </li>
           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
@@ -214,7 +214,7 @@ require "auth.php";
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item cliadd1" id = "cliadd">
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
@@ -226,7 +226,7 @@ require "auth.php";
                   <p>Add New Client</p>
                 </a>
               </li>
-              <li class="nav-item "  id="">
+              <li class="nav-item viewedit1"  id="viewedit">
                 <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
@@ -238,7 +238,7 @@ require "auth.php";
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -300,7 +300,7 @@ require "auth.php";
                   </ul>
           </li>
           <li class="">
-            
+
             <li class="nav-item">
             <a href="calendar.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
@@ -345,8 +345,8 @@ require "auth.php";
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
-                
-          
+
+
               </p>
           <!--   </a>
             <ul class="nav nav-treeview">
@@ -402,7 +402,7 @@ require "auth.php";
           </li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
-            
+
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -479,7 +479,7 @@ require "auth.php";
               </li> -->
             </ul>
           </li>
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
