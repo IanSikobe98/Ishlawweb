@@ -1,140 +1,5 @@
      <?php
-
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
+require "auth.php";
 ?>
   
 <!DOCTYPE html>
@@ -158,11 +23,21 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
 
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src="environment/location.js"></script>
+    <script src="globalfuncs.js"></script>
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="services/usermgmt/staffListing.js"></script>
 
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -176,22 +51,22 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
       </li>
       
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for staff.." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="jquery-1.2.6.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--      <script src="jquery-1.2.6.min.js"></script>-->
     
     <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
   <script src="jquery.tablesorter.widgets.js"></script>
   <script>
-  $(function(){
-    $('exe').tablesorter({
-      widgets        : ['zebra', 'columns'],
-      usNumberFormat : false,
-      sortReset      : true,
-      sortRestart    : true
-    });
-  });
+  // $(function(){
+  //   $('exe').tablesorter({
+  //     widgets        : ['zebra', 'columns'],
+  //     usNumberFormat : false,
+  //     sortReset      : true,
+  //     sortRestart    : true
+  //   });
+  // });
   </script>
 
 
@@ -207,9 +82,7 @@ $(document).ready(function(){
 
 </script>
 
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -217,7 +90,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -227,7 +102,7 @@ $(document).ready(function(){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -281,15 +156,29 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -300,32 +189,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                   
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -344,7 +233,7 @@ $(document).ready(function(){
                 </a>
               </li>
               <li class="nav-item visitvi1 " id="visitvi">
-                <a href="tvents.php" class="nav-link">
+                <a href="roster.php" class="nav-link">
                   <i class="far fa-user-circle"></i>
                   <p>View Visitors</p>
                 </a>
@@ -405,7 +294,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -433,7 +322,7 @@ $(document).ready(function(){
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -441,7 +330,7 @@ $(document).ready(function(){
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+           <!--  <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -568,7 +457,7 @@ $(document).ready(function(){
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -606,36 +495,36 @@ $(document).ready(function(){
         <th>Email</th>
         <th>Registration Date</th>
         <th>Role</th>
-        <th>Action</th>
+        
     </thead>
     <tbody>
-      <tr class="warning">
-        <td>John Downy</td>
-        <td>0716587214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2022 10:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
-      <tr>
-         <td>John Downy</td>
-        <td>0716527214</td>
-        <td>john@example.com</td>
-        <td>I need an appointment to settle my case tomorrow</td>
-        <td>12.01-2021 10:00 a.m</td>
-        <td>Pending</td>
-        <td><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></td>
-      </tr>
+<!--      <tr class="warning">-->
+<!--        <td>John Downy</td>-->
+<!--        <td>0716587214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td>I need an appointment to settle my case tomorrow</td>-->
+<!--        <td>12.01-2022 10:00 a.m</td>-->
+<!--        <td>Pending</td>-->
+<!--       -->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--         <td>John Downy</td>-->
+<!--        <td>0716527214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td>I need an appointment to settle my case tomorrow</td>-->
+<!--        <td>12.01-2021 10:00 a.m</td>-->
+<!--        <td>Pending</td>-->
+<!--       -->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--         <td>John Downy</td>-->
+<!--        <td>0716527214</td>-->
+<!--        <td>john@example.com</td>-->
+<!--        <td>I need an appointment to settle my case tomorrow</td>-->
+<!--        <td>12.01-2021 10:00 a.m</td>-->
+<!--        <td>Pending</td>-->
+<!--       -->
+<!--      </tr>-->
     </tbody>
   </table>
   <script>
@@ -667,7 +556,7 @@ $(document).ready(function(){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
@@ -725,7 +614,13 @@ $(document).ready(function(){
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -766,6 +661,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script> 

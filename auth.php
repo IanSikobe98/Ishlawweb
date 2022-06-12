@@ -66,6 +66,17 @@ if($jwt){
     setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin//','','');
      $_COOKIE['role'] = $decoded->Team->name;
 
+        setcookie('emailAddress',$decoded->emailAddress ,time() + (30), 'http://localhost/admin//','','');
+        $_COOKIE['emailAddress'] = $decoded->emailAddress;
+        setcookie('phoneNumber',$decoded->phoneNumber ,time() + (30), 'http://localhost/admin//','','');
+        $_COOKIE['phoneNumber'] = $decoded->phoneNumber;
+
+        setcookie('id',$decoded->phoneNumber ,time() + (30), 'http://localhost/admin//','','');
+        $_COOKIE['id'] = $decoded->id;
+
+        setcookie('loginsuccess',true ,time() + (30), 'http://localhost/admin//','','');
+        $_COOKIE['loginsuccess'] = true;
+
 
 
 

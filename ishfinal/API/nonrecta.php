@@ -19,7 +19,24 @@ $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if(!$mysqli){
 	die("Connection failed: " . $mysqli->error);
 }
+$numm =10;
+if(isset($_GET["page"]))
+{
+ 
+ $page =$_GET["page"];
+}
 
+else{
+  $page=1;
+}
+$start_from=($page-1)*0.5;
+
+if(!$mysqli){
+	die("Connection failed: " . $mysqli->error);
+}
+
+//query to get data from the table
+$query = sprintf("SELECT * FROM `rpttasks3` WHERE  `status` <> 'Completed'  limit $start_from,$numm");
 //query to get data from the table
 $query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' ORDER BY `start` DESC");
 

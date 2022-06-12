@@ -1,7 +1,6 @@
-           <?php
-//require "auth.php";
-
-?>
+ <?php
+require "auth.php";
+ ?>
   
 <!DOCTYPE html>
 <html lang="en">  
@@ -18,13 +17,20 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <script src="environment/location.js" type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
+
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -38,9 +44,21 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="adv.php" class="nav-link">Add new File</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for files..." title="Type in a name">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#ftable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+</script>
+
+     
     </ul>
 
     <!-- SEARCH FORM -->
@@ -48,7 +66,9 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -58,7 +78,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -111,22 +131,36 @@
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+         <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clients
+                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -134,16 +168,28 @@
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
-                  <p>New Client</p>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "">
+                <a href="registration.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Staff</p>
+                </a>
+              </li>
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -170,30 +216,7 @@
                   </ul>
           </li>
 
-           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-user-circle"></i>
-              <p>
-                Profile
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Company Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Personal Profile</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          
+
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -210,9 +233,21 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="events.php" class="nav-link">
+                  <i class="far fa-fa-edit"></i>
+                  <p>Create New Event</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
                   <i class="far fa-edit"></i>
                   <p>View Current Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tvents.php" class="nav-link">
+                  <i class="far fa-edit"></i>
+                  <p>View Current Events</p>
                 </a>
               </li>
                   </ul>
@@ -229,20 +264,28 @@
             </a>
 
           </li>
-
-
-
-
-                      <li class="">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+          <li class="nav-item">
+            <a href="messages.php" class="nav-link">
+              <i class="nav-icon far fa-bell"></i>
               <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
+                Inbox
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
-            
           </li>
+          <li class="">
+
+            <li class="nav-item">
+            <a href="appointments.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Appointments
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+
+          </li>
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -253,7 +296,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -261,7 +304,7 @@
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+           <!--  <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -388,7 +431,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -467,7 +510,7 @@ $.ajax
 
   
 
-    url: "http://18.118.17.69:4000/files/api/v1/documents",
+    url: "http://ifs.ambience.co.ke/files/api/v1/documents",
     dataType: 'json',
     async: false,
 
@@ -548,85 +591,8 @@ var descip = '';
 });
 
 </script>
-
-                
-
-
-
-                
               </table>
-              <!-- <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">Upload File</h3>
-              </div>
-              <div class="card-body">
-                <div id="actions" class="row">
-                  <div class="col-lg-6">
-                    <div class="btn-group w-100">
-                      <span class="btn btn-success col fileinput-button">
-                        <i class="fas fa-plus"></i>
-                        <span>Add files</span>
-                      </span>
-                      <button type="submit" class="btn btn-primary col start">
-                        <i class="fas fa-upload"></i>
-                        <span>Start upload</span>
-                      </button>
-                      <button type="reset" class="btn btn-warning col cancel">
-                        <i class="fas fa-times-circle"></i>
-                        <span>Cancel upload</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 d-flex align-items-center">
-                    <div class="fileupload-process w-100">
-                      <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="table table-striped files" id="previews">
-                  <div id="template" class="row mt-2">
-                    <div class="col-auto">
-                        <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                    </div>
-                    <div class="col d-flex align-items-center">
-                        <p class="mb-0">
-                          <span class="lead" data-dz-name></span>
-                          (<span data-dz-size></span>)
-                        </p>
-                        <strong class="error text-danger" data-dz-errormessage></strong>
-                    </div>
-                    <div class="col-4 d-flex align-items-center">
-                        <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                        </div>
-                    </div>
-                    <div class="col-auto d-flex align-items-center">
-                      <div class="btn-group">
-                        <button class="btn btn-primary start">
-                          <i class="fas fa-upload"></i>
-                          <span>Start</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-warning cancel">
-                          <i class="fas fa-times-circle"></i>
-                          <span>Cancel</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-danger delete">
-                          <i class="fas fa-trash"></i>
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </.card-body
-              <div class="card-footer">
-                Visit <a href="https://www.dropzonejs.com">dropzone.js documentation</a> for more examples and information about the plugin.
-              </div>
-            </div> -->
-              <!-- /.card -->
+
             </div>
           </div>
           <!-- /.row -->
@@ -660,6 +626,14 @@ var descip = '';
   <!-- InputMask -->
   <script src="plugins/moment/moment.min.js"></script>
   <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
   <!-- date-range-picker -->
   <script src="plugins/daterangepicker/daterangepicker.js"></script>
   <!-- bootstrap color picker -->

@@ -1,143 +1,6 @@
       <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-if(!isset($_COOKIE["addcli"]) || ($_COOKIE["addcli"])!="addclients"){
-  header('location: index.php');
-   exit;
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
+require "auth.php";
+include "environment/globalparams2.php";
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +11,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <title>ISHLAW</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -171,6 +34,10 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styling.css">
+    <script src ="globalfuncs.js" type="text/javascript"></script>
+    <script src ="environment/location.js" type="text/javascript"></script>
+    <script src ="environment/globalparams.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -182,9 +49,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+     
     </ul>
 
     <!-- SEARCH FORM -->
@@ -192,7 +57,9 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -202,7 +69,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -255,15 +122,29 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -274,32 +155,32 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                   <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-             
+                   
                          </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -378,7 +259,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li> 
@@ -408,7 +289,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -416,7 +297,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -543,7 +424,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -588,7 +469,7 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
               </div> -->
             </div>
             <!-- /.card-header -->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="exe">
+            <form method="POST" id="exe" onsubmit="return submitreload(Usermngmt.createclient,'exe','creation of a new client');">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
@@ -628,22 +509,22 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
-                      <label>Team Id</label>
-                      <input type="number" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" required="">
+<!--                      <label>Team Id</label>-->
+                      <input type="hidden" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" value=<?php if(isset($teams)){echo $teams;}?> readonly>
 
                     </div>
                     <!-- /.form-group -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Password</label>
-                      <div class="select2-purple">
-                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">
-                      </div>
-                    </div>
+<!--                  <div class="col-12 col-sm-6">-->
+<!--                    <div class="form-group">-->
+<!--                      <label>Password</label>-->
+<!--                      <div class="select2-purple">-->
+<!--                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">-->
+<!--                      </div>-->
+<!--                    </div>-->
                     <!-- /.form-group -->
-                  </div>
+<!--                  </div>-->
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -809,7 +690,7 @@ else
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->
@@ -938,7 +819,12 @@ else
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -979,6 +865,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+      getMessageCount();
   }
   
 </script>

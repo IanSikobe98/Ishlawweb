@@ -19,10 +19,11 @@ require "auth.php";
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="environment/location.js" type="text/javascript"></script>
+    <script src="globalfuncs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -40,7 +41,7 @@ require "auth.php";
         <a href="adv.php" class="nav-link">Add new File</a>
       </li>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for files..." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -54,7 +55,7 @@ $(document).ready(function(){
 </script>
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
+        <a onclick="return logout()" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -73,7 +74,7 @@ $(document).ready(function(){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -126,15 +127,29 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
          <li class="nav-item has-treeview client2" id="client4">
@@ -152,25 +167,25 @@ $(document).ready(function(){
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+             
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -250,7 +265,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -450,14 +465,16 @@ $(document).ready(function(){
               <table id="ftable" class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                                        <th>Client</th>
+<!--                                        <th>Client</th>-->
                     <th>Case Number</th>
-                    <th>Parties</th>
+                      <th> File Name</th>
+<!--                    <th>Parties</th>-->
                     <th>Filed By</th>
-                    <th>Status</th>
-                    <th>Filing date</th>
+                      <th>Filed On</th>
+<!--                    <th>Status</th>-->
+<!--                    <th>Filing date</th>-->
                     <th>Physical location</th>
-                    <th>Priority</th>
+<!--                    <th>Priority</th>-->
                     <th>File</th>
                   </tr>
                 </thead>
@@ -565,7 +582,7 @@ $(document).ready(function(){
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+<!--  <script src="plugins/jquery/jquery.min.js"></script>-->
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Select2 -->
@@ -805,6 +822,10 @@ $(document).ready(function(){
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
 console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
@@ -846,6 +867,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script>

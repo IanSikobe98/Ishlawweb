@@ -52,9 +52,7 @@ $(document).ready(function(){
 
 </script>
 
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -62,7 +60,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -72,7 +72,7 @@ $(document).ready(function(){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -125,15 +125,29 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -144,32 +158,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                 
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -276,7 +290,7 @@ $(document).ready(function(){
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -284,7 +298,7 @@ $(document).ready(function(){
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -411,7 +425,7 @@ $(document).ready(function(){
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           

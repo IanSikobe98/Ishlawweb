@@ -1,7 +1,8 @@
 <?php
 
-
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+require "../../../DBConnect.php";
+$link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+//$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
  
 // Check connection
 if($link === false){
@@ -9,7 +10,7 @@ if($link === false){
 }
 
 
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid'])){
+if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid'])&& empty($_POST['save1'])){
 
 
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
@@ -209,7 +210,8 @@ header('location: ../../../index.php');
 
 
  
-$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+//$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
+$link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
 if($link === false){

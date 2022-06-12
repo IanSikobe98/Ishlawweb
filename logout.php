@@ -11,6 +11,7 @@ setcookie("log", "", time() - 3600);
 
 setcookie("addvis", "", time() - 3600);
 setcookie("addcli", "", time() - 3600);
+
  
 // Destroy the session.
 session_destroy();

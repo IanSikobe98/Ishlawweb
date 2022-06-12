@@ -34,7 +34,9 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <script src="environment/location.js"></script>
+    <script src="environment/globalparams.js"></script>
   <script src="globalfuncs.js"></script>
+<!--    <script src="services/cases/postservice/postcases.php"></script>-->
 
   
 <link rel="stylesheet" type="text/css" href="styling.css">
@@ -51,9 +53,7 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+     
     </ul>
 
     <!-- SEARCH FORM -->
@@ -61,7 +61,9 @@ require "auth.php";
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -71,7 +73,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -124,18 +126,31 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
-          </li>
-                   <li class="nav-item has-treeview client2" id="client4">
+          </li>                   <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -143,32 +158,32 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -248,7 +263,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li> 
@@ -278,7 +293,7 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -286,7 +301,7 @@ require "auth.php";
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+           <!--  <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -413,7 +428,7 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -459,22 +474,22 @@ require "auth.php";
               </div> -->
             </div>
             <!-- /.card-header -->
-          
-            <form id="exe">
+
+            <form id = "caseform" onsubmit="return sendreloadnomodal(Cases.post,'caseform');">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Category</label>
-                      <select class="form-control select2" id="cat" style="width: 100%;">
+                      <select name="category"  class="form-control select2" id="cat" style="width: 100%;">
                         <option selected="selected" >Select Filing category</option>
                         <option value="1">Litigation</option>
-                        <option value="8">Conveyancing</option>
-                        <option value="9">Criminal Law</option>
-                        <option value="10">Foreign Law</option>
-                       <option value="11">Finance Law</option>
-                        <option value="12">Civil Law</option>
-                        <option value="13">Other Files</option>
+                        <option value="3">Conveyancing</option>
+                        <option value="4">Criminal Law</option>
+                        <option value="5">Foreign Law</option>
+                       <option value="6">Finance Law</option>
+                        <option value="7">Civil Law</option>
+                        <option value="8">Other Files</option>
 
                       </select>
                     </div>
@@ -488,14 +503,18 @@ require "auth.php";
                 <label>Priority</label>
                     <select id="priority" name="prio" required="" class="form-control select2" style="width: 100%;">
                       <option selected="selected">Select Priority</option>
-                      <option value="Urgent">Urgent</option>
-                      <option value="incoming">Incoming</option>
-                      <option value="others">Others</option>
+                      <option value="1">Urgent</option>
+                      <option value="2">Incoming</option>
+                      <option value="3">Others</option>
 
                     </select>
                     </div>
                     <div class="form-group">
-                      
+
+                            <label>Physical Location</label>
+                            <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
+
+
                     </div>
                     
                     <!-- /.form-group -->
@@ -521,9 +540,14 @@ require "auth.php";
                       <input type="text" required="" class="form-control" id="stat" name="stat" placeholder="Enter Case Status">
 
                         </div>
-                      </div>
-                      <div class="form-group">
 
+                      </div>
+
+
+
+
+                      <div class="form-group">
+                          </div>
                   </div>
                   </div>
                   <!-- /.col -->
@@ -581,8 +605,16 @@ require "auth.php";
                   <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+              <div id="myModal" class="modal">
 
-            <script src="services/filing/postfiles.js" type="text/javascript"> </script>
+                  <div class="modal-content">
+                      <span id="close" class="close">&times;</span>
+
+                      <h6 id = "status" style="color:green;"></h6>
+                      <h6 id = "status3" style="color:green;"></h6>
+
+                  </div>
+<!--            <script src="services/filing/postcases.js" type="text/javascript"> </script>-->
 
 
 <!-- 
@@ -775,6 +807,10 @@ require "auth.php";
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
 console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
@@ -816,6 +852,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script>

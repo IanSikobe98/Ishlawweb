@@ -3,11 +3,12 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
+require "../../../DBConnect.php";
 //database
-define('DB_HOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'ishfinal');
+//define('DB_HOST', '127.0.0.1');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', '');
+//define('DB_NAME', 'ishfinal');
 
 
 

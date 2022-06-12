@@ -1,144 +1,10 @@
         <?php
-require "sec/vendor/autoload.php";
-use \Firebase\JWT\JWT;
-// Initialize the session
-$jwt = new \Firebase\JWT\JWT;
-$jwt::$leeway = 5;
- 
-// Check if the user is logged in, if not then redirect him to login page
-// !isset($_COOKIE["jwt"]) && !isset($_COOKIE["log"])
-
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-
-if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
-
-
-echo ($_COOKIE["jwt"]);
-
-}
-
-else
-{
-
-
-// if(verify($_COOKIE["resp"])==true)
-
-// {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
-
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
-
-
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-
-
-
-
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
-
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
-
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
-
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
-
-
-}
-    }catch (Exception $e){
-
-    http_response_code(401);
-
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
-
-}
-// }
-
-// else{
-//   header('location: login.php');
-//    exit;
-
-
-// echo ($_COOKIE["jwt"]);
-
-// }
-
-}
-
-
-
-
+require "auth.php";
 ?>
   
 <!DOCTYPE html>
-<html lang="en">  
+        <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,10 +20,11 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="globalfuncs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 
@@ -171,9 +38,14 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for messages.." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<!--        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -185,10 +57,8 @@ $(document).ready(function(){
 });
 
 </script>
-
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+<script src="environment/location.js"></script>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -196,7 +66,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -206,7 +78,7 @@ $(document).ready(function(){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -260,15 +132,29 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
        <li class="nav-item has-treeview client2" id="client4">
@@ -279,32 +165,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                  <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                     
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -384,7 +270,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -412,7 +298,7 @@ $(document).ready(function(){
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -420,7 +306,7 @@ $(document).ready(function(){
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -547,7 +433,7 @@ $(document).ready(function(){
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -594,21 +480,21 @@ $(document).ready(function(){
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right">12</span>
+                    <span class="badge bg-primary float-right" id ="inboxno"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="compose.php" class="nav-link">
+                  <a href="messagessent.php" class="nav-link">
                     <i class="far fa-envelope"></i> Sent
                   </a>
                 </li>
                 
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-trash-alt"></i> Trash
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
             <!-- /.card-body -->
@@ -639,45 +525,37 @@ $(document).ready(function(){
                 <!-- /.btn-group -->
                 
                 <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
+<!--                  1-50/200-->
+<!--                  <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>-->
+<!--                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.float-right -->
               </div>
               <div class="table-responsive mailbox-messages">
-                <table id="exe" class="table table-hover table-striped">
+                <table id="exe" class="table table-hover ">
+                    <thead>
+<th>Category</th>
+<th>Subject</th>
+
+                    </thead>
                   <tbody>
-                    <?php
-          $link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
-           $ReadSql = "SELECT * FROM messages";
+                  <script src="services/Messaging/displayinbox.js"></script>
 
 
-                
 
-  
-      $result=mysqli_query($link,$ReadSql);
-      while($row=mysqli_fetch_array($result)){
-?>
-                  <tr>
-                                           
 
-                    
-                    
-                    <td class="mailbox-name"><a href="mail.php"><?php echo $row['party'];?></a></td>
-                    <td class="mailbox-subject"><b><?php echo $row['Category'];?></td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date"><?php echo $row['subject'];?></td>
-                  </tr>              
-                  <?php     
 
-      }
-    ?>
-                  </tbody>
+
                 </table>
+<script>
+                  $(document).ready( function () {
+                  $('#exe').DataTable();
+
+                  } );
+</script>
                 <!-- /.table -->
               </div>
               <!-- /.mail-box-messages -->
@@ -686,21 +564,21 @@ $(document).ready(function(){
             <div class="card-footer p-0">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                <!-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
                 </button>
-                <div class="btn-group">
+                --> <!-- <div class="btn-group">
                   <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
                   <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                </div>
-                <!-- /.btn-group -->
+                </div> -->
+                <!-- /.btn-group
                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
+                <div class="float-right"> -->
+<!--                  1-50/200-->
+<!--                  <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>-->
+<!--                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>-->
+<!--                  </div>-->
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.float-right -->
@@ -721,7 +599,10 @@ $(document).ready(function(){
      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 
   </footer>
-
+<!--    <script src="plugins/jquery/jquery.min.js"></script>-->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -731,7 +612,7 @@ $(document).ready(function(){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -741,7 +622,6 @@ $(document).ready(function(){
 	
 <script type="text/javascript">
   function hidefunc(){
-    
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -759,6 +639,14 @@ $(document).ready(function(){
 
       var vis = '<?php if(isset($_COOKIE["vis"])){
      echo $_COOKIE["vis"];} ?>'
+
+      var tokenuse = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokenuse',tokenuse);
+
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
 
 
 
@@ -812,6 +700,8 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+
+      getMessageCount();
   }
   
 </script> 	

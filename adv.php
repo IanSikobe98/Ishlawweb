@@ -51,9 +51,7 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+     
     </ul>
 
     <!-- SEARCH FORM -->
@@ -61,7 +59,9 @@ require "auth.php";
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -71,7 +71,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -124,15 +124,29 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
                    <li class="nav-item has-treeview client2" id="client4">
@@ -150,20 +164,20 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
@@ -248,7 +262,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li> 
@@ -278,7 +292,7 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -286,7 +300,7 @@ require "auth.php";
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -413,7 +427,7 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -466,14 +480,16 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Case Number</label>
-                      <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number">
+                      <select id="case" name ="case" class="form-control"  required="">
+                      </select>
+                      <!-- <input type="Text" class="form-control" id="case" name="case" required="" placeholder="Please Enter case Number"> -->
 
                     </div>
                     <!-- /.form-group -->
               <div class="form-group">
                         <label>Filed By:</label>
                         <div class="select2-purple">
-                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name">
+                          <input type="Text" class="form-control" id="by" required="" name="by" placeholder="Enter Name" value="<?php echo $_COOKIE["fna"]; ?>"  readonly>
                         </div>
                       </div>
                     <!-- /.form-group -->
@@ -481,13 +497,13 @@ require "auth.php";
 
                   <!-- /.col -->
                   <div class="col-md-6">
-                    
-                    <!-- /.form-group -->
-                    <div class="form-group">
-                       <label>Physical Location</label>
-                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">
 
-                    </div>
+                    <!-- /.form-group -->
+<!--                    <div class="form-group">-->
+<!--                       <label>Physical Location</label>-->
+<!--                      <input type="Text" class="form-control" required="" name="location" id="location" placeholder="Please Enter Physical Location">-->
+<!---->
+<!--                    </div>-->
                     <!-- /.form-group -->
                   <div class="form-group">
                         <label>Select File:</label>
@@ -643,6 +659,8 @@ require "auth.php";
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- Page script -->
+          <script type="text/javascript" src="services/filing/casenoopt.js"></script>
+
         <script>
           $(function () {
             //Initialize Select2 Elements
@@ -749,6 +767,10 @@ require "auth.php";
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
 console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
@@ -790,6 +812,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script>

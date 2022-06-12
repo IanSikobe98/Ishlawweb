@@ -10,6 +10,7 @@ require "auth.php";
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -34,7 +35,8 @@ require "auth.php";
 
   <script src ="globalfuncs.js" type="text/javascript"></script>
   <script src ="environment/location.js" type="text/javascript"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="services/usermgmt/teamOptions.js"></script>
 <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 
@@ -47,9 +49,7 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -57,7 +57,9 @@ require "auth.php";
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -67,7 +69,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -120,15 +122,29 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -146,24 +162,25 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
+             
              
                          </ul>
           </li>
@@ -243,7 +260,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id ="inboxcount"></span>
               </p>
             </a>
           </li> 
@@ -273,7 +290,7 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -281,7 +298,7 @@ require "auth.php";
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -408,7 +425,7 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -425,12 +442,12 @@ require "auth.php";
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Clients Form</h1>
+              <h1>Staff Form</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active">Clients Form</li>
-                <li class="breadcrumb-item"><a href="">View Clients</a></li>
+                <li class="breadcrumb-item active">Staff Form</li>
+                <li class="breadcrumb-item"><a href="staff.php">View staff</a></li>
               </ol>
             </div>
           </div>
@@ -443,7 +460,7 @@ require "auth.php";
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
             <div class="card-header">
-              <h3 class="card-title">Register New Client</h3>
+              <h3 class="card-title">Register New Staff</h3>
 
               <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -454,13 +471,13 @@ require "auth.php";
             </div>
             <!-- /.card-header -->
 
-            <form method="POST" onsubmit="return sendreload(UserMngmt.createclient,'exe');" id="exe">
+            <form method="POST" onsubmit="return submitreload(Usermngmt.createclient,'exe','creation of a new staff member');" id="exe">
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                        <label> First Name</label>
-                      <input type="text" name="fname" class="form-control" id="parties" placeholder="Please enter the first name of the client" required="">
+                      <input type="text" name="fname" class="form-control" id="parties" placeholder="Please enter the first name " required="">
 
                     </div>
                     <!-- /.form-group -->
@@ -476,7 +493,7 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Last Name</label>
-                      <input type="text" class="form-control" name="second" id="file" placeholder="please enter the last name of the client" required="">
+                      <input type="text" class="form-control" name="second" id="file" placeholder="please enter the last name " required="">
                     </div>
                     <!-- /.form-group -->
                     <div class="form-group">
@@ -494,22 +511,22 @@ require "auth.php";
                 <div class="row">
                   <div class="col-12 col-sm-6">
                     <div class="form-group">
-                      <label>Team Id</label>
-                      <input type="number" class="form-control" id="team" name="team" placeholder="Enter Client's Team ID" required="">
-
+                      <label>Team Role</label>
+                      <select class="form-control select2" id="team" name ="team" style="width: 100%;">
+                      </select>
                     </div>
                     <!-- /.form-group -->
                   </div>
                   <!-- /.col -->
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Password</label>
-                      <div class="select2-purple">
-                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">
-                      </div>
-                    </div>
+<!--                  <div class="col-12 col-sm-6">-->
+<!--                    <div class="form-group">-->
+<!--                      <label>Password</label>-->
+<!--                      <div class="select2-purple">-->
+<!--                        <input type="password" name="password" class="form-control" id="by" placeholder="Client's Password" required="">-->
+<!--                      </div>-->
+<!--                    </div>-->
                     <!-- /.form-group -->
-                  </div>
+<!--                  </div>-->
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -570,7 +587,7 @@ require "auth.php";
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+<!--        <script src="plugins/jquery/jquery.min.js"></script>-->
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->
@@ -699,7 +716,13 @@ require "auth.php";
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -740,6 +763,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script>

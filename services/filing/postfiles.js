@@ -4,21 +4,21 @@
                 var selectedFile = document.getElementById('myFile').files[0];
 
                 var filedBy = document.getElementById('by').value;
-                var clientName = document.getElementById('client').value;
+                // var clientName = document.getElementById('client').value;
                 var caseNumber = document.getElementById('case').value;
-                var status = document.getElementById('stat').value;
-                var parties = document.getElementById('parties').value;
-                var prio = document.getElementById('priority').value;
-                var loc = document.getElementById('location').value;
+                // var status = document.getElementById('stat').value;
+                // var parties = document.getElementById('parties').value;
+                // var prio = document.getElementById('priority').value;
+                // var loc = document.getElementById('location').value;
                 var fileName = selectedFile.name;
                 var description = "";
                 var version = "";
-                var folderId = document.getElementById('cat').value;;
+                var folderId = document.getElementById('case').value;
                 var data = new FormData;
                 var data2 = new FormData;
                 data.append("document", selectedFile);
-                data.append("name", clientName);
-                data.append("description", `{case: ${caseNumber}, parties: ${parties}, filer: ${filedBy}, status: ${status}, location: ${loc}, prior: ${prio}}`);
+                data.append("name", selectedFile.name);
+                data.append("description", `{filer: ${filedBy}}`);
                 data.append("version", 1);
                 data.append("FolderId", folderId);
 

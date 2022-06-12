@@ -11,14 +11,20 @@ require "auth.php";
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -27,6 +33,15 @@ require "auth.php";
 
 <script    src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
 <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <style type="text/css">
 
     .modal {
@@ -47,6 +62,7 @@ require "auth.php";
 
 <link rel="stylesheet" type="text/css" href="styling.css">
 
+
 </head>
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -63,7 +79,7 @@ require "auth.php";
       </li>
 
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for visitors.." title="Type in a name">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
       <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -75,9 +91,7 @@ $(document).ready(function(){
 });
 
 </script>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -85,7 +99,9 @@ $(document).ready(function(){
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+    <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+</div> 
      
     </ul>
   </nav>
@@ -95,7 +111,7 @@ $(document).ready(function(){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -148,15 +164,29 @@ $(document).ready(function(){
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
            <li class="nav-item has-treeview client2" id="client4">
@@ -167,32 +197,32 @@ $(document).ready(function(){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+                    
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -272,7 +302,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id ="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -299,7 +329,7 @@ $(document).ready(function(){
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -307,7 +337,7 @@ $(document).ready(function(){
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -434,7 +464,7 @@ $(document).ready(function(){
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -501,66 +531,24 @@ $(document).ready(function(){
 	 	    <th>Start Time</th>
         <th>End Time</th>
        
-	 	    
+
 	 	    
 	 	    
                 </tr>
+                    <tbody>
             </thead>
-           <?php
-/*
-            $link = mysqli_connect("127.0.0.1", "root", "", "ishlaw");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}  
-               //search
-               //if (isset($_POST['username']) || isset($_POST['email'])) {
-           
-              $ReadSql = "SELECT tid,title,start,status,description,User,Priority,clino FROM tasks";
-
-
-                
-
-	
-      $result=mysqli_query($link,$ReadSql);
-      if (mysqli_num_rows($result) < 1) {
-                   echo "Error! No Records";
-                   exit();
-                }
-
-
- 	  
-	   	while($row=mysqli_fetch_array($result)){
-?>
-	   		<tr class="active">
-	   		<td><?php echo $row['tid'];?></td>
-	   		<td><?php echo $row['title'];?></td>
-	   		<td><?php echo $row['User'];?></td>
-	   		<td><?php echo $row['clino'];?></td>
-            <td><?php echo $row['start'];?></td>
-            <td><?php echo $row['Priority'];?></td>
-            <td><?php echo $row['description'];?></td>
-            <td><?php echo $row['status'];?></td>
-	   		
-
-
-	   		</tr>
-*/
-	  ?>
 
 <script src= "services/taskmgmt/fetchtableev.js"type="text/javascript">
 
 
 </script>
 
-<!-- 	   		<script type="text/javascript" >
-
-
-        
- 
-        </script> -->
 </table>
+  <script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+ </script>
 </div>
               
               <!-- /.card-body -->
@@ -589,11 +577,18 @@ if($link === false){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
   function hidefunc(){
-    
+
+      formreloadcustom("Event");
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -623,7 +618,11 @@ if($link === false){
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -664,6 +663,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script>

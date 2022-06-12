@@ -1,12 +1,21 @@
  .content-table{
   border-collapse:collapse;
   margin: 25px 0;
-  font-size: 0.8em;
-  min-width:500px;
+  font-size: 0.9em;
+  width:1800px;
   border-radius: 5px 5px 0 0;
   overflow: auto;
   box-shadow:  0 0 20px rgba(0,0,0,0.15);
  }
+  .col-md {
+    border-collapse:collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width:800px;
+  border-radius: 5px 5px 0 0;
+  overflow: auto;
+  box-shadow:  0 0 20px rgba(0,0,0,0.15);
+  }
   .content-table thead tr{
 
   background-color:#009879;

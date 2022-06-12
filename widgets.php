@@ -19,6 +19,8 @@ require "auth.php";
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="globalfuncs.js"></script>
+    <script src="environment/location.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -36,9 +38,7 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
@@ -46,7 +46,9 @@ require "auth.php";
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+     <div class="btn-group open">
+       <a class="btn btn-primary" onclick="return logout()" href="#"><i   class="fa fa-power-off fa-fw "></i></a>
+</div>
      
     </ul>
   </nav>
@@ -56,7 +58,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -109,15 +111,29 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
            <li class="nav-item has-treeview client2" id="client4">
@@ -128,32 +144,32 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+        <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -233,7 +249,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -260,7 +276,7 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
@@ -268,7 +284,7 @@ require "auth.php";
           
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -395,7 +411,7 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -441,7 +457,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="litigation.php" class="small-box-footer">
+              <a onclick="opencase(1)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -457,7 +473,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="cases.php" class="small-box-footer">
+              <a onclick="opencase(3)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -474,7 +490,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="categories.php" class="small-box-footer">
+              <a onclick="opencase(4)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -490,7 +506,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="files.php" class="small-box-footer">
+              <a onclick="opencase(5)" href="#"  class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -514,7 +530,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="case1.php" class="small-box-footer">
+              <a onclick="opencase(6)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -532,7 +548,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="core.php" class="small-box-footer">
+              <a onclick="opencase(7)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -549,7 +565,7 @@ require "auth.php";
               <div class="icon">
                 <i class="fas fa-briefcase"></i>
               </div>
-              <a href="misc.php" class="small-box-footer">
+              <a onclick="opencase(8)" href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -635,6 +651,10 @@ var reloading = sessionStorage.getItem("reloading");
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
 console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
@@ -676,10 +696,20 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+      getMessageCount();
   }
 
 
-  
+  function setfiles(id){
+
+      sessionStorage.removeItem("categoryid");
+      sessionStorage.setItem("categoryid", id);
+      console.log(id);
+      // sessionStorage.setItem("casename",name);
+      // console.log(name);
+
+  }
+
 </script>
 
 <script type="text/javascript" src="modi.js"></script>

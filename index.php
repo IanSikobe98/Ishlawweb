@@ -11,6 +11,27 @@ require "auth.php";
   <title>ISHLAW</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+   <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -23,14 +44,31 @@ require "auth.php";
 
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
   <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
-  <script src="environment/location.js"></script>
-  <script src="services/taskmgmt/rectaagen.js"></script>
-  <script src="services/taskmgmt/nonrectaagen.js"></script>
-  <script src="services/taskmgmt/nonrecevagen.js"></script>
+<!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.9/css/autoFill.dataTables.min.css">-->
+<!--    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
+<!--    <script src="https://cdn.datatables.net/autofill/2.3.9/js/dataTables.autoFill.min.js" type="text/javascript"></script>-->
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="environment/location.js"></script>
+    <script src="services/taskmgmt/nonrectaagen.js"></script>
+    <script src="services/taskmgmt/rectaagen.js"></script>
+
   <script src="services/taskmgmt/nonrecevagen.js"></script>
   <script src="services/taskmgmt/recevagen.js"></script>
   <script src="services/taskmgmt/formfiller.js"></script>
   <script src="globalfuncs.js"></script>
+    <script src="environment/location.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
 
 
@@ -46,12 +84,15 @@ require "auth.php";
   height: 60px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+  background-color: rgba(0,0,0,0.4);
+  } /* Black w/ opacity */\
+ 
 </style>
 
 <script type="text/javascript">
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
+  sessionStorage.setItem('token',jwtpo);
+  sessionStorage.setItem('tokenuse',jwtpo);
 </script>
 
 </head>
@@ -62,20 +103,21 @@ require "auth.php";
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="logout.php" class="nav-link">Logout</a>
-      </li>
+      
     </ul>
 
     <!-- SEARCH FORM -->
     
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      <div class="btn-group open">
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+  
+</div>
       <!-- Messages Dropdown Menu -->
-     
-     
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -84,7 +126,7 @@ require "auth.php";
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ISHLAW</span>
     </a>
@@ -111,7 +153,7 @@ require "auth.php";
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
               <style type="text/css" src="ry.css" ></style>
-                
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -134,20 +176,34 @@ require "auth.php";
               <i class="far fa-file-word"></i>
               <p>
                 Files
-                
+
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
-                
+
               </p>
             </a>
-            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="profile.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="far fa-users"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
+
           </li>
           <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
@@ -158,31 +214,31 @@ require "auth.php";
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item cliadd1" id = "cliadd">
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">   
+              <li class="nav-item " id = "newcli">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
               <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+                <a href="staff.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="" class="nav-link">
+              <li class="nav-item "  id="cliview">
+                <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -244,7 +300,7 @@ require "auth.php";
                   </ul>
           </li>
           <li class="">
-            
+
             <li class="nav-item">
             <a href="calendar.php" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
@@ -260,7 +316,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -274,7 +330,7 @@ require "auth.php";
             </a>
 
           </li>
-         
+
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -285,14 +341,14 @@ require "auth.php";
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="tasks.php" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 New Task
-                
-          
               </p>
             </a>
+          </li>
+          <!--   </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link">
@@ -346,7 +402,7 @@ require "auth.php";
           </li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
-            
+
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -420,10 +476,10 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -445,7 +501,9 @@ require "auth.php";
               <li class="breadcrumb-item"><a href="">Home</a></li>
               <li class="breadcrumb-item active">Dashboard </li>
             </ol>
-          </div><!-- /.col -->
+          </div>
+
+          <!--/.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -468,7 +526,7 @@ require "auth.php";
               <div class="card-header">
                 <h5 class="card-title">Latest Cases</h5>
                 <div class="table-responsive">
-                  <table class="table m-0">
+                  <table class="table m-0" id="exe">
                     <thead>
                     <tr>
                       <th>Reference</th>
@@ -480,57 +538,18 @@ require "auth.php";
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td><a >9842</a></td>
-                      <td>KRA vs OTS</td>
-                      <td>23456</td>
-                      <td>23-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">PENDING</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >1848</a></td>
-                      <td>CAK vs LSK </td>
-                     
-                      <td>1848</span></td>
-                      <td>01-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">Awaiting ruling</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>7429</td>
-                      <td>LSK vs Raj Limited</td>
-                      <td>7429</span></td>
-                      <td>22-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">PENDING</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >429</a></td>
-                      <td>Safaricom vs Mtel Services</td>
-                      <td>923</span></td>
-                      <td>06-01-2021</td>
-                      <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">COMPLETED</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a >1848</a></td>
-                      <td>JSC vs KMA</td>
-                      <td>848</span></td>
-                      <td>05-12-2020</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">COMPLETED</div>
-                      </td>
-                    </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
+                        <script type="text/javascript">
+$(document).ready( function () {
+    $('#exe').DataTable();
 
+} );
+ </script>
+                    </tbody>
+
+                  </table>
+                
+                </div>
+<script src="services/cases/IndexCases.js"></script>
                 <div class="card-footer clearfix">
                 <a href="adv.php" class="btn btn-sm btn-info float-left"> New Case</a>
                 <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Cases</a>
@@ -546,35 +565,66 @@ require "auth.php";
         </div>
         <!-- /.row -->
 
-        <!-- Main row -->
-        <div class="row">
+        <!-- Main row -->      
+             <div class="row">
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX panelE -->
-            <div class="card">
+            <div style="overflow-x:auto;"class="card">
               <div class="card-header">
-                <h3 class="card-title">Your Agenda</h3>
+                <h3 class="card-title">Upcoming Events</h3>
               </div>
-              
-<table class="table table-striped table-bordered table-hover content-table" id="table">
+<style type="text/css">
+ #events {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#events td, #events th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+#events tr:nth-child(even){background-color: #f2f2f2;}
+
+#events tr:hover {background-color: #ddd;}
+
+#events th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+ }
+</style>
+<table  id="events" >
             <thead>
                 <tr>
-        <th>Task</th>
+        
         <th>Activity</th>
-        <th>Due Date</th>
         <th>Priority</th>
-        <th>How To</th>
+        <th>Location</th>
         <th>Progress</th>
-        <th>Status</th>
-        <th>Comments</th>
+        <th>Client</th>
+        <th>Start Time</th>
+        <th>End Time</th>
         <th>Action</th>
-
         
                 </tr>
             </thead>
 
-  
 
+            <tbody>
+
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#events').DataTable();
+
+} );
+ </script>
 
 <script type="text/javascript">
 
@@ -586,43 +636,76 @@ console.log(current);
 return current;
 }
 
-
 </script>
-<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
 
-
-
+<tbody>
 
 </table>
-</form>   
+
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->
   <form  id ="ianform2" method="POST" class="form-container" onsubmit="return sendreload(FormSubmit.agendapost,'ianform2');">
     <p><b>Update your task progress</b></p>
 <label for="tid"><b>Task Id</b></label>
+<div class="card-body">
+            <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="descri"><b>Task ID</b></label>
     <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
+  </div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title" placeholder="Update your task title" name="title" required>
+  </div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+          <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="dueda">Due Date</label>
+                 <input type="date" class="form-control" id="dueda" required="" name="start" placeholder="Enter file name">
 
-     <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda"placeholder="Update your task progress" name="start" required>
+  </div>
+</div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
+</div>
+</div>
+</div>
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
+</div> <!-- form group -->
+</div> <!-- col -->
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
            <label for="clino">How To</label>
                   <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
+</div> <!-- form group -->
+</div> <!-- col -->
 
-
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Task Priority</option>
@@ -631,6 +714,13 @@ return current;
                     <option value="Low">Low</option>
                   </select> <br>
 
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
                     <option selected="selected">Select Task Status</option>
@@ -638,11 +728,20 @@ return current;
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                   <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
-
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -654,11 +753,28 @@ return current;
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>    
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
-    <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                 </div>
+    </div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <button type="submit" name="submit" class="btn">Save</button>
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+ </div> <!-- col -->
+</div> <!-- row -->
+</div>
   </form>
 </div>
   <div class="form-popup" id="myModal2">
@@ -666,29 +782,66 @@ return current;
   <form method="POST"  id ="ianform" class="form-container"
   onsubmit="return sendreload(FormSubmit.agendapost,'ianform');">
     <p><b>Update your task progress</b></p>
+    <div class="card-body">
+            <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
 <label for="tid"><b>Task Id</b></label>
     <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
+</div> <!-- form group -->
+</div> <!-- col -->
 
+
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Title</b></label>
     <input type="text" id="title1" placeholder="Update your task title" name="title" required>
+ </div> <!-- form group -->
+</div> <!-- col -->
+</div>
 
-     <label for="dueda"><b>Due Date</b></label>
-    <input type="text" id="dueda1"placeholder="Update your task progress" name="start" required="">
+      <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+              <label for="dueda">Due Date</label>
+                 <input type="date" class="form-control" id="dueda1" required="" name="start" placeholder="Update your task progress" required="">
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>Progress</b></label>
     <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
+</div> <!-- form group -->
+</div> <!-- col -->
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Client Name</label>
                   <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
  <label for="clino">How To</label>
                   <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
+</div> <!-- form group -->
+</div> <!-- col -->
 
-
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Priority</option>
@@ -696,7 +849,13 @@ return current;
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Status</option>
@@ -704,10 +863,20 @@ return current;
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="clino">General Comments</label>
                   <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
                     <option selected="selected">Select Task Frequency</option>
@@ -719,20 +888,45 @@ return current;
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>   
+</div> <!-- form group -->
+</div> <!-- col -->
 
-                  <label for="rpt">Save</label>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+               <label for="rptun">Repeat Until</label>
+               <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+
+
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+      <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    <option selected="selected">Select Save Option</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
-                  </select> <br>    
- 
-
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+                  </select> <br>
+</div> <!-- form group -->
+</div> <!-- col -->
+</div>
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+</div></div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+   <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+
+ </div> <!-- col -->
+</div> <!-- row -->
+</div>
   </form>
+</div>
 </div>
 
 <div id="myModal" class="modal">
@@ -773,7 +967,7 @@ function closeForm4() {
 </html>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a>
               </div>
             </div>
                 
@@ -827,40 +1021,87 @@ function closeForm4() {
 
 
     </section>
-                
-             <div class="row">
-          <!-- Left col -->
-          <div class="col-md-8">
-            <!-- MAP & BOX panelE -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Upcoming Events</h3>
-              </div>
 
-<table class="content-table" id="events">
+          <!-- Left col -->
+          <div class="">
+            <!-- MAP & BOX panelE -->
+            <div style="overflow-x:auto;" class="card">
+              <div class="card-header">
+                <h3 class="card-title">Your Agenda</h3>
+              </div>
+<style type="text/css">
+ #table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+ }
+</style>
+<table  id="table">
             <thead>
                 <tr>
-        <th>ID</th>
-        <th>Activity</th>
+        
+        <th>Task</th>
+        <th>Due Date</th>
         <th>Priority</th>
-        <th>User</th>
-        <th>Location</th>
+        <th>How To</th>
         <th>Progress</th>
-        <th>Client</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Status</th>
+        <th>Comments</th>
         <th>Action</th>
 
         
                 </tr>
             </thead>
-           
 
+<tbody>
 
 </table>
+<script type="text/javascript">
 
+function getnonrec (input) {
+
+var current = new Date(input);
+current = current.toLocaleString()
+console.log(current);
+return current;
+}
+</script>
+<!--</tbody>-->
+<!-- <script type="text/javascript" src="ishfinal/Calender/recdafetchev.js"></script> -->
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready( function () {
+    $('#table').DataTable();
+
+
+} );
+ </script>
+ 
+</form>
      <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="tvents.php"> View Office Events</a> 
+                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Events</a>
               </div>
             </div>
             </form>   
@@ -869,78 +1110,149 @@ function closeForm4() {
 <div class="form-popup" id="myModal64">
   <form id="eventform"onsubmit="return sendreload(FormSubmit.agendapostev,'eventform');" method="POST" class="form-container">
     <p><b>Update Event progress</b></p>
+
+
+<div class="card-body">
+            <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
 <label for="tid"><b>Event Id</b></label>
     <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
+  </div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title3" placeholder="Update your task title" name="title" required>
-
-    <label for="prior"><b>Event Priority</b></label>
+  </div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+          <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="prior"><b>Event Priority</b></label>
                   <select id="prior3" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Event Priority</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select> <br>
-
-<label for="rpt">Repeat Frequency</label>
-                  <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
-
-
-     
+  </div>
+</div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>User</b></label>
     <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
+</div>
+</div>
+</div>
 
-    <label for="clino">location</label>
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
 
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="clino">Event Progress</label>
                   <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
-                  <label for="dueda"><b>Client</b></label>
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+                         <label for="dueda"><b>Client</b></label>
     <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
+</div> <!-- form group -->
+</div> <!-- col -->
 
-    <label for="dueda"><b>Color</b></label>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Color</b></label>
     <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
-
-
-
-
-    <label for="dueda"><b>Start Time</b></label>
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+     <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
+</div> <!-- form group -->
+</div> <!-- col -->
 
-    <label for="dueda"><b>End Time</b></label>
+<div class="col-12 col-sm-6">
+          <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
-
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
-    <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
-   
+</div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+                     </div>
+    </div> <!-- form group -->
+</div> <!-- col -->
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+              <button type="submit" name="submit" class="btn">Save</button>
+</div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+                       <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+                     </div>
+    </div> <!-- form group -->
+</div> <!-- col -->
+
+
   </form>
+</div>
 </div>
    <div class="form-popup" id="myModal56">
   <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
     <p><b>Update your Event progress</b></p>
+
+
+<div class="card-body">
+            <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
 <label for="tid"><b>Event Id</b></label>
     <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
 
+  </div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+                <div class="form-group">
     <label for="descri"><b>Activity</b></label>
     <input type="text" id="title4" placeholder="Update your task title" name="title" required>
-
-    <label for="prior"><b>Event Priority</b></label>
+  </div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+          <div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+<label for="prior"><b>Event Priority</b></label>
                   <select id="prior4" name="prio"  required="" class="form-control select2" style="">
                     <option selected="selected">Select Event Priority</option>
                     <option value="High">High</option>
@@ -948,63 +1260,105 @@ function closeForm4() {
                     <option value="Low">Low</option>
                   </select> <br>
 
-<label for="rpt">Repeat Frequency</label>
-                  <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
-
-
-     
+  </div>
+</div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user4" placeholder="Update your task progress" name="user" >
+    <input type="text"  id="user4" placeholder="Assigned to" name="user" >
 
-    <label for="clino">location</label>
+</div>
+</div>
+</div>
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+     <label for="clino">location</label>
                   <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
 
 
-    <label for="clino">Event Progress</label>
-                  <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Enter Client's Name">
+</div> <!-- form group -->
+</div> <!-- col -->
 
-                  <label for="dueda"><b>Client</b></label>
-    <input type="text" id="clino4"placeholder="Update your task progress" name="clino" required>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+     <label for="clino">Event Progress</label>
+                  <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Update your progress">
 
-    <label for="dueda"><b>Color</b></label>
-    <input type="text" id="col4"placeholder="Update your task progress" name="color" required>
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+              <label for="dueda"><b>Client</b></label>
+    <input type="text" id="clino4"placeholder="Client Name" name="clino" required>
+</div> <!-- form group -->
+</div> <!-- col -->
 
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+<label for="dueda"><b>Color</b></label>
+    <input type="text" id="col4"placeholder="Choose event color" name="color" required>
 
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
 
-
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
     <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your task progress" name="start" required>
+    <input type="datetime-local" class="form-control" id="start4"  name="start" required>
 
-    <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your task progress" name="end" required>
-    <label for="rpt">Save</label>
+</div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+      <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"  name="end" required> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+
+   <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+</div> <!-- form group -->
+</div>
+<div class="col-12 col-sm-6">
+  <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    <option selected="selected">Select Save Option</option>
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
+</div> <!-- col -->
+
+</div> <!-- col -->
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+
+  <button type="submit" name="submit" class="btn">Save</button>
+
+</div> <!-- form group -->
+</div>
+<div class="col-12 col-sm-6">
+  <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+</div> <!-- col -->
 
 
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
-    <button type="submit" name="submit" class="btn">Save</button>
-    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
   </form>
 </div>
             <!-- /.card -->
-            
+
             <!-- TABLE: LATEST ORDERS -->            <!-- /.card -->
-      
+
           <div class="col-md-4">
             <!-- Info Boxes Style 2 -->
             
@@ -1035,6 +1389,12 @@ function closeForm4() {
 <!-- the rrule-to-fullcalendar connector. must go AFTER the rrule lib -->
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.2.0/main.global.min.js'></script>
  <!-- <script type="text/javascript" src="http://localhost/ishfinal/Calender/modi.js"></script> -->
+
+
+
+
+
+
 
 
  <!-- Boootstrap and css links -->
@@ -1095,7 +1455,7 @@ eventDidMount: function(info) {
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -1117,24 +1477,63 @@ eventDidMount: function(info) {
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-
+<!--<script src="plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="dist/js/demo.js"></script>
 <script type="text/javascript">
 
   //Window on load function
   function hidefunc(){
-var reloading = sessionStorage.getItem("submitsuccess");
+
+      var reloading1 ='<?php if(isset($_COOKIE["loginsuccess"])){
+          echo $_COOKIE["loginsuccess"];} ?>'
+      document.cookie = "loginsuccess; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      //var deletereload = '<?php //setcookie("loginsuccess", "", time() - 3600);?>//'
+     var counter = sessionStorage.getItem("counter")
+      if (reloading1 && counter == 0) {
+          counter++
+          sessionStorage.setItem("counter",counter);
+
+          swal({
+              title: 'Great!',
+              text: 'Login Successful!',
+              icon: 'success',
+              button: 'Close'
+
+          });
+
+          // document.getElementById('myModal').style.display = 'block';
+          // document.getElementById('status').innerHTML = 'Tasks successfully saved';
+          // document.getElementById('status3').innerHTML = '.<br><br>';
+          //
+          // document.getElementById('status').style.color= 'green';
+      }
+
+      var reloading = sessionStorage.getItem("submitsuccess");
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
-             document.getElementById('myModal').style.display = 'block';
+             swal({
+  title: 'Great!',
+  text: 'Activity updated successfully!',
+  icon: 'success',
+  button: 'Close',
+});
 
-            document.getElementById('status').innerHTML = 'Tasks successfully saved';
-            document.getElementById('status3').innerHTML = '.<br><br>';
-
-      document.getElementById('status').style.color= 'green';
             }
 
-    
+
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -1164,7 +1563,13 @@ var reloading = sessionStorage.getItem("submitsuccess");
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -1205,6 +1610,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+      getMessageCount();
   }
   
 </script>
