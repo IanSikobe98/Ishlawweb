@@ -217,6 +217,7 @@ function getMessageCount(){
                 console.log(data);
                 console.log(data[0].unreadno);
                 $('#inboxcount').append(data[0].unreadno);
+                $('#inboxnumber').append(data[0].unreadno);
 
 
             }

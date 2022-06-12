@@ -273,7 +273,7 @@ require "auth.php";
                             <i class="nav-icon far fa-bell"></i>
                             <p>
                                 Inbox
-                                <span class="badge badge-info right">2</span>
+                                <span class="badge badge-info right" id="inboxcount"></span>
                             </p>
                         </a>
                     </li>
@@ -483,7 +483,7 @@ require "auth.php";
                                 <li class="nav-item active">
                                     <a href="messages.php" class="nav-link">
                                         <i class="fas fa-inbox"></i> Inbox
-                                        <span class="badge bg-primary float-right">12</span>
+                                        <span class="badge bg-primary float-right" id ="inboxnumber"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -646,6 +646,10 @@ require "auth.php";
         console.log(tokenuse);
         sessionStorage.setItem('token',tokenuse);
 
+        var tokencount = '<?php if(isset($_COOKIE["resp"])){
+            echo $_COOKIE["resp"];} ?>'
+        sessionStorage.setItem('tokencount',tokencount);
+
 
 
         var fna = '<?php if(isset($_COOKIE["fna"])){
@@ -698,6 +702,7 @@ require "auth.php";
             document.getElementById("viewedit").style.display ="block";
 
         }
+        getMessageCount();
     }
 
 </script>

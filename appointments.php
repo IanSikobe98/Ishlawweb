@@ -56,6 +56,7 @@ require "auth.php";
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="jquery-1.2.6.min.js"></script>
         <script src="environment/location.js" type="text/javascript"></script>
+        <script type="text/javascript" src="globalfuncs.js"></script>
     <script src="jquery.tablesorter.js"></script>
        
     <script src="jquery.tablesorter.min.js"></script>
@@ -286,7 +287,7 @@ $(document).ready(function(){
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -654,7 +655,12 @@ function sortTable(n) {
      var role = '<?php if(isset($_COOKIE["role"])){
      echo $_COOKIE["role"];} ?>'
 
-console.log(fna)
+      var tokencount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('tokencount',tokencount);
+
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -695,6 +701,7 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+            getMessageCount();
   }
   
 </script> 
