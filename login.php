@@ -36,14 +36,14 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 	</head>
     <style>
 body {
-  background-image: url('images/bg.jpg');
+  background-image: url('wp8.jpeg');
   background-repeat: no-repeat;
    background-attachment: fixed;  
   background-size: cover;
 }
 </style>
 	<section class="ftco-section">
-        <div class="wrapper">
+        <div class="wrapper" style="style=position:absolute; right:9000;">
     <div class="logo"> <img src="justice.png" alt=""> </div>
     <div class="text-center mt-4 name"> ISHLAW </div>
     <form action="login.php" method="POST" class="p-3 mt-3">
@@ -52,6 +52,9 @@ body {
         <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password-field" placeholder="Password"> </div>
          <button type="submit" name="btn" class="btn mt-3">Login</button>
     </form>
+    <!-- <div class="text-center mt-4 name"><h6> Ishmael Nyaribo and Co. Advocates</h6></div> -->
+    <div class="text-center mt-4 name"><h6>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </h6></div>
     <!-- <div class="text-center fs-6"> <a href="#">Forget password?</a>  </div> -->
 </div>
 

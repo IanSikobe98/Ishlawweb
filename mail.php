@@ -471,7 +471,7 @@ require "auth.php";
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="messagessent.php" class="nav-link">
                       <i class="far fa-envelope"></i> Sent
                     </a>
                   </li>
