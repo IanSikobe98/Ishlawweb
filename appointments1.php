@@ -1,52 +1,47 @@
- <?php
+     <?php
+
 require "auth.php";
- ?> 
+?>
+  
 <!DOCTYPE html>
-<html>
+<html lang="en">  
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ISHLAW</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <!-- Font Awesome -->
+  <title>ISHLAW</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="class.css" type="text/css" />
 
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <script src="environment/location.js"></script>
-  <script src="globalfuncs.js"></script>
-
- 
-
-
-
 <link rel="stylesheet" type="text/css" href="styling.css">
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+<!--<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>-->
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
+
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-
 <body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
   <!-- Navbar -->
@@ -56,6 +51,30 @@ require "auth.php";
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for appointments.." title="Type in a name">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="jquery-1.2.6.min.js"></script>
+        <script src="environment/location.js" type="text/javascript"></script>
+        <script type="text/javascript" src="globalfuncs.js"></script>
+    <script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+ 
+
+      <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#exe tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+</script>
+
       
     </ul>
 
@@ -96,12 +115,13 @@ require "auth.php";
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+<nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
+              <style type="text/css" src="ry.css" ></style>
                 
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -154,7 +174,7 @@ require "auth.php";
             </ul>
             
           </li>
-           <li class="nav-item has-treeview client2" id="client4">
+          <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -162,7 +182,7 @@ require "auth.php";
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-                    <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
@@ -187,7 +207,7 @@ require "auth.php";
                   <p>View Clients</p>
                 </a>
               </li>
-                   
+              
             </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
@@ -267,7 +287,7 @@ require "auth.php";
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Inbox
-                <span class="badge badge-info right" id="inboxcount" ></span>
+                <span class="badge badge-info right" id="inboxcount"></span>
               </p>
             </a>
           </li>
@@ -284,6 +304,7 @@ require "auth.php";
 
           </li>
 
+                      
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
             <a href="adv.php" class="nav-link">
@@ -304,7 +325,7 @@ require "auth.php";
             </a>
             <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Invoice</p>
                 </a>
@@ -429,9 +450,9 @@ require "auth.php";
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
-          </li>
+          </li> -->
           
         </ul>
       </nav>
@@ -439,189 +460,123 @@ require "auth.php";
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tasks Form</h1>
+            <h4>Incoming Requests</h4>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tasks Form</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Appointments</li>
             </ol>
           </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- SELECT2 EXAMPLE -->
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Make New Appointment</h3>
-
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-            </div>
-          </div>
-
-          <!-- /.card-header -->
-          <form onsubmit="return sendreloadAuth(Appointments.submit,'appointmentssubmit');" id ="appointmentssubmit" method="POST">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="subject">Appointment Subject</label>
-                 <input type="text" class="form-control" id="subject" required="" name="subject" placeholder="Please Enter Appointment Subject">
-                
-                </div>
-                <!-- /.form-group -->
-                <div class="form-group">
-                   <label for="user">Assigned To:</label>
-<!--                 <input type="text" class="form-control" id="user" required="" name="user" placeholder="Please Enter Lawyer assigned" value="--><?php //echo $_COOKIE["fna"]; ?><!--"  readonly>-->
-                    <select  class="form-control " id="staffapp" name="user" placeholder="Please Enter Lawyer assigned" >
-<!--                        <option value="28325a2e-a21d-4759-9686-c7680d77cd48">anne</option>-->
-<!--                        <option value="2fcc08d9-eb51-4090-bef6-5ab9d2773267">lutomiah</option>-->
-<!--                        <option value="3af8b85f-0fc8-4a68-a3aa-2599511558a9">allan</option>-->
-                    </select>
-                </div>
-
-                <!-- /.form-group -->
-              </div>
-
-              <!-- /.col -->
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="start">Date</label>
-                 <input type="datetime-local" class="form-control" id="start" required="" name="start" placeholder="Enter file name">
-                                </div>
-                <!-- /.form-group -->
-                  <div class="form-group">
-                      <label for="clino">Client Phone Number</label>
-                      <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Phone Number">
-
-                      <!--                  <select id="prio" name="prio" required=""  class="form-control select2" style="">-->
-                      <!--                    <option selected="selected">Select Task Priority</option>-->
-                      <!--                    <option value="High">High</option>-->
-                      <!--                    <option value="Medium">Medium</option>-->
-                      <!--                    <option value="Low">Low</option>-->
-                      <!--                  </select>-->
-                      <!--                -->
-                  </div>
-
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-
-            
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                  <div class="form-group">
-                      <label for="fname">Client First Name</label>
-                      <input type="Text" class="form-control" id="fname" name="fname" placeholder="Enter Client's First Name">
-                  </div>
-
-                  <div class="form-group">
-                      <label for="cliemail">Client Email</label>
-                      <div class="select2-purple">
-                          <input type="Text" class="form-control" id="cliemail" name="cliemail" placeholder="Enter Client's Email Address">
-                      </div>
-                  </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-12 col-sm-6">
-                  <div class="form-group">
-                      <label for="sname">Client SurName</label>
-                      <input type="Text" class="form-control" id="sname" name="sname" placeholder="Enter Client's SurName">
-                  </div>
-
-                  <div class="form-group">
-                      <label for="descri">Appointment Description</label>
-                      <textarea type="Text" class="form-control" id="descri" name="descri" placeholder="Appointment Description"></textarea>
-
-                  </div>
-
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          
-                <!-- /.form-group -->
-                <div class="row">
-              <div class="col-12 col-sm-6">
-
-                <!-- /.form-group -->
-              </div>
-
-              <div class="col-12 col-sm-6">
-<!--           -->
+        </Section>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
 
-
-                  </div>
-                                          
-                <!-- /.form-group -->
-             
-                
-                <!-- /.form-group -->
-
-              </div>
-              <!-- /.col -->
-
-            
-            <!-- /.row -->
-          </div>
-                    
-
-          <!-- /.card-body -->
-
-          <div class="card-footer">
-                  <button type="submit" id="submit" name="submit" class="btn btn-primary" >Submit</button>
-                </div>
-
-
-                <div id="myModal" class="modal">
-
-  <div class="modal-content">
-    <span id="close" class="close">&times;</span>
     
-    <h6 id = "status" style="color:green;"></h6>
-      <h6 id = "status3" style="color:green;"></h6>
-      
-  </div>
-  
+      <table class="table table-striped table-bordered table-hover tablesorter" id="exe">
+    <thead >
+      <tr>
+        <th class="w3-button table-column">Client Name</th>
+        <th onclick="sortTable(0)">Phone Number <span class="glyphicon glyphicon-chevron-down"></span> </th>
+        <th>Email</th>
+        <th onclick="sortTable(2)">Appointment   Request</th>
+        <th>Date</th>
+        <th onclick="sortTable(1)">Status</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+<script src="services/appointments/appointments.js"></script>
+  </table>
+
+  <script>
+// $(document).ready(function(){
+//   $('table#exe').DataTable({
+//
+// "searching":true,
+// "paging":true,
+// "order":[[4,"desc"]],
+// "ordering":true,
+//
+//
+//
+//
+//   });
+$(document).ready( function () {
+    $('#exe').DataTable();
+
+} );
+
+  // });
+
+
+
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("exe");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
 </div>
 
-              
-                </div>
+</section>
+</div>
 
-
-
-<script type="text/javascript" src="modi.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-              </form>
-
-        </div>
-        <div id="results"></div>
-  <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       
@@ -640,107 +595,36 @@ require "auth.php";
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="jquery.tablesorter.js"></script>
+       
+    <script src="jquery.tablesorter.min.js"></script>
+  <script src="jquery.tablesorter.widgets.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $('#exe').tablesorter({
+          sortList:[[0,0,[1,0]]]
+        });
 
+
+    });
+
+
+
+
+  </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
-<!-- date-range-picker -->
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- Page script -->
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-    
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    });
-
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    });
-
-  })
-</script>
+<script src="sort.js"></script>
+  
 <script type="text/javascript">
   function hidefunc(){
-    formreload();
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
@@ -775,7 +659,8 @@ require "auth.php";
           echo $_COOKIE["resp"];} ?>'
       sessionStorage.setItem('tokencount',tokencount);
 
-console.log(fna)
+
+      console.log(fna)
 var fullna = fna.concat(" ");
 document.getElementById("usern").innerHTML =fullna.concat(sna);
 document.getElementById("role1").innerHTML = role;
@@ -819,7 +704,8 @@ document.getElementById("visit").style.display ="block";
             getMessageCount();
   }
   
-</script>
-<script src="services/appointments/fetchStaff.js"></script>
-</body>
+</script> 
+
+</body> 
+
 </html>
