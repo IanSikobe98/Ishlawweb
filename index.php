@@ -1143,7 +1143,7 @@ $(document).ready( function () {
 <div class="col-12 col-sm-6">
                 <div class="form-group">
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" >
+    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" readonly="" >
 </div>
 </div>
 </div>
@@ -1152,7 +1152,7 @@ $(document).ready( function () {
        <div class="col-12 col-sm-6">
         <div class="form-group">
      <label for="clino">location</label>
-                  <input type="text" class="form-control select2" id="loc3" required="" name="loc" readonly="" placeholder="Event Location" required="">
+                  <input type="text" class="form-control select2" id="loc3" required="" name="loc"  placeholder="Event Location" required="">
 
 </div> <!-- form group -->
 </div> <!-- col -->
@@ -1197,7 +1197,23 @@ $(document).ready( function () {
 </div> <!-- row -->
 
 <div class="row">
-       <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6">
+        <div class="form-group">
+            <label for="rpt">Repeat Frequency</label>
+            <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
+                <option selected="selected">Select Task Frequency</option>
+                <option value="Never">Never</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+                <option value="Every Two Weeks">Every Two Weeks</option>
+                <option value="Weekdays">Weekdays</option>
+            </select> <br>
+        </div> <!-- form group -->
+    </div> <!-- col -->
+
+    <div class="col-12 col-sm-6">
         <div class="form-group">
                    <label for="rptun">Repeat Until</label>
                    <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
@@ -1265,7 +1281,7 @@ $(document).ready( function () {
 <div class="col-12 col-sm-6">
                 <div class="form-group">
 <label for="descri"><b>User</b></label>
-    <input type="text"  id="user4" placeholder="Assigned to" name="user" >
+    <input type="text"  id="user4" placeholder="Assigned to" name="user"  readonly="">
 
 </div>
 </div>
@@ -1275,7 +1291,7 @@ $(document).ready( function () {
        <div class="col-12 col-sm-6">
         <div class="form-group">
      <label for="clino">location</label>
-                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" readonly="" placeholder="Enter your name">
+                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" placeholder="Enter your name">
 
 
 </div> <!-- form group -->
@@ -1323,7 +1339,23 @@ $(document).ready( function () {
 </div> <!-- row -->
 
 <div class="row">
-       <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6">
+        <div class="form-group">
+            <label for="rpt">Repeat Frequency</label>
+            <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
+                <option selected="selected">Select Task Frequency</option>
+                <option value="Never">Never</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+                <option value="Every Two Weeks">Every Two Weeks</option>
+                <option value="Weekdays">Weekdays</option>
+            </select> <br>
+        </div> <!-- form group -->
+    </div> <!-- col -->
+
+    <div class="col-12 col-sm-6">
         <div class="form-group">
 
    <label for="rptun">Repeat Until</label>
