@@ -489,11 +489,6 @@ require "auth.php";
               <tbody>
             <div class="card-header">
               <h3 class="card-title">Read Message</h3>
-
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
-              </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
@@ -562,12 +557,20 @@ require "auth.php";
            
                
             <!-- /.card-footer -->
-            <div class="card-footer">
-              <div class="float-right">
-                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i><a href="compose.php"> Reply</a></button>
-                
-              </div>
-              <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+
+         
+     <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                 <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->         
               
             </div>
             <!-- /.card-footer -->
