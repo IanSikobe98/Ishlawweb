@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" afterDir="false" />
-    </list>
+    <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1655043695845</updated>
       <workItem from="1655043731464" duration="1477000" />
-      <workItem from="1655227469566" duration="3592000" />
+      <workItem from="1655227469566" duration="3878000" />
     </task>
     <servers />
   </component>
