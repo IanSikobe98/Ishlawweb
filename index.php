@@ -220,7 +220,7 @@ require "auth.php";
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item " id = "newcli">
+              <li class="nav-item cliadd1" id = "cliadd">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>

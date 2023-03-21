@@ -1,17 +1,67 @@
- <?php
+<?php
 require "sec/vendor/autoload.php";
 use \Firebase\JWT\JWT;
 // Initialize the session
 $jwt = new \Firebase\JWT\JWT;
 $jwt::$leeway = 5;
- 
-session_start();
- 
 
+session_start();
+
+function getUserDetails($jwt) {
+
+    $reponseData = null;
+    $url = "http://localhost:8056/auth/getUserDetails";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $authorization = "Ulinzi: Bearer ".$jwt;
+    $headers = array(
+        "Accept: application/json",
+        "Content-Type: application/json",
+        $authorization
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+
+    //for debug only!
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $resp = curl_exec($curl);
+    file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "Response: ".print_r($resp,true)."\n",FILE_APPEND);
+    $arr = json_decode($resp, true);
+    //var_dump($resp);
+    $resp = json_decode($resp);
+
+    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);;
+
+    file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "responseArray: ".print_r($arr,true)."\n",FILE_APPEND);
+    file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "responseObject: ".print_r($resp,true)."\n",FILE_APPEND);
+    $response_message = $resp->message;
+    $response_code = $resp->responseCode;
+
+    if ($httpcode == 200) {
+        if($response_code === "00"){
+            file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "is valid jwt: " . print_r("true", true) . "\n", FILE_APPEND);
+            $responseBody = $resp->responseBody;
+            $reponseData= $responseBody;
+        }
+        else{
+            file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "error decoding jwt: " . print_r("false", true) . "\n", FILE_APPEND);
+        }
+    }
+    else{
+        file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "error decoding jwt: " . print_r("httpCode ".$httpcode, true) . "\n", FILE_APPEND);
+    }
+    return $reponseData;
+}
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_COOKIE["resp"]) || !isset($_SESSION["id"])){
-  header('location: login.php');
-   exit;
+    header('location: login.php');
+    exit;
 }
 
 else
@@ -21,108 +71,113 @@ else
 // if(verify($_COOKIE["resp"])==true)
 
 // {
-  $secret_key = "-----BEGIN PUBLIC KEY-----
+//    $secret_key = "-----BEGIN PUBLIC KEY-----
+//MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhetV5WWfvm52j2u7ZRuG
+//ufbRf3GidT6pVlX9SmSwRvSuj3+ewk8rnmIxXopM4sZEyW0WVvnnc+99MUNe6jDx
+//i+5brB+1WrYaLs4jaoqchTRCsW4NOk/sod1yBO1DtLA8yCMwDTgPpgAA9iDhVTZq
+//M38tH1fKpFlam69IIsoUmsMGH2qZrdKoBXAHcemJyVSD3eKYgKFUlMfMTP6uf8sU
+//0wCYW2GIvsg/tJg9UUczenAlGs8iAUTRNtLU3D4adzYmqcOEf4xydP5XGxqCL8Vg
+//xKjOZNphycx4ZdLX8Gj7jCzQ1tN8r/ZLhtzZ1rTLDI2/Ah9s+NOcJM55b9C5Yw4B
+//tQIDAQAB
+//-----END PUBLIC KEY-----";
 
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
+    $jwt = null;
+    $jwt = htmlspecialchars($_COOKIE["resp"]);
+    file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "token: ".print_r($jwt,true)."\n",FILE_APPEND);
 
-$jwt = null;
-$jwt = htmlspecialchars($_COOKIE["resp"]);
+    if($jwt){
+        try {
 
-if($jwt){
-
-    try {
-
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
-
-        // Access is granted. Add code of the operation here 
-
-        // echo json_encode(array(
-        //     "message" => "Access granted:",
-        //     "data" => $decoded 
-        // ));
-
-      
-     // echo $pop["Team"];
-     // echo $decoded->Team->name;
-     // setcookie('pop', json_encode($decoded->Team->Permissions[0]->name),time() + (30), 'http://localhost/admin/','','');
-     // $_COOKIE['pop'] = json_encode($decoded->Team->Permissions[0]->name);
+            //decode jwt
+            $decoded = getUserDetails($jwt);
+            if($decoded) {
+                file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "successful decoding: " . print_r("true", true) . "\n", FILE_APPEND);
+                file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "responseBody : " . print_r($decoded, true) . "\n", FILE_APPEND);
 
 
-
-     $arr2 = json_decode(json_encode($decoded->Team->Permissions), true);
-   
-
-     setcookie('fna',$decoded->firstName,time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['fna'] = $decoded->firstName;
-     setcookie('sna',$decoded->secondName ,time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['sna'] = $decoded->secondName;
-    setcookie('role',$decoded->Team->name ,time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['role'] = $decoded->Team->name;
-
-        setcookie('emailAddress',$decoded->emailAddress ,time() + (30), 'http://localhost/admin//','','');
-        $_COOKIE['emailAddress'] = $decoded->emailAddress;
-        setcookie('phoneNumber',$decoded->phoneNumber ,time() + (30), 'http://localhost/admin//','','');
-        $_COOKIE['phoneNumber'] = $decoded->phoneNumber;
-
-        setcookie('id',$decoded->phoneNumber ,time() + (30), 'http://localhost/admin//','','');
-        $_COOKIE['id'] = $decoded->id;
-
-        setcookie('loginsuccess',true ,time() + (30), 'http://localhost/admin//','','');
-        $_COOKIE['loginsuccess'] = true;
+                $arr2 = json_decode(json_encode($decoded->team->Permissions), true);
+                $arr = json_decode(json_encode($decoded->team->name), true);
+                file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "team name: " . print_r($arr[0], true) . "\n", FILE_APPEND);
+                file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "firstname: " . print_r($decoded->firstName, true) . "\n", FILE_APPEND);
+                file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "permissions: " . print_r($arr2, true) . "\n", FILE_APPEND);
 
 
+                //Set User details in cookie
+                setcookie('fna', $decoded->firstName, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['fna'] = $decoded->firstName;
+                setcookie('sna', $decoded->secondName, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['sna'] = $decoded->secondName;
+                setcookie('role', $arr[0], time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['role'] = $arr[0];
+
+                setcookie('emailAddress', $decoded->emailAddress, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['emailAddress'] = $decoded->emailAddress;
+                setcookie('phoneNumber', $decoded->phoneNumber, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['phoneNumber'] = $decoded->phoneNumber;
+
+                setcookie('id', $decoded->phoneNumber, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['id'] = $decoded->id;
+
+                setcookie('loginsuccess', true, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['loginsuccess'] = true;
 
 
+                //Set permissions in cookie
+                foreach ($arr2 as $item) {
+                    file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "permission : " . print_r($item, true) . "\n", FILE_APPEND);
 
-      foreach($arr2 as $item) {
-if ($item['name']== 'addvisitors') {
-       setcookie('addvis', 'addvisitors',time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['addvis'] = 'addvisitors';
-}
-if ($item['name']== 'addclients') {
-       setcookie('addcli', 'addclients',time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['addcli'] = 'addclients';
-}
+                    if ($item == 'addvisitors') {
+                        setcookie('addvis', 'addvisitors', time() + (30), 'http://localhost/admin//', '', '');
+                        $_COOKIE['addvis'] = 'addvisitors';
+                    }
+                    if ($item == 'addclients') {
+                        setcookie('addcli', 'addclients', time() + (30), 'http://localhost/admin//', '', '');
+                        $_COOKIE['addcli'] = 'addclients';
+                    }
 
-if ($item['name']== 'viewclients') {
-       setcookie('viewcli', 'viewclients',time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['viewcli'] = 'viewclients';
-}
+                    if ($item == 'viewclients') {
+                        setcookie('viewcli', 'viewclients', time() + (30), 'http://localhost/admin//', '', '');
+                        $_COOKIE['viewcli'] = 'viewclients';
+                    }
 
-if ($item['name']== 'viewvisitors') {
-       setcookie('viewvis', 'viewvisitors',time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['viewvis'] = 'viewvisitors';
-}
+                    if ($item == 'viewvisitors') {
+                        setcookie('viewvis', 'viewvisitors', time() + (30), 'http://localhost/admin//', '', '');
+                        $_COOKIE['viewvis'] = 'viewvisitors';
+                    }
 
-if ($item['name']== 'viewvisitors' || $item['name']== 'addvisitors') {
-       setcookie('vis', 'visitors',time() + (30), 'http://localhost/admin//','','');
-     $_COOKIE['vis'] = 'visitors';
-}
-if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
-       setcookie('cli', 'clients',time() + (30), 'http://localhost/admin/','','');
-     $_COOKIE['cli'] = 'clients';
-}
+                    if ($item == 'viewvisitors' || $item == 'addvisitors') {
+                        setcookie('vis', 'visitors', time() + (30), 'http://localhost/admin//', '', '');
+                        $_COOKIE['vis'] = 'visitors';
+                    }
+                    if ($item == 'addclients' || $item == 'viewclients') {
+                        setcookie('cli', 'clients', time() + (30), 'http://localhost/admin/', '', '');
+                        $_COOKIE['cli'] = 'clients';
+                    }
 
+                }
+            }
+            else{
+                setcookie("resp", "", time() - 3600);
+                header('location: login.php');
 
-}
-    }catch (Exception $e){
+            }
+        }catch (Exception $e){
 
-    http_response_code(401);
+            file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "succesful decoding: ".print_r("false",true)."\n",FILE_APPEND);
+            file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "error: ".print_r($e->getMessage(),true)."\n",FILE_APPEND);
+            file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "error: ".print_r($e,true)."\n",FILE_APPEND);
 
-    echo json_encode(array(
-        "message" => "Access denied by man.",
-        "error" => $e->getMessage()
-    ));
-}
+            setcookie("resp", "", time() - 3600);
+            header('location: login.php');
 
-}
+        }
+
+    }
+    else {
+        file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "is invalid jwt: " . print_r("false", true) . "\n", FILE_APPEND);
+        setcookie("resp", "", time() - 3600);
+        header('location: login.php');
+    }
 // }
 
 // else{
@@ -139,4 +194,3 @@ if ($item['name']== 'addclients' || $item['name']== 'viewclients') {
 
 
 ?>
-  
