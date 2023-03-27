@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="" />
+    <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/services/taskmgmt/API/dayrecta.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/taskmgmt/fetchAsignees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.php" beforeDir="false" afterPath="$PROJECT_DIR$/compose.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/environment/location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.php" beforeDir="false" afterPath="$PROJECT_DIR$/events.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/Messaging/displayMail.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/Messaging/displayMail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/Messaging/displayinbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/Messaging/displayinbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/Messaging/displaysent.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/Messaging/displaysent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/Messaging/fetchrecipients.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/Messaging/fetchrecipients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/appointments/fetchStaff.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/appointments/fetchStaff.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/appointments/postservice/postappointments.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/appointments/postservice/postappointments.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/API/daynonrecev.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/API/daynonrecev.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/API/daynoreta.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/API/daynoreta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/API/nonrecev.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/API/nonrecev.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/API/nonrecta.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/API/nonrecta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/API/receve.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/API/receve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchtable.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchtable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/nonrectaagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/nonrectaagen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/createtasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/createtasks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/clientsListing.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/clientsListing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/postservice/createclient.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/postservice/createclient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/postservice/resetpassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/postservice/resetpassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/staffListing.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/staffListing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/teamOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/teamOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,20 +45,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2ATpzDIkD0RG974vtk31oatP1FS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/ishlawweb40/Ishlawwebv10/services/taskmgmt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10\services\taskmgmt" />
+      <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10\services\taskmgmt\API" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -39,6 +80,7 @@
       <updated>1655043695845</updated>
       <workItem from="1655043731464" duration="1477000" />
       <workItem from="1655227469566" duration="3878000" />
+      <workItem from="1679815275786" duration="17584000" />
     </task>
     <servers />
   </component>

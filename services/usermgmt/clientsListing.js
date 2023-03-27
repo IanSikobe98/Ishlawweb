@@ -17,69 +17,85 @@ $(document).ready(function () {
 
     $.ajax
     ({
-        type: "GET",
+        type: "POST",
 
 
         url: Usermngmt.fetchusers,
         dataType: 'json',
         async: false,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+            xhr.setRequestHeader ("Ulinzi", "Bearer " + jwt );
         },
 
 
-        success: function (data) {
-            console.log(data);
+        success: function (result) {
+            console.log(result);
             console.log("DONE");
 
             var file = '';
             // var p =0
+            console.log("successful");
+            console.log(result);
+            var responseCode = result.responseCode;
+            if (responseCode === "00") {
+                var data = result.responseBody;
+                console.log("responseBody:");
+                console.log(data);
+
+                for (var i in data) {
+                    // if (data[i].TeamId == 5) {
+                        file += '<tr class="warning">';
 
 
-            for(var i in data) {
-                if (data[i].TeamId == 5) {
-                    file += '<tr class="warning">';
+                        file += '<td>' +
+                            data[i].firstName + '</td>';
 
+                        file += '<td>' +
+                            data[i].surname + '</td>';
 
-                    file += '<td>' +
-                        data[i].firstName + '</td>';
+                        file += '<td>' +
+                            data[i].phoneNumber + '</td>';
 
-                    file += '<td>' +
-                        data[i].secondName + '</td>';
+                        file += '<td>' +
+                            data[i].emailaddress + '</td>';
 
-                    file += '<td>' +
-                        data[i].phoneNumber + '</td>';
+                        file += '<td>' +
+                            data[i].dateCreated.split('T')[0] + '</td>';
 
-                    file += '<td>' +
-                        data[i].emailAddress + '</td>';
+                        // file += '<td>' +
+                        //     data[i].Approval + '</td>';
+                        //
+                        // file +='<td>' + '<button type="button" class="btn btn-success" onclick="return approval(\'' + "Accepted" + '\','+data[i].Rqid+');">Accept</button>'+
+                        //     '<button type="button" class="btn btn-danger" onclick="return approval(\'' + "Rejected" + '\','+data[i].Rqid+');">Reject</button>'
+                        //     +
+                        //     '</td>';
 
-                    file += '<td>' +
-                        data[i].createdAt.split('T')[0] + '</td>';
+                        file += '</tr>';
 
-                    // file += '<td>' +
-                    //     data[i].Approval + '</td>';
-                    //
-                    // file +='<td>' + '<button type="button" class="btn btn-success" onclick="return approval(\'' + "Accepted" + '\','+data[i].Rqid+');">Accept</button>'+
-                    //     '<button type="button" class="btn btn-danger" onclick="return approval(\'' + "Rejected" + '\','+data[i].Rqid+');">Reject</button>'
-                    //     +
-                    //     '</td>';
-
-                    file += '</tr>';
-
+                    // }
                 }
-            }
-            // i =+i+1;
-            // console.log(p);
-            $('#exe').append(file);
-            // $('#inboxno').append(p);
-            swal({
-                title: 'Sucesss!',
-                text: 'Success in fetching Clients!',
-                icon: 'success',
-                button: 'Close',
-                timer: 1000
-            });
 
+                // i =+i+1;
+                // console.log(p);
+                $('#exe').append(file);
+                // $('#inboxno').append(p);
+                swal({
+                    title: 'Sucesss!',
+                    text: 'Success in fetching Clients!',
+                    icon: 'success',
+                    button: 'Close',
+                    timer: 1000
+                });
+
+            }
+            else{
+                swal({
+                    title: 'Error!',
+                    text: 'Error in fetching Clients!',
+                    icon: 'error',
+                    button: 'Close',
+                });
+            }
         }
         ,
 

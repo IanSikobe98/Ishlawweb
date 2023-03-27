@@ -25,23 +25,32 @@ $(document).ready(function () {
 
     $.ajax
     ({
-        type: "GET",
+        type: "POST",
 
 
         url: Usermngmt.fetchusers,
         dataType: 'json',
         async: false,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+            xhr.setRequestHeader ("Ulinzi", "Bearer " + jwt );
         },
 
 
-        success: function (data) {
-            console.log(data);
+
+        success: function (result) {
+            console.log(result);
             console.log("DONE");
 
             var file = '';
             // var p =0
+            console.log("successful");
+            console.log(result);
+            var responseCode = result.responseCode;
+            if (responseCode === "00") {
+                var data = result.responseBody;
+                console.log("responseBody:");
+                console.log(data);
+
 
 
             for(var i in data) {
@@ -55,16 +64,16 @@ $(document).ready(function () {
                         data[i].firstName + '</td>';
 
                     file += '<td>' +
-                        data[i].secondName + '</td>';
+                        data[i].surname + '</td>';
 
                     file += '<td>' +
                         data[i].phoneNumber + '</td>';
 
                     file += '<td>' +
-                        data[i].emailAddress + '</td>';
+                        data[i].emailaddress + '</td>';
 
                     file += '<td>' +
-                        data[i].createdAt.split('T')[0] + '</td>';
+                        data[i].dateCreated.split('T')[0] + '</td>';
 
                     file += '<td>' +
                         role + '</td>';
@@ -95,6 +104,7 @@ $(document).ready(function () {
             });
 
         }
+            }
         ,
 
 

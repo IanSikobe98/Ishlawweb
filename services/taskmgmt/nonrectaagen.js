@@ -5,7 +5,7 @@ var data;
 $(document).ready(function () {
 
 
-
+    console.log("START NON RECURRING DATA");
     $.ajax
     ({
         type: "GET",
@@ -27,6 +27,7 @@ $(document).ready(function () {
 
         // $.getJSON(Tasks.calnonrecurring,
         success:function(data) {
+            console.log("NON RECURRING DATA");
               console.log(data);
               var items = [];
               var student = '';

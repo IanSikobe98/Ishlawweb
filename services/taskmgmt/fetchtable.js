@@ -44,7 +44,7 @@
                            data[i].title + '</td>';
 
                        student += '<td>' +
-                           data[i].User + '</td>';
+                           data[i].client_name + '</td>';
 
                        student += '<td>' +
                            data[i].clino + '</td>';

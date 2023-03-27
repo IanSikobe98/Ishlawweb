@@ -1,5 +1,6 @@
 <?php
 require "../../../sec/vendor/autoload.php";
+require "../../sharedFunctions.php";
 use \Firebase\JWT\JWT;
 //setting header to json
 header("Access-Control-Allow-Origin: *");
@@ -9,17 +10,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 
-$secret_key = "-----BEGIN PUBLIC KEY-----
 
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
-
+$logpath ="../../log.txt";
 $jwt =null;
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -43,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $jwt = $_POST["token"];
 
     try{
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
+        $decoded = getUserDetails($jwt,$logpath);
 
         $username = $decoded->emailAddress;
         $url = "https://ishlaw_auth.ambience.co.ke/api/auth/v1/local/sign_in";

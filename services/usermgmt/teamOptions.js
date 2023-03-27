@@ -1,45 +1,51 @@
+var jwt = sessionStorage.getItem('tokenuse');
 $(document).ready(function () {
 
     $.ajax
     ({
-        type: "GET",
+        type: "POST",
 
 
         url: Usermngmt.fetchstaffoptions,
         dataType: 'json',
         async: false,
-        // beforeSend: function (xhr) {
-        //     xhr.setRequestHeader ("Authorization", "Basic " + jwt );
-        // },
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Ulinzi", "Bearer " + jwt );
+        },
 
 
-        success: function (data) {
-            console.log(data);
-            console.log("DONE");
-            var items = [];
+        success: function (result) {
+            console.log("successful");
+            console.log(result);
+            var responseCode = result.responseCode;
+            if(responseCode==="00") {
+                var data = result.responseBody;
+                console.log("responseBody:");
+                console.log(data);
+                var items = [];
 
-            var items2 = [];
+                var items2 = [];
 
-            for(var i in data) {
-                items.push(data[i].id);
-                items2.push(data[i].name)
+                for (var i in data) {
+                    items.push(data[i].id);
+                    items2.push(data[i].title)
+                }
+
+
+                var str = ""
+                for (var item of items) {
+                    str += "<option value='" + item + "'>" + items2[items.indexOf(item)] + "</option>"
+                }
+
+                document.getElementById("team").innerHTML = str;
+                // swal({
+                //     title: 'Sucesss!',
+                //     text: 'Success in fetching Messsages!',
+                //     icon: 'success',
+                //     button: 'Close',
+                //     timer: 1000
+                // });
             }
-
-
-            var str = ""
-            for (var item of items) {
-                str += "<option value='"+item+"'>" + items2[items.indexOf(item)] + "</option>"
-            }
-
-            document.getElementById("team").innerHTML = str;
-            // swal({
-            //     title: 'Sucesss!',
-            //     text: 'Success in fetching Messsages!',
-            //     icon: 'success',
-            //     button: 'Close',
-            //     timer: 1000
-            // });
-
         }
         ,
 

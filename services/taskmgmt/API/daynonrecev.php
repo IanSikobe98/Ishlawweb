@@ -1,6 +1,7 @@
 <?php
 require "../../../sec/vendor/autoload.php";
 require "../../../DBConnect.php";
+require "../../../sharedFunctions.php";
 use \Firebase\JWT\JWT;
 //setting header to json
 header('Access-Control-Allow-Origin: *');
@@ -16,16 +17,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 //define('DB_NAME', 'ishfinal');
 
 
- $secret_key = "-----BEGIN PUBLIC KEY-----
-
-MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBo7XX/N2WuOUtnB1zW/xoi
-Juz5/Lh0NXORSx3eo0cKcMoSghxpoPDeL21+mluVDeHr37VVbl25P9ItwWfRcCKl
-GBuM4WPS6k6b83zzNlRHGoJL9mooj27Cn8mc2elCBbBkbDi6t0NEXYbVrINtyU2x
-F9yaUkryveNOwwUd6t1mjeF8H8xKU3SBc+E3Vm+gzpV/6ED78PdAaVBKvVxNQEMX
-b01tKzMMwzfY3K1IA5jbVY5tHNCbc/EA/9UqzV4awH1o35v12Q1oCb28und0eJ33
-D5KHVUmIZcLQgG6ivP1mmPoZ3O0udPzN2Qnm1mepQp/oNsY0V4VSt/hcqXHwyY5H
-AgMBAAE=
------END PUBLIC KEY-----";
+$logpath ="../../../log.txt";
 
 
 $jwt = null;
@@ -40,7 +32,7 @@ if($jwt){
 
     try {
 
-        $decoded = JWT::decode($jwt, $secret_key, array('RS256'));
+        $decoded = getUserDetails($jwt,$logpath);
 
 
      $pop = json_encode($decoded); 
@@ -58,7 +50,8 @@ $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if(!$mysqli){
 	die("Connection failed: " . $mysqli->error);
 }
-$sql ="SELECT `id` ,DATE(`events`.`start`) AS `start`,DATE_ADD(DATE(`events`.`end`), INTERVAL 1 DAY) AS `end` FROM `events` WHERE `user`='$decoded->firstName'";
+$sql ="SELECT `id` ,DATE(`events`.`start`) AS `start`,DATE_ADD(DATE(`events`.`end`), INTERVAL 1 DAY) AS `end` FROM `events` WHERE `user`='$decoded->id'";
+        file_put_contents($logpath,date("Y-m-d H:i(worry)"). " E-Query1: ".print_r($sql,true)."\n",FILE_APPEND);
 
 // $sql = "SELECT * FROM `events`  WHERE  `rpt` = 'Never'";
 $result = $mysqli->query($sql);
@@ -85,9 +78,11 @@ if ($result->num_rows > 0) {
 
 
 if($value==$tod){
-   $query = sprintf( "SELECT * FROM `events` WHERE `rpt` = 'Never'  AND `id`='$tyid' AND `user`='$decoded->firstName'");
+   $query = sprintf( "SELECT * FROM `events` WHERE `rpt` = 'Never'  AND `id`='$tyid' AND `user`='$decoded->id'");
 
-  // "SELECT * FROM `events`  WHERE  `rpt` = 'Never' AND DATE(`start`) = '$tod' ");
+    file_put_contents($logpath,date("Y-m-d H:i(worry)"). " E-Query2: ".print_r($query,true)."\n",FILE_APPEND);
+
+    // "SELECT * FROM `events`  WHERE  `rpt` = 'Never' AND DATE(`start`) = '$tod' ");
 
 //execute query
 $result3 = $mysqli->query($query);

@@ -22,7 +22,7 @@ if(!$mysqli){
 }
 
 //query to get data from the table
-$query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never'");
+$query = sprintf("SELECT * FROM `tasks_report`  WHERE  `rpt` = 'Never'");
 
 //execute query
 $result = $mysqli->query($query);

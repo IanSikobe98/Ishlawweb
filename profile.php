@@ -830,21 +830,29 @@ document.getElementById("visit").style.display ="block";
 </script>
 <script>
     var userid= "<?php if(isset($_COOKIE["id"])){echo $_COOKIE["id"]; }?>";
+    var jwt = sessionStorage.getItem('tokenuse');
     $( document ).ready(function() {
 
         $.ajax
         ({
             type: "POST",
-
-            data: {"id":userid},
             url: Usermngmt.fetchuser,
-            dataType: 'json',
+            data: JSON.stringify({"id":userid}),
             async: false,
+            contentType: "application/json",
+
+
+            // url: Messages.fetch,
+            // dataType: 'json',
+            // async: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader ("Ulinzi", "Bearer " + jwt );
+            },
 
 
             success: function (data) {
-                console.log(data.createdAt.split("T")[0]);
-                document.getElementById("creationdate").innerHTML = data.createdAt.split("T")[0];
+                console.log(data.responseBody.dateCreated.split("T")[0]);
+                document.getElementById("creationdate").innerHTML = data.responseBody.dateCreated.split("T")[0];
             }
         });
 

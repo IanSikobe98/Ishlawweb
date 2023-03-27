@@ -42,11 +42,11 @@ var Usermngmt ={
 
 	createclient : 'services/usermgmt/postservice/createclient.php',
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' ,
-    fetchstaffoptions : 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/team/getAll',
-    fetchusers: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getAll',
+    fetchstaffoptions : 'http://localhost:8056/api/getRoles',
+    fetchusers: 'http://localhost:8056/api/getMembers',
     authenticate:  'services/usermgmt/postservice/authenticate.php',
     resetpassword: 'services/usermgmt/postservice/resetpassword.php',
-    fetchuser: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getOne',
+    fetchuser: 'http://localhost:8056/api/getMemberById',
 
 };
 
@@ -70,7 +70,8 @@ var Messages =
         fetchsent : 'services/Messaging/SentMessagesListing.php',
         fetchinbox : 'services/Messaging/InboxMessagesListing.php',
         fetchcount : 'services/Messaging/displaycount.php',
-        compose: 'services/Messaging/ComposeNewMsg.php'
+        compose: 'services/Messaging/ComposeNewMsg.php',
+        updateStatus:'services/Messaging/UpdateMsgStatus.php'
     };
 
 

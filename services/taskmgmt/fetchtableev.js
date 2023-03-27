@@ -298,7 +298,7 @@ return d;
                             data[i].priority + '</td>';
 
                         student += '<td>' +
-                            data[i].user + '</td>';
+                            data[i].client_name + '</td>';
 
                         student += '<td>' +
                             data[i].location + '</td>';

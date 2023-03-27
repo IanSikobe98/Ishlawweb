@@ -25,13 +25,15 @@ server with default setting (user 'root' with no password) */
 
 //$link = mysqli_connect("127.0.0.1", "root", "", "ishfinal");
 $link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
+$logpath ="../../../log.txt";
  
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Create task query: ".print_r($_POST['user'],true)."\n",FILE_APPEND);
+file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Create task query: ".print_r($_POST['title'],true)."\n",FILE_APPEND);
 
 if(isset($_POST['title']) && isset($_POST['start']) &&isset($_POST['stat']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['hotodo']) && isset($_POST['comment']) 
   // && isset($_POST['matter'])
@@ -68,7 +70,7 @@ $user = mysqli_real_escape_string($link, $_REQUEST['user']);
 if($rpt == "Never")
 {
 $sql = "INSERT INTO `tasks`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
-
+    file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Create task query: ".print_r($sql,true)."\n",FILE_APPEND);
 // for($i=0;$i<$user; $i++){
 // , '".$_POST['user'][$i]."'
 // $sql .="('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu'),";
@@ -124,6 +126,7 @@ else
  $rptun =str_replace("-", "", $rptun);
 
 $sql = "INSERT INTO `iant`(`title`, `start`, `description`, `rpt`, `rpun`, `User`, `Priority`, `clino`, `status`, `hotodo`, `comment`) VALUES ('$title','$start', '$descri', '$rpt','$rptun', '$user','$prio','$clino','$stu','$hotodo','$comment') ";
+    file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Create task query: ".print_r($sql,true)."\n",FILE_APPEND);
 
 // for($i=0;$i<$user; $i++){
 // , '".$_POST['user'][$i]."'

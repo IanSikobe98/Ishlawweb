@@ -188,7 +188,7 @@ function readMsg(id){
     $.ajax
     ({
         type: 'POST',
-        url: 'http://localhost/Ishlawwebv10/services/Messaging/UpdateMsgStatus.php',
+        url: Messages.updateStatus,
         data:{Status: Status,id:id},
 
         beforeSend: function (xhr) {

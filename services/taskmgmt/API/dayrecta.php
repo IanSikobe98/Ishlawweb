@@ -3,7 +3,9 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
+
 require "../../../DBConnect.php";
+require "../../../sharedFunctions.php";
 //database
 //define('DB_HOST', '127.0.0.1');
 //define('DB_USERNAME', 'root');
@@ -11,7 +13,7 @@ require "../../../DBConnect.php";
 //define('DB_NAME', 'ishfinal');
 
 
-
+ // $tod = strftime('%F');
 
 
 //get connection
@@ -22,7 +24,7 @@ if(!$mysqli){
 }
 
 //query to get data from the table
-$query = sprintf("SELECT * FROM `events_report`  WHERE  `rpt` = 'Never'");
+$query = sprintf("SELECT * FROM `rpttasks3` WHERE  `status` <> 'Completed'");
 
 //execute query
 $result = $mysqli->query($query);
@@ -51,8 +53,8 @@ $mysqli->close();
 // }
 
 // }
-print json_encode($data);
+// print json_encode($data);
 //print (",");
-//print json_encode($data);
+print json_encode($data);
 
 ?>

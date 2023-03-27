@@ -1,3 +1,4 @@
+var jwt = sessionStorage.getItem('tokenuse');
 function getName(id){
     //Fill files of tables
     // $( document ).ready(function() {
@@ -6,10 +7,18 @@ function getName(id){
     ({
 
         type: 'POST',
-        url: 'https://ishlaw_auth.ambience.co.ke/api/auth/v1/users/getOne',
-        data:{id:id},
+        url: Usermngmt.fetchuser,
+        data: JSON.stringify({id:id}),
         async: false,
+        contentType: "application/json",
 
+
+        // url: Messages.fetch,
+        // dataType: 'json',
+        // async: false,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Ulinzi", "Bearer " + jwt );
+        },
 
         // url: Messages.fetch,
         // dataType: 'json',
@@ -18,11 +27,21 @@ function getName(id){
         success: function (data){
             console.log(data);
             console.log("DONE");
-            console.log(data.firstName);
-            console.log(data.secondName);
-            str = data.firstName.concat(' ');
-            str = str.concat(data.secondName);
-            return str;
+            console.log("successful");
+            console.log(data);
+            var responseCode = data.responseCode;
+            if(responseCode==="00") {
+                var responseBody = data.responseBody;
+                console.log(responseBody.firstName);
+                console.log(responseBody.surname);
+                str = responseBody.firstName.concat(' ');
+                str = str.concat(responseBody.surname);
+                return str;
+            }
+            else{
+                str = "Unknown"
+                return str;
+            }
 
         },
 

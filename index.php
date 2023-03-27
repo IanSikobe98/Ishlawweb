@@ -93,6 +93,24 @@ require "auth.php";
   var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
   sessionStorage.setItem('token',jwtpo);
   sessionStorage.setItem('tokenuse',jwtpo);
+
+  var userid = '<?php if(isset($_COOKIE["id"])){
+      echo $_COOKIE["id"];} ?>'
+
+  sessionStorage.setItem('userid',userid);
+
+  var viewasign = '<?php if(isset($_COOKIE["viewasign"])){
+      echo $_COOKIE["viewasign"];} ?>'
+
+
+  if(viewasign =="viewasignees")
+  {
+      console.log("allowed viewasignees")
+      sessionStorage.setItem('viewasignees',"true");
+  }
+  else{
+      sessionStorage.setItem('viewasignees',"false");
+  }
 </script>
 
 </head>
@@ -1642,10 +1660,13 @@ document.getElementById("visit").style.display ="block";
       document.getElementById("viewedit").style.display ="block";
 
     }
+
+
       getMessageCount();
   }
   
 </script>
+ <script type="text/javascript" src="services/taskmgmt/fetchAsignees.js"></script>
 <script type="text/javascript" src="modi.js"></script>
 </body>
 </html>

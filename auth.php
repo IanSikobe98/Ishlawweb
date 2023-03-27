@@ -112,8 +112,8 @@ else
 
                 setcookie('emailAddress', $decoded->emailAddress, time() + (30), 'http://localhost/admin//', '', '');
                 $_COOKIE['emailAddress'] = $decoded->emailAddress;
-                setcookie('phoneNumber', $decoded->phoneNumber, time() + (30), 'http://localhost/admin//', '', '');
-                $_COOKIE['phoneNumber'] = $decoded->phoneNumber;
+                setcookie('phoneNumber', $decoded->msisdn, time() + (30), 'http://localhost/admin//', '', '');
+                $_COOKIE['phoneNumber'] = $decoded->msisdn;
 
                 setcookie('id', $decoded->phoneNumber, time() + (30), 'http://localhost/admin//', '', '');
                 $_COOKIE['id'] = $decoded->id;
@@ -153,6 +153,12 @@ else
                         setcookie('cli', 'clients', time() + (30), 'http://localhost/admin/', '', '');
                         $_COOKIE['cli'] = 'clients';
                     }
+
+                    if ($item == 'viewasignees') {
+                        setcookie('viewasign', 'viewasignees', time() + (30), 'http://localhost/admin/', '', '');
+                        $_COOKIE['viewasign'] = 'viewasignees';
+                    }
+
 
                 }
             }

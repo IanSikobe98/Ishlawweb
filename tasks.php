@@ -35,9 +35,10 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="plugins/jquery/jquery.min.js"></script>
   <script src="environment/location.js"></script>
   <script src="globalfuncs.js"></script>
+
  
 
 
@@ -501,8 +502,10 @@ require "auth.php";
                 <!-- /.form-group -->
                 <div class="form-group">
                    <label for="user">Assigned To:</label>
-                 <input type="text" class="form-control" id="user" required="" name="user" placeholder="Please Enter party" value="<?php echo $_COOKIE["fna"]; ?>"  readonly>
-                 
+<!--                 <input type="text" class="form-control" id="user" required="" name="user" placeholder="Please Enter party" value="--><?php //echo $_COOKIE["fna"]; ?><!--"  readonly>-->
+                    <select class="form-control select2" id="user" name="user" placeholder="Please Enter party">
+                    </select>
+
                 </div>
 
                 <!-- /.form-group -->
@@ -770,6 +773,7 @@ require "auth.php";
 
   })
 </script>
+<script type="text/javascript" src="services/taskmgmt/fetchAsignees.js"></script>
 <script type="text/javascript">
   function hidefunc(){
     formreload();
@@ -850,8 +854,11 @@ document.getElementById("visit").style.display ="block";
 
     }
             getMessageCount();
+
   }
+
   
 </script>
+
 </body>
 </html>

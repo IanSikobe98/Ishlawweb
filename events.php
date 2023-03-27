@@ -670,8 +670,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <!-- /.form-group -->
                 <div class="form-group">
                    <label for="user">Assigned To:</label>
-                 <input type="text" class="form-control" id="user" name="user" placeholder="Please Enter parties" required="" value="<?php echo $_COOKIE["fna"]; ?>"  readonly>
-                 
+<!--                 <input type="text" class="form-control" id="user" name="user" placeholder="Please Enter parties" required="" value="--><?php //echo $_COOKIE["fna"]; ?><!--"  readonly>-->
+                    <select class="form-control select2" id="user" name="user" placeholder="Please Enter party">
+                    </select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -933,6 +934,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
   })
 </script>
+ <script type="text/javascript" src="services/taskmgmt/fetchAsignees.js"></script>
 
 <script type="text/javascript">
   function hidefunc(){
