@@ -36,7 +36,7 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 </head>
 <style>
     body {
-        background-image: url('wp8.jpeg');
+        background-image: url('');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;

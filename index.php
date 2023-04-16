@@ -223,7 +223,7 @@ require "auth.php";
             </ul>
 
           </li>
-          <li class="nav-item has-treeview client2" id="client4">
+       <li class="nav-item has-treeview client2" id="client4">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -232,13 +232,13 @@ require "auth.php";
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item cliadd1" id = "cliadd">
+              <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item cliadd1" id = "cliadd">
+              <li class="nav-item " id = "cliadd">
                 <a href="registration.php" class="nav-link">
                   <i class="far fa-users"></i>
                   <p>Add New Client</p>
@@ -250,14 +250,14 @@ require "auth.php";
                   <p>View Staff</p>
                 </a>
               </li>
-              <li class="nav-item "  id="cliview">
+              <li class="nav-item "  id="">
                 <a href="customers.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Clients</p>
                 </a>
               </li>
-
-            </ul>
+             
+                         </ul>
           </li>
           <li class="nav-item has-treeview visit1" id = "visit">
             <a href="" class="nav-link">
@@ -510,6 +510,7 @@ require "auth.php";
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">Dashboard </h1>
@@ -532,11 +533,68 @@ require "auth.php";
       <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-files-o"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Tasks</span>
+                <span class="info-box-number">
+                  10
+                  <small>%</small>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-window-close"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Not Started</span>
+                <span class="info-box-number">13</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class=" fa fa-tasks"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">In progress</span>
+                <span class="info-box-number">10</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Completed Tasks</span>
+                <span class="info-box-number">20</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
+
 
         <div class="row">
           <div class="col-md-12">
@@ -588,8 +646,8 @@ $(document).ready( function () {
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX panelE -->
-            <div style="overflow-x:auto;"class="card">
-              <div class="card-header">
+            <div  style="overflow-x:auto; min-height: 250px ;"class="card">
+              <div style="min-height: ;300px" class="card-header">
                 <h3 class="card-title">Upcoming Events</h3>
               </div>
 <style type="text/css">
@@ -597,6 +655,8 @@ $(document).ready( function () {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+
+
 }
 
 #events td, #events th {
@@ -639,7 +699,10 @@ $(document).ready( function () {
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#events').DataTable();
+    $('#events').DataTable({
+      "pageLength": 4,
+      "lengthMenu": [4, 7, 10, 25],
+    });
 
 } );
  </script>
@@ -718,7 +781,7 @@ return current;
        <div class="col-12 col-sm-6">
         <div class="form-group">
            <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">
 </div> <!-- form group -->
 </div> <!-- col -->
 
@@ -726,7 +789,7 @@ return current;
                 <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Task Priority</option>
+                    
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
@@ -741,7 +804,7 @@ return current;
         <div class="form-group">
     <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
-                    <option selected="selected">Select Task Status</option>
+                   
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
@@ -762,7 +825,7 @@ return current;
         <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
@@ -854,7 +917,7 @@ return current;
        <div class="col-12 col-sm-6">
         <div class="form-group">
  <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
+                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">
 </div> <!-- form group -->
 </div> <!-- col -->
 
@@ -862,7 +925,7 @@ return current;
                 <div class="form-group">
 <label for="prior"><b>Task Priority</b></label>
                   <select id="prior1" name="prio"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Priority</option>
+                    
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
@@ -897,7 +960,7 @@ return current;
         <div class="form-group">
               <label for="rpt">Repeat Frequency</label>
                   <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Frequency</option>
+                    
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
@@ -1011,19 +1074,18 @@ function closeForm4() {
                 <!--The calendar -->
                 
               </div>
+    <style type="text/css">
+      .new{
+        min-height: 400px;
+      }
+    </style>
+              <div class="new">
               <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Calendar</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i></button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="events.php" class="dropdown-item">Add new event</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="calendar.php" class="dropdown-item">View calendar</a>
-                    </div>
-                    
+                                        
               </div>
               <!-- /.card-header -->
               <div id='calendar'></div>
@@ -1032,6 +1094,7 @@ function closeForm4() {
             <!-- PRODUCT LIST -->
 
             
+      </div>
       </div>
             </div>
             
@@ -1219,7 +1282,7 @@ $(document).ready( function () {
         <div class="form-group">
             <label for="rpt">Repeat Frequency</label>
             <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
-                <option selected="selected">Select Task Frequency</option>
+                
                 <option value="Never">Never</option>
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>
@@ -1361,7 +1424,7 @@ $(document).ready( function () {
         <div class="form-group">
             <label for="rpt">Repeat Frequency</label>
             <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
-                <option selected="selected">Select Task Frequency</option>
+                
                 <option value="Never">Never</option>
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>

@@ -11,6 +11,13 @@ require "auth.php";
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Include Summernote CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+  <!-- Include jQuery library (required) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Include Summernote JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -29,7 +36,7 @@ require "auth.php";
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -541,15 +548,20 @@ require "auth.php";
                 <div class="form-group">
                   <input class="form-control" type="text" name="subject" id= "Subject" placeholder="Subject:" readonly>
                 </div>
-                      <div class="form-group">
-                          <textarea class="form-control" type="text" name="subject" id= "Compose" placeholder="Compose:" readonly style="height: 200px">  </textarea>
+                      <div id="summer" class="form-group">
+                          <textarea class="form-control" type="text" name="subject" id="Compose"  placeholder="Compose:"  style="height: 200px">  </textarea>
                       </div>
+                     
               </thead>
                   <tbody>
                   <script src="services/Messaging/displayMail.js"></script>
                 </div>
                        
                    </table>
+                    <script type="text/javascript">
+                  const div = document.getElementById('summer');
+                  div.innerHTML = summernoteContent;
+                      </script>
                 </div>
               <!-- /.mailbox-read-message -->
             </div>
@@ -565,9 +577,7 @@ require "auth.php";
             
           </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                 <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-            </ol>
+            
           </div>
         </div>
       </div><!-- /.container-fluid -->         
@@ -588,6 +598,7 @@ require "auth.php";
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="">
+
        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 
   </footer>

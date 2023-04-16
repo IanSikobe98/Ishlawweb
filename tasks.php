@@ -477,13 +477,13 @@ require "auth.php";
             {
 
             var status = document.getElementById("rpt");
-            if(status.value == "Never")
+            if(status.value !== "Never")
             {
-              document.getElementById("others").style.visibility="hidden";
+              document.getElementById("others").style.display="block";
             }
             else
             {
-              document.getElementById("others").style.visibility="visible";
+              document.getElementById("others").style.display="none";
             }
 
 
@@ -536,7 +536,6 @@ require "auth.php";
                 <div class="form-group">
                   <label for="prio">Task Priority</label>
                   <select id="prio" name="prio" required=""  class="form-control select2" style="">
-                    <option selected="selected">Select Task Priority</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
@@ -563,10 +562,42 @@ require "auth.php";
                 <!-- /.form-group -->
                 <div class="row">
               <div class="col-12 col-sm-6">
+                      
                 <div class="form-group">
+                  <label for="stat">Task Status</label>
+                  <select  id="stat" name="stat"  class="form-control select2" style="">
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                  </select>  
+                </div>
+
+
+                <div class="form-group">
+                  <label for="comment">General Comments</label>
+                  <input type="Text" class="form-control" id="comment" name="comment" placeholder="Company's Remarks"></input>
+                </div>
+
+
+
+                <div style="display: none;" class="form-group" id="others">
+                  <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date">
+                 </div>   
+
+                <!-- /.form-group -->
+              </div>
+               
+              <div class="col-12 col-sm-6">
+
+                 <div class="form-group">
+                  <label for="hotodo">How To</label>
+                  <input type="Text" class="form-control" id="hotodo" name="hotodo" placeholder="How To">
+                </div>
+
+                  <div class="form-group">
                   <label for="rpt">Repeat Frequency</label>
                   <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="">
-                    <option selected="selected">Select Task Frequency</option>
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
@@ -575,35 +606,7 @@ require "auth.php";
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select>                
-                </div>
-                
-                <div class="form-group">
-                  <label for="stat">Task Status</label>
-                  <select  id="stat" name="stat"  class="form-control select2" style="">
-                    <option value="Not Started">Not Started</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                
-                </div>
-                <div class="form-group">
-                  <label for="comment">General Comments</label>
-                  <textarea type="Text" class="form-control" id="comment" name="comment" placeholder="Company's Remarks"></textarea>
-                </div>
-                <!-- /.form-group -->
-              </div>
-               
-              <div class="col-12 col-sm-6">
-                <div class="form-group" id="others">
-                  <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date">
-                 </div>   
-                
-                 <div class="form-group">
-                  <label for="hotodo">How To</label>
-                  <input type="Text" class="form-control" id="hotodo" name="hotodo" placeholder="How To">
-                </div>
-
+                </div>                
                
                 </div>
                 <!-- /.form-group -->

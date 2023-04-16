@@ -644,13 +644,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
             {
 
             var status = document.getElementById("rpt");
-            if(status.value == "Never")
+            if(status.value !== "Never")
             {
-              document.getElementById("others").style.visibility="hidden";
+              document.getElementById("others").style.display="block";
             }
             else
             {
-              document.getElementById("others").style.visibility="visible";
+              document.getElementById("others").style.display="none";
             }
 
 
@@ -669,7 +669,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                   <label for="user">Assigned To:</label>
+                   <label  for="user">Assigned To:</label>
 <!--                 <input type="text" class="form-control" id="user" name="user" placeholder="Please Enter parties" required="" value="--><?php //echo $_COOKIE["fna"]; ?><!--"  readonly>-->
                     <select class="form-control select2" id="user" name="user" placeholder="Please Enter party">
                     </select>
@@ -680,9 +680,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="start">Start Date</label>
-                 <input type="datetime-local" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
-                                </div>
+                  <label for="descri">Event Description</label>
+                  <div class="select2-purple">
+                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter event Progress or Notes" >
+                  </div>
+                </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label for="clino">Client Name</label>
@@ -697,27 +699,22 @@ body {font-family: Arial, Helvetica, sans-serif;}
             
             <div class="row">
               <div class="col-12 col-sm-6">
+
                 <div class="form-group">
-                  <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="" >
-                    <option selected="selected">Select Task Frequency</option>
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select>                
-                </div>
+                  <label for="start">Start Date</label>
+                 <input type="datetime-local" class="form-control" id="start" name="start" placeholder="Enter file name" required="">
+                                </div>
+                
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-                <div class="form-group" id="others">
-                  <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
-                
+              
+                <div class="form-group">
+                 <label for="start">End Date</label>
+                 <input type="datetime-local" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
+
+
                 
                 </div>
 
@@ -733,7 +730,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <div class="form-group">
                   <label for="prio">Event Priority</label>
                   <select id="prio" name="prio"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Event Priority</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
@@ -744,12 +740,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </div>
                
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="descri">Event Description</label>
-                  <div class="select2-purple">
-                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter event Progress or Notes" >
-                  </div>
+                  <div class="form-group">
+                 <label for="clino">Colour</label>
+                  <input type="Text" class="form-control" id="colour" name="color" placeholder="Choose Event Color" required="">
+                
                 </div>
+            
+                
                                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -758,13 +755,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </div>
                               <div class="row">
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                 <label for="start">End Date</label>
-                 <input type="datetime-local" class="form-control" id="start" name="end" placeholder="Enter file name" required="">
-
-
+                                <div class="form-group">
+                 <label for="clino">Location</label>
+                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="Enter event Location" required="">
                 
                 </div>
+            
+               
                 <!-- /.form-group -->
              
                 
@@ -772,19 +769,30 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
               </div>
               <!-- /.col -->
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-                 <label for="clino">Colour</label>
-                  <input type="Text" class="form-control" id="colour" name="color" placeholder="Choose Event Color" required="">
-                
+            <div class="col-12 col-sm-6">
+
+                    <div class="form-group">
+                  <label for="rpt">Repeat Frequency</label>
+                  <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="" >
+                   
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select>                
                 </div>
             
+              
             <!-- /.row -->
           </div>
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-                 <label for="clino">Location</label>
-                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="Enter event Location" required="">
+            <div style="display: none;" class="form-group" id="others">
+                  <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
+                
                 
                 </div>
             

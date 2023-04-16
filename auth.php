@@ -115,7 +115,7 @@ else
                 setcookie('phoneNumber', $decoded->msisdn, time() + (30), 'http://localhost/admin//', '', '');
                 $_COOKIE['phoneNumber'] = $decoded->msisdn;
 
-                setcookie('id', $decoded->phoneNumber, time() + (30), 'http://localhost/admin//', '', '');
+                setcookie('id', $decoded->id, time() + (30), 'http://localhost/admin//', '', '');
                 $_COOKIE['id'] = $decoded->id;
 
                 setcookie('loginsuccess', true, time() + (30), 'http://localhost/admin//', '', '');

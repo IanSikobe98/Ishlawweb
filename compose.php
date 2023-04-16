@@ -10,6 +10,16 @@ require "auth.php";
   <title>ISHLAW</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Include Summernote CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+  <!-- Include jQuery library (required) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Include Summernote JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+
+
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -521,12 +531,25 @@ require "auth.php";
                   <input class="form-control" type="text" name="subject" placeholder="Subject:">
                 </div>
                 <div class="form-group">
-                    <textarea type="Text" name="compose" placeholder="please type your Message" id="" class="form-control" style="height: 200px">
+                    <textarea type="Text" name="compose" placeholder="please type your Message" id="summer" class="form-control" style="height: 400px">
                       
                       
                       
                     </textarea>
                 </div>
+                <script>
+  $(document).ready(function() {
+    $('#summer').summernote({
+       toolbar: [
+        ['style', ['bold', 'italic', 'underline']],
+        ['font', ['fontsize', 'fontname']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['fullscreen']]
+      ]
+    });
+  });
+</script>
                 <div class="form-group">
                   
               <!-- /.card-body -->

@@ -543,10 +543,7 @@ $(document).ready(function(){
 
   
       $result=mysqli_query($link,$ReadSql);
-      if (mysqli_num_rows($result) < 1) {
-                   echo "Error! No Records";
-                   exit();
-                }
+     
 
 
     
@@ -556,7 +553,7 @@ $(document).ready(function(){
 
         <td><?php echo $row['Fname'];?></td>
         <td><?php echo $row['Lname'];?></td>
-        <td><?php echo $row['Mobile'];?></td>
+        <td>0<?php echo $row['Mobile'];?></td>
         <td><?php echo $row['Purpose'];?></td>
         <td><?php echo $row['Appointment'];?></td>
         <td><?php echo $row['Date'];?></td>
