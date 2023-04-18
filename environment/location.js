@@ -3,7 +3,8 @@ var Tasks =
 {
     recurring : 'services/taskmgmt/API/recta.php',
     nonrecurring : 'services/taskmgmt/API/daynoreta.php',
-    calnonrecurring: 'services/taskmgmt/API/nonrecta.php'
+    calnonrecurring: 'services/taskmgmt/API/nonrecta.php',
+    calrecurring : 'services/taskmgmt/API/dayrecta.php',
 
 
 };

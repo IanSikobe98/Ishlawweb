@@ -13,7 +13,7 @@ var data;
             type: "GET",
 
 
-            url: Tasks.recurring,
+            url: Tasks.calrecurring,
             dataType: 'json',
             async: false,
             beforeSend: function (xhr) {

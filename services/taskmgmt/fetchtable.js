@@ -37,8 +37,6 @@
 
                        student += '<tr>';
 
-                       student += '<td>NRD' +
-                           data[i].tid + '</td>';
 
                        student += '<td>' +
                            data[i].title + '</td>';
@@ -46,25 +44,13 @@
                        student += '<td>' +
                            data[i].client_name + '</td>';
 
-                       student += '<td>' +
-                           data[i].clino + '</td>';
-
 
                        student += '<td>' +
                            daco + '</td>';
 
                        student += '<td>' +
-                           data[i].hotodo + '</td>';
-
-
-                       student += '<td>' +
-                           data[i].Priority + '</td>';
-
-                       student += '<td>' +
                            data[i].description + '</td>';
 
-                       student += '<td>' +
-                           data[i].comment + '</td>';
 
                        student += '<td>' +
                            data[i].status + '</td>';
@@ -177,7 +163,7 @@ function formatDate (input) {
 
                     tno.push(data[i].tno);
                     titles.push(data[i].title);
-                    user.push(data[i].User);
+                    user.push(data[i].client_name);
                     clino.push(data[i].clino);
                     start.push(data[i].start);
                     prior.push(data[i].Priority);
@@ -191,7 +177,6 @@ function formatDate (input) {
                 var cars = [dates, tno, titles, user, clino, start, prior, status, descri, hotodo, comment];
                 console.log(cars);
                 console.log(dates);
-                console.log(cars[0][1][0]);
                 console.log(cars[1][1]);
                 console.log("hi");
 
@@ -208,8 +193,7 @@ function formatDate (input) {
                         console.log(" ");
                         console.log(" ");
                         student += '<tr>';
-                        student += '<td>RD' + p +
-                            cars[1][j] + '</td>';
+
 
                         student += '<td>' +
                             cars[2][j] + '</td>';
@@ -219,23 +203,11 @@ function formatDate (input) {
 
 
                         student += '<td>' +
-                            cars[4][j] + '</td>';
-
-                        student += '<td>' +
                             dates[j][k].toLocaleDateString() + '</td>';
 
-                        student += '<td>' +
-                            cars[9][j] + '</td>';
-
-                        student += '<td>' +
-                            cars[6][j] + '</td>';
 
                         student += '<td>' +
                             cars[8][j] + '</td>';
-
-                        student += '<td>' +
-                            cars[10][j] + '</td>';
-
 
                         student += '<td>' +
                             cars[7][j] + '</td>';

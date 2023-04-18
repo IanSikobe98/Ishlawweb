@@ -518,10 +518,10 @@ require "auth.php";
                  <input type="date" class="form-control" id="start" required="" name="start" placeholder="Enter file name">
                                 </div>
                 <!-- /.form-group -->
-                <div class="form-group">
-                  <label for="clino">Client Name</label>
-                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name">
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="clino">Client Name</label>-->
+<!--                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name">-->
+<!--                </div>-->
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -533,15 +533,15 @@ require "auth.php";
               <div class="col-12 col-sm-6">
 
 
-                <div class="form-group">
-                  <label for="prio">Task Priority</label>
-                  <select id="prio" name="prio" required=""  class="form-control select2" style="">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select>
-                
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="prio">Task Priority</label>-->
+<!--                  <select id="prio" name="prio" required=""  class="form-control select2" style="">-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select>-->
+<!--                -->
+<!--                </div>-->
 
                 <!-- /.form-group -->
               </div>
@@ -573,10 +573,10 @@ require "auth.php";
                 </div>
 
 
-                <div class="form-group">
-                  <label for="comment">General Comments</label>
-                  <input type="Text" class="form-control" id="comment" name="comment" placeholder="Company's Remarks"></input>
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="comment">General Comments</label>-->
+<!--                  <input type="Text" class="form-control" id="comment" name="comment" placeholder="Company's Remarks"></input>-->
+<!--                </div>-->
 
 
 
@@ -590,10 +590,10 @@ require "auth.php";
                
               <div class="col-12 col-sm-6">
 
-                 <div class="form-group">
-                  <label for="hotodo">How To</label>
-                  <input type="Text" class="form-control" id="hotodo" name="hotodo" placeholder="How To">
-                </div>
+<!--                 <div class="form-group">-->
+<!--                  <label for="hotodo">How To</label>-->
+<!--                  <input type="Text" class="form-control" id="hotodo" name="hotodo" placeholder="How To">-->
+<!--                </div>-->
 
                   <div class="form-group">
                   <label for="rpt">Repeat Frequency</label>

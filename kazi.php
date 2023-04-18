@@ -518,15 +518,10 @@ $(document).ready(function(){
 
             <thead >
                 <tr class="">
-            <th>Task</th>
             <th>Activity</th>
 	 	    <th>Assigned To</th>
-	 	    <th>Client Name</th>
 	 	    <th>Due Date</th>
-        <th>How To</th>
-	 	    <th>Task Priority</th>
-	 	    <th>Task Progress/Notes</th>
-        <th>Comments</th>
+	 	    <th>Task Description</th>
 	 	    <th>Task Status</th>
                 </tr>
             </thead>

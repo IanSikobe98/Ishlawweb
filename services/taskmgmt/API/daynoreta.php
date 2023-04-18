@@ -21,7 +21,7 @@ header("Access-Control-Max-Age: 3600");
 
 $logpath ="../../../log.txt";
 $jwt = null;
-file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Tasks Agenda Test: ".print_r($jwt,true)."\n",FILE_APPEND);
+file_put_contents($logpath,date("Y-m-d H:i(worry)"). " Non Recurring Tasks Agenda Test: ".print_r($jwt,true)."\n",FILE_APPEND);
 
 
  $data = json_decode(file_get_contents("php://input"));
@@ -53,7 +53,7 @@ file_put_contents($logpath,date("Y-m-d H:i(worry)"). "Tasks Agenda Test: ".print
          }
 
 //query to get data from the table
-         $query = sprintf("SELECT * FROM `tasks`  WHERE  `rpt` = 'Never' AND `start` <= '$tod' AND `status` <> 'Completed'");
+         $query = sprintf("SELECT * FROM `tasks_report`  WHERE  `rpt` = 'Never' AND `start` <= '$tod' AND `status` <> 'Completed' AND `User`= $decoded->id");
 // -- AND `User`='$decoded->firstName'
 //execute query
 
