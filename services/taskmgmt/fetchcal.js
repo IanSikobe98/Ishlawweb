@@ -78,13 +78,9 @@ var modal = document.getElementById("myForm");
   document.getElementById("dueda").value= dueda[0] ;
   document.getElementById("descri").value= descri[0] ;
   document.getElementById("prog").value= prog[0] ;
-  document.getElementById("prior").value= prior[0] ;
   document.getElementById("rpt").value= rpt[0] ;
-document.getElementById("hotodo").value= hotodo[0] ;
-  document.getElementById("comment").value= comment[0] ;
   document.getElementById("rptun").value= rptun[0] ;
   document.getElementById("user").value= user[0] ;
-  document.getElementById("clino").value= clino[0] ;
    });
 
 
@@ -211,13 +207,9 @@ var modal = document.getElementById("myModal2");
   
 
 
-document.getElementById("hotodo1").value= hotodo[0] ;
- // document.getElementById("comment1").value= comment[0] ;
-
   document.getElementById("dueda1").value= res;
   document.getElementById("descri1").value= descri[0] ;
   document.getElementById("prog1").value= prog[0] ;
-  document.getElementById("prior1").value= prior[0] ;
   document.getElementById("rpt1").value= rpt[0] ;
 
   
@@ -228,7 +220,6 @@ document.getElementById("hotodo1").value= hotodo[0] ;
 
 
   document.getElementById("user1").value= user[0] ;
-  document.getElementById("clino1").value= clino[0] ;
    });
 
 

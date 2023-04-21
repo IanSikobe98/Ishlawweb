@@ -96,14 +96,14 @@ console.log(fired_button);
                  document.getElementById("dueda").value = dueda[0];
                  document.getElementById("descri").value = descri[0];
                  document.getElementById("prog").value = prog[0];
-                 document.getElementById("prior").value = prior[0];
+                 // document.getElementById("prior").value = prior[0];
                  document.getElementById("rpt").value = rpt[0];
 
                  document.getElementById("rptun").value = rptun[0];
                  document.getElementById("user").value = user[0];
-                 document.getElementById("cli").value = clino[0];
-                 document.getElementById("hotodo").value = hotodo[0];
-                 document.getElementById("comment").value = comment[0];
+                 // document.getElementById("cli").value = clino[0];
+                 // document.getElementById("hotodo").value = hotodo[0];
+                 // document.getElementById("comment").value = comment[0];
 
              },
 
@@ -285,18 +285,16 @@ console.log(fired_button);
                  document.getElementById("dueda1").value = current;
                  document.getElementById("descri1").value = descri[0];
                  document.getElementById("prog1").value = prog[0];
-                 document.getElementById("prior1").value = prior[0];
                  document.getElementById("rpt1").value = rpt[0];
 
 
                  rptun[0] = convdate(rptun[0]);
                  document.getElementById("rptun1").value = rptun[0];
-                 document.getElementById("hotodo1").value = hotodo[0];
-                 document.getElementById("comment1").value = comment[0];
+
 
 
                  document.getElementById("user1").value = user[0];
-                 document.getElementById("clino1").value = clino[0];
+
              },
 
              error: function (x, e) {

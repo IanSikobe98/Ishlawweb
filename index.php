@@ -755,8 +755,8 @@ return current;
 <div class="col-12 col-sm-6">
                 <div class="form-group">
 
-<label for="descri"><b>Progress</b></label>
-    <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
+<label for="descri"><b>Task Description</b></label>
+    <input type="text"  id="descri" placeholder="Update your task description" name="descri" >
 </div>
 </div>
 </div>
@@ -770,32 +770,35 @@ return current;
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-    <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--    <label for="clino">Client Name</label>-->
+<!--                  <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-           <label for="clino">How To</label>
-                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--           <label for="clino">How To</label>-->
+<!--                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">-->
+<!--</div>-->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="prior"><b>Task Priority</b></label>
-                  <select id="prior" name="prio"  required="" class="form-control select2" style="">
-                    
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="prior"><b>Task Priority</b></label>-->
+<!--                  <select id="prior" name="prio"  required="" class="form-control select2" style="">-->
+<!--                    -->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!---->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
@@ -813,10 +816,11 @@ return current;
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--                  <label for="clino">General Comments</label>-->
+<!--                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
@@ -891,9 +895,10 @@ return current;
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-<label for="descri"><b>Progress</b></label>
-    <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
-</div> <!-- form group -->
+<label for="descri"><b>Task Description</b></label>
+    <input type="text"  id="descri1" placeholder="Update your task Description" name="descri" >
+</div>
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
@@ -906,31 +911,34 @@ return current;
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-    <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--    <label for="clino">Client Name</label>-->
+<!--                  <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">-->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
- <label for="clino">How To</label>
-                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!-- <label for="clino">How To</label>-->
+<!--                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">-->
+<!--</div> -->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="prior"><b>Task Priority</b></label>
-                  <select id="prior1" name="prio"  class="form-control select2" style="" required="">
-                    
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="prior"><b>Task Priority</b></label>-->
+<!--                  <select id="prior1" name="prio"  class="form-control select2" style="" required="">-->
+<!--                    -->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
@@ -948,10 +956,11 @@ return current;
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="clino">General Comments</label>-->
+<!--                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
@@ -1141,11 +1150,7 @@ function closeForm4() {
         
         <th>Task</th>
         <th>Due Date</th>
-        <th>Priority</th>
-        <th>How To</th>
-        <th>Progress</th>
         <th>Status</th>
-        <th>Comments</th>
         <th>Action</th>
 
         

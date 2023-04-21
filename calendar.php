@@ -630,8 +630,8 @@ function closeForm4() {
 <div class="col-12 col-sm-6">
                 <div class="form-group">
 
-<label for="descri"><b>Progress</b></label>
-    <input type="text"  id="descri" placeholder="Update your task progress" name="descri" >
+<label for="descri"><b>Task Description</b></label>
+    <input type="text"  id="descri" placeholder="Update your task description" name="descri" >
 </div>
 </div>
 </div>
@@ -645,32 +645,35 @@ function closeForm4() {
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-    <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--    <label for="clino">Client Name</label>-->
+<!--                  <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-           <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--           <label for="clino">How To</label>-->
+<!--                  <input type="text" class="form-control select2" required="" id="hotodo" name="hotodo" placeholder="How To">-->
+<!--</div>-->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="prior"><b>Task Priority</b></label>
-                  <select id="prior" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Task Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="prior"><b>Task Priority</b></label>-->
+<!--                  <select id="prior" name="prio"  required="" class="form-control select2" style="">-->
+<!--                    <option selected="selected">Select Task Priority</option>-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!---->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
@@ -688,10 +691,11 @@ function closeForm4() {
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--                  <label for="clino">General Comments</label>-->
+<!--                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">-->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
@@ -764,8 +768,8 @@ function closeForm4() {
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-<label for="descri"><b>Progress</b></label>
-    <input type="text"  id="descri1" placeholder="Update your task progress" name="descri" >
+    <label for="descri"><b>Task Description</b></label>
+    <input type="text"  id="descri1" placeholder="Update your task description" name="descri" >
 </div> <!-- form group -->
 </div> <!-- col -->
 </div>
@@ -779,31 +783,34 @@ function closeForm4() {
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-    <label for="clino">Client Name</label>
-                  <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--    <label for="clino">Client Name</label>-->
+<!--                  <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">-->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
- <label for="clino">How To</label>
-                  <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!-- <label for="clino">How To</label>-->
+<!--                  <input type="text" class="form-control select2" required="" id="hotodo1" name="hotodo" placeholder="How To">-->
+<!--</div>-->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="prior"><b>Task Priority</b></label>
-                  <select id="prior1" name="prio"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="prior"><b>Task Priority</b></label>-->
+<!--                  <select id="prior1" name="prio"  class="form-control select2" style="" required="">-->
+<!--                    <option selected="selected">Select Task Priority</option>-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!--</div>-->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
@@ -821,10 +828,11 @@ function closeForm4() {
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="clino">General Comments</label>
-                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">
-</div> <!-- form group -->
+<!--                <div class="form-group">-->
+<!--<label for="clino">General Comments</label>-->
+<!--                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">-->
+<!--</div> -->
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 

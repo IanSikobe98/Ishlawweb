@@ -65,7 +65,7 @@ var data;
             var cars = [dates, titles, tid, status, prior, descri, hotodo, comment];
             console.log(cars);
             console.log(dates);
-            console.log(cars[0][1][0]);
+            // console.log(cars[0][1][0]);
             console.log(cars[1][1]);
             console.log("hi");
 
@@ -100,22 +100,22 @@ var data;
                         student += '<td>' +
                             current + '</td>';
 
-                        student += '<td>' +
-                            cars[4][j] + '</td>';
+                        // student += '<td>' +
+                        //     cars[4][j] + '</td>';
 
-                        student += '<td>' +
-                            cars[6][j] + '</td>';
-
-
-                        student += '<td>' +
-                            cars[5][j] + '</td>';
-
+                        // student += '<td>' +
+                        //     cars[6][j] + '</td>';
+                        //
+                        //
+                        // student += '<td>' +
+                        //     cars[5][j] + '</td>';
+                        //
                         student += '<td>' +
                             cars[3][j] + '</td>';
 
 
-                        student += '<td>' +
-                            cars[7][j] + '</td>';
+                        // student += '<td>' +
+                        //     cars[7][j] + '</td>';
 
 
                         // student += '<td>' +

@@ -46,21 +46,21 @@ $(document).ready(function () {
                       data[i].start + '</td>';
 
 
-                  student += '<td>' +
-                      data[i].Priority + '</td>';
+                  // student += '<td>' +
+                  //     data[i].Priority + '</td>';
+                  //
+                  // student += '<td>' +
+                  //     data[i].hotodo + '</td>';
 
-                  student += '<td>' +
-                      data[i].hotodo + '</td>';
-
-                  student += '<td>' +
-                      data[i].description + '</td>';
+                  // student += '<td>' +
+                  //     data[i].description + '</td>';
 
                   student += '<td>' +
                       data[i].status + '</td>';
 
 
-                  student += '<td>' +
-                      data[i].comment + '</td>';
+                  // student += '<td>' +
+                  //     data[i].comment + '</td>';
 
 
                   student += '<td>' +
