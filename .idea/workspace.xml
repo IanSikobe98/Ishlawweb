@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/services/taskmgmt/API/dayreceve.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/environment/location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.php" beforeDir="false" afterPath="$PROJECT_DIR$/events.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchcal.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchcal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/nonrectaagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/nonrectaagen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/updatetasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/updatetasks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/rectaagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/rectaagen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/nonrecevagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/nonrecevagen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/createevents.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/createevents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/updateevents.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/updateevents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskmgmt/recevagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/recevagen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/tvents.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +68,7 @@
       <workItem from="1679815275786" duration="17584000" />
       <workItem from="1681753168514" duration="5041000" />
       <workItem from="1681836178945" duration="407000" />
-      <workItem from="1682100514144" duration="6974000" />
+      <workItem from="1682100514144" duration="18665000" />
     </task>
     <servers />
   </component>

@@ -682,10 +682,6 @@ $(document).ready( function () {
                 <tr>
         
         <th>Activity</th>
-        <th>Priority</th>
-        <th>Location</th>
-        <th>Progress</th>
-        <th>Client</th>
         <th>Start Time</th>
         <th>End Time</th>
         <th>Action</th>
@@ -1216,15 +1212,15 @@ $(document).ready( function () {
 </div> <!-- row -->
           <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-          <label for="prior"><b>Event Priority</b></label>
-                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Event Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-  </div>
+<!--        <div class="form-group">-->
+<!--          <label for="prior"><b>Event Priority</b></label>-->
+<!--                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">-->
+<!--                    <option selected="selected">Select Event Priority</option>-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!--  </div>-->
 </div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
@@ -1236,27 +1232,28 @@ $(document).ready( function () {
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-     <label for="clino">location</label>
-                  <input type="text" class="form-control select2" id="loc3" required="" name="loc"  placeholder="Event Location" required="">
-
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--     <label for="clino">location</label>-->
+<!--                  <input type="text" class="form-control select2" id="loc3" required="" name="loc"  placeholder="Event Location" required="">-->
+<!---->
+<!--</div>-->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-    <label for="clino">Event Progress</label>
-                  <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Progress">
+    <label for="clino">Event Description</label>
+                  <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Description">
 </div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-                         <label for="dueda"><b>Client</b></label>
-    <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--                         <label for="dueda"><b>Client</b></label>-->
+<!--    <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>-->
+<!--</div>  form group --->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
@@ -1353,16 +1350,16 @@ $(document).ready( function () {
 </div> <!-- row -->
           <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-<label for="prior"><b>Event Priority</b></label>
-                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">
-                    <option selected="selected">Select Event Priority</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select> <br>
-
-  </div>
+<!--        <div class="form-group">-->
+<!--<label for="prior"><b>Event Priority</b></label>-->
+<!--                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">-->
+<!--                    <option selected="selected">Select Event Priority</option>-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select> <br>-->
+<!---->
+<!--  </div>-->
 </div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
@@ -1375,18 +1372,19 @@ $(document).ready( function () {
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-     <label for="clino">location</label>
-                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" placeholder="Enter your name">
-
-
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--     <label for="clino">location</label>-->
+<!--                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" placeholder="Enter your name">-->
+<!---->
+<!---->
+<!--</div> -->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-     <label for="clino">Event Progress</label>
-                  <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Update your progress">
+     <label for="clino">Event Description</label>
+                  <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Update your task Description">
 
 </div> <!-- form group -->
 </div> <!-- col -->
@@ -1394,10 +1392,11 @@ $(document).ready( function () {
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-              <label for="dueda"><b>Client</b></label>
-    <input type="text" id="clino4"placeholder="Client Name" name="clino" required>
-</div> <!-- form group -->
+<!--        <div class="form-group">-->
+<!--              <label for="dueda"><b>Client</b></label>-->
+<!--    <input type="text" id="clino4"placeholder="Client Name" name="clino" required>-->
+<!--</div>-->
+           <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">

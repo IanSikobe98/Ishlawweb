@@ -42,6 +42,7 @@ $(document).ready(function () {
             var clino = [];
             var dur = [];
             var end = [];
+            var clientName = [];
 
 // var status =[];
 
@@ -60,8 +61,9 @@ $(document).ready(function () {
                 clino.push(data[i].clino);
                 dur.push(data[i].duration);
                 end.push(data[i].end);
+                clientName.push(data[i].client_name)
             }
-            var cars = [dates, id, titles, prior, user, loc, descri, clino, dur, end];
+            var cars = [dates, id, titles, prior, user, loc, descri, clino, dur, end,clientName];
             console.log(cars);
             console.log(dates);
             console.log(cars[0][1][0]);
@@ -90,27 +92,18 @@ $(document).ready(function () {
 
 
                     student += '<tr>';
-                    student += '<td>RDE' + p +
-                        cars[1][j] + '</td>';
 
                     student += '<td>' +
                         cars[2][j] + '</td>';
 
-                    student += '<td>' +
-                        cars[3][j] + '</td>';
 
                     student += '<td>' +
-                        cars[4][j] + '</td>';
+                        cars[10][j] + '</td>';
 
-                    student += '<td>' +
-                        cars[5][j] + '</td>';
 
                     student += '<td>' +
                         cars[6][j] + '</td>';
 
-
-                    student += '<td>' +
-                        cars[7][j] + '</td>';
 
                     // student += '<td>' +
                     // cars[9][j] + '</td>';
@@ -288,27 +281,16 @@ return d;
 
                         student += '<tr>';
 
-                        student += '<td>NRDE' +
-                            data[i].id + '</td>';
-
                         student += '<td>' +
                             data[i].title + '</td>';
 
                         student += '<td>' +
-                            data[i].priority + '</td>';
-
-                        student += '<td>' +
                             data[i].client_name + '</td>';
 
-                        student += '<td>' +
-                            data[i].location + '</td>';
 
                         student += '<td>' +
                             data[i].description + '</td>';
 
-
-                        student += '<td>' +
-                            data[i].clino + '</td>';
 
 
                         student += '<td>' +

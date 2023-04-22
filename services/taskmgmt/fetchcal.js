@@ -328,13 +328,13 @@ console.log(res2);
   document.getElementById("col3").value= col3[0] ;
   document.getElementById("items3").value= items3[0] ;
   document.getElementById("end3").value= res2 ;
-  document.getElementById("prior3").value= prior3[0] ;
+  // document.getElementById("prior3").value= prior3[0] ;
   document.getElementById("rpt3").value= rpt3[0] ;
   document.getElementById("rptun3").value= rptun3[0] ;
   document.getElementById("user3").value= user3[0] ;
-  document.getElementById("loc3").value= loc3[0] ;
+  // document.getElementById("loc3").value= loc3[0] ;
   document.getElementById("descri3").value= descri3[0] ;
-  document.getElementById("clino3").value= clino3[0] ;
+  // document.getElementById("clino3").value= clino3[0] ;
   // document.getElementById("dur3").value= dur3[0] ;
   
    });
@@ -471,13 +471,13 @@ console.log(daco6);
   document.getElementById("col4").value= cars[10][j];
   document.getElementById("items4").value= cars[1][j];
   document.getElementById("end4").value= daco6;
-  document.getElementById("prior4").value= cars[3][j] ;
+  // document.getElementById("prior4").value= cars[3][j] ;
   document.getElementById("rpt4").value= cars[11][j] ;
   document.getElementById("rptun4").value= darpt ;
   document.getElementById("user4").value= cars[4][j] ;
-  document.getElementById("loc4").value= cars[5][j] ;
+  // document.getElementById("loc4").value= cars[5][j] ;
   document.getElementById("descri4").value= cars[6][j] ;
-  document.getElementById("clino4").value= cars[7][j] ;
+  // document.getElementById("clino4").value= cars[7][j] ;
 
                           }
 else{

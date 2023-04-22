@@ -686,10 +686,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </div>
                 </div>
                 <!-- /.form-group -->
-                <div class="form-group">
-                  <label for="clino">Client Name</label>
-                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name" required="">
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="clino">Client Name</label>-->
+<!--                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name" required="">-->
+<!--                </div>-->
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -727,15 +727,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <!-- /.form-group -->
                 <div class="row">
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="prio">Event Priority</label>
-                  <select id="prio" name="prio"  class="form-control select2" style="" required="">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select>
-                
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="prio">Event Priority</label>-->
+<!--                  <select id="prio" name="prio"  class="form-control select2" style="" required="">-->
+<!--                    <option value="High">High</option>-->
+<!--                    <option value="Medium">Medium</option>-->
+<!--                    <option value="Low">Low</option>-->
+<!--                  </select>-->
+<!--                -->
+<!--                </div>-->
                 <!-- /.form-group -->
               </div>
                
@@ -755,11 +755,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </div>
                               <div class="row">
               <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                 <label for="clino">Location</label>
-                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="Enter event Location" required="">
-                
-                </div>
+<!--                                <div class="form-group">-->
+<!--                 <label for="clino">Location</label>-->
+<!--                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="Enter event Location" required="">-->
+<!--                -->
+<!--                </div>-->
             
                
                 <!-- /.form-group -->

@@ -521,13 +521,9 @@ $(document).ready(function(){
 
             <thead>
                 <tr>
-            <th>ID</th>
             <th>Activity</th>
-	 	    <th>Priority</th>
 	 	    <th>User</th>
-	 	    <th>Location</th>
-	 	    <th>Progress</th>
-	 	    <th>Client</th>
+	 	    <th>Task Description</th>
 	 	    <th>Start Time</th>
         <th>End Time</th>
        

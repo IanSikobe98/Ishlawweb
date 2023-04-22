@@ -10,7 +10,7 @@ if($link === false){
 }
 
 
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid'])&& empty($_POST['save1'])){
+if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user'])  && isset($_POST['eid'])&& empty($_POST['save1'])){
 
 
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
@@ -24,13 +24,11 @@ $end = mysqli_real_escape_string($link, $_REQUEST['end']);
 $color = mysqli_real_escape_string($link, $_REQUEST['color']);
 
 $descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
 $rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
  
  $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
 $eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
+
 
 
 
@@ -68,7 +66,7 @@ else{
 if($rpt == "Never")
 {
 
-$sql = "UPDATE `events` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
+$sql = "UPDATE `events` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`description`='$descri',`duration`='$popfinal' WHERE `id`='$eid'";
 
 if(mysqli_query($link, $sql)){
 //    echo "Event updated successfully.";
@@ -178,7 +176,7 @@ $finrpt = addZero689($finrpt);
 
  // echo "thr"."ee";
 // Attempt insert query execution
-$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`,duration) VALUES ('$title','$start', '$color','$end', '$rpt','$rptun', '$user','$descri','$popfinal') ";
 
 
 $sql2 = "DELETE FROM `events` WHERE `id` = '$eid'" ;
@@ -219,7 +217,7 @@ if($link === false){
 }
 
 
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) && isset($_POST['eid']) && isset($_POST['save1'])){
+if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color'])  && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun']) && isset($_POST['user']) && isset($_POST['eid']) && isset($_POST['save1'])){
 
 
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
@@ -233,13 +231,11 @@ $end = mysqli_real_escape_string($link, $_REQUEST['end']);
 $color = mysqli_real_escape_string($link, $_REQUEST['color']);
 
 $descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
 $rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
  
  $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
 $eid = mysqli_real_escape_string($link, $_REQUEST['eid']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
+
 
 
 
@@ -284,7 +280,8 @@ if($save1 == 'Full-group')
 {
 
   if($rpt == "Never"){
-$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`, `duration`)
+VALUES ('$title','$start', '$color','$end', '$rpt','', '$user','$descri','$popfinal') ";
 
 $sql2 = "DELETE FROM `iane` WHERE `id` = '$eid'" ;
 
@@ -400,7 +397,7 @@ $finrpt = addZero2($finrpt);
  $rptun =  str_replace(":", "", $rptun);
 //echo $rptun;
 
-$sql = "UPDATE `iane` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`priority`='$prio',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`location`='$loc',`description`='$descri',`clino`='$clino',`duration`='$popfinal' WHERE `id`='$eid'";
+$sql = "UPDATE `iane` SET `title`='$title',`start`='$start',`color`='$color',`end`='$end',`rpt`='$rpt',`rptun`='$rptun',`user`='$user',`description`='$descri',`duration`='$popfinal' WHERE `id`='$eid'";
 
 if(mysqli_query($link, $sql)){
 //    echo "Records updated successfully.";
@@ -453,7 +450,8 @@ if(mysqli_query($link, $sql)){
 
    if($rpt == "Never"){
  
-$sql2 = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql2 = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`, `duration`) 
+VALUES ('$title','$start', '$color','$end', '$rpt','', '$user','$descri','$popfinal') ";
 
 
 if(mysqli_query($link, $sql2)){
@@ -552,7 +550,8 @@ $finrpt = addZero2($finrpt);
 //echo $rptun;
 
 
-$sql4 = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql4 = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`,duration)
+VALUES ('$title','$start', '$color','$end', '$rpt','$rptun', '$user','$descri','$popfinal') ";
 
 if(mysqli_query($link, $sql4)){
   //  echo "Records updated successfully.";

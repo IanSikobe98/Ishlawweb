@@ -14,7 +14,8 @@ var Events =
 
     recurring : 'services/taskmgmt/API/receve.php',
     nonrecurring : 'services/taskmgmt/API/daynonrecev.php',
-    calnonrecurring: 'services/taskmgmt/API/nonrecev.php'
+    calnonrecurring: 'services/taskmgmt/API/nonrecev.php',
+    dayrecurring: 'services/taskmgmt/API/dayreceve.php',
 
 };
 

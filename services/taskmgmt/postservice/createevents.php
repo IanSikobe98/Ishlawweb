@@ -10,18 +10,16 @@ require "../../../DBConnect.php";
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['prio']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])&& isset($_POST['loc'])  && isset($_POST['user']) && isset($_POST['clino']) ){
+if(isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) &&isset($_POST['color']) && isset($_POST['descri']) && isset($_POST['rpt']) && isset($_POST['rptun'])  && isset($_POST['user']) ){
 // Escape user inputs for security
 $title = mysqli_real_escape_string($link, $_REQUEST['title']);
 $start = mysqli_real_escape_string($link, $_REQUEST['start']);
 $end = mysqli_real_escape_string($link, $_REQUEST['end']);
 $color = mysqli_real_escape_string($link, $_REQUEST['color']);
 $descri = mysqli_real_escape_string($link, $_REQUEST['descri']);
-$prio = mysqli_real_escape_string($link, $_REQUEST['prio']);
 $rpt = mysqli_real_escape_string($link, $_REQUEST['rpt']);
 $rptun= mysqli_real_escape_string($link, $_REQUEST['rptun']);
-$clino = mysqli_real_escape_string($link, $_REQUEST['clino']);
-$loc = mysqli_real_escape_string($link, $_REQUEST['loc']);
+
 
 
 $user = mysqli_real_escape_string($link, $_REQUEST['user']);  
@@ -72,7 +70,7 @@ echo "<br>";
 
 if($rpt == "Never")
 {
-$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`, `duration`) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql = "INSERT INTO `events`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`, `duration`) VALUES ('$title','$start', '$color','$end', '$rpt','$rptun', '$user','$descri','$popfinal') ";
 
 // for($i=0;$i<$user; $i++){
 // , '".$_POST['user'][$i]."'
@@ -164,7 +162,7 @@ echo $rptun;
 
  // echo "thr"."ee";
 // Attempt insert query execution
-$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `priority`, `rpt`, `rptun`, `user`, `location`, `description`, `clino`,duration) VALUES ('$title','$start', '$color','$end', '$prio', '$rpt','$rptun', '$user','$loc','$descri','$clino','$popfinal') ";
+$sql = "INSERT INTO `iane`(`title`, `start`, `color`, `end`, `rpt`, `rptun`, `user`, `description`,duration) VALUES ('$title','$start', '$color','$end', '$rpt','$rptun', '$user','$descri','$popfinal') ";
 
 // for($i=0;$i<$user; $i++){
 
