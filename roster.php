@@ -9,7 +9,7 @@ require "DBConnect.php";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ISHLAW</title>
+  <title>Africa Claims</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -100,7 +100,7 @@ $(document).ready(function(){
     <a href="index.php" class="brand-link">
       <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ISHLAW</span>
+      <span class="brand-text font-weight-light">Africa Claims</span>
     </a>
 
     <!-- Sidebar -->
@@ -163,13 +163,13 @@ $(document).ready(function(){
             <ul class="nav nav-treeview">
               <li class="nav-item">   
                 <a href="profile.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-user"></i>
                   <p>My profile</p>
                 </a>
               </li>
               <li class="nav-item " id = "newcli">
                 <a href="reset.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-key"></i>
                   <p>Reset Password</p>
                 </a>
               </li>
@@ -187,13 +187,13 @@ $(document).ready(function(){
                     <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
               <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
@@ -248,19 +248,19 @@ $(document).ready(function(){
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="tasks.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Task</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="events.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Event</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="kazi.php" class="nav-link">
-                  <i class="far fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>View Current Tasks</p>
                 </a>
               </li>
@@ -306,12 +306,12 @@ $(document).ready(function(){
 
           </li>
 
-          <li class="nav-header">Quick Links</li>
+         <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
-            <a href="adv.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="https://www.judiciary.go.ke/" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale"></i>
               <p>
-                New Matter
+                Judiciary
               </p>
             </a>
           </li>

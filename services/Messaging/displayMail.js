@@ -195,6 +195,23 @@ $(document).ready(function () {
                     document.getElementById("Category").value = "Category: "+ data[i].Category;
                     document.getElementById("Subject").value = "Subject: "+data[i].subject;
                     document.getElementById("Compose").value = data[i].compose;
+                                               
+   $.getScript('https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js', function () 
+{
+    $('#Compose').summernote({
+       toolbar: [
+        ['style', ['bold', 'italic', 'underline']],
+        ['font', ['fontsize', 'fontname']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['fullscreen']]
+      ]
+    });
+    
+      $('#Compose').summernote('disable')
+  });
+ 
+            
 
 
                     // file += '<tr class="warning">';

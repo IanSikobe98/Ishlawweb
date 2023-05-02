@@ -1,509 +1,6 @@
- <?php
-require "auth.php";
- ?>      
-<!DOCTYPE html>
-<html lang="en">  
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <title>ISHLAW</title>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-
-   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
-  <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
-<!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
-<!--    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.9/css/autoFill.dataTables.min.css">-->
-<!--    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
-<!--    <script src="https://cdn.datatables.net/autofill/2.3.9/js/dataTables.autoFill.min.js" type="text/javascript"></script>-->
-
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-
-    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
-
-    <script src="environment/location.js"></script>
-    <script src="services/taskmgmt/nonrectaagen.js"></script>
-    <script src="services/taskmgmt/rectaagen.js"></script>
-
-  <script src="services/taskmgmt/nonrecevagen.js"></script>
-  <script src="services/taskmgmt/recevagen.js"></script>
-  <script src="services/taskmgmt/formfiller.js"></script>
-  <script src="globalfuncs.js"></script>
-    <script src="environment/location.js"></script>
-  <link rel="stylesheet" type="text/css" href="index.css">
-
-
-<style type="text/css">
-  .modal {
-   display: none;  /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 60px; /* Full width */
-  height: 60px; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4);
-  } /* Black w/ opacity */\
- 
-</style>
-
-<script type="text/javascript">
-  var jwtpo = "<?php echo $_COOKIE["resp"] ?>";
-  sessionStorage.setItem('token',jwtpo);
-  sessionStorage.setItem('tokenuse',jwtpo);
-
-  var userid = '<?php if(isset($_COOKIE["id"])){
-      echo $_COOKIE["id"];} ?>'
-
-  sessionStorage.setItem('userid',userid);
-
-  var viewasign = '<?php if(isset($_COOKIE["viewasign"])){
-      echo $_COOKIE["viewasign"];} ?>'
-
-
-  if(viewasign =="viewasignees")
-  {
-      console.log("allowed viewasignees")
-      sessionStorage.setItem('viewasignees',"true");
-  }
-  else{
-      sessionStorage.setItem('viewasignees',"false");
-  }
-</script>
-
-</head>
-<body onload="hidefunc()" class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      
-    </ul>
-
-    <!-- SEARCH FORM -->
-    
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <div class="btn-group open">
-       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
-  
-</div>
-      <!-- Messages Dropdown Menu -->
-      
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">ISHLAW</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/ava.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Welcome</a>
-          <a href="#" class="d-block" id="usern">User </a>
-           <a href="#" class="d-block" id = "role1">Logged In</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="index.php" class="nav-link active">
-              <style type="text/css" src="ry.css" ></style>
-
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-
-                <i class="right fas fa-angle-left"></i>
-              </p>
-
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="index.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Admin Dashboard</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="widgets.php" class="nav-link">
-              <i class="far fa-file-word"></i>
-              <p>
-                Files
-
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                My Account
-                <i class="fas fa-angle-left right"></i>
-
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="profile.php" class="nav-link">
-                  <i class="far fa-users"></i>
-                  <p>My profile</p>
-                </a>
-              </li>
-              <li class="nav-item " id = "newcli">
-                <a href="reset.php" class="nav-link">
-                  <i class="far fa-users"></i>
-                  <p>Reset Password</p>
-                </a>
-              </li>
-            </ul>
-
-          </li>
-       <li class="nav-item has-treeview client2" id="client4">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item cliadd1" id = "cliadd">   
-                <a href="clients.php" class="nav-link">
-                  <i class="far fa-users"></i>
-                  <p>Add New Staff</p>
-                </a>
-              </li>
-              <li class="nav-item " id = "cliadd">
-                <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
-                  <p>Add New Client</p>
-                </a>
-              </li>
-              <li class="nav-item viewedit1"  id="viewedit">
-                <a href="staff.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Staff</p>
-                </a>
-              </li>
-              <li class="nav-item "  id="">
-                <a href="customers.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Clients</p>
-                </a>
-              </li>
-             
-                         </ul>
-          </li>
-          <li class="nav-item has-treeview visit1" id = "visit">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Visitors
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item visitadd1" id="visitadd">
-                <a href="visitors.php" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>Add Visitors</p>
-                </a>
-              </li>
-              <li class="nav-item visitvi1 " id="visitvi">
-                <a href="roster.php" class="nav-link">
-                  <i class="far fa-user-circle"></i>
-                  <p>View Visitors</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-<li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Tasks
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="tasks.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
-                  <p>Create New Task</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="events.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
-                  <p>Create New Event</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="kazi.php" class="nav-link">
-                  <i class="far fa-edit"></i>
-                  <p>View Current Tasks</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tvents.php" class="nav-link">
-                  <i class="far fa-edit"></i>
-                  <p>View Current Events</p>
-                </a>
-              </li>
-                  </ul>
-          </li>
-          <li class="">
-
-            <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right"></span>
-              </p>
-            </a>
-
-          </li>
-         <li class="nav-item">
-            <a href="messages.php" class="nav-link">
-              <i class="nav-icon far fa-bell"></i>
-              <p>
-                Inbox
-                <span class="badge badge-info right" id="inboxcount"></span>
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="appointments.php" class="nav-link">
-              <i class="nav-icon fas fa-calendar-check"></i>
-              <p>
-                Appointments
-                <span class="badge badge-info right"></span>
-              </p>
-            </a>
-
-          </li>
-
-          <li class="nav-header">Quick Links</li>
-                    <li class="nav-item">
-            <a href="adv.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                New Case
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="tasks.php" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-                New Task
-              </p>
-            </a>
-          </li>
-          <!--   </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Invoice</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>E-commerce</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Projects</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Add</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Edit</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Detail</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contacts</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
-
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Forgot Password</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Recover Password</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pace</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li> -->
-            </ul>
-          </li>
-
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+<?php
+  include 'aside.php'
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -600,26 +97,45 @@ require "auth.php";
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Latest Cases</h5>
+                <h5 class="card-title">Your Tasks</h5>
                 <div class="table-responsive">
-                  <table class="table m-0" id="exe">
+                  <table class="table m-0" id="events">
                     <thead>
                     <tr>
-                      <th>Reference</th>
-                      <th>Parties</th>
-                      <th>Case Number</th>
-                      <th>Date</th>
-                      <th>Status</th>
+                      <th>Activity</th>
+                      <th>Priority</th>
+                      <th>Location</th>
+                      <th>Progress</th>
+                      <th>Client</th>
+                      <th>Start time</th>
+                      <th>End Time</th>
+                      <th>Action</th>
 
                     </tr>
                     </thead>
                     <tbody>
-                        <script type="text/javascript">
+ <script type="text/javascript">
 $(document).ready( function () {
-    $('#exe').DataTable();
+    $('#events').DataTable({
+      "pageLength": 5,
+      "lengthMenu": [5,10, 25],
+    });
 
 } );
  </script>
+
+
+<script type="text/javascript">
+
+function getnonrec (input) {
+
+var current = new Date(input);
+current = current.toLocaleString()
+console.log(current);
+return current;
+}
+
+</script>
                     </tbody>
 
                   </table>
@@ -627,8 +143,8 @@ $(document).ready( function () {
                 </div>
 <script src="services/cases/IndexCases.js"></script>
                 <div class="card-footer clearfix">
-                <a href="adv.php" class="btn btn-sm btn-info float-left"> New Case</a>
-                <a href="widgets.php" class="btn btn-sm btn-secondary float-right">View All Cases</a>
+                <a href="tasks.php" class="btn btn-sm btn-info float-left"> New Task</a>
+                <a href="calendar.php" class="btn btn-sm btn-secondary float-right">View All Tasks</a>
               </div>
               <!-- /.card-header -->
               
@@ -644,84 +160,11 @@ $(document).ready( function () {
         <!-- Main row -->      
              <div class="row">
           <!-- Left col -->
-          <div class="col-md-8">
-            <!-- MAP & BOX panelE -->
-            <div  style="overflow-x:auto; min-height: 250px ;"class="card">
-              <div style="min-height: ;300px" class="card-header">
-                <h3 class="card-title">Upcoming Events</h3>
-              </div>
-<style type="text/css">
- #events {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
 
 
-}
-
-#events td, #events th {
-  border: 1px solid #ddd;
-  padding: 6px;
-}
-
-#events tr:nth-child(even){background-color: #f2f2f2;}
-
-#events tr:hover {background-color: #ddd;}
-
-#events th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
- }
-</style>
-<table  id="events" >
-            <thead>
-                <tr>
-        
-        <th>Activity</th>
-        <th>Priority</th>
-        <th>Location</th>
-        <th>Progress</th>
-        <th>Client</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Action</th>
-        
-                </tr>
-            </thead>
 
 
-            <tbody>
 
-
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#events').DataTable({
-      "pageLength": 4,
-      "lengthMenu": [4, 7, 10, 25],
-    });
-
-} );
- </script>
-
-<script type="text/javascript">
-
-function getnonrec (input) {
-
-var current = new Date(input);
-current = current.toLocaleString()
-console.log(current);
-return current;
-}
-
-</script>
-
-<tbody>
-
-</table>
 
 <div class="form-popup" id="myForm">
   <!-- action="services\taskmgmt\postservice\updatetasks.php" -->
@@ -1047,64 +490,14 @@ function closeForm4() {
 
 </html>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <i class="fas fa-plus"></i><a href="calendar.php"> View Office Schedule</a>
-              </div>
-            </div>
-                
-            
-            <!-- /.card -->
-            
-            <!-- TABLE: LATEST ORDERS -->
-            
-            <!-- /.card -->
           
-
-          <!-- /.col -->
-
-          <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            
-            <!-- /.info-box -->
-            
-              <!-- /.info-box-content -->
-            
-            <!-- /.info-box -->
-<div class="card-body pt-0">
-                <!--The calendar -->
-                
-              </div>
-    <style type="text/css">
-      .new{
-        min-height: 400px;
-      }
-    </style>
-              <div class="new">
-              <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Calendar</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-               
-                                        
-              </div>
-              <!-- /.card-header -->
-              <div id='calendar'></div>
-            <!-- /.card -->
-
-            <!-- PRODUCT LIST -->
-
-            
-      </div>
-      </div>
             </div>
-            
-      <!--/. container-fluid -->
-
+                
 
     </section>
 
           <!-- Left col -->
-          <div class="">
+          <div class="col-md-12">
             <!-- MAP & BOX panelE -->
             <div style="overflow-x:auto;" class="card">
               <div class="card-header">

@@ -14,69 +14,60 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
 }
 
 ?>
-
 <!doctype html>
 <html lang="en">
-<head>
-    <title>Ishlaw</title>
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="head.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <title>Africa Claims</title>
+  </head>
+  <body>
+      <section class="form my-4 mx-5">
+        <div class="container">
+          <div class="row no-gutters">
+            <div class="col-lg-5">
+              <img src="images/pixel.jpg" alt="" class="img-fluid">
+            </div>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="stylesheet" type="text/css" href="twitter.css">
-
-
-</head>
-<style>
-    body {
-        background-image: url('');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-</style>
-<section class="ftco-section">
-    <div class="wrapper" style="style=position:absolute; right:9000;">
-        <div class="logo"> <img src="justice.png" alt=""> </div>
-        <div class="text-center mt-4 name"> ISHLAW </div>
-        <form action="login.php" method="POST" class="p-3 mt-3">
-            <div class="form-field d-flex align-items-center "> <span class="far fa-user"></span>
-                <input type="text" name="user" class="form-control" id="userName" placeholder="Username"> </div>
-            <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password-field" placeholder="Password"> </div>
-            <button type="submit" name="btn" class="btn mt-3">Login</button>
-        </form>
-        <!-- <div class="text-center mt-4 name"><h6> Ishmael Nyaribo and Co. Advocates</h6></div> -->
-        <div class="text-center mt-4 name"><h6>
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </h6></div>
-        <!-- <div class="text-center fs-6"> <a href="#">Forget password?</a>  </div> -->
-    </div>
-
+            <div class="col-lg-7 px-5 pt-5">
+    
+              <h1 class="font-weight-bold py-3">AFRICA CLAIMS</h1>
+              
+    
+              <h4>Sign into your account</h4>
+              <form action="login.php" method="POST">
+                <div class="form-row">
+                  <div class="col-lg-7">
+                    <input type="text" name="user" required id="userName" class="form-control my-3 p-4" placeholder="username" >
+                  </div>
+                </div>
+                                <div class="form-row">
+                  <div class="col-lg-7">
+                    <input type="password" name="password" required id="password-field" class="form-control my-3 p-4" placeholder="*****" name="">
+                  </div>
+                </div>
+                                <div class="form-row">
+                  <div class="col-lg-7">
+                   <button type="submit" name="btn" class="btn1 mt-3 mb-5 " >Login</button>
+                  </div>
+                </div>
+                <a href="forgot-password.php">Forgot password?</a>
+  
+                <div class="text-center mt-4 name"><h6>
+    Copyright Africa Claims&copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </h6></div>
+    <!-- <div class="text-center fs-6"> <a href="#">Forget password?</a>  </div> -->
+</div>
     <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-//    echo "
-//    <script>
-//    $(document).ready(function () {
-//
-//    swal({
-//        title: 'Checking...',
-//        text: 'Please wait',
-//        icon: 'images/ajaxloader.gif',
-//        iconHtml: 1500,
-//        showConfirmButton: false,
-//        allowOutsideClick: false
-//
-//    });
-//    });
-//    </script>
-//    ";
         $username = '';
         $password = '';
 
@@ -181,24 +172,24 @@ DATA;
 
 
     ?>
-    </form>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+    <script>
+        function setcounter() {
+            sessionStorage.setItem("counter", 0);
+        }
+    </script>
 
-    </div>
-    </div>
-    </div>
-    </div>
-</section>
-
-<!--	<script src="js/jquery.min.js"></script>-->
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-<script>
-    function setcounter() {
-        sessionStorage.setItem("counter", 0);
-    }
-</script>
-
-</body>
+  </body>
 </html>
-

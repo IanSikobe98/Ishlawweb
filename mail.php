@@ -7,9 +7,13 @@ require "auth.php";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ISHLAW</title>
+  <title>Africa Claims</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-bs4.min.js"></script>
 
   <!-- Include Summernote CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
@@ -74,7 +78,7 @@ require "auth.php";
     <a href="index.php" class="brand-link">
       <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ISHLAW</span>
+      <span class="brand-text font-weight-light">Africa Claims</span>
     </a>
 
     <!-- Sidebar -->
@@ -126,15 +130,29 @@ require "auth.php";
               </p>
             </a>
           </li>
-          <li class="">
+          <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Accounts
+                My Account
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">   
+                <a href="profile.php" class="nav-link">
+                  <i class="fa fa-user"></i>
+                  <p>My profile</p>
+                </a>
+              </li>
+              <li class="nav-item " id = "newcli">
+                <a href="reset.php" class="nav-link">
+                  <i class="fa fa-key"></i>
+                  <p>Reset Password</p>
+                </a>
+              </li>
+            </ul>
             
           </li>
           <li class="nav-item has-treeview client2" id="client4">
@@ -148,13 +166,13 @@ require "auth.php";
                     <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
               <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users "></i>
                   <p>Add New Client</p>
                 </a>
               </li>
@@ -209,13 +227,13 @@ require "auth.php";
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="tasks.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Task</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="events.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Event</p>
                 </a>
               </li>
@@ -268,12 +286,12 @@ require "auth.php";
           </li>
 
                       
-          <li class="nav-header">Quick Links</li>
+        <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
-            <a href="adv.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="https://www.judiciary.go.ke/" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale"></i>
               <p>
-                New Matter
+                Judiciary
               </p>
             </a>
           </li>
@@ -546,22 +564,36 @@ require "auth.php";
                   <input class="form-control" type="text" id= "Category"  name="category" placeholder="Category:"readonly>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="text" name="subject" id= "Subject" placeholder="Subject:" readonly>
+                  <input class="form-control" type="text" name="subject" id= "Subject" placeholder="Subjecto:" readonly>
                 </div>
                       <div id="summer" class="form-group">
-                          <textarea class="form-control" type="text" name="subject" id="Compose"  placeholder="Compose:"  style="height: 200px">  </textarea>
-                      </div>
-                     
+                          <textarea class="form-control" readonly type="text" name="subject" id="Compose"  placeholder="Compose:"  style="height: 200px">  </textarea>
+                    </div>
+                                                <script>
+   $.getScript('https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js', function () 
+{
+    $('#Copose').summernote({
+       toolbar: [
+        ['style', ['bold', 'italic', 'underline']],
+        ['font', ['fontsize', 'fontname']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['fullscreen']]
+      ]
+    });
+    
+      $('#Copose').summernote('disable')
+  });
+  </script>
+            
               </thead>
                   <tbody>
+                    
                   <script src="services/Messaging/displayMail.js"></script>
                 </div>
                        
                    </table>
-                    <script type="text/javascript">
-                  const div = document.getElementById('summer');
-                  div.innerHTML = summernoteContent;
-                      </script>
+         
                 </div>
               <!-- /.mailbox-read-message -->
             </div>
