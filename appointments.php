@@ -740,7 +740,7 @@ require "auth.php";
 </script>
 <script type="text/javascript">
   function hidefunc(){
-    formreload();
+    formreload('Appointments');
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

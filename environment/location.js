@@ -29,6 +29,8 @@ createtask : 'services/taskmgmt/postservice/createtasks.php',
 createtasksubmit: 'kazi.php',
 createeventsubmit: 'tvents.php',
 createevent : 'services/taskmgmt/postservice/createevents.php',
+courtForm: 'services/cases/postservice/postAttendanceForms.php',
+courtFormDisplay: 'attendanceForms.php'
 };
 
 
@@ -55,7 +57,8 @@ var Usermngmt ={
 var Cases =
 {
 fetch : 'https://ifs.ambience.co.ke/files/api/v1/folders',
-post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php'
+post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php',
+fetchForm : 'services/cases/API/attendanceForms.php'
 };
 
 

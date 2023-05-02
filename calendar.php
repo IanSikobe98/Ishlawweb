@@ -1239,7 +1239,7 @@ function closeForm4() {
 <script type="text/javascript">
   function hidefunc(){
 
-    formreload();
+    formreload('Activity');
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

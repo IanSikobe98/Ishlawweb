@@ -619,7 +619,7 @@ $(document).ready( function () {
 
 <script type="text/javascript">
   function hidefunc(){
-    formreload();
+    formreload('Task');
     
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'

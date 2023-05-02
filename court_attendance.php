@@ -658,20 +658,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
           </script>
           </div>
           <!-- /.card-header -->
-          <form  onsubmit="return sendreloadnext(FormSubmit.createevent,'eventssubmit',FormSubmit.createeventsubmit);" id ="eventssubmit" method="POST">
+          <form  onsubmit="return sendreloadnext(FormSubmit.courtForm,'courtsubmit',FormSubmit.courtFormDisplay);" id ="courtsubmit" method="POST">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="title">Date</label>
-                 <input type="date" class="form-control" id="title" name="title" placeholder="Please Enter Task Title" required="">
+                 <input type="date" class="form-control" id="date" name="date" placeholder="Please Enter Date" required="">
                 
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                    <label  for="user">Attended by:</label>
 <!--                 <input type="text" class="form-control" id="user" name="user" placeholder="Please Enter parties" required="" value="--><?php //echo $_COOKIE["fna"]; ?><!--"  readonly>-->
-                    <select class="form-control select2" id="user" name="user" placeholder="Please Enter party">
+                    <select class="form-control select2" id="user" name="atendee" placeholder="Please Enter party">
                     </select>
                 </div>
                 <!-- /.form-group -->
@@ -682,7 +682,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <div class="form-group">
                   <label for="descri">Case Number</label>
                   <div class="select2-purple">
-                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter case Number" >
+                    <input type="Text" class="form-control" id="caseNo" name="caseNo" placeholder="Please Enter case Number" >
                   </div>
                 </div>
                 <!-- /.form-group -->
@@ -702,7 +702,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
                 <div class="form-group">
                   <label for="start">Other Advocates</label>
-                 <input type="text" class="form-control" id="start" name="start" placeholder="Other advocates" required="">
+                 <input type="text" class="form-control" id="adv" name="adv" placeholder="Other advocates" required="">
                                 </div>
                 
                 <!-- /.form-group -->
@@ -712,7 +712,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               
                 <div class="form-group">
                  <label for="start">Nature of duty</label>
-                 <input type="text" class="form-control" id="start" name="end" placeholder="Enter the nature of duty" required="">
+                 <input type="text" class="form-control" id="duty" name="duty" placeholder="Enter the nature of duty" required="">
 
 
                 
@@ -729,7 +729,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                  <label for="start">Orders Made</label>
-                 <input type="text" class="form-control" id="start" name="end" placeholder="Enter the nature of duty" required="">
+                 <input type="text" class="form-control" id="orders" name="orders" placeholder="Enter the nature of duty" required="">
 
 
                 
@@ -740,7 +740,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                   <div class="form-group">
                  <label for="clino">Next action</label>
-                  <input type="Text" class="form-control" id="colour" name="color" placeholder="What is the next action" required="">
+                  <input type="Text" class="form-control" id="action" name="action" placeholder="What is the next action" required="">
                 
                 </div>
             
@@ -755,7 +755,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
                                 <div class="form-group">
                  <label for="clino">Directions</label>
-                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="What are the directions" required="">
+                  <input type="Text" class="form-control" id="directions" name="directions" placeholder="What are the directions" required="">
                 
                 </div>
             
@@ -926,7 +926,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <script type="text/javascript">
   function hidefunc(){
-    formreload();
+    formreload('Forms');
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 
@@ -959,6 +959,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
       var tokencount = '<?php if(isset($_COOKIE["resp"])){
           echo $_COOKIE["resp"];} ?>'
       sessionStorage.setItem('tokencount',tokencount);
+
+      var msgtoken = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('msgtoken',msgtoken);
 
 
       console.log(fna)

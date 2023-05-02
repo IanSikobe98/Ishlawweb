@@ -92,12 +92,18 @@ function sendreloadnomodal(urlpost,postid) {
 
 
 function sendreloadnext(urlpost,postid,pagenext) {
-
+    var jwt = sessionStorage.getItem('msgtoken');
+    sessionStorage.removeItem('msgtoken');
+    console.log(jwt);
     $.ajax
     ({
         type: 'POST',
         url: urlpost,
         data:$('#'+postid).serialize(),
+
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+        },
         success: function () {
 
             // document.getElementById('myForm').style.display = 'none';
@@ -138,16 +144,17 @@ function sendreloadnext(urlpost,postid,pagenext) {
 
 
 //reload page function
-function  formreload(){
+function  formreload(item){
 
     var reloading = sessionStorage.getItem("submitsuccess");
+    var Teste = item;
 
     if (reloading) {
         sessionStorage.removeItem("submitsuccess");
 
             swal({
   title: 'Great!',
-  text: 'Task Updated successfully!',
+  text: Teste+' Updated successfully!',
   icon: 'success',
   button: 'Close',
 });

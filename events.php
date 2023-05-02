@@ -946,7 +946,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <script type="text/javascript">
   function hidefunc(){
-    formreload();
+    formreload('Activity');
     var perm = '<?php if(isset($_COOKIE["addvis"])){
      echo $_COOKIE["addvis"];} ?>'
 

@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/services/taskmgmt/API/dayreceve.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/attendanceForms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/cases/API/attendanceForms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/cases/fetchCourtForms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/cases/postservice/postAttendanceForms.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointments.php" beforeDir="false" afterPath="$PROJECT_DIR$/appointments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/court_attendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/court_attendance.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/environment/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/environment/location.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/events.php" beforeDir="false" afterPath="$PROJECT_DIR$/events.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchcal.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchcal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/fetchtableev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/formfiller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/nonrecevagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/nonrecevagen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/createevents.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/createevents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/postservice/updateevents.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/postservice/updateevents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/taskmgmt/recevagen.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskmgmt/recevagen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/tvents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globalfuncs.js" beforeDir="false" afterPath="$PROJECT_DIR$/globalfuncs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kazi.php" beforeDir="false" afterPath="$PROJECT_DIR$/kazi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roster.php" beforeDir="false" afterPath="$PROJECT_DIR$/roster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/ishlawweb40/Ishlawwebv10/services/taskmgmt&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/ishlawweb40/Ishlawwebv10/services/cases&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -51,6 +51,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10\services\cases" />
+      <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10" />
       <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10\services\taskmgmt" />
       <recent name="C:\xampp\htdocs\ishlawweb40\Ishlawwebv10\services\taskmgmt\API" />
     </key>
@@ -68,7 +70,8 @@
       <workItem from="1679815275786" duration="17584000" />
       <workItem from="1681753168514" duration="5041000" />
       <workItem from="1681836178945" duration="407000" />
-      <workItem from="1682100514144" duration="18665000" />
+      <workItem from="1682100514144" duration="34960000" />
+      <workItem from="1683050064218" duration="458000" />
     </task>
     <servers />
   </component>
@@ -85,5 +88,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/globalfuncs.js</url>
+          <line>101</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
