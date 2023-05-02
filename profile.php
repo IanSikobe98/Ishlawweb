@@ -7,7 +7,7 @@ require "auth.php";
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ISHLAW</title>
+  <title>Africa Claims</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,7 +87,7 @@ require "auth.php";
     <a href="index.php" class="brand-link">
       <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ISHLAW</span>
+      <span class="brand-text font-weight-light">Africa Claims</span>
     </a>
 
     <!-- Sidebar -->
@@ -150,13 +150,13 @@ require "auth.php";
             <ul class="nav nav-treeview">
               <li class="nav-item">   
                 <a href="profile.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-user"></i>
                   <p>My profile</p>
                 </a>
               </li>
               <li class="nav-item " id = "newcli">
                 <a href="reset.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-key"></i>
                   <p>Reset Password</p>
                 </a>
               </li>
@@ -174,13 +174,13 @@ require "auth.php";
             <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
               <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>
@@ -235,13 +235,13 @@ require "auth.php";
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="tasks.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Task</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="events.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Event</p>
                 </a>
               </li>
@@ -293,12 +293,12 @@ require "auth.php";
 
           </li>  
           </li>
-          <li class="nav-header">Quick Links</li>
+<li class="nav-header">Quick Links</li>
                     <li class="nav-item">
-            <a href="adv.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="https://www.judiciary.go.ke/" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale"></i>
               <p>
-                New Matter
+                Judiciary
               </p>
             </a>
           </li>
@@ -459,7 +459,7 @@ require "auth.php";
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active">User Profile</li>
             </ol>
           </div>

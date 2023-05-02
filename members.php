@@ -159,13 +159,13 @@ $(document).ready(function(){
             <ul class="nav nav-treeview">
               <li class="nav-item">   
                 <a href="profile.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-user"></i>
                   <p>My profile</p>
                 </a>
               </li>
               <li class="nav-item " id = "newcli">
                 <a href="reset.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-key"></i>
                   <p>Reset Password</p>
                 </a>
               </li>
@@ -183,13 +183,13 @@ $(document).ready(function(){
                     <ul class="nav nav-treeview">
               <li class="nav-item cliadd1" id = "cliadd">   
                 <a href="clients.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
               <li class="nav-item " id = "">   
                 <a href="registration.php" class="nav-link">
-                  <i class="far fa-users"></i>
+                  <i class="fa fa-users"></i>
                   <p>Add New Client</p>
                 </a>
               </li>

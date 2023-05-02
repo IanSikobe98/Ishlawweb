@@ -1,22 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7839ee10-f368-41e2-be43-7f387962b020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/attendanceForms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/cases/API/attendanceForms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/cases/fetchCourtForms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/cases/postservice/postAttendanceForms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="382b24d3-3a9c-4947-b1e5-0df32c7799c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/aside.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forgot-password.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/head.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/faqs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/gavel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/justice.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pexel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pixel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/scale.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/daterangepicker/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/daterangepicker/demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/daterangepicker/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/daterangepicker/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/daterangepicker/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-bootstrap/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-bootstrap/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-daygrid/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-daygrid/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-interaction/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-interaction/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-timegrid/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar-timegrid/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fullcalendar/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/icheck-bootstrap/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/icheck-bootstrap/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/License.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/history.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/ion-rangeslider/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-mousewheel/ChangeLog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-mousewheel/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-mousewheel/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-ui/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-ui/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/jquery-ui/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/raphael/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/raphael/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/raphael/history.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/raphael/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/summernote/summernote-0.8.16-dist.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/sweetalert2-theme-bootstrap-4/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/sweetalert2-theme-bootstrap-4/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/recover-password.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appointments.php" beforeDir="false" afterPath="$PROJECT_DIR$/appointments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.php" beforeDir="false" afterPath="$PROJECT_DIR$/compose.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/court_attendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/court_attendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/environment/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/environment/location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/customers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/events.php" beforeDir="false" afterPath="$PROJECT_DIR$/events.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/globalfuncs.js" beforeDir="false" afterPath="$PROJECT_DIR$/globalfuncs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filing.php" beforeDir="false" afterPath="$PROJECT_DIR$/filing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kazi.php" beforeDir="false" afterPath="$PROJECT_DIR$/kazi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/litigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/litigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members.php" beforeDir="false" afterPath="$PROJECT_DIR$/members.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messagessent.php" beforeDir="false" afterPath="$PROJECT_DIR$/messagessent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reset.php" beforeDir="false" afterPath="$PROJECT_DIR$/reset.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roster.php" beforeDir="false" afterPath="$PROJECT_DIR$/roster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/Messaging/displayMail.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/Messaging/displayMail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trial.php" beforeDir="false" afterPath="$PROJECT_DIR$/trial.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/tvents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visitors.php" beforeDir="false" afterPath="$PROJECT_DIR$/visitors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widgets.php" beforeDir="false" afterPath="$PROJECT_DIR$/widgets.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
