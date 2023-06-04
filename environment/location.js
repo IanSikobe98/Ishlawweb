@@ -30,7 +30,8 @@ createtasksubmit: 'kazi.php',
 createeventsubmit: 'tvents.php',
 createevent : 'services/taskmgmt/postservice/createevents.php',
 courtForm: 'services/cases/postservice/postAttendanceForms.php',
-courtFormDisplay: 'attendanceForms.php'
+courtFormDisplay: 'attendanceForms.php',
+fetchcount : 'services/taskmgmt/API/tasksStats.php',
 };
 
 

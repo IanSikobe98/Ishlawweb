@@ -81,10 +81,8 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fa fa-files-o"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Tasks</span>
-                <span class="info-box-number">
-                  10
-                  <small>%</small>
+                <span class="info-box-text">Task Completion Rate</span>
+                <span class="info-box-number" id ="percentageTasks">
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -98,7 +96,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Not Started</span>
-                <span class="info-box-number">13</span>
+                <span class="info-box-number" id ="notStartedTasks"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -115,7 +113,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">In progress</span>
-                <span class="info-box-number">10</span>
+                <span class="info-box-number" id = "inProgressNo"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -127,8 +125,8 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Completed Tasks</span>
-                <span class="info-box-number">20</span>
+                <span class="info-box-text" >Completed Tasks</span>
+                <span class="info-box-number" id="completedNo"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -1058,6 +1056,10 @@ eventDidMount: function(info) {
           echo $_COOKIE["resp"];} ?>'
       sessionStorage.setItem('tokencount',tokencount);
 
+      var dashcount = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('dashcount',dashcount);
+
 
 
       console.log(fna)
@@ -1102,8 +1104,9 @@ document.getElementById("visit").style.display ="block";
 
     }
 
-
+      getDashboardStats();
       getMessageCount();
+
   }
   
 </script>

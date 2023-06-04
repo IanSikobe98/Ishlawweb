@@ -233,6 +233,48 @@ function getMessageCount(){
     });
 }
 
+function getDashboardStats(){
+    var jwt = sessionStorage.getItem('dashcount');
+    sessionStorage.removeItem('dashcount');
+    console.log(jwt);
+//Fill files of tables
+    $(document).ready(function () {
+
+        $.ajax
+        ({
+            type: "GET",
+
+
+            url: FormSubmit.fetchcount,
+            dataType: 'json',
+            async: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+            },
+
+
+            success: function (data) {
+                console.log(data);
+                if(data!=null) {
+                    console.log(data[0].total);
+                    $('#percentageTasks').append(data[0].completion);
+                    $('#notStartedTasks').append(data[0].not_started);
+                    $('#inProgressNo').append(data[0].in_progress);
+                    $('#completedNo').append(data[0].completed);
+                }
+                else{
+                    $('#percentageTasks').append(0);
+                    $('#notStartedTasks').append(0);
+                    $('#inProgressNo').append(0);
+                    $('#completedNo').append(0);
+                }
+
+            }
+
+        });
+    });
+}
+
 
 function sendreloadAuth(urlpost,postid) {
     var jwt = sessionStorage.getItem('token');
