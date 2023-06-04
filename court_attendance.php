@@ -1,5 +1,5 @@
    <?php
-//require "auth.php";
+require "auth.php";
  ?> 
 <!DOCTYPE html>
 <html>
@@ -418,6 +418,30 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </li>
                   </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
+                </a>
+              </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
+                  </ul>
+          </li>
           <li class="">
             
             <li class="nav-item">
@@ -620,7 +644,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <ol class="breadcrumb float-sm-right">
               
               <li class="breadcrumb-item active">Court attendance Form</li>
-              <li class="breadcrumb-item"><a href="tvents.php">View Current mentions</a></li>
+              <li class="breadcrumb-item"><a href="attendanceForms.php">View Current mentions</a></li>
             </ol>
           </div>
         </div>
@@ -701,7 +725,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <div class="col-12 col-sm-6">
 
                 <div class="form-group">
-                  <label for="start">Other Advocates</label>
+                  <label for="start">Advocates from the other side</label>
                  <input type="text" class="form-control" id="adv" name="adv" placeholder="Other advocates" required="">
                                 </div>
                 
@@ -754,7 +778,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                               <div class="row">
               <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                 <label for="clino">Directions</label>
+                 <label for="clino">Directions given</label>
                   <input type="Text" class="form-control" id="directions" name="directions" placeholder="What are the directions" required="">
                 
                 </div>

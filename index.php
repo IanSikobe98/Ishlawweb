@@ -1,7 +1,53 @@
 <?php
   include 'aside.php'
 ?>
+<script type="text/javascript">
+            function changestatus()
+            {
 
+            var status = document.getElementById("rpt3");
+            if(status.value !== "Never")
+            {
+              document.getElementById("popup").style.display="block";
+            }
+            else
+            {
+              document.getElementById("popup").style.display="none";
+            }
+
+
+          }
+            function changestatus1()
+            {
+
+            var status = document.getElementById("rpt");
+            if(status.value !== "Never")
+            {
+              document.getElementById("others").style.display="block";
+            }
+            else
+            {
+              document.getElementById("others").style.display="none";
+            }
+
+
+          }
+          function changestatus2()
+            {
+
+            var status = document.getElementById("rpt1");
+            if(status.value !== "Never")
+            {
+              document.getElementById("trial").style.display="block";
+            }
+            else
+            {
+              document.getElementById("trial").style.display="none";
+            }
+
+
+          }
+          </script>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -171,104 +217,56 @@ return current;
             <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-          <label for="descri"><b>Task ID</b></label>
-    <input type="text" id="items" placeholder="Enter Task Id" value="" name="tid" readonly required>
+          <label for="descri"><b>Title</b></label>
+    <input type="text" class="form-control select2" id="title" placeholder="Update your task title" name="title" required>
+          
   </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-    <label for="descri"><b>Title</b></label>
-    <input type="text" id="title" placeholder="Update your task title" name="title" required>
+                   <label for="dueda">Due Date</label>
+                 <input type="date" class="form-control" id="dueda" required="" name="start" placeholder="Enter file name">
+
+
   </div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
           <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-          <label for="dueda">Due Date</label>
-                 <input type="date" class="form-control" id="dueda" required="" name="start" placeholder="Enter file name">
-
+          <label for="descri"><b>Task Progress</b></label>
+    <input type="text" class="form-control select2" id="descri" placeholder="Update your task description" name="descri" >
+       
   </div>
 </div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-
-<label for="descri"><b>Task Description</b></label>
-    <input type="text"  id="descri" placeholder="Update your task description" name="descri" >
-</div>
-</div>
-</div>
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-        <div class="form-group">
-    <label for="clino">Assigned To</label>
+                   <label for="clino">Assigned To</label>
                   <input type="text" class="form-control select2" id="user" required="" name="user" readonly="" placeholder="Enter your name">
-</div> <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--    <label for="clino">Client Name</label>-->
-<!--                  <input type="text" class="form-control select2" required="" id="cli" name="clino" placeholder="Enter Client's Name">-->
-<!--</div> -->
-    <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--           <label for="clino">How To</label>-->
-<!--                  <input type="text" class="form-control select2"  id="hotodo" name="hotodo" placeholder="How To">-->
-<!--</div>-->
-           <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--<label for="prior"><b>Task Priority</b></label>-->
-<!--                  <select id="prior" name="prio"  required="" class="form-control select2" style="">-->
-<!--                    -->
-<!--                    <option value="High">High</option>-->
-<!--                    <option value="Medium">Medium</option>-->
-<!--                    <option value="Low">Low</option>-->
-<!--                  </select> <br>-->
-<!---->
-<!--</div>-->
-    <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
+  
+</div>
+</div>
+</div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-    <label for="prog"><b>Task Status</b></label>
+           <label for="prog"><b>Task Status</b></label>
                   <select id="prog" name="stat" required=""  class="form-control select2" style="">
-                   
+                    
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+    
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--                  <label for="clino">General Comments</label>-->
-<!--                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">-->
-<!--</div> -->
-    <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-        <div class="form-group">
-              <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt" name="rpt"  class="form-control select2" style="" required="">
-                    
+          <div class="form-group">
+     <label for="rpt">Repeat Frequency</label>
+                  <select id="rpt" name="rpt"  onchange="changestatus1()" class="form-control select2" style="" required="">                  
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
@@ -276,14 +274,41 @@ return current;
                     <option value="Yearly">Yearly</option>
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
-                  </select> <br>    
+                  </select> <br>  
+</div> 
+    <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div style="display:none;" id="others" class="form-group">
+           <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
+  
+</div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+<!--                <div class="form-group">-->
+<!--                  <label for="clino">General Comments</label>-->
+<!--                  <input type="text" class="form-control select2"  id="comment" name="comment" placeholder="Enter Company Remarks">-->
+<!--</div>-->
+    <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <button type="submit" name="submit" class=" btn">Save</button>
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun" name="rptun" placeholder="Please Select Date"><br>
+                 <button type="button" class=" btn cancel" onclick="closeForm()">Close</button>
+    
                  </div>
     </div> <!-- form group -->
 </div> <!-- col -->
@@ -291,11 +316,12 @@ return current;
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-          <button type="submit" name="submit" class="btn">Save</button>
+          <input type="text" id="items" hidden placeholder="Enter Task Id" value="" name="tid" readonly required>
+
 </div></div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    
  </div> <!-- col -->
 </div> <!-- row -->
 </div>
@@ -306,20 +332,22 @@ return current;
   <form method="POST"  id ="ianform" class="form-container"
   onsubmit="return sendreload(FormSubmit.agendapost,'ianform');">
     <p><b>Update your task progress</b></p>
-    <div class="card-body">
+   <div class="card-body">
             <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-<label for="tid"><b>Task Id</b></label>
-    <input type="text" id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
+          <label for="descri"><b>Title</b></label>
+    <input type="text" id="title1" class="form-control select2" placeholder="Update your task title" name="title" required>
+
 </div> <!-- form group -->
 </div> <!-- col -->
 
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-    <label for="descri"><b>Title</b></label>
-    <input type="text" id="title1" placeholder="Update your task title" name="title" required>
+                    <label for="dueda">Due Date</label>
+                 <input type="date" class="form-control"  class="form-control select2" id="dueda1" required="" name="start" placeholder="Update your task progress" required="">
+    
  </div> <!-- form group -->
 </div> <!-- col -->
 </div>
@@ -327,88 +355,52 @@ return current;
       <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-              <label for="dueda">Due Date</label>
-                 <input type="date" class="form-control" id="dueda1" required="" name="start" placeholder="Update your task progress" required="">
+           <label for="clino">Assigned To</label>
+                  <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
+             
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-<label for="descri"><b>Task Description</b></label>
-    <input type="text"  id="descri1" placeholder="Update your task Description" name="descri" >
-</div>
-    <!-- form group -->
-</div> <!-- col -->
-</div>
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-        <div class="form-group">
-    <label for="clino">Assigned To</label>
-                  <input type="text" class="form-control select2" id="user1" name="user" readonly="" placeholder="Enter Client's Name">
+    <label for="descri"><b>Task Progress</b></label>
+    <input type="text" class="form-control select2"  id="descri1" placeholder="Update your task description" name="descri" >
 </div> <!-- form group -->
 </div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--    <label for="clino">Client Name</label>-->
-<!--                  <input type="text" class="form-control select2" id="clino" required="" name="clino" placeholder="Enter Client's Name">-->
-<!--</div>-->
-    <!-- form group -->
-</div> <!-- col -->
-</div>
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!-- <label for="clino">How To</label>-->
-<!--                  <input type="text" class="form-control select2"  id="hotodo1" name="hotodo" placeholder="How To">-->
-<!--</div> -->
-           <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--<label for="prior"><b>Task Priority</b></label>-->
-<!--                  <select id="prior1" name="prio"  class="form-control select2" style="" required="">-->
-<!--                    -->
-<!--                    <option value="High">High</option>-->
-<!--                    <option value="Medium">Medium</option>-->
-<!--                    <option value="Low">Low</option>-->
-<!--                  </select> <br>-->
-<!--</div> -->
-    <!-- form group -->
-</div> <!-- col -->
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-    <label for="prog"><b>Task Status</b></label>
+          <label for="prog"><b>Task Status</b></label>
                   <select id="prog1" name="stat"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Task Status</option>
+                   
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                   </select> <br>
+    
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--<label for="clino">General Comments</label>-->
-<!--                  <input type="text" class="form-control select2"  id="comment1" name="comment" placeholder="Enter Company Remarks">-->
-<!--</div> -->
+               <div class="form-group">
+   <label for="rpt">Save</label>
+                  <select id="save" name="save1"  class="form-control select2" style="" required="">
+                    <option value="One-time">One-time</option>
+                    <option value="Full-group">Full-group</option>
+                  </select> <br>
+</div>
     <!-- form group -->
 </div> <!-- col -->
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
-        <div class="form-group">
-              <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt1" name="rpt"  class="form-control select2" style="" required="">
-                    
+       <div class="form-group">
+  <label for="rpt">Repeat Frequency</label>
+                  <select id="rpt1" name="rpt" onchange="changestatus2()"  class="form-control select2" style="" required="">
+                  
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
@@ -417,39 +409,52 @@ return current;
                     <option value="Every Two Weeks">Every Two Weeks</option>
                     <option value="Weekdays">Weekdays</option>
                   </select> <br>   
+</div>
+           <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+                <div style="display:none"  id="trial" class="form-group">
+   <label for="rptun">Repeat Until</label>
+               <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
+
+</div>
+    <!-- form group -->
+</div> <!-- col -->
+</div>
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+     <button type="submit" name="submit" class="btn">Save</button>
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-                <div class="form-group">
-               <label for="rptun">Repeat Until</label>
-               <input type="Date" class="form-control" id="rptun1" name="rptun" placeholder="Please Select Date"><br>
-
-
-</div> <!-- form group -->
+         <div class="form-group">
+<button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+</div> 
+    <!-- form group -->
 </div> <!-- col -->
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-      <label for="rpt">Save</label>
-                  <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Save Option</option>
-                    <option value="One-time">One-time</option>
-                    <option value="Full-group">Full-group</option>
-                  </select> <br>
+
+    <input type="text" hidden id="items1" placeholder="Enter Task Id" value="" name="tid" readonly required>
 </div> <!-- form group -->
 </div> <!-- col -->
 </div>
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-    <button type="submit" name="submit" class="btn">Save</button>
+         
+  
 </div></div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-   <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+   
 
  </div> <!-- col -->
 </div> <!-- row -->
@@ -591,126 +596,110 @@ $(document).ready( function () {
             <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-<label for="tid"><b>Event Id</b></label>
-    <input type="text" id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
+          <label for="descri"><b>Activity</b></label>
+    <input type="text" class="form-control select2" id="title3" placeholder="Update your event title" name="title" required>
+
   </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-    <label for="descri"><b>Activity</b></label>
-    <input type="text" id="title3" placeholder="Update your task title" name="title" required>
+                  <label for="descri"><b>User</b></label>
+    <input type="text"  class="form-control select2" id="user3" placeholder="Assigned To" name="user" required=""  readonly="">
+    
   </div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
           <div class="row">
        <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--          <label for="prior"><b>Event Priority</b></label>-->
-<!--                  <select id="prior3" name="prio"  required="" class="form-control select2" style="">-->
-<!--                    <option selected="selected">Select Event Priority</option>-->
-<!--                    <option value="High">High</option>-->
-<!--                    <option value="Medium">Medium</option>-->
-<!--                    <option value="Low">Low</option>-->
-<!--                  </select> <br>-->
-<!--  </div>-->
+  <div class="form-group">
+ <label for="clino">Event Progress</label>
+                  <input type="text" class="form-control select2"  id="descri3" name="descri" placeholder="Update Event Description">
+ </div>
 </div>
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-<label for="descri"><b>User</b></label>
-    <input type="text"  id="user3" placeholder="Assigned To" name="user" required="" readonly="" >
+      <label for="dueda"><b>Color</b></label>
+    <input type="text" class="form-control select2" id="col3"placeholder="Choose Event colour" name="color" required>   
 </div>
 </div>
 </div>
 
 <div class="row">
        <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--     <label for="clino">location</label>-->
-<!--                  <input type="text" class="form-control select2" id="loc3" required="" name="loc"  placeholder="Event Location" required="">-->
-<!---->
-<!--</div>-->
-           <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-    <label for="clino">Event Description</label>
-                  <input type="text" class="form-control select2" required="" id="descri3" name="descri" placeholder="Update Event Description">
-</div> <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--                         <label for="dueda"><b>Client</b></label>-->
-<!--    <input type="text" id="clino3"placeholder="Client's Name" name="clino" required>-->
-<!--</div>  form group --->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="dueda"><b>Color</b></label>
-    <input type="text" id="col3"placeholder="Choose Event colour" name="color" required>
-</div> <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-        <div class="form-group">
+       <div class="form-group">
      <label for="dueda"><b>Start Time</b></label>
     <input type="datetime-local" class="form-control" id="start3"placeholder="Update your event start time" name="start" required>
-</div> <!-- form group -->
+<!---->
+</div> 
+           <!-- form group -->
+
+           
+
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-          <label for="dueda"><b>End Time</b></label>
+                <div class="form-group">
+      <label for="dueda"><b>End Time</b></label>
     <input type="datetime-local" class="form-control" id="end3"placeholder="Update your event end time" name="end" >
 </div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
 <div class="row">
-    <div class="col-12 col-sm-6">
-        <div class="form-group">
-            <label for="rpt">Repeat Frequency</label>
-            <select id="rpt3" name="rpt"  class="form-control select2" style="" required="">
-                
-                <option value="Never">Never</option>
-                <option value="Daily">Daily</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Yearly">Yearly</option>
-                <option value="Every Two Weeks">Every Two Weeks</option>
-                <option value="Weekdays">Weekdays</option>
-            </select> <br>
-        </div> <!-- form group -->
-    </div> <!-- col -->
+       <div class="col-12 col-sm-6">
+       <div class="form-group">
+      
+               <label for="rpt">Repeat Frequency</label>
+               <select id="rpt3" name="rpt" onchange="changestatus()"  class="form-control select2" style="" required="">
+                   <option value="Never">Never</option>
+                   <option value="Daily">Daily</option>
+                   <option value="Weekly">Weekly</option>
+                   <option value="Monthly">Monthly</option>
+                   <option value="Yearly">Yearly</option>
+                   <option value="Every Two Weeks">Every Two Weeks</option>
+                   <option value="Weekdays">Weekdays</option>
+               </select> <br>
+          
+</div>
+           <!-- form group -->
+</div> <!-- col -->
 
-    <div class="col-12 col-sm-6">
+<div class="col-12 col-sm-6">
+                <div style="display: none;" class="form-group" id="popup">
+          <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun3" name="rptun"  class="form-control select2" placeholder="Please Select Date"><br>               
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
         <div class="form-group">
-                   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun3" name="rptun" placeholder="Please Select Date"><br>
+            <button type="submit"  name="submit" class="btn ">Save</button>
+    
+
+                   
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
+   <button type="button" class="btn cancel " onclick="closeForm3()">Close</button>
+
                      </div>
     </div> <!-- form group -->
 </div> <!-- col -->
 <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-              <button type="submit" name="submit" class="btn">Save</button>
+         <input type="text" hidden  id="items3" placeholder="Enter Task Id" value="" name="eid" readonly required>
 </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-                       <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+                      
                      </div>
     </div> <!-- form group -->
 </div> <!-- col -->
@@ -723,130 +712,124 @@ $(document).ready( function () {
   <form onsubmit="return sendreload(FormSubmit.agendapostev,'eventrecsubmit');" id ="eventrecsubmit"  method="POST" class="form-container">
     <p><b>Update your Event progress</b></p>
 
-
 <div class="card-body">
             <div class="row">
        <div class="col-12 col-sm-6">
         <div class="form-group">
-<label for="tid"><b>Event Id</b></label>
-    <input type="text" id="items4" placeholder="Enter Task Id" value="" name="eid" readonly required>
+           <label for="descri"><b>Activity</b></label>
+    <input type="text" id="title4" class="form-control select2" placeholder="Update your Event title" name="title" required>
+
 
   </div> <!-- form group -->
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
                 <div class="form-group">
-    <label for="descri"><b>Activity</b></label>
-    <input type="text" id="title4" placeholder="Update your task title" name="title" required>
+                  <label for="descri"><b>User</b></label>
+    <input type="text"  id="user4" class="form-control select2" placeholder="Assigned to:" name="user" readonly="" >
+   
   </div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
           <div class="row">
        <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--<label for="prior"><b>Event Priority</b></label>-->
-<!--                  <select id="prior4" name="prio"  required="" class="form-control select2" style="">-->
-<!--                    <option selected="selected">Select Event Priority</option>-->
-<!--                    <option value="High">High</option>-->
-<!--                    <option value="Medium">Medium</option>-->
-<!--                    <option value="Low">Low</option>-->
-<!--                  </select> <br>-->
-<!---->
-<!--  </div>-->
-</div>
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="descri"><b>User</b></label>
-    <input type="text"  id="user4" placeholder="Assigned to" name="user"  readonly="">
-
-</div>
-</div>
-</div>
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--     <label for="clino">location</label>-->
-<!--                  <input type="text" class="form-control select2" id="loc4" required="" name="loc" placeholder="Enter your name">-->
-<!---->
-<!---->
-<!--</div> -->
-           <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-     <label for="clino">Event Description</label>
-                  <input type="text" class="form-control select2" required="" id="descri4" name="descri" placeholder="Update your task Description">
-
-</div> <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-<!--        <div class="form-group">-->
-<!--              <label for="dueda"><b>Client</b></label>-->
-<!--    <input type="text" id="clino4"placeholder="Client Name" name="clino" required>-->
-<!--</div>-->
-           <!-- form group -->
-</div> <!-- col -->
-
-<div class="col-12 col-sm-6">
-                <div class="form-group">
-<label for="dueda"><b>Color</b></label>
-    <input type="text" id="col4"placeholder="Choose event color" name="color" required>
-
-</div> <!-- form group -->
-</div> <!-- col -->
-</div> <!-- row -->
-
-<div class="row">
-       <div class="col-12 col-sm-6">
-        <div class="form-group">
+      <div class="form-group">
     <label for="dueda"><b>Start Time</b></label>
-    <input type="datetime-local" class="form-control" id="start4"  name="start" required>
+    <input type="datetime-local" class="form-control" id="start4"placeholder="Update your event Start Time" name="start" required>
 
-</div> <!-- form group -->
+<!---->
+<!---->
+ </div>
+</div>
+<div class="col-12 col-sm-6">
+                <div class="form-group">
+      <label for="dueda"><b>End Time</b></label>
+    <input type="datetime-local" class="form-control" id="end4"placeholder="Update your event Start Time" name="end" required>
+
+</div>
+</div>
+</div>
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+       <div class="form-group">
+                  <label for="rpt4">Repeat Frequency</label>
+               <select id="rpt4" name="rpt"  onchange="changestatus4()" class="form-control select2" style="" required="">
+                   
+                   <option value="Never">Never</option>
+                   <option value="Daily">Daily</option>
+                   <option value="Weekly">Weekly</option>
+                   <option value="Monthly">Monthly</option>
+                   <option value="Yearly">Yearly</option>
+                   <option value="Every Two Weeks">Every Two Weeks</option>
+                   <option value="Weekdays">Weekdays</option>
+               </select> <br>
+<!---->
+<!---->
+<!---->
+</div>
+           <!-- form group -->
+
+           
+
 </div> <!-- col -->
 
 <div class="col-12 col-sm-6">
-      <label for="dueda"><b>End Time</b></label>
-    <input type="datetime-local" class="form-control" id="end4"  name="end" required> <!-- form group -->
+                <div class="form-group">
+  <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
+
+
+</div> <!-- form group -->
 </div> <!-- col -->
 </div> <!-- row -->
 
 <div class="row">
-    <div class="col-12 col-sm-6">
+       <div class="col-12 col-sm-6">
         <div class="form-group">
-            <label for="rpt">Repeat Frequency</label>
-            <select id="rpt4" name="rpt"  class="form-control select2" style="" required="">
-                
-                <option value="Never">Never</option>
-                <option value="Daily">Daily</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Yearly">Yearly</option>
-                <option value="Every Two Weeks">Every Two Weeks</option>
-                <option value="Weekdays">Weekdays</option>
-            </select> <br>
-        </div> <!-- form group -->
-    </div> <!-- col -->
-
-    <div class="col-12 col-sm-6">
-        <div class="form-group">
-
-   <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control"  id="rptun4" name="rptun" placeholder="Please Select Date"><br>
-</div> <!-- form group -->
+    <label for="clino">Event Description</label>
+                  <input type="text" class="form-control select2"  id="descri4" name="descri" placeholder="Update Event Description">
 </div>
+           <!-- form group -->
+</div> <!-- col -->
+
 <div class="col-12 col-sm-6">
-  <label for="rpt">Save</label>
+                <div class="form-group">
+
+    <label for="dueda"><b>Color</b></label>
+    <input type="text" id="col4"placeholder="Update your color" class="form-control select2" name="color" required>
+</div> <!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div class="form-group">
+    <label for="rpt">Save</label>
                   <select id="save" name="save1"  class="form-control select2" style="" required="">
-                    <option selected="selected">Select Save Option</option>
+                   
                     <option value="One-time">One-time</option>
                     <option value="Full-group">Full-group</option>
                   </select> <br>
+
+
+</div> <!-- form group -->
+</div> <!-- col -->
+
+<div class="col-12 col-sm-6">
+    
+<!-- form group -->
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row">
+       <div class="col-12 col-sm-6">
+        <div  id="others" class="form-group">
+          <button type="submit" name="submit" class="btn">Save</button>
+</div> <!-- form group -->
+</div>
+<div class="col-12 col-sm-6">   
+    <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
 </div> <!-- col -->
 
 </div> <!-- col -->
@@ -854,14 +837,12 @@ $(document).ready( function () {
        <div class="col-12 col-sm-6">
         <div class="form-group">
 
-  <button type="submit" name="submit" class="btn">Save</button>
-
+    <input type="text" id="items4" hidden placeholder="Enter Task Id" value="" name="eid" readonly required>
 </div> <!-- form group -->
 </div>
 <div class="col-12 col-sm-6">
-  <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+ 
 </div> <!-- col -->
-
 
   </form>
 </div>

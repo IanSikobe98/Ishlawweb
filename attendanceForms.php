@@ -8,7 +8,7 @@ require "auth.php";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ISHLAW</title>
+  <title>Africa Claims</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -112,7 +112,7 @@ $(document).ready(function(){
     <a href="index.php" class="brand-link">
       <img src="justice.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ISHLAW</span>
+      <span class="brand-text font-weight-light">Africa Claims</span>
     </a>
 
     <!-- Sidebar -->
@@ -284,6 +284,30 @@ $(document).ready(function(){
               </li>
                   </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
+                </a>
+              </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
+                  </ul>
+          </li>
           <li class="">
             
             <li class="nav-item">
@@ -318,12 +342,12 @@ $(document).ready(function(){
 
           </li>
 
-          <li class="nav-header">Quick Links</li>
+             <li class="nav-header">Quick Links</li>
                     <li class="nav-item">
-            <a href="adv.php" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="https://www.judiciary.go.ke/" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale"></i>
               <p>
-                New Matter
+                Judiciary
               </p>
             </a>
           </li>

@@ -250,6 +250,30 @@ require "auth.php";
               </li>
                   </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
+                </a>
+              </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
+                  </ul>
+          </li>
           <li class="">
             
             <li class="nav-item">
@@ -517,10 +541,12 @@ require "auth.php";
                  <input type="date" class="form-control" id="start" required="" name="start" placeholder="Enter file name">
                                 </div>
                 <!-- /.form-group -->
-<!--                <div class="form-group">-->
-<!--                  <label for="clino">Client Name</label>-->
-<!--                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name">-->
-<!--                </div>-->
+<div class="form-group">
+                  <label for="descri">Task Description</label>
+                  <div class="select2-purple">
+                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter tasks Progress or Notes">
+                  </div>
+                </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -546,12 +572,7 @@ require "auth.php";
               </div>
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label for="descri">Task Description</label>
-                  <div class="select2-purple">
-                    <input type="Text" class="form-control" id="descri" name="descri" placeholder="Please Enter tasks Progress or Notes">
-                  </div>
-                </div>
+                
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -596,7 +617,7 @@ require "auth.php";
 
                   <div class="form-group">
                   <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="">
+                  <select id="rpt" required name="rpt" onchange="changestatus()"  class="form-control select2" style="">
                     <option value="Never">Never</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>

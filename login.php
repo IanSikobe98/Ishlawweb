@@ -59,7 +59,9 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
                    <button type="submit" name="btn" class="btn1 mt-3 mb-5 " >Login</button>
                   </div>
                 </div>
-                <a href="forgot-password.php">Forgot password?</a>
+                <a href="index.html">Home</a><br>
+                <a href="forgot-password.php">Forgot password?</a><br>
+                
   
                 <div class="text-center mt-4 name"><h6>
     Copyright Africa Claims&copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </h6></div>

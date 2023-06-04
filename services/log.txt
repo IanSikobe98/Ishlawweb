@@ -1,0 +1,23 @@
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:34 +0200Thu, 18 May 2023 09:07:34 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"kioko",
+    "emailAddress":"sashav26@yahoo.com",
+    "phoneNumber":"0716527214",
+    "TeamId":"5",
+    "password":"yI0#o4ap7]"
+
+}
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:34 +0200Thu, 18 May 2023 09:07:34 +020023)result: {"responseCode":"01","responseDescription":null,"message":"Member with Phone Number 0716527214 exists","entity":null,"responseBody":null}
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:44 +0200Thu, 18 May 2023 09:07:44 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"kioko",
+    "emailAddress":"sashav26@yahoo.com",
+    "phoneNumber":"0716527217",
+    "TeamId":"5",
+    "password":"j!#3$xYU]o"
+
+}
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:44 +0200Thu, 18 May 2023 09:07:44 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:46 +0200Thu, 18 May 2023 09:07:46 +020023)result: {"code":400,"message":"Failed to send message","data":null,"timestamp":1684393666466}

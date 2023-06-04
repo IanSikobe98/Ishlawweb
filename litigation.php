@@ -252,12 +252,31 @@ $(document).ready(function(){
                   <p>View Current Events</p>
                 </a>
               </li>
+              
+                  </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="tvents.php" class="nav-link">
-                  <i class="far fa-edit"></i>
-                  <p>View Current Events</p>
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
                 </a>
               </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
                   </ul>
           </li>
           <li class="">

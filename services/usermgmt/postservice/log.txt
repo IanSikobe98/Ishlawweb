@@ -16,3 +16,21 @@
     [responseBody] => 
 )
 
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:34 +0200Thu, 18 May 2023 09:07:34 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => Member with Phone Number 0716527214 exists
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-05-18 09:07(42023Thu, 18 May 2023 09:07:44 +0200Thu, 18 May 2023 09:07:44 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 00
+    [responseDescription] => 
+    [message] => User Created Successfully
+    [entity] => 
+    [responseBody] => 
+)
+

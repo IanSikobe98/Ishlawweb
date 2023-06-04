@@ -35,7 +35,6 @@ require "auth.php";
   <!-- Include Summernote JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
-
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
@@ -133,21 +132,26 @@ require "auth.php";
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+   
+
+     <ul class="navbar-nav">
       <li class="nav-item">
-        
+         <a class="btn btn-primary" href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?scope=service%3A%3Aaccount.microsoft.com%3A%3AMBI_SSL+openid+profile+offline_access&response_type=code&client_id=81feaced-5ddd-41e7-8bef-3e20a2689bb7&redirect_uri=https%3A%2F%2Faccount.microsoft.com%2Fauth%2Fcomplete-signin-oauth&client-request-id=48564fe8-5724-4d3e-a0e5-40cfd6cf984a&x-client-SKU=MSAL.Desktop&x-client-Ver=4.45.0.0&x-client-CPU=x64&x-client-OS=Windows+Server+2019+Datacenter&prompt=login&client_info=1&state=H4sIAAAAAAAEAAXBy4JrMAAA0H-ZrYWQkLE0VVJMiUejdh29TbX1fkR8_T3nq6i21-L-7l7ErsgG5UKeHfEtrY75YU-g4ARNIFb0jN0d1VAKobL5mDC9PynHmZSzlQuUoIv2N3IX6cPbBiq_P0zt8JrZlEJgOPmfGUqkVUqR5VXf6uDSErRmQ3NCRR_j1xXmqUjt4UaC_X2n7AeTiVvLKo8VGrucnrVNa2srAjxu6H73Gd8eOHEaFdwOIlafcA2I30LJzJiC2a09p3L34tuuQ2d9h-HawWY5wfGWG9FZ2n367IxwA3LSfNxuTL1UNdcjW4qSwtf3rSqHXqnipL0Kbwuyk3i6yhB9SBSsVodhYtbljnlqY7_5jLozOXg62sJIN0w9FU-Ov-3lWU_lNq6GDGhhZvpbyaa-l_-wD5RxaQ4zlTT6eOb4IC7_-g9FNF32ggEAAA&msaoauth2=true&lc=1033" ><i   class="fa fa-envelope "></i></a>
+  
       </li>
       
     </ul>
+
 
     <!-- SEARCH FORM -->
     
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <div class="btn-group open">
-       <a class="btn btn-primary" href="#"><i onclick="return logout()"  class="fa fa-power-off fa-fw "></i></a>
+       <a class="btn btn-primary" href="#"><i onclick="return logout()"   class="fa fa-power-off fa-fw "></i></a>
   
 </div>
+
       <!-- Messages Dropdown Menu -->
       
     </ul>
@@ -346,7 +350,59 @@ require "auth.php";
                   <p>Court attendance form</p>
                 </a>
               </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
               
+                  </ul>
+          </li>
+          <li class="nav-item has-treeview ">
+            <a href="" class="nav-link">
+              <i class="nav-icon  fa fa-file-archive-o"></i>
+              <p>
+                Work Reports
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" >
+                <a href="reports.php" class="nav-link">
+                  <i class="  fa fa-file-archive-o"></i>
+                  <p>Upload Report</p>
+                </a>
+              </li>
+              <li class="nav-item  " id="">
+                <a href="viewReports.php" class="nav-link">
+                  <i class="  fa fa-file-archive-o"></i>
+                  <p>View Reports</p>
+                </a>
+              </li>
+                  </ul>
+          </li>
+          <li class="nav-item has-treeview ">
+            <a href="" class="nav-link">
+              <i class="nav-icon  far fa-address-book"></i>
+              <p>
+                List of clients
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" >
+                <a href="clientList.php" class="nav-link">
+                  <i class="  far fa-address-book"></i>
+                  <p>Upload List</p>
+                </a>
+              </li>
+              <li class="nav-item  " id="">
+                <a href="clientReports.php" class="nav-link">
+                  <i class="  far fa-address-book"></i>
+                  <p>View clients</p>
+                </a>
+              </li>
                   </ul>
           </li>
           <li class="">
@@ -380,6 +436,7 @@ require "auth.php";
             </a>
 
           </li>
+          
 
           <li class="nav-header">Quick Links</li>
                     <li class="nav-item">

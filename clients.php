@@ -219,7 +219,7 @@ require "auth.php";
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="tasks.php" class="nav-link">
-                  <i class="far fa-fa-edit"></i>
+                  <i class="fa fa-tasks"></i>
                   <p>Create New Task</p>
                 </a>
               </li>
@@ -241,6 +241,30 @@ require "auth.php";
                   <p>View Current Events</p>
                 </a>
               </li>
+                  </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
+                </a>
+              </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
                   </ul>
           </li>
           <li class="">

@@ -418,6 +418,30 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </li>
                   </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-gavel"></i>
+              <p>
+                Court work
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="court_attendance.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>Court attendance form</p>
+                </a>
+              </li>
+                          <li class="nav-item">
+                <a href="attendanceForms.php" class="nav-link">
+                  <i class="fa fa-gavel"></i>
+                  <p>View Court work</p>
+                </a>
+              </li>
+              
+                  </ul>
+          </li>
           <li class="">
             
             <li class="nav-item">
@@ -686,10 +710,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   </div>
                 </div>
                 <!-- /.form-group -->
-<!--                <div class="form-group">-->
-<!--                  <label for="clino">Client Name</label>-->
-<!--                  <input type="Text" class="form-control" id="clino" name="clino" placeholder="Enter Client's Name" required="">-->
-<!--                </div>-->
+           <div class="form-group">
+           <label for="clino">Colour</label>
+                  <input type="Text" class="form-control" id="colour" name="color" placeholder="Choose Event Color" required="">
+                
+                </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -725,41 +750,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <!-- /.row -->
           
                 <!-- /.form-group -->
-                <div class="row">
-              <div class="col-12 col-sm-6">
-<!--                <div class="form-group">-->
-<!--                  <label for="prio">Event Priority</label>-->
-<!--                  <select id="prio" name="prio"  class="form-control select2" style="" required="">-->
-<!--                    <option value="High">High</option>-->
-<!--                    <option value="Medium">Medium</option>-->
-<!--                    <option value="Low">Low</option>-->
-<!--                  </select>-->
-<!--                -->
-<!--                </div>-->
-                <!-- /.form-group -->
-              </div>
-               
-              <div class="col-12 col-sm-6">
-                  <div class="form-group">
-                 <label for="clino">Colour</label>
-                  <input type="Text" class="form-control" id="colour" name="color" placeholder="Choose Event Color" required="">
-                
-                </div>
-            
-                
-                                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-
-
-                  </div>
                               <div class="row">
               <div class="col-12 col-sm-6">
-<!--                                <div class="form-group">-->
-<!--                 <label for="clino">Location</label>-->
-<!--                  <input type="Text" class="form-control" id="loc" name="loc" placeholder="Enter event Location" required="">-->
-<!--                -->
-<!--                </div>-->
+                  <div class="form-group">
+              <label for="rpt">Repeat Frequency</label>
+                  <select id="rpt" required name="rpt" onchange="changestatus()"  class="form-control select2" style="" >
+                   
+                    <option value="Never">Never</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Every Two Weeks">Every Two Weeks</option>
+                    <option value="Weekdays">Weekdays</option>
+                  </select>          
+                </div>
             
                
                 <!-- /.form-group -->
@@ -770,29 +775,19 @@ body {font-family: Arial, Helvetica, sans-serif;}
               </div>
               <!-- /.col -->
             <div class="col-12 col-sm-6">
-
+    <div style="display: none;" class="form-group" id="others">
+                  <label for="rptun">Repeat Until</label>
+                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
+                
                     <div class="form-group">
-                  <label for="rpt">Repeat Frequency</label>
-                  <select id="rpt" name="rpt" onchange="changestatus()"  class="form-control select2" style="" >
-                   
-                    <option value="Never">Never</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                    <option value="Every Two Weeks">Every Two Weeks</option>
-                    <option value="Weekdays">Weekdays</option>
-                  </select>                
+                       
                 </div>
             
               
             <!-- /.row -->
           </div>
 <div class="col-12 col-sm-6">
-            <div style="display: none;" class="form-group" id="others">
-                  <label for="rptun">Repeat Until</label>
-                   <input type="Date" class="form-control" id="rptun" name="rptun" placeholder="Please Select Date" >
-                
+        
                 
                 </div>
             
