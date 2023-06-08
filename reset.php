@@ -25,7 +25,7 @@ require "auth.php";
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="globalfuncs.js"></script>
+<script src ="globalfuncs.js" type="text/javascript"></script>
 <script src="environment/location.js"></script>
 
 
@@ -489,13 +489,13 @@ require "auth.php";
                   <div class="col-md-6">
                     <div class="form-group">
                        <label> Old Password</label>
-                      <input type="text" name="password" class="form-control" required="" id="parties" placeholder="Please input your old password">
+                      <input type="text" name="oldPassword" class="form-control" required="" id="parties" placeholder="Please input your old password">
 
                     </div>
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>New Password</label>
-                      <input type="text" class="form-control" name="newpassword" required="" id="bile" placeholder="Enter the new password">
+                      <input type="text" class="form-control" name="newPassword" required="" id="bile" placeholder="Enter the new password">
 
                     </div>
                     <!-- /.form-group -->
@@ -554,58 +554,6 @@ require "auth.php";
   
 </div>
 
-
-                <?php
-                $conn =new PDO("mysql:host=localhost;dbname=ishfinal","root","");
-  if(isset($_POST['submit'])){
-    $Fname =$_POST['visitor'];
-    $Lname =$_POST['lname'];
-    $Mobile =$_POST['mobile'];
-    $Purpose =$_POST['case'];
-    $Appointment =$_POST['client'];
-    $Date =$_POST['date'];
-    $stmt = $conn->prepare("insert into visitors values('',?,?,?,?,?,?)");
-    $stmt ->bindParam(1,$Fname);
-    $stmt ->bindParam(2,$Lname);
-    $stmt ->bindParam(3,$Mobile);
-    $stmt ->bindParam(4,$Purpose);
-    $stmt ->bindParam(5,$Appointment);
-    $stmt ->bindParam(6,$Date);
-    
-    
-    if($stmt -> execute()){
-      echo "<script type='text/javascript'>
-         
-     
-swal({
-  title: 'Great!',
-  text: 'Registration completed successfully!',
-  icon: 'success',
-  button: 'Close',
-});      
-
-
-</script>";
-  }
-  else{
-    echo "<script type='text/javascript'>
-         
-     
-          
-swal({
-  title: 'Oops',
-  text: 'Registration error please try again!',
-  icon: 'error',
-  button: 'Close',
-});      
-
-      
-
-
-</script>";
-  }
-}
-?>
               </div>
        <script type="text/javascript" src="modi.js"></script>
       
@@ -781,6 +729,10 @@ swal({
       var tokencount = '<?php if(isset($_COOKIE["resp"])){
           echo $_COOKIE["resp"];} ?>'
       sessionStorage.setItem('tokencount',tokencount);
+
+      var msgtoken = '<?php if(isset($_COOKIE["resp"])){
+          echo $_COOKIE["resp"];} ?>'
+      sessionStorage.setItem('msgtoken',msgtoken);
 
 
       console.log(fna)

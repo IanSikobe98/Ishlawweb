@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="382b24d3-3a9c-4947-b1e5-0df32c7799c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/services/taskmgmt/API/tasksStats.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/environment/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/environment/location.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/globalfuncs.js" beforeDir="false" afterPath="$PROJECT_DIR$/globalfuncs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reset.php" beforeDir="false" afterPath="$PROJECT_DIR$/reset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/postservice/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usermgmt/postservice/resetpassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/usermgmt/postservice/resetpassword.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,10 @@
       <workItem from="1682100514144" duration="34960000" />
       <workItem from="1683050064218" duration="458000" />
       <workItem from="1683358832965" duration="9122000" />
-      <workItem from="1685903732914" duration="758000" />
+      <workItem from="1685903732914" duration="2320000" />
+      <workItem from="1686160214545" duration="596000" />
+      <workItem from="1686160905789" duration="1440000" />
+      <workItem from="1686241835204" duration="9876000" />
     </task>
     <servers />
   </component>
