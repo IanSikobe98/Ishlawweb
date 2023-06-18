@@ -439,14 +439,21 @@ function submitreload(urlpost,postid,request) {
 }
 
 function resetpassword(urlpost,postid){
-var token ='hhhhh';
-console.log(token);
+    var jwt = sessionStorage.getItem('msgtoken');
+    sessionStorage.removeItem('msgtoken');
+    console.log("jwt gotten");
+    console.log(jwt);
         $.ajax
         ({
             type: 'POST',
             url: urlpost,
             data:$('#'+postid).serialize(),
-            success: function () {
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader ("Authorization", "Basic " + jwt );
+            },
+            success: function (data) {
+                console.log("success")
+                console.log(data)
                 swal({
                     title: 'Sucesss!',
                     text: 'Success in resetting password!',
@@ -459,7 +466,7 @@ console.log(token);
                 console.log("successful");
 
                 // sessionStorage.setItem("submitsuccess", "true");
-                // document.location.reload();
+                document.location.reload();
                 // alert("login sucessful")
             },
             error: function (x, e) {
@@ -509,6 +516,7 @@ console.log(token);
                 } else {
                     console.log('Unknown Error. - ' + x.responseText);
                 }
+                document.location.reload();
             }
         });
         return false;
