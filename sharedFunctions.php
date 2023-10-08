@@ -3,10 +3,10 @@
 function getUserDetails($jwt,$logpath) {
 
     $reponseData = null;
-    $url = "http://localhost:8056/auth/getUserDetails";
+    $url = "https://localhost:8056/auth/getUserDetails";
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_GET, true);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
     $authorization = "Ulinzi: Bearer ".$jwt;
