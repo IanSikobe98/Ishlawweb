@@ -123,7 +123,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 // script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/recta.php', function(data)  {
+$.getJSON('https://localhost/Admin/ishfinal/API/recta.php', function(data)  {
           console.log(data);
 
 
@@ -266,7 +266,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
+$.getJSON('https://localhost/Admin/ishfinal/API/nonrecev.php', function(data)  {
           console.log(data);
 
 
@@ -384,7 +384,7 @@ console.log(fired_button);
 var script = document.createElement('script');
 script.src = "{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}";
 document.getElementsByTagName('head')[0].appendChild(script); 
-$.getJSON('http://localhost/Admin/ishfinal/API/receve.php', function(data)  {
+$.getJSON('https://localhost/Admin/ishfinal/API/receve.php', function(data)  {
           console.log(data);
           var items = [];
 

@@ -6,6 +6,8 @@
   <title>Africa Claims | Forgot Password</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="images/x-icon" href="justice.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">

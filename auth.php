@@ -10,10 +10,10 @@ session_start();
 function getUserDetails($jwt) {
 
     $reponseData = null;
-    $url = "http://localhost:8056/auth/getUserDetails";
+    $url = "https://localhost:8056/auth/getUserDetails";
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
+    //curl_setopt($curl, CURLOPT_GET, true);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
     $authorization = "Ulinzi: Bearer ".$jwt;
@@ -28,7 +28,7 @@ function getUserDetails($jwt) {
     //for debug only!
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
+    file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "url: ".print_r($url,true)."\n",FILE_APPEND);
     $resp = curl_exec($curl);
     file_put_contents("log.txt",date("Y-m-d H:i(worry)"). "Response: ".print_r($resp,true)."\n",FILE_APPEND);
     $arr = json_decode($resp, true);
@@ -51,7 +51,8 @@ function getUserDetails($jwt) {
         }
         else{
             file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "error decoding jwt: " . print_r("false", true) . "\n", FILE_APPEND);
-        }
+        
+}
     }
     else{
         file_put_contents("log.txt", date("Y-m-d H:i(worry)") . "error decoding jwt: " . print_r("httpCode ".$httpcode, true) . "\n", FILE_APPEND);

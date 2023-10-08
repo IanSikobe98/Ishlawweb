@@ -1,7 +1,7 @@
 <?php
-define('DB_HOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
+define('DB_HOST', 'localhost');// alternatively use localhost
+define('DB_USERNAME', 'root');//ejrkjatn_root
 define('DB_PASSWORD', '');
-define('DB_NAME', 'ishfinal');
+define('DB_NAME', 'ishfinal');//	ejrkjatn_ishfinal
 
 ?>

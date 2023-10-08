@@ -10,6 +10,8 @@ require "auth.php";
   <title>Africa Claims</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="images/x-icon" href="justice.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
 
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
  

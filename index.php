@@ -1,6 +1,7 @@
 <?php
   include 'aside.php'
 ?>
+
 <script type="text/javascript">
             function changestatus()
             {
@@ -141,7 +142,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Your Tasks</h5>
+                <h5 class="card-title">Upcoming Events</h5>
                 <div class="table-responsive">
                   <table class="table m-0" id="events">
                     <thead>
@@ -873,7 +874,6 @@ $(document).ready( function () {
     <!-- <link rel="stylesheet" href="tr.css"> -->
 
         <script    src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
-<script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
 
 <!-- the rrule-to-fullcalendar connector. must go AFTER the rrule lib -->
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@5.2.0/main.global.min.js'></script>

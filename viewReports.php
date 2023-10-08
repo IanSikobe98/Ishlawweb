@@ -6,6 +6,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="images/x-icon" href="justice.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>Africa Claims</title>

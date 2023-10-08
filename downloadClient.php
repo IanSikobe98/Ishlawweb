@@ -1,9 +1,9 @@
 <?php
 // Connect to the MySQL database
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ishfinal";
+$username = "ejrkjatn_root";
+$password = "Ishfinal";
+$dbname = "ejrkjatn_ishfinal";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {

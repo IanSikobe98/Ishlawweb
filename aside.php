@@ -7,6 +7,8 @@ require "auth.php";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <link rel="icon" type="images/x-icon" href="justice.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
 
   <title>Africa Claims</title>
 
@@ -56,8 +58,7 @@ require "auth.php";
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
-  <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
-<!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+  --    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
 <!--    <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.9/css/autoFill.dataTables.min.css">-->
 <!--    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>-->
 <!--    <script src="https://cdn.datatables.net/autofill/2.3.9/js/dataTables.autoFill.min.js" type="text/javascript"></script>-->
@@ -703,8 +704,7 @@ else{
   });
 
     </script>
-    <link rel="stylesheet" type="text/css" href="tbs.css">
-
+    
     <script type="text/javascript" src="convdate.js"></script>
 <script type="text/javascript" src="convnew.js"></script>
 

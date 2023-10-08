@@ -1,0 +1,144 @@
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:06 +0200Mon, 03 Jul 2023 12:53:06 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => Member with Phone Number 0716527214 exists
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:18 +0200Mon, 03 Jul 2023 12:53:18 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one Lower case letter]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:29 +0200Mon, 03 Jul 2023 12:53:29 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one Lower case letter]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-05 10:52(32023Wed, 05 Jul 2023 10:52:18 +0200Wed, 05 Jul 2023 10:52:18 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 00
+    [responseDescription] => 
+    [message] => User Created Successfully
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:09 +0200Mon, 10 Jul 2023 07:48:09 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one number]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:14 +0200Mon, 10 Jul 2023 07:48:14 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 00
+    [responseDescription] => 
+    [message] => User Created Successfully
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:25 +0200Mon, 10 Jul 2023 07:48:25 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => Member with Phone Number 0716527210 exists
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:20(02023Sun, 16 Jul 2023 20:20:58 +0200Sun, 16 Jul 2023 20:20:58 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one number]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:14 +0200Sun, 16 Jul 2023 20:21:14 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one number]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:18 +0200Sun, 16 Jul 2023 20:21:18 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 00
+    [responseDescription] => 
+    [message] => User Created Successfully
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:24(02023Sun, 16 Jul 2023 20:24:31 +0200Sun, 16 Jul 2023 20:24:31 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => Member with Phone Number 0716527211 exists
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:26(02023Sun, 16 Jul 2023 20:26:47 +0200Sun, 16 Jul 2023 20:26:47 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one number]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:08 +0200Sun, 16 Jul 2023 20:27:08 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one number]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:13 +0200Sun, 16 Jul 2023 20:27:13 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => [Password must contain atleast one Upper case letter]
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:22 +0200Sun, 16 Jul 2023 20:27:22 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 00
+    [responseDescription] => 
+    [message] => User Created Successfully
+    [entity] => 
+    [responseBody] => 
+)
+
+2023-07-17 09:10(12023Mon, 17 Jul 2023 09:10:14 +0200Mon, 17 Jul 2023 09:10:14 +020023)responseObject: stdClass Object
+(
+    [responseCode] => 01
+    [responseDescription] => 
+    [message] => Member with Phone Number 0716527218 exists
+    [entity] => 
+    [responseBody] => 
+)
+

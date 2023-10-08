@@ -83,7 +83,7 @@ if(isset($_COOKIE["resp"]) && isset($_SESSION["id"])){
         $password = $_POST["password"];
 
 
-        $url = "http://localhost:8056/auth/authenticate";
+        $url = "https://localhost:8056/auth/authenticate";
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);

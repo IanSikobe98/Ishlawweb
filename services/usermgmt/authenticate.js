@@ -11,7 +11,7 @@ function authenticate(urlpost,postid) {
             console.log("User authenticated");
 
             sessionStorage.setItem("loginsuccess", "true");
-            window.location.href = "http://localhost/ishlawwebv10/index.php";
+            window.location.href = "https://localhost/ishlawwebv10/index.php";
             // alert("login sucessful")
         },
         error: function (x, e) {

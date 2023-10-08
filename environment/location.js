@@ -47,18 +47,18 @@ var Usermngmt ={
 
 	createclient : 'services/usermgmt/postservice/createclient.php',
 	createvisitors : 'services/usermgmt/postservice/createvisitors.php' ,
-    fetchstaffoptions : 'http://localhost:8056/api/getRoles',
-    fetchusers: 'http://localhost:8056/api/getMembers',
+    fetchstaffoptions : 'https://localhost:8056/api/getRoles',
+    fetchusers: 'https://localhost:8056/api/getMembers',
     authenticate:  'services/usermgmt/postservice/authenticate.php',
     resetpassword: 'services/usermgmt/postservice/resetpassword.php',
-    fetchuser: 'http://localhost:8056/api/getMemberById',
+    fetchuser: 'https://localhost:8056/api/getMemberById',
 
 };
 
 var Cases =
 {
 fetch : 'https://ifs.ambience.co.ke/files/api/v1/folders',
-post : 'http://localhost/Ishlawwebv10/services/cases/postservice/postcases.php',
+post : 'https://localhost/Ishlawwebv10/services/cases/postservice/postcases.php',
 fetchForm : 'services/cases/API/attendanceForms.php'
 };
 

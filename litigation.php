@@ -7,6 +7,8 @@ require "auth.php";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="icon" type="images/x-icon" href="justice.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
 
   <title>Africa Claims</title>
 

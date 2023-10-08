@@ -21,3 +21,183 @@
 }
 2023-05-18 09:07(42023Thu, 18 May 2023 09:07:44 +0200Thu, 18 May 2023 09:07:44 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
 2023-05-18 09:07(42023Thu, 18 May 2023 09:07:46 +0200Thu, 18 May 2023 09:07:46 +020023)result: {"code":400,"message":"Failed to send message","data":null,"timestamp":1684393666466}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:06 +0200Mon, 03 Jul 2023 12:53:06 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527214",
+    "TeamId":"2",
+    "password":"Hm-[fKCyLh"
+
+}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:06 +0200Mon, 03 Jul 2023 12:53:06 +020023)result: {"responseCode":"01","responseDescription":null,"message":"Member with Phone Number 0716527214 exists","entity":null,"responseBody":null}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:18 +0200Mon, 03 Jul 2023 12:53:18 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527210",
+    "TeamId":"2",
+    "password":"*D7QF5VQI]"
+
+}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:18 +0200Mon, 03 Jul 2023 12:53:18 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one Lower case letter]","entity":null,"responseBody":null}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:28 +0200Mon, 03 Jul 2023 12:53:28 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527210",
+    "TeamId":"2",
+    "password":"<Q33&]}JSZ"
+
+}
+2023-07-03 12:53(12023Mon, 03 Jul 2023 12:53:28 +0200Mon, 03 Jul 2023 12:53:28 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one Lower case letter]","entity":null,"responseBody":null}
+2023-07-05 10:52(32023Wed, 05 Jul 2023 10:52:17 +0200Wed, 05 Jul 2023 10:52:17 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527219",
+    "TeamId":"2",
+    "password":"*D-yV[2|L]"
+
+}
+2023-07-05 10:52(32023Wed, 05 Jul 2023 10:52:18 +0200Wed, 05 Jul 2023 10:52:18 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
+2023-07-05 10:52(32023Wed, 05 Jul 2023 10:52:19 +0200Wed, 05 Jul 2023 10:52:19 +020023)result: {"code":200,"message":"Request was successful","data":"Email Sent successfully","timestamp":1688547138990}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:09 +0200Mon, 10 Jul 2023 07:48:09 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527210",
+    "TeamId":"2",
+    "password":"lAuanJYy?p"
+
+}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:09 +0200Mon, 10 Jul 2023 07:48:09 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one number]","entity":null,"responseBody":null}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:14 +0200Mon, 10 Jul 2023 07:48:14 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527210",
+    "TeamId":"2",
+    "password":"-(@$R]1Ho-"
+
+}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:14 +0200Mon, 10 Jul 2023 07:48:14 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:25 +0200Mon, 10 Jul 2023 07:48:25 +020023)user registration data: {
+
+    "firstName":"mark",
+    "secondName":"mwendwa",
+    "emailAddress":"ogembolevis97@gmail.com",
+    "phoneNumber":"0716527210",
+    "TeamId":"2",
+    "password":"e!Ql$wTp9z"
+
+}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:25 +0200Mon, 10 Jul 2023 07:48:25 +020023)result: {"responseCode":"01","responseDescription":null,"message":"Member with Phone Number 0716527210 exists","entity":null,"responseBody":null}
+2023-07-10 07:48(12023Mon, 10 Jul 2023 07:48:36 +0200Mon, 10 Jul 2023 07:48:36 +020023)result: {"code":200,"message":"Request was successful","data":"Email Sent successfully","timestamp":1688968095230}
+2023-07-16 20:20(02023Sun, 16 Jul 2023 20:20:58 +0200Sun, 16 Jul 2023 20:20:58 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527211",
+    "TeamId":"1",
+    "password":"AahT#$[%%e"
+
+}
+2023-07-16 20:20(02023Sun, 16 Jul 2023 20:20:58 +0200Sun, 16 Jul 2023 20:20:58 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one number]","entity":null,"responseBody":null}
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:14 +0200Sun, 16 Jul 2023 20:21:14 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527211",
+    "TeamId":"1",
+    "password":"sBl>m!zO|B"
+
+}
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:14 +0200Sun, 16 Jul 2023 20:21:14 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one number]","entity":null,"responseBody":null}
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:18 +0200Sun, 16 Jul 2023 20:21:18 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527211",
+    "TeamId":"1",
+    "password":"mpjQY>6|bt"
+
+}
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:18 +0200Sun, 16 Jul 2023 20:21:18 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
+2023-07-16 20:21(02023Sun, 16 Jul 2023 20:21:40 +0200Sun, 16 Jul 2023 20:21:40 +020023)result: {"code":200,"message":"Request was successful","data":"Email Sent successfully","timestamp":1689531678650}
+2023-07-16 20:24(02023Sun, 16 Jul 2023 20:24:31 +0200Sun, 16 Jul 2023 20:24:31 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527211",
+    "TeamId":"1",
+    "password":"3oK{4pM-Dw"
+
+}
+2023-07-16 20:24(02023Sun, 16 Jul 2023 20:24:31 +0200Sun, 16 Jul 2023 20:24:31 +020023)result: {"responseCode":"01","responseDescription":null,"message":"Member with Phone Number 0716527211 exists","entity":null,"responseBody":null}
+2023-07-16 20:26(02023Sun, 16 Jul 2023 20:26:47 +0200Sun, 16 Jul 2023 20:26:47 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527218",
+    "TeamId":"1",
+    "password":"q.AZJ.C$L^"
+
+}
+2023-07-16 20:26(02023Sun, 16 Jul 2023 20:26:47 +0200Sun, 16 Jul 2023 20:26:47 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one number]","entity":null,"responseBody":null}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:08 +0200Sun, 16 Jul 2023 20:27:08 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527218",
+    "TeamId":"1",
+    "password":"r-PtBc){=["
+
+}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:08 +0200Sun, 16 Jul 2023 20:27:08 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one number]","entity":null,"responseBody":null}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:13 +0200Sun, 16 Jul 2023 20:27:13 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527218",
+    "TeamId":"1",
+    "password":")3z*d:tl:>"
+
+}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:13 +0200Sun, 16 Jul 2023 20:27:13 +020023)result: {"responseCode":"01","responseDescription":null,"message":"[Password must contain atleast one Upper case letter]","entity":null,"responseBody":null}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:21 +0200Sun, 16 Jul 2023 20:27:21 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527218",
+    "TeamId":"1",
+    "password":"b}Y3J-H6&L"
+
+}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:22 +0200Sun, 16 Jul 2023 20:27:22 +020023)result: {"responseCode":"00","responseDescription":null,"message":"User Created Successfully","entity":null,"responseBody":null}
+2023-07-16 20:27(02023Sun, 16 Jul 2023 20:27:43 +0200Sun, 16 Jul 2023 20:27:43 +020023)result: {"code":200,"message":"Request was successful","data":"Email Sent successfully","timestamp":1689532042009}
+2023-07-17 09:10(12023Mon, 17 Jul 2023 09:10:14 +0200Mon, 17 Jul 2023 09:10:14 +020023)user registration data: {
+
+    "firstName":"welvis",
+    "secondName":"mwendwa",
+    "emailAddress":"levistrader93@gmail.com",
+    "phoneNumber":"0716527218",
+    "TeamId":"1",
+    "password":"Pbglq5{<q9"
+
+}
+2023-07-17 09:10(12023Mon, 17 Jul 2023 09:10:14 +0200Mon, 17 Jul 2023 09:10:14 +020023)result: {"responseCode":"01","responseDescription":null,"message":"Member with Phone Number 0716527218 exists","entity":null,"responseBody":null}
